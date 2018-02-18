@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('skjfdhgd', function(){
 
+});
 /*
 ================================
 Front End Routes
