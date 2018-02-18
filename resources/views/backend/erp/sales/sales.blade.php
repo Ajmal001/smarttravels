@@ -81,8 +81,9 @@
                                  <td>{{$sales->sales_sku}}</td>
                                  <td>{{$sales->sales_price}}</td>
                                  <td>{{$sales->sales_date}}</td>
-                                 <td>{{$sales->sales_customer_id}}</td>
+                                 <td>{{$sales->customer->customer_name}}</td>
                                  <td>{{$sales->sales_by_type}}</td>
+
                                  <td>{{$sales->sales_customer_rating}}</td>
                                   <td>
                                     <a id="salesView" class="btn btn-add btn-sm" href="/" data-sid="{{$sales->sales_id}}"><i class="fa fa-eye"></i></a>
@@ -117,6 +118,7 @@
   @section('script')
     <script type="text/javascript">
 
+    // SCRIPT FOR MODAL
       $(document).on('click','#salesEdit', function(e){
         e.preventDefault();
         $('#salesedit').modal('show');
@@ -130,10 +132,34 @@
           $('#salesedit #sales_date #minMaxExample2').val(data.salesdata.sales_date);
           $('#salesedit #sales_customer_id').find("option[value='" + data.salesdata.sales_customer_id + "']").attr('selected', true);
           $('#salesedit #sales_by_type').val(data.salesdata.sales_by_type);
-          $('#salesedit #sales_by_id').val(data.salesdata.sales_by_id);
           $('#salesedit #sales_customer_rating').val(data.salesdata.sales_customer_rating);
 
+          // $('#salesedit #sales_by_id').val(data.salesdata.sales_by_id);
+          var seller_type_default = data.salesdata.sales_by_type;
+          var seller_id_default = data.salesdata.sales_by_id;
+          var selected;
+          $.get('adminerpsellertype-json?sellertype='+seller_type_default, function(data){
+            if (seller_type_default == 'Employee') {
+              $('#salesedit #sales_by_id').empty();
+              $.each(data.sellername, function(index, value){
+                if (seller_id_default == value.employee_id) {
+                   selected = 'selected';
+                }else{
+                  selected = '';
+                }
+                $('#salesedit #sales_by_id').append('<option value="'+value.employee_id+'" '+selected+'>'+value.employee_name+'</option>');
+              });
+            } else if (seller_type_default = 'Agent') {
+              $('#salesedit #sales_by_id').empty();
+              $.each(data.sellername, function(index, value){
+
+                $('#salesedit #sales_by_id').append('<option value="'+value.agent_id+'">'+value.agent_name+'</option>');
+              });
+            }
+          });
+
           // console.log(data.salesdata.sales_by_id);
+
         });
 
       });
@@ -148,14 +174,78 @@
           $('#salesview #sales_sku').html(data.salesdetails.sales_sku);
           $('#salesview #sales_price').html(data.salesdetails.sales_price);
           $('#salesview #sales_date').html(data.salesdetails.sales_date);
-          $('#salesview #sales_customer_id').html(data.salesdetails.sales_customer_id);
+          $('#salesview #sales_customer_id').html(data.salesdetails.customer.customer_name);
           $('#salesview #sales_by_type').html(data.salesdetails.sales_by_type);
-          $('#salesview #sales_by_id').html(data.salesdetails.sales_by_id);
+          if (data.salesdetails.selleragent) {
+            $('#salesview #sales_by_id').html(data.salesdetails.selleragent.agent_name);
+          }else if (data.salesdetails.selleremployee) {
+            $('#salesview #sales_by_id').html(data.salesdetails.selleremployee.employee_name);
+          }
           $('#salesview #sales_customer_rating').html(data.salesdetails.sales_customer_rating);
 
           // console.log(data.salesdetails);
         });
       });
+
+
+    // SALER TYPE DROPDOWN SELECT
+        $(document).on('change','#sellerTypeDropDown', function(e){
+
+          var seller_type = e.target.value;
+
+          $.get('adminerpsellertype-json?sellertype='+seller_type, function(data){
+
+            if (data.sellertype == 'employee') {
+
+              $('#sellerTypeNameDropDown').empty();
+              $('#sellerTypeNameDropDown').append('<option disabled selected>Select Employee Name</option>');
+
+              $.each(data.sellername, function(index, value){
+                $('#sellerTypeNameDropDown').append('<option value="'+value.employee_id+'">'+value.employee_name+'</option>');
+              });
+
+            } else if (data.sellertype = 'agent') {
+
+              $('#sellerTypeNameDropDown').empty();
+              $('#sellerTypeNameDropDown').append('<option disabled selected>Select Agent Name</option>');
+
+              $.each(data.sellername, function(index, value){
+                $('#sellerTypeNameDropDown').append('<option value="'+value.agent_id+'">'+value.agent_name+'</option>');
+              });
+
+            }
+
+          });
+        });
+
+        $(document).on('change','#sales_by_type', function(e){
+
+          var seller_type = e.target.value;
+
+          $.get('adminerpsellertype-json?sellertype='+seller_type, function(data){
+
+            if (data.sellertype == 'employee') {
+
+              $('#salesedit #sales_by_id').empty();
+              $('#salesedit #sales_by_id').append('<option disabled selected>Select Employee Name</option>');
+
+              $.each(data.sellername, function(index, value){
+                $('#salesedit #sales_by_id').append('<option value="'+value.employee_id+'">'+value.employee_name+'</option>');
+              });
+
+            } else if (data.sellertype = 'agent') {
+
+              $('#salesedit #sales_by_id').empty();
+              $('#salesedit #sales_by_id').append('<option disabled selected>Select Agent Name</option>');
+
+              $.each(data.sellername, function(index, value){
+                $('#salesedit #sales_by_id').append('<option value="'+value.agent_id+'">'+value.agent_name+'</option>');
+              });
+
+            }
+
+          });
+        });
 
     </script>
   @endsection

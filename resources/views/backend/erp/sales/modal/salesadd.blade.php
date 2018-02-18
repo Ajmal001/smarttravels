@@ -53,7 +53,7 @@
               <div class="form-group">
                <label>Seller Type</label>
                <div class="form-group">
-                <select class="form-control" name="sales_by_type">
+                <select class="form-control" name="sales_by_type" id="sellerTypeDropDown">
                   <option disabled selected>Select Type</option>
                   <option value="Employee">Employee</option>
                   <option value="Agent">Agent</option>
@@ -64,10 +64,8 @@
               <div class="form-group">
                <label>Seller Name</label>
                <div class="form-group">
-                <select class="form-control" name="sales_by_id">
+                <select class="form-control" name="sales_by_id" id="sellerTypeNameDropDown">
                   <option disabled selected>Select Name</option>
-                  <option value="1">Sofiq Rahman</option>
-                  <option value="2">Mostaq Ahmed</option>
                 </select>
                </div>
               </div>
@@ -125,6 +123,7 @@
 </div>
 </div>
 </div>
+
 
 <style>
 .rate-area {

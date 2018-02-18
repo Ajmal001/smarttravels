@@ -360,6 +360,8 @@ Route::get('/adminerpsalesedit/{sales_id}', 'ErpSalesController@editSales')->mid
 Route::put('/adminerpsalesupdate/{sales_id}', 'ErpSalesController@updateSales')->middleware('auth');
 Route::post('/adminerpsalesdelete/{sales_id}', 'ErpSalesController@deleteSales')->middleware('auth');
 
+Route::get('/adminerpsellertype-json', 'ErpSalesController@sellerTypeName')->middleware('auth');
+
 // Task
 Route::get('/adminerptask', 'ErpTaskController@showTask')->middleware('auth');
 Route::post('/adminerpaddtask', 'ErpTaskController@addTask')->middleware('auth');

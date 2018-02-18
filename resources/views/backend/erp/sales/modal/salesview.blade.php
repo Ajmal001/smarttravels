@@ -17,6 +17,10 @@
               </thead>
               <tbody>
                 <tr>
+                  <td><strong>Item Name</strong></td>
+                  <td id="sales_item_name"></td>
+                </tr>
+                <tr>
                   <td><strong>Item Type</strong></td>
                   <td id="sales_item_type"></td>
                 </tr>

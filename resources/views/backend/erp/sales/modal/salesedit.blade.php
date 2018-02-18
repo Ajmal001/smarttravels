@@ -64,8 +64,6 @@
                <div class="form-group">
                 <select class="form-control" name="sales_by_id" id="sales_by_id">
                   <option disabled selected>Select Name</option>
-                  <option value="1">Sofiq Rahman</option>
-                  <option value="2">Mostaq Ahmed</option>
                 </select>
                </div>
               </div>
