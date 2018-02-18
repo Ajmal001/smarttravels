@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('somethingnew', function(){
-
-});
-
-
 /*
 ================================
 Front End Routes
