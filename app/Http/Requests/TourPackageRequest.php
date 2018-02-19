@@ -24,7 +24,7 @@ class TourPackageRequest extends FormRequest
     public function rules()
     {
         return [
-            'package_sku' => 'required|unique:tour_package|max:255'
+            'package_sku' => 'required|unique:travel_tour_package|max:255'
         ];
     }
 }

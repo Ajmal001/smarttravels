@@ -113,7 +113,7 @@ class TourPackagesController extends Controller
 	}
 
 	public function deleteTourPackage($package_id){
-		DB::table('tour_package')->where('package_id',$package_id)->delete();
+		DB::table('travel_tour_package')->where('package_id',$package_id)->delete();
         Session::flash('flash_message_delete', 'Package Deleted !');
 		return redirect('/adminwebsitetourpackages');
 	}

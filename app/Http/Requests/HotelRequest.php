@@ -24,7 +24,7 @@ class HotelRequest extends FormRequest
     public function rules()
     {
         return [
-            'hotel_sku' => 'required|unique:hotels|max:255'
+            'hotel_sku' => 'required|unique:travel_hotels|max:255'
         ];
     }
 }
