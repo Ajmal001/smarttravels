@@ -36,8 +36,8 @@
 										@foreach ($errors->all() as $error)
 											<span style="color:red">{{ $error }}</span>
 										@endforeach
-									@endif	
-																		
+									@endif
+
 									@if(Session::has('flash_message_insert'))
 									    <span style="color:green">{{ Session::get('flash_message_insert') }}</span>
 									@elseif(Session::has('flash_message_update'))
@@ -51,11 +51,11 @@
                         <div class="panel-body">
                         <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                            <div class="btn-group">
-                                <div class="buttonexport" id="buttonlist"> 
-								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#package" > <i class="fa fa-plus"></i> Add New Package </a>  
-								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#country" > <i class="fa fa-plus"></i> Add Country </a>  
-								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#location" > <i class="fa fa-plus"></i> Add Location </a>  
-								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#exin" > <i class="fa fa-plus"></i> Add Exclude/Include </a>  
+                                <div class="buttonexport" id="buttonlist">
+								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#package" > <i class="fa fa-plus"></i> Add New Package </a>
+								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#country" > <i class="fa fa-plus"></i> Add Country </a>
+								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#location" > <i class="fa fa-plus"></i> Add Location </a>
+								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#exin" > <i class="fa fa-plus"></i> Add Exclude/Include </a>
 						   </div>
                         </div>
                            <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
@@ -84,24 +84,24 @@
                                        <td>{{$tp->price}}</td>
                                        <td>{{$tp->duration}} Days</td>
                                        <td>
-                                          
+
 										    <a class="btn btn-add btn-sm" href="adminwebsiteedittourpackages/{{$tp->package_id}}"><i class="fa fa-pencil"></i></a>
 										    <a class="btn btn-danger btn-sm" href="adminwebsitedeletetourpackages/{{$tp->package_id}}"><i class="fa fa-trash-o"></i></a>
-                                           	
+
 									   </td>
                                     </tr>
-                                 @endforeach	 
+                                 @endforeach
                                  </tbody>
                               </table>
                            </div>
                         </div>
                      </div>
                   </div>
-               </div>               
-					
-					
-				    
-			   
+               </div>
+
+
+
+
 			    <!--  Add New Tour Package -->
                 <div class="modal fade" id="package" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog">
@@ -110,12 +110,12 @@
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                            <h3><i class="fa fa-plane m-r-5"></i> Add New Package </h3>
                         </div>
-                        
+
 						<div class="modal-body">
                            <div class="row">
                                <div class="panel-body">
-							   
-							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinserttourpackages','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}   
+
+							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinserttourpackages','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
                                {!! csrf_field() !!}
                               <div class="form-group">
                                  <label>Tour Package Name</label>
@@ -134,7 +134,7 @@
 									<option>Full Package</option>
 								  </select>
 								 </div>
-							  </div>							  
+							  </div>
 							  <div class="form-group">
 								 <label>General Package Type</label>
 								 <div class="form-group">
@@ -152,65 +152,65 @@
 							  </div>
 							  <div class="form-group">
                                  <label>Country</label>
-								 <select class="js-example-basic-multiple" name="country[]" style="width:200px;"  multiple="multiple">
+								 <select class="js-example-basic-multiple" name="country[]" style="width:200px;"  multiple="multiple" required>
 									@foreach($countryList as $cl)
 									<option>{{$cl->country_name}}</option>
-									@endforeach										  
+									@endforeach
 								 </select>
                               </div>
                               <div class="form-group">
                                  <label>Locations</label>
-                                 <select class="js-example-basic-multiple" name="location[]" style="width:200px;"  multiple="multiple">
+                                 <select class="js-example-basic-multiple" name="location[]" style="width:200px;"  multiple="multiple" required>
 									@foreach($locationList as $ll)
 									<option>{{$ll->location_name}}</option>
-									@endforeach								  
+									@endforeach
 								 </select>
-                              </div>                              
+                              </div>
                               <div class="form-group">
                                  <label>Price</label>
                                  <input type="text" name="price" class="form-control" placeholder="Enter Price" required>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Duration</label>
                                  <input type="text" name="duration" class="form-control" placeholder="Enter Duration" required>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Tour Exclude</label>
 								 <select class="js-example-basic-multiple" name="tour_exclude[]" style="width:200px;"  multiple="multiple">
 									@foreach($exInList as $exIn)
 									<option>{{$exIn->exin_name}}</option>
-									@endforeach										  
+									@endforeach
 								 </select>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Tour Include</label>
 								 <select class="js-example-basic-multiple" name="tour_include[]" style="width:200px;"  multiple="multiple">
 									@foreach($exInList as $exIn)
 									<option>{{$exIn->exin_name}}</option>
-									@endforeach										  
+									@endforeach
 								 </select>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Arrival Date</label>
                                  <div class="input-group date form_date" >
                                     <input id='minMaxExample' type="text" name="arrival_date" style="z-index: 1050 !important;" class="form-control years"><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>
                                  </div>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Departure Date</label>
                                  <div class="input-group date form_date" >
                                     <input id='minMaxExample2' type="text" name="departure_date" style="z-index: 1050 !important;" class="form-control years"><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>
                                  </div>
-                              </div>							  
-							  
+                              </div>
+
                               <div class="form-group">
                                  <label>Tour Image</label>
-                                 <input type="file" name="tour_image" required>                                 
+                                 <input type="file" name="tour_image" required>
                               </div>
                               <div class="form-group">
                                  <label>Tour details</label>
@@ -225,10 +225,10 @@
                   </div>
                   <!-- /.modal-dialog -->
                </div>
-			 </div> 			 
-            </div> 			
-			
-			
+			 </div>
+            </div>
+
+
 			 <!--  Add Country -->
                 <div class="modal fade" id="country" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog">
@@ -237,18 +237,18 @@
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                            <h3><i class="fa fa-plane m-r-5"></i> Add Country </h3>
                         </div>
-                        
+
 						<div class="modal-body">
                            <div class="row">
                                <div class="panel-body">
-							   
-							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinsertcountry','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}   
+
+							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinsertcountry','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
                                {!! csrf_field() !!}
                               <div class="form-group">
                                  <label>Country Name</label>
                                  <input type="text" name="country_name" class="form-control" placeholder="Enter Country Name" required>
                               </div>
-							
+
                               <div class="form-group">
 							  <input type="submit" value="Save" class="btn btn-success" >
 							   </div>
@@ -258,11 +258,11 @@
                   </div>
                   <!-- /.modal-dialog -->
                </div>
-			 </div> 			 
-            </div> 
-			
-			
-			
+			 </div>
+            </div>
+
+
+
 			 <!--  Add New Location -->
                 <div class="modal fade" id="location" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog">
@@ -271,12 +271,12 @@
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                            <h3><i class="fa fa-plane m-r-5"></i> Add Location </h3>
                         </div>
-                        
+
 						<div class="modal-body">
                            <div class="row">
                                <div class="panel-body">
-							   
-							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinsertlocation','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}   
+
+							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinsertlocation','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
                                {!! csrf_field() !!}
                               <div class="form-group">
                                  <label>Country</label>
@@ -284,15 +284,15 @@
 									<option>-Select Country-</option>
 									@foreach($countryList as $cl)
 									<option value="{{$cl->country_id}}">{{$cl->country_name}}</option>
-									@endforeach	
+									@endforeach
 								  </select>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Location Name</label>
                                  <input type="text" name="location_name" class="form-control" placeholder="Enter Location Name" required>
                               </div>
-							
+
                               <div class="form-group">
 							  <input type="submit" value="Save" class="btn btn-success" >
 							   </div>
@@ -302,10 +302,10 @@
                   </div>
                   <!-- /.modal-dialog -->
                </div>
-			 </div> 			 
-            </div> 
-			
-			
+			 </div>
+            </div>
+
+
 			<!--  Add Exclude/Include -->
                 <div class="modal fade" id="exin" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog">
@@ -314,18 +314,18 @@
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                            <h3><i class="fa fa-plane m-r-5"></i> Add Tour Exclude/Include  </h3>
                         </div>
-                        
+
 						<div class="modal-body">
                            <div class="row">
                                <div class="panel-body">
-							   
-							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinsertexin','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}   
+
+							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinsertexin','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
                                {!! csrf_field() !!}
                               <div class="form-group">
                                  <label>Feature Name</label>
                                  <input type="text" name="exin_name" class="form-control" placeholder="Enter Feature Name" required>
                               </div>
-							
+
                               <div class="form-group">
 							  <input type="submit" value="Save" class="btn btn-success" >
 							   </div>
@@ -335,12 +335,12 @@
                   </div>
                   <!-- /.modal-dialog -->
                </div>
-			 </div> 			 
-            </div> 
-			
-			
-			
-		</div> 
-		
-		 
-  @endsection    
+			 </div>
+            </div>
+
+
+
+		</div>
+
+
+  @endsection
