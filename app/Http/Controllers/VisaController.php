@@ -53,7 +53,7 @@ class VisaController extends Controller
 	}
 	
 	public function visaRequirementsDelete($id){
-		DB::table('visa_requirements')->where('id',$id)->delete();
+		DB::table('travel_visa_requirements')->where('id',$id)->delete();
         Session::flash('flash_message_delete', 'Requirements Deleted !');		
 		return redirect('/adminwebsitevisarequirements');
 	}
@@ -70,7 +70,7 @@ class VisaController extends Controller
 		$countryList = TourCountry::get();	
 		$locationList = TourLocation::get();
 		
-		DB::table('visa_applications')->where('id',$id)->delete();
+		DB::table('travel_visa_applications')->where('id',$id)->delete();
         Session::flash('flash_message_delete', 'Visa Booking Deleted !');		
 		return redirect('/adminwebsitevisabooking');
 		

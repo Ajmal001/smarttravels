@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransferInfo extends Model
 {
-    protected $table = "transfer_info";
+    protected $table = "travel_transfer_info";
 	protected $primaryKey = 'info_id';
 }

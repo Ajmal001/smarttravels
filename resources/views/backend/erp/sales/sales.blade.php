@@ -118,6 +118,13 @@
   @section('script')
     <script type="text/javascript">
 
+    // RATING JQUERY PLUGIN
+      $(function () {
+        $("#addcustomerrating").rateYo().on("rateyo.set", function (e, data) {
+          $("#sales_customer_rating").val(data.rating);
+        });
+      });
+
     // SCRIPT FOR MODAL
       $(document).on('click','#salesEdit', function(e){
         e.preventDefault();
@@ -132,7 +139,13 @@
           $('#salesedit #sales_date #minMaxExample2').val(data.salesdata.sales_date);
           $('#salesedit #sales_customer_id').find("option[value='" + data.salesdata.sales_customer_id + "']").attr('selected', true);
           $('#salesedit #sales_by_type').val(data.salesdata.sales_by_type);
-          $('#salesedit #sales_customer_rating').val(data.salesdata.sales_customer_rating);
+
+          $('#salesedit #sales_customer_ratingedit').val(data.salesdata.sales_customer_rating);
+          var $editcustomerrating = $("#editcustomerrating").rateYo();
+          $editcustomerrating.rateYo("rating", data.salesdata.sales_customer_rating);
+          $("#editcustomerrating").rateYo().on("rateyo.set", function (e, data) {
+            $("#sales_customer_ratingedit").val(data.rating);
+          });
 
           // $('#salesedit #sales_by_id').val(data.salesdata.sales_by_id);
           var seller_type_default = data.salesdata.sales_by_type;
@@ -181,7 +194,11 @@
           }else if (data.salesdetails.selleremployee) {
             $('#salesview #sales_by_id').html(data.salesdetails.selleremployee.employee_name);
           }
-          $('#salesview #sales_customer_rating').html(data.salesdetails.sales_customer_rating);
+          //$('#salesview #sales_customer_rating').html(data.salesdetails.sales_customer_rating);
+          var $viewcustomerrating = $("#viewcustomerrating").rateYo();
+          $viewcustomerrating.rateYo("rating", data.salesdetails.sales_customer_rating);
+          $viewcustomerrating.rateYo("option", "readOnly", true);
+          $viewcustomerrating.rateYo("option", "starWidth", "30px");
 
           // console.log(data.salesdetails);
         });

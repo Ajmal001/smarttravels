@@ -11,6 +11,8 @@
       <!-- Start Global Mandatory Style
 
 	  =====================================================================-->
+	  <!-- Rateyo -->
+      <link href="{{URL::asset('assets/backend/assets/rateyo/jquery.rateyo.min.css')}}" rel="stylesheet">
 	  <!-- Select2 -->
 	  <link href="{{URL::asset('assets/backend/assets/plugins/select2/select2.css')}}" rel="stylesheet" type="text/css"/>
 	  <!-- jquery-ui css -->
@@ -572,7 +574,9 @@
       <script src="{{URL::asset('assets/backend/assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js')}}" type="text/javascript"></script>
       <!-- Bootstrap -->
       <script src="{{URL::asset('assets/backend/assets/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-	   <!-- Select2 -->
+	  <!-- Rateyo -->
+      <script src="{{URL::asset('assets/backend/assets/rateyo/jquery.rateyo.min.js')}}"></script>
+	  <!-- Select2 -->
       <script src="{{URL::asset('assets/backend/assets/plugins/select2/select2.min.js')}}" type="text/javascript"></script>
       <!-- lobipanel -->
       <script src="{{URL::asset('assets/backend/assets/plugins/lobipanel/lobipanel.min.js')}}" type="text/javascript"></script>

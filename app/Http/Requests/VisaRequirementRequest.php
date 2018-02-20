@@ -24,7 +24,7 @@ class VisaRequirementRequest extends FormRequest
     public function rules()
     {
         return [
-           'country' => 'required|unique:visa_requirements|max:255'
+           'country' => 'required|unique:travel_visa_requirements|max:255'
         ];
     }
 }

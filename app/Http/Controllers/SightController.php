@@ -58,7 +58,7 @@ class SightController extends Controller
 	}
 	
 	public function deleteSigth($sight_id){
-		DB::table('sights')->where('sight_id',$sight_id)->delete();
+		DB::table('travel_sights')->where('sight_id',$sight_id)->delete();
         Session::flash('flash_message_delete', 'Sight Deleted !');		
 		return redirect('/adminwebsitesights');
 	}

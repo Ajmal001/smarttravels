@@ -24,7 +24,7 @@ class HotelFeatureRequest extends FormRequest
     public function rules()
     {
         return [
-            'features_name' => 'required|unique:hotel_features|max:255'
+            'features_name' => 'required|unique:travel_hotel_features|max:255'
         ];
     }
 }

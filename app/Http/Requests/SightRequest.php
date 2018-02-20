@@ -24,7 +24,7 @@ class SightRequest extends FormRequest
     public function rules()
     {
         return [
-            'sku' => 'required|unique:sights|max:255'
+            'sku' => 'required|unique:travel_sights|max:255'
         ];
     }
 }

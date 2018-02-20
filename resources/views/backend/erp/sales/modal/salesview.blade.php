@@ -50,7 +50,9 @@
                 </tr>
                 <tr>
                   <td><strong>Rating</strong></td>
-                  <td id="sales_customer_rating"></td>
+                  <td>
+                    <div id="viewcustomerrating"></div>
+                  </td>
                 </tr>
               </tbody>
             </table>

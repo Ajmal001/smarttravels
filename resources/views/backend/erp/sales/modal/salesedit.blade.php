@@ -82,16 +82,9 @@
 
               <div class="form-group">
                <label>Rating</label>
-               <div class="form-group">
-                <select class="form-control" name="sales_customer_rating" id="sales_customer_rating">
-                  <option disabled selected>Rating for this Customer</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-               </div>
+               <div id="editcustomerrating"></div>
+               <div class="counter"></div>
+               <input type="hidden" name="sales_customer_rating" id="sales_customer_ratingedit">
               </div>
 
               <div class="form-group">

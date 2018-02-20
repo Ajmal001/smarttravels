@@ -24,11 +24,11 @@ class TransferController extends Controller
 	
 	public function picDetails($transfer_id){
 		
-		$picDetails = DB::table('transfer_pic')	
+		$picDetails = DB::table('travel_transfer_pic')	
 							->where('transfer_id', '=', $transfer_id)
 							->get();
 		
-		$infoDetails = DB::table('transfer_info')	
+		$infoDetails = DB::table('travel_transfer_info')	
 							->where('transfer_id', '=', $transfer_id)
 							->get();
     		
@@ -37,11 +37,11 @@ class TransferController extends Controller
 	
 	public function dropDetails($transfer_id){
 		
-		$dropDetails = DB::table('transfer_drop')	
+		$dropDetails = DB::table('travel_transfer_drop')	
 							->where('transfer_id', '=', $transfer_id)
 							->get();
 		
-		$infoDetails = DB::table('transfer_info')	
+		$infoDetails = DB::table('travel_transfer_info')	
 							->where('transfer_id', '=', $transfer_id)
 							->get();
 

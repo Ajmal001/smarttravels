@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sights extends Model
 {
-    protected $table = "sights";
+    protected $table = "travel_sights";
 	protected $primaryKey = 'sight_id';
 }

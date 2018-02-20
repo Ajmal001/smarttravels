@@ -24,7 +24,7 @@ class TourExinRequest extends FormRequest
     public function rules()
     {
         return [
-            'exin_name' => 'required|unique:tour_exclude_include|max:255'
+            'exin_name' => 'required|unique:travel_tour_exclude_include|max:255'
         ];
     }
 }

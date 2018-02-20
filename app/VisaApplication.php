@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class VisaApplication extends Model
 {
-    protected $table = "visa_applications";
+    protected $table = "travel_visa_applications";
 	protected $primaryKey = 'id';
 }
