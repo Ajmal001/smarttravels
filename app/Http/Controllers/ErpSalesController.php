@@ -27,6 +27,9 @@ class ErpSalesController extends Controller
   		$insert->sales_item_type = $request->input('sales_item_type');
   		$insert->sales_item_name = $request->input('sales_item_name');
   		$insert->sales_sku = $request->input('sales_sku');
+  		$insert->payment_type = $request->input('payment_type');
+  		$insert->payment_method = $request->input('payment_method');
+  		$insert->payment_info = $request->input('payment_info');
   		$insert->sales_price = $request->input('sales_price');
   		$insert->sales_date = $request->input('sales_date');
   		$insert->sales_customer_id = $request->input('sales_customer_id');
@@ -97,6 +100,9 @@ class ErpSalesController extends Controller
   		$update->sales_item_type = $request->input('sales_item_type');
   		$update->sales_item_name = $request->input('sales_item_name');
   		$update->sales_sku = $request->input('sales_sku');
+      $update->payment_type = $request->input('payment_type');
+  		$update->payment_method = $request->input('payment_method');
+  		$update->payment_info = $request->input('payment_info');
   		$update->sales_price = $request->input('sales_price');
   		$update->sales_date = $request->input('sales_date');
   		$update->sales_customer_id = $request->input('sales_customer_id');

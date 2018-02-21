@@ -28,6 +28,20 @@
                   <td><strong>SKU</strong></td>
                   <td id="sales_sku"></td>
                 </tr>
+
+                <tr>
+                  <td><strong>Payment Type</strong></td>
+                  <td id="payment_type"></td>
+                </tr>
+                <tr>
+                  <td><strong>Payment Method</strong></td>
+                  <td id="payment_method"></td>
+                </tr>
+                <tr>
+                  <td><strong>Payment Info</strong></td>
+                  <td id="payment_info"></td>
+                </tr>
+
                 <tr>
                   <td><strong>Price</strong></td>
                   <td id="sales_price"></td>
