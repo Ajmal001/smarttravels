@@ -82,40 +82,48 @@ class ErpAccountsController extends Controller
       // Income Today
       $income_visa_processing_today = DB::table('erp_sales')
               ->where('sales_item_type', 'visa_processing')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '=', date("Y-m-d"))
               ->sum('sales_price');
 
       $income_tour_packages_today = DB::table('erp_sales')
               ->where('sales_item_type', 'tour_packages')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '=', date("Y-m-d"))
               ->sum('sales_price');
 
       $income_hotels_today = DB::table('erp_sales')
               ->where('sales_item_type', 'hotels')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '=', date("Y-m-d"))
               ->sum('sales_price');
 
       $income_sight_seeing_today = DB::table('erp_sales')
               ->where('sales_item_type', 'sight_seeing')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '=', date("Y-m-d"))
               ->sum('sales_price');
 
       $income_air_tickets_today = DB::table('erp_sales')
               ->where('sales_item_type', 'air_tickets')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '=', date("Y-m-d"))
               ->sum('sales_price');
 
       $income_consultancy_today = DB::table('erp_sales')
               ->where('sales_item_type', 'consultancy')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '=', date("Y-m-d"))
               ->sum('sales_price');
 
       $income_others_today = DB::table('erp_sales')
               ->where('sales_item_type', 'others')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '=', date("Y-m-d"))
               ->sum('sales_price');
 
       $income_total_today = DB::table('erp_sales')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '=', date("Y-m-d"))
               ->sum('sales_price');
 
@@ -124,47 +132,55 @@ class ErpAccountsController extends Controller
 
       $income_visa_processing_week = DB::table('erp_sales')
               ->where('sales_item_type', 'visa_processing')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $one_week_ago)
               ->where('sales_date', '<=', $today)
               ->sum('sales_price');
 
       $income_tour_packages_week = DB::table('erp_sales')
               ->where('sales_item_type', 'tour_packages')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $one_week_ago)
               ->where('sales_date', '<=', $today)
               ->sum('sales_price');
 
       $income_hotels_week = DB::table('erp_sales')
               ->where('sales_item_type', 'hotels')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $one_week_ago)
               ->where('sales_date', '<=', $today)
               ->sum('sales_price');
 
       $income_sight_seeing_week = DB::table('erp_sales')
               ->where('sales_item_type', 'sight_seeing')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $one_week_ago)
               ->where('sales_date', '<=', $today)
               ->sum('sales_price');
 
       $income_air_tickets_week = DB::table('erp_sales')
               ->where('sales_item_type', 'air_tickets')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $one_week_ago)
               ->where('sales_date', '<=', $today)
               ->sum('sales_price');
 
       $income_consultancy_week = DB::table('erp_sales')
               ->where('sales_item_type', 'consultancy')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $one_week_ago)
               ->where('sales_date', '<=', $today)
               ->sum('sales_price');
 
       $income_others_week = DB::table('erp_sales')
               ->where('sales_item_type', 'others')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $one_week_ago)
               ->where('sales_date', '<=', $today)
               ->sum('sales_price');
 
       $income_total_week = DB::table('erp_sales')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $one_week_ago)
               ->where('sales_date', '<=', $today)
               ->sum('sales_price');
@@ -172,40 +188,48 @@ class ErpAccountsController extends Controller
       // Income This month
       $income_visa_processing_month = DB::table('erp_sales')
               ->where('sales_item_type', 'visa_processing')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $this_month)
               ->sum('sales_price');
 
       $income_tour_packages_month = DB::table('erp_sales')
               ->where('sales_item_type', 'tour_packages')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $this_month)
               ->sum('sales_price');
 
       $income_hotels_month = DB::table('erp_sales')
               ->where('sales_item_type', 'hotels')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $this_month)
               ->sum('sales_price');
 
       $income_sight_seeing_month = DB::table('erp_sales')
               ->where('sales_item_type', 'sight_seeing')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $this_month)
               ->sum('sales_price');
 
       $income_air_tickets_month = DB::table('erp_sales')
               ->where('sales_item_type', 'air_tickets')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $this_month)
               ->sum('sales_price');
 
       $income_consultancy_month = DB::table('erp_sales')
               ->where('sales_item_type', 'consultancy')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $this_month)
               ->sum('sales_price');
 
       $income_others_month = DB::table('erp_sales')
               ->where('sales_item_type', 'others')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $this_month)
               ->sum('sales_price');
 
       $income_total_month = DB::table('erp_sales')
+              ->where('payment_type', 'cash')
               ->where('sales_date', '>=', $this_month)
               ->sum('sales_price');
 

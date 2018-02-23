@@ -73,6 +73,31 @@
               </div>
 
               <div class="form-group">
+                 <label>Payment Type</label>
+                 <select class="form-control" name="payment_type" >
+                   <option disabled selected>Select Type</option>
+                   <option value="cash">Cash</option>
+                   <option value="due">Due</option>
+                 </select>
+              </div>
+
+              <div class="form-group">
+                 <label>Payment Method</label>
+                 <select class="form-control" name="payment_method" >
+                   <option disabled selected>Select Method</option>
+                   <option value="bank">Bank</option>
+                   <option value="check">Check Payment</option>
+                   <option value="paypal">Paypal</option>
+                   <option value="card">Card Payment</option>
+                 </select>
+              </div>
+
+              <div class="form-group">
+                 <label>Payment Info</label>
+                 <input type="text" name="payment_info" class="form-control" placeholder="Enter Transaction Number" >
+              </div>
+
+              <div class="form-group">
                  <label>Price</label>
                  <input type="number" name="sales_price" class="form-control" placeholder="Enter Price" required>
               </div>
@@ -102,4 +127,3 @@
 </div>
 </div>
 </div>
-

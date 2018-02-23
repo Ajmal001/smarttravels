@@ -135,6 +135,9 @@
           $('#salesedit #sales_item_type').val(data.salesdata.sales_item_type);
           $('#salesedit #sales_item_name').val(data.salesdata.sales_item_name);
           $('#salesedit #sales_sku').val(data.salesdata.sales_sku);
+          $('#salesedit #payment_type').val(data.salesdata.payment_type);
+          $('#salesedit #payment_method').val(data.salesdata.payment_method);
+          $('#salesedit #payment_info').val(data.salesdata.payment_info);
           $('#salesedit #sales_price').val(data.salesdata.sales_price);
           $('#salesedit #sales_date #minMaxExample2').val(data.salesdata.sales_date);
           $('#salesedit #sales_customer_id').find("option[value='" + data.salesdata.sales_customer_id + "']").attr('selected', true);
@@ -183,6 +186,9 @@
         $.get('adminerpsalesview/'+cid, function(data){
           $('#salesview #sales_item_type').html(data.salesdetails.sales_item_type);
           $('#salesview #sales_item_name').html(data.salesdetails.sales_item_name);
+          $('#salesview #payment_type').html(data.salesdetails.payment_type);
+          $('#salesview #payment_method').html(data.salesdetails.payment_method);
+          $('#salesview #payment_info').html(data.salesdetails.payment_info);
           $('#salesview #sales_sku').html(data.salesdetails.sales_sku);
           $('#salesview #sales_price').html(data.salesdetails.sales_price);
           $('#salesview #sales_date').html(data.salesdetails.sales_date);
