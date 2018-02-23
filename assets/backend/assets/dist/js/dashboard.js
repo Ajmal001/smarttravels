@@ -69,14 +69,13 @@ $(function() {
     });
     //Datepicker
     function datepic() {
-    let date = $('#minMaxExample,#minMaxExample2');
-    $(date).datepicker({
-      dateFormat: "yy-mm-dd",
-       language: 'en',
-
-             minDate: new Date() // Now can select only dates, which goes after today
-         });
-}
+        let date = $('#minMaxExample,#minMaxExample2,#minMaxExample3,#minMaxExample4');
+        $(date).datepicker({
+            dateFormat: "yy-mm-dd",
+            language: 'en',
+            minDate: new Date() // Now can select only dates, which goes after today
+        });
+    }
     datepic();
     //preloader
     // makes sure the whole site is loaded

@@ -88,12 +88,34 @@ class HotelsController extends Controller
 		return redirect('/adminwebsitehotels');
 	}
 
+	public function viewHotel($hotel_id){
+
+		$viewHotel = Hotels::find($hotel_id);
+
+		return response()->json(['viewhotel'=>$viewHotel]);
+	}
+
 	public function showEditHotel($hotel_id){
-		$countryList = TourCountry::get();
-		$locationList = TourLocation::get();
-		$hotelFeatureList = HotelFeatures::get();
-		$editHotel = Hotels::find($hotel_id);
-		return view('backend.website.website_hotels_edit',compact('editHotel','countryList','locationList','hotelFeatureList'));
+
+		$editHotel 	 	= Hotels::find($hotel_id);
+		$countryName 	= TourCountry::pluck('country_name');
+		$hotelFeatured 	= HotelFeatures::pluck('features_name');
+
+		return response()->json([
+			'edithotel' 		=> $editHotel,
+			'countryName'		=> $countryName,
+			'hotelFeaturedList' => $hotelFeatured
+		]);
+	}
+	public function getLocationsByMultipleCountry(Request $request){
+		$countryname = $request->input('countryname');
+		$countrynamearr = explode(',', $countryname);
+		$country = [];
+		foreach ($countrynamearr as $countryname) {
+			$countryid = TourCountry::where('country_name', $countryname)->pluck('country_id');
+			$country[] = TourLocation::where('country_id', $countryid)->pluck('location_name');
+		}
+		return $country;
 	}
 
 	public function editHotel(Request $request){
@@ -129,8 +151,9 @@ class HotelsController extends Controller
 		return redirect('/adminwebsitehotels');
 	}
 
-	public function deleteHotel($hotel_id){
-		DB::table('travel_hotels')->where('hotel_id',$hotel_id)->delete();
+	public function deleteHotel(Request $request){
+		$hotel_id = $request->input('hotel_id');
+		Hotels::find($hotel_id)->delete();
         Session::flash('flash_message_delete', 'Hotel Deleted !');
 		return redirect('/adminwebsitehotels');
 	}

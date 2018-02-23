@@ -64,8 +64,7 @@
                                  <thead>
                                     <tr class="info">
                                        <th>Country</th>
-                                      
-                                       <th>Action</th>
+                                       <th width="122px">Action</th>
                                     </tr>
                                  </thead>
                                  <tbody>
@@ -73,8 +72,14 @@
                                     <tr>
                                        <td>{{$visa->country}}</td>
                                        <td>
-										    <a class="btn btn-add btn-sm" href="adminwebsitevisarequirementsedit/{{$visa->id}}"><i class="fa fa-pencil"></i></a>
-										    <a class="btn btn-danger btn-sm" href="adminwebsitevisarequirementsdelete/{{$visa->id}}"><i class="fa fa-trash-o"></i></a>
+										    <a id="viewvisarequirementsmodelbtn" class="btn btn-add btn-sm" href="#" data-id="{{$visa->id}}"><i class="fa fa-eye"></i></a>
+										    <a id="editvisarequirementsmodelbtn" class="btn btn-warning btn-sm" href="#" data-id="{{$visa->id}}"><i class="fa fa-pencil"></i></a>
+                                            {!! Form::open(['method'=>'post','url'=>'adminwebsitevisarequirementsdelete/{{$visa->id}}','class'=>'pull-right delete-btn','enctype'=>'multipart/form-data']) !!}
+                                            {!! csrf_field() !!}
+                                            {!! method_field('DELETE') !!}
+                                                <input type="hidden" name="id" value="{{$visa->id}}" >
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                            {!! Form::close() !!}
                                        </td>
                                     </tr>
                                     @endforeach
@@ -131,6 +136,91 @@
                </div>
 			 </div> 			 
             </div> 			
+				    
+			   
+            <!--  VIEW VISA REQUIRMENT -->
+            <div class="modal fade" id="viewvisarequirementsmodel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-primary">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3><i class="fa fa-plane m-r-5"></i> View Visa Requirement </h3>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="panel-body">
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <th width="30%">Name</th>
+                                            <th>Value</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Country</strong></td>
+                                                <td id="country"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Requirements</strong></td>
+                                                <td id="requirements"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    <!-- /.modal-dialog -->
+                    </div>
+                </div> 			 
+            </div> 			
+				    
+			   
+            <!--  EDIT VISA REQUIRMENT -->
+            <div class="modal fade" id="editvisarequirementsmodel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-primary">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3><i class="fa fa-plane m-r-5"></i> Edit Visa Requirement </h3>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="panel-body">
+
+                                {!! Form::open(['method'=>'post','url' => 'adminwebsitevisarequirementseditsave','class'=>'col-sm-10','enctype'=>'multipart/form-data']) !!}   
+                                {!! csrf_field() !!}
+                                <input type="hidden" name="id" id="visareq_id">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select class="form-control" name="country" id="visareqcountry">
+                                        <option disabled selected>Select Country</option>
+                                        @foreach($countryList as $cl)
+                                        <option>{{$cl->country_name}}</option>
+                                        @endforeach						
+                                    </select> 
+                                </div> 
+
+                                <div class="form-group">
+                                    <label>Requirements</label>
+                                    <textarea class="form-control" id="summernote-editvisareq" name="requirements" rows="3" required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Save" class="btn btn-success" >
+                                </div>
+
+                                {!! Form::close() !!}
+
+                                </div>
+                            </div>
+                        </div>
+                    <!-- /.modal-dialog -->
+                    </div>
+                </div> 			 
+            </div> 			
 			
 			
 			<!--  Add Country -->
@@ -171,4 +261,40 @@
 		</div> 
 		
 		 
-  @endsection    
+@endsection    
+
+
+@section('script')
+
+<script>
+
+    // EDIT VISA REQUIRMENT
+    $(document).on('click', '#viewvisarequirementsmodelbtn', function(e){
+        e.preventDefault();
+        $('#viewvisarequirementsmodel').modal('show');
+
+        var id = $(this).data('id');
+
+        $.get('adminwebsitevisarequirementsview/'+id, function(data){
+            $('#viewvisarequirementsmodel #country').html(data.viewvisareq.country);
+            $('#viewvisarequirementsmodel #requirements').html(data.viewvisareq.requirements);
+        });
+    });
+
+    // EDIT VISA REQUIRMENT
+    $(document).on('click', '#editvisarequirementsmodelbtn', function(e){
+        e.preventDefault();
+        $('#editvisarequirementsmodel').modal('show');
+
+        var id = $(this).data('id');
+
+        $.get('adminwebsitevisarequirementsedit/'+id, function(data){
+            $('#editvisarequirementsmodel #visareq_id').val(data.editvisareq.id);
+            $('#editvisarequirementsmodel #visareqcountry').val(data.editvisareq.country);
+            $('#summernote-editvisareq').summernote('code', data.editvisareq.requirements);
+        });
+    });
+
+</script>
+
+@endsection

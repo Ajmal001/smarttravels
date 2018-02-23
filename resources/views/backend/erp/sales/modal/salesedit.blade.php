@@ -83,7 +83,6 @@
               <div class="form-group">
                <label>Rating</label>
                <div id="editcustomerrating"></div>
-               <div class="counter"></div>
                <input type="hidden" name="sales_customer_rating" id="sales_customer_ratingedit">
               </div>
 

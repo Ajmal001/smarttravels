@@ -169,17 +169,23 @@ Route::get('/adminwebsitetourpackages', 'TourPackagesController@showTourPackages
 
 Route::post('/adminwebsiteinserttourpackages', 'TourPackagesController@insertTourPackage')->middleware('auth');
 
+Route::get('/adminwebsiteviewtourpackages/{package_id}', 'TourPackagesController@viewTourPackage')->middleware('auth');
+
 Route::get('/adminwebsiteedittourpackages/{package_id}', 'TourPackagesController@editTourPackage')->middleware('auth');
 
 Route::post('/adminwebsiteedittourpackagessave', 'TourPackagesController@editTourPackageSave')->middleware('auth');
 
-Route::get('/adminwebsitedeletetourpackages/{package_id}', 'TourPackagesController@deleteTourPackage')->middleware('auth');
+Route::delete('/adminwebsitedeletetourpackages/{package_id}', 'TourPackagesController@deleteTourPackage')->middleware('auth');
 
 Route::post('/adminwebsiteinsertcountry', 'TourPackagesController@insertCountry')->middleware('auth');
 
 Route::post('/adminwebsiteinsertlocation', 'TourPackagesController@insertLocation')->middleware('auth');
 
 Route::post('/adminwebsiteinsertexin', 'TourPackagesController@insertExIn')->middleware('auth');
+
+Route::get('travelcountrylocationname-json', 'TourPackagesController@getLocationsByMultipleCountry');
+
+
 
 // Hotels
 
@@ -195,9 +201,11 @@ Route::post('/adminwebsiteinserthotelfeature', 'HotelsController@insertFeature')
 
 Route::get('/adminwebsiteshowedithotel/{hotel_id}', 'HotelsController@showEditHotel')->middleware('auth');
 
+Route::get('/adminwebsiteviewhotel/{hotel_id}', 'HotelsController@viewHotel')->middleware('auth');
+
 Route::post('/adminwebsiteedithotel', 'HotelsController@editHotel')->middleware('auth');
 
-Route::get('/adminwebsitedeletehotel/{hotel_id}', 'HotelsController@deleteHotel')->middleware('auth');
+Route::delete('/adminwebsitedeletehotel/{hotel_id}', 'HotelsController@deleteHotel')->middleware('auth');
 
 // Sight Seeing
 
@@ -205,9 +213,11 @@ Route::get('/adminwebsitesights', 'SightController@showSigth')->middleware('auth
 
 Route::post('/adminwebsiteinsertsight', 'SightController@insertSights')->middleware('auth');
 
-Route::get('/adminwebsitedeletesights/{sight_id}', 'SightController@deleteSigth')->middleware('auth');
+Route::delete('/adminwebsitedeletesights/{sight_id}', 'SightController@deleteSigth')->middleware('auth');
 
 Route::get('/adminwebsiteeditsights/{sight_id}', 'SightController@editSight')->middleware('auth');
+
+Route::get('/adminwebsiteviewsights/{sight_id}', 'SightController@viewSight')->middleware('auth');
 
 Route::post('/adminwebsiteeditsightsave', 'SightController@editSightSave')->middleware('auth');
 
@@ -239,9 +249,11 @@ Route::post('/adminwebsitevisarequirementssave', 'VisaController@visaRequirement
 
 Route::get('/adminwebsitevisarequirementsedit/{id}', 'VisaController@visaRequirementsEdit')->middleware('auth');
 
+Route::get('/adminwebsitevisarequirementsview/{id}', 'VisaController@visaRequirementsView')->middleware('auth');
+
 Route::post('/adminwebsitevisarequirementseditsave', 'VisaController@visaRequirementsEditSave')->middleware('auth');
 
-Route::get('/adminwebsitevisarequirementsdelete/{id}', 'VisaController@visaRequirementsDelete')->middleware('auth');
+Route::delete('/adminwebsitevisarequirementsdelete/{id}', 'VisaController@visaRequirementsDelete')->middleware('auth');
 
 // Booking
 

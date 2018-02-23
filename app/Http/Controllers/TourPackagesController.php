@@ -68,12 +68,34 @@ class TourPackagesController extends Controller
 
 	}
 
+	public function viewTourPackage($package_id){
+		$viewPackage 		= TourPackages::find($package_id);
+
+		return response()->json([
+			'viewpackage' 	=> $viewPackage
+		]);
+	}
+
 	public function editTourPackage($package_id){
-		$editPackage = TourPackages::find($package_id);
-		$countryList = TourCountry::get();
-		$locationList = TourLocation::get();
-		$exInList = TourExIn::get();
-		return view('backend.website.website_tour_packages_edit',compact('editPackage','countryList','locationList','exInList'));
+		$editPackage 		= TourPackages::find($package_id);
+		$countryName 		= TourCountry::pluck('country_name');
+		$exInList 			= TourExIn::pluck('exin_name');
+
+		return response()->json([
+			'editpackage' 	=> $editPackage,
+			'countryName' 	=> $countryName,
+			'exinlist'	  	=> $exInList
+		]);
+	}
+	public function getLocationsByMultipleCountry(Request $request){
+		$countryname = $request->input('countryname');
+		$countrynamearr = explode(',', $countryname);
+		$country = [];
+		foreach ($countrynamearr as $countryname) {
+			$countryid = TourCountry::where('country_name', $countryname)->pluck('country_id');
+			$country[] = TourLocation::where('country_id', $countryid)->pluck('location_name');
+		}
+		return $country;
 	}
 
 	public function editTourPackageSave(Request $request){
@@ -112,8 +134,9 @@ class TourPackagesController extends Controller
 		return redirect('/adminwebsitetourpackages');
 	}
 
-	public function deleteTourPackage($package_id){
-		DB::table('travel_tour_package')->where('package_id',$package_id)->delete();
+	public function deleteTourPackage(Request $request){
+		$package_id = $request->input('package_id');
+		TourPackages::find($package_id)->delete();
         Session::flash('flash_message_delete', 'Package Deleted !');
 		return redirect('/adminwebsitetourpackages');
 	}

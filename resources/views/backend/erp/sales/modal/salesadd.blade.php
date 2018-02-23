@@ -87,7 +87,6 @@
               <div class="form-group">
                <label>Rating</label>
                <div id="addcustomerrating"></div>
-               <div class="counter"></div>
                <input type="hidden" name="sales_customer_rating" id="sales_customer_rating">
               </div>
 

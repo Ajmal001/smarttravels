@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class TourCountry extends Model
 {
     protected $table = "tour_country";
-	protected $primaryKey = 'country_id';
+    protected $primaryKey = 'country_id';
 }

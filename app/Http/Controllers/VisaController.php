@@ -34,10 +34,13 @@ class VisaController extends Controller
 	}
 	
 	public function visaRequirementsEdit($id){
-		$countryList = TourCountry::get();
-		$locationList = TourLocation::get();
 		$editVisa = Visa::find($id);
-		return view('backend.website.website_visa_requirements_edit',compact('countryList','locationList','editVisa'));
+		return response()->json(['editvisareq'=>$editVisa]);
+	}
+	
+	public function visaRequirementsView($id){
+		$viewVisa = Visa::find($id);
+		return response()->json(['viewvisareq'=>$viewVisa]);
 	}
 	
 	public function visaRequirementsEditSave(Request $request){
@@ -52,8 +55,9 @@ class VisaController extends Controller
 		return redirect('/adminwebsitevisarequirements');
 	}
 	
-	public function visaRequirementsDelete($id){
-		DB::table('travel_visa_requirements')->where('id',$id)->delete();
+	public function visaRequirementsDelete(Request $request){
+		$id = $request->input('id');
+		Visa::find($id)->delete();
         Session::flash('flash_message_delete', 'Requirements Deleted !');		
 		return redirect('/adminwebsitevisarequirements');
 	}

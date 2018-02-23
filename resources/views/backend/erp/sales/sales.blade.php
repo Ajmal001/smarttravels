@@ -43,7 +43,7 @@
           									@endif
 
           									@if(Session::has('flash_message_insert'))
-          									    <span style="color:green">{{ Session::get('flash_message_insert') }}</span>
+          									  <span style="color:green">{{ Session::get('flash_message_insert') }}</span>
           									@elseif(Session::has('flash_message_update'))
           										<span style="color:green">{{ Session::get('flash_message_update') }}</span>
           									@elseif(Session::has('flash_message_delete'))
@@ -147,7 +147,6 @@
             $("#sales_customer_ratingedit").val(data.rating);
           });
 
-          // $('#salesedit #sales_by_id').val(data.salesdata.sales_by_id);
           var seller_type_default = data.salesdata.sales_by_type;
           var seller_id_default = data.salesdata.sales_by_id;
           var selected;
@@ -194,7 +193,7 @@
           }else if (data.salesdetails.selleremployee) {
             $('#salesview #sales_by_id').html(data.salesdetails.selleremployee.employee_name);
           }
-          //$('#salesview #sales_customer_rating').html(data.salesdetails.sales_customer_rating);
+
           var $viewcustomerrating = $("#viewcustomerrating").rateYo();
           $viewcustomerrating.rateYo("rating", data.salesdetails.sales_customer_rating);
           $viewcustomerrating.rateYo("option", "readOnly", true);

@@ -57,17 +57,39 @@ class SightController extends Controller
 		return redirect('/adminwebsitesights');
 	}
 	
-	public function deleteSigth($sight_id){
-		DB::table('travel_sights')->where('sight_id',$sight_id)->delete();
+	public function deleteSigth(Request $request){
+		$sight_id = $request->input('sight_id');
+		Sights::find($sight_id)->delete();
         Session::flash('flash_message_delete', 'Sight Deleted !');		
 		return redirect('/adminwebsitesights');
 	}
 	
+	public function viewSight($sight_id){
+
+		$viewSight = Sights::find($sight_id);
+
+		return response()->json(['viewsight'=>$viewSight]);
+	}
+
 	public function editSight($sight_id){
-		$countryList = TourCountry::get();
-		$locationList = TourLocation::get();
-		$editSight = Sights::find($sight_id);
-		return view('backend.website.website_sight_edit',compact('countryList','locationList','editSight'));
+
+		$editSight 	 = Sights::find($sight_id);
+		$countryName = TourCountry::pluck('country_name');
+
+		return response()->json([
+			'editsight' 	=> $editSight,
+			'countryName'	=> $countryName
+		]);
+	}
+	public function getLocationsByMultipleCountry(Request $request){
+		$countryname = $request->input('countryname');
+		$countrynamearr = explode(',', $countryname);
+		$country = [];
+		foreach ($countrynamearr as $countryname) {
+			$countryid = TourCountry::where('country_name', $countryname)->pluck('country_id');
+			$country[] = TourLocation::where('country_id', $countryid)->pluck('location_name');
+		}
+		return $country;
 	}
 	
 	public function editSightSave(Request $request){
