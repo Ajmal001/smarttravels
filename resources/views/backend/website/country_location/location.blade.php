@@ -62,6 +62,7 @@
                                  <thead>
                                     <tr class="info">
                                        <th>Location</th>
+                                       <th>Country</th>
                                        <th>Action</th>
                                     </tr>
                                  </thead>
@@ -70,7 +71,20 @@
                                     <tr>
                                        <td>{{$location->location_name}}</td>
                                        <td>
-										    <a class="btn btn-danger btn-sm" href="locationdelete/{{$location->location_id}}"><i class="fa fa-trash-o"></i></a>
+                                        @foreach($countryList as $country)
+                                            @if($country->country_id == $location->country_id)
+                                                {{$country->country_name}}
+                                            @endif
+                                        @endforeach
+                                        </td>
+                                       <td>
+										    <a id="editlocationbtn" class="btn btn-warning btn-sm pull-left m-r-5" href="#" data-id="{{$location->location_id}}"><i class="fa fa-eye"></i></a>
+                                            {!! Form::open(['method'=>'post','url'=>'locationdelete/{{$location->location_id}}','class'=>'','enctype'=>'multipart/form-data']) !!}
+                                            {!! csrf_field() !!}
+                                            {!! method_field('DELETE') !!}
+                                                <input type="hidden" name="location_id" value="{{$location->location_id}}" >
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                            {!! Form::close() !!}
                                        </td>
                                     </tr>
                                        @endforeach
@@ -127,10 +141,69 @@
             </div> 	
 			   
 			
-			
+			   
+		    <!--  EDIT MODAL START -->
+            <div class="modal fade" id="editlocation">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-primary">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3><i class="fa fa-plane m-r-5"></i> Edit Location </h3>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="panel-body">
+
+                                {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+                                {!! csrf_field() !!}
+
+                                    <div class="form-group">
+                                        <label>Country</label>
+                                        <select class="form-control" name="country_id" id="country_id">
+                                            <option>-Select Country-</option>
+                                            @foreach($countryList as $cl)
+                                            <option value="{{$cl->country_id}}">{{$cl->country_name}}</option>
+                                            @endforeach	
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Location Name</label>
+                                        <input type="text" name="location_name" class="form-control" id="location_name" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-success" >
+                                    </div>
+
+                                {!! Form::close() !!}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>              
+                </div>
+            </div>
+            <!-- EDIT MODAL END -->	
 			 
 			
 		</div> 
 		
 		 
   @endsection    
+
+@section('script')
+<script>
+    $(document).on('click','#editlocationbtn', function(e){
+        e.preventDefault();
+        $('#editlocation').modal('show');
+        var id = $(this).data('id');
+        $('#editlocation form').attr('action','locationupdate/'+id);
+        $.get('locationedit/'+id, function(data){
+            $('#editlocation #country_id').val(data.location.country_id);
+            $('#editlocation #location_name').val(data.location.location_name);
+        });
+    });
+</script>
+@endsection

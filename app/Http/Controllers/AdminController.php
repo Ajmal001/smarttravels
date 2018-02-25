@@ -166,10 +166,25 @@ class AdminController extends Controller
 		return view('backend.website.country_location.country',compact('countries'));	
 	}
 	
-	public function deleteCountry($country_id){
-		DB::table('tour_country')->where('country_id',$country_id)->delete();
+	public function editCountry($id){
+		$country = TourCountry::find($id);
+		return response()->json(['country'=>$country]);	
+	}
+	
+	public function updateCountry(Request $request,$id){
+		$country = TourCountry::find($id);
+		$country->country_name = $request->country_name;
+		$country->save();
+		return back();	
+	}
+	
+	public function deleteCountry(Request $request){
+		$country_id = $request->input('country_id');
+		$country = TourCountry::find($country_id);
+		$country->locations()->delete();
+		$country->delete();
         Session::flash('flash_message_delete', 'Country Deleted !');		
-		return redirect()->back();
+		return back();
 	}
 
 	public function adminLocation(){
@@ -178,9 +193,23 @@ class AdminController extends Controller
 		
 		return view('backend.website.country_location.location',compact('locations','countryList'));	
 	}
+
+	public function editLocation($id){
+		$location = TourLocation::find($id);
+		return response()->json(['location'=>$location]);	
+	}
 	
-	public function deleteLocation($location_id){
-		DB::table('tour_location')->where('location_id',$location_id)->delete();
+	public function updateLocation(Request $request,$id){
+		$location = TourLocation::find($id);
+		$location->country_id = $request->country_id;
+		$location->location_name = $request->location_name;
+		$location->save();
+		return back();	
+	}
+	
+	public function deleteLocation(Request $request){
+		$location_id = $request->input('location_id');
+		TourLocation::find($location_id)->delete();
         Session::flash('flash_message_delete', 'Location Deleted !');		
 		return redirect()->back();
 	}	

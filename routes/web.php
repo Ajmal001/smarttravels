@@ -155,11 +155,21 @@ Route::get('/adminwebsitehome', 'AdminController@adminWebsiteHome')->middleware(
 
 Route::get('/admincountry', 'AdminController@adminCountry')->middleware('auth');
 
-Route::get('/countrydelete/{country_id}', 'AdminController@deleteCountry')->middleware('auth');
+Route::get('/countryedit/{country_id}', 'AdminController@editCountry')->middleware('auth');
+
+Route::post('/countryupdate/{country_id}', 'AdminController@updateCountry')->middleware('auth');
+
+Route::delete('/countrydelete/{country_id}', 'AdminController@deleteCountry')->middleware('auth');
+
+// Locations
 
 Route::get('/adminlocation', 'AdminController@adminLocation')->middleware('auth');
 
-Route::get('/locationdelete/{location_id}', 'AdminController@deleteLocation')->middleware('auth');
+Route::get('/locationedit/{location_id}', 'AdminController@editLocation')->middleware('auth');
+
+Route::post('/locationupdate/{location_id}', 'AdminController@updateLocation')->middleware('auth');
+
+Route::delete('/locationdelete/{location_id}', 'AdminController@deleteLocation')->middleware('auth');
 
 
 

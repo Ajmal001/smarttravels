@@ -70,7 +70,13 @@
                                     <tr>
                                        <td>{{$country->country_name}}</td>
                                        <td>
-										    <a class="btn btn-danger btn-sm" href="countrydelete/{{$country->country_id}}"><i class="fa fa-trash-o"></i></a>
+										    <a id="editcountrymodalbtn" class="btn btn-warning btn-sm pull-left m-r-5" href="#" data-id="{{$country->country_id}}"><i class="fa fa-eye"></i></a>
+                                            {!! Form::open(['method'=>'post','url'=>'countrydelete/{{$country->country_id}}','class'=>'delete-btn','enctype'=>'multipart/form-data']) !!}
+                                            {!! csrf_field() !!}
+                                            {!! method_field('DELETE') !!}
+                                                <input type="hidden" name="country_id" value="{{$country->country_id}}" >
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                            {!! Form::close() !!}
                                        </td>
                                     </tr>
                                        @endforeach
@@ -116,11 +122,58 @@
             </div> 
 			   
 			   
-			
+		    <!--  EDIT MODAL START -->
+            <div class="modal fade" id="editcountrymodal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-primary">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3><i class="fa fa-plane m-r-5"></i> Edit Country </h3>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="panel-body">
+
+                                {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+                                {!! csrf_field() !!}
+
+                                    <div class="form-group">
+                                        <label>Country Name</label>
+                                        <input type="text" name="country_name" class="form-control" id="country_name" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-success" >
+                                    </div>
+
+                                {!! Form::close() !!}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>              
+                </div>
+            </div>
+            <!-- EDIT MODAL END -->	
 			
 			 
 			
 		</div> 
 		
 		 
+  @endsection    
+
+  @section('script')
+  <script>
+    $(document).on('click','#editcountrymodalbtn', function(e){
+        e.preventDefault();
+        $('#editcountrymodal').modal('show');
+        var id = $(this).data('id');
+        $('#editcountrymodal form').attr('action','countryupdate/'+id);
+        $.get('countryedit/'+id, function(data){
+            $('#editcountrymodal #country_name').val(data.country.country_name);
+        });
+    });
+  </script>
   @endsection    

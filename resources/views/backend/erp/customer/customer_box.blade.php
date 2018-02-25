@@ -60,12 +60,13 @@
         margin-bottom: 10px;
     }
     .cardbox_user_links {
-        background: #333;
+        background: transparent;
         left: 50%;
         top: 50%;
         position: absolute;
-        margin-left: -35px;
+        margin-left: -54px;
         margin-top: -15px;
+        width:100%;
     }
     .statistic-box h3 {
     font-size: 15px;
@@ -130,9 +131,9 @@
                                      </div>
                                      <div class="cardbox_user_hover">
                                          <div class="cardbox_user_links">
-                                             <a id="customerView" class="btn btn-add btn-sm" href="#" data-id="{{$customer->customer_id}}"> <i class="fa fa-eye"></i></a>
-                                             <a id="customerEdit" class="btn btn-warning btn-sm" href="#" data-id="{{$customer->customer_id}}"> <i class="fa fa-pencil"></i></a>
-                                             {!! Form::open(['method'=>'post','url' => 'adminerpcustomerdelete/{{$customer->customer_id}}','class'=>'col-sm-6 pull-right delete-btn','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}
+                                             <a id="customerView" class="btn btn-add btn-sm pull-left m-r-5" href="#" data-id="{{$customer->customer_id}}"> <i class="fa fa-eye"></i></a>
+                                             <a id="customerEdit" class="btn btn-warning btn-sm pull-left m-r-5" href="#" data-id="{{$customer->customer_id}}"> <i class="fa fa-pencil"></i></a>
+                                             {!! Form::open(['method'=>'post','url' => 'adminerpcustomerdelete/{{$customer->customer_id}}','class'=>'','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}
                                              {!! csrf_field() !!}
                                               <input type="hidden" name="customer_id" value="{{$customer->customer_id}}" >
                                               <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
