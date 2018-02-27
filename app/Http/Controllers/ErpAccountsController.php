@@ -235,6 +235,264 @@ class ErpAccountsController extends Controller
 
       /*===================== EXPENSE ==========================*/
 
+      // Expense Today
+      $expense_rent_today = DB::table('erp_expenses')
+              ->where('expense_type', 'rent')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_salary_today = DB::table('erp_expenses')
+              ->where('expense_type', 'salary')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_food_entertainment_today = DB::table('erp_expenses')
+              ->where('expense_type', 'food_entertainment')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_furniture_stationary_today = DB::table('erp_expenses')
+              ->where('expense_type', 'furniture_stationary')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_repair_maintenance_today = DB::table('erp_expenses')
+              ->where('expense_type', 'repair_maintenance')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_telephone_today = DB::table('erp_expenses')
+              ->where('expense_type', 'telephone')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_utilities_today = DB::table('erp_expenses')
+              ->where('expense_type', 'utilities')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_depreciation_today = DB::table('erp_expenses')
+              ->where('expense_type', 'depreciation')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_commission_discounts_today = DB::table('erp_expenses')
+              ->where('expense_type', 'commission_discounts')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_marketing_advertising_today = DB::table('erp_expenses')
+              ->where('expense_type', 'marketing_advertising')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_training_fees_today = DB::table('erp_expenses')
+              ->where('expense_type', 'training_fees')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_legal_fees_today = DB::table('erp_expenses')
+              ->where('expense_type', 'legal_fees')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_convences_today = DB::table('erp_expenses')
+              ->where('expense_type', 'convences')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_office_tour_today = DB::table('erp_expenses')
+              ->where('expense_type', 'office_tour')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_others_today = DB::table('erp_expenses')
+              ->where('expense_type', 'others')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      $expense_total_today = DB::table('erp_expenses')
+              ->where('expense_date', '=', date("Y-m-d"))
+              ->sum('expense_amount');
+
+      // Expense This Week
+      $expense_rent_week = DB::table('erp_expenses')
+              ->where('expense_type', 'rent')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_salary_week = DB::table('erp_expenses')
+              ->where('expense_type', 'salary')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_food_entertainment_week = DB::table('erp_expenses')
+              ->where('expense_type', 'food_entertainment')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_furniture_stationary_week = DB::table('erp_expenses')
+              ->where('expense_type', 'furniture_stationary')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_repair_maintenance_week = DB::table('erp_expenses')
+              ->where('expense_type', 'repair_maintenance')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_telephone_week = DB::table('erp_expenses')
+              ->where('expense_type', 'telephone')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_utilities_week = DB::table('erp_expenses')
+              ->where('expense_type', 'utilities')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_depreciation_week = DB::table('erp_expenses')
+              ->where('expense_type', 'depreciation')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_commission_discounts_week = DB::table('erp_expenses')
+              ->where('expense_type', 'commission_discounts')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_marketing_advertising_week = DB::table('erp_expenses')
+              ->where('expense_type', 'marketing_advertising')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_training_fees_week = DB::table('erp_expenses')
+              ->where('expense_type', 'training_fees')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_legal_fees_week = DB::table('erp_expenses')
+              ->where('expense_type', 'legal_fees')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_convences_week = DB::table('erp_expenses')
+              ->where('expense_type', 'convences')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_office_tour_week = DB::table('erp_expenses')
+              ->where('expense_type', 'office_tour')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_others_week = DB::table('erp_expenses')
+              ->where('expense_type', 'others')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+      $expense_total_week = DB::table('erp_expenses')
+              ->where('expense_date', '>=', $one_week_ago)
+              ->where('expense_date', '<=', $today)
+              ->sum('expense_amount');
+
+
+      // Expense This Month
+      $expense_rent_month = DB::table('erp_expenses')
+              ->where('expense_type', 'rent')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_salary_month = DB::table('erp_expenses')
+              ->where('expense_type', 'salary')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_food_entertainment_month = DB::table('erp_expenses')
+              ->where('expense_type', 'food_entertainment')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_furniture_stationary_month = DB::table('erp_expenses')
+              ->where('expense_type', 'furniture_stationary')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_repair_maintenance_month = DB::table('erp_expenses')
+              ->where('expense_type', 'repair_maintenance')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_telephone_month = DB::table('erp_expenses')
+              ->where('expense_type', 'telephone')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_utilities_month = DB::table('erp_expenses')
+              ->where('expense_type', 'utilities')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_depreciation_month = DB::table('erp_expenses')
+              ->where('expense_type', 'depreciation')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_commission_discounts_month = DB::table('erp_expenses')
+              ->where('expense_type', 'commission_discounts')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_marketing_advertising_month = DB::table('erp_expenses')
+              ->where('expense_type', 'marketing_advertising')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_training_fees_month = DB::table('erp_expenses')
+              ->where('expense_type', 'training_fees')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_legal_fees_month = DB::table('erp_expenses')
+              ->where('expense_type', 'legal_fees')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_convences_month = DB::table('erp_expenses')
+              ->where('expense_type', 'convences')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_office_tour_month = DB::table('erp_expenses')
+              ->where('expense_type', 'office_tour')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_others_month = DB::table('erp_expenses')
+              ->where('expense_type', 'others')
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+      $expense_total_month = DB::table('erp_expenses')              
+              ->where('expense_date', '>=', $this_month)
+              ->sum('expense_amount');
+
+
       return view('backend.erp.accounts.report.inexreport', compact(
 
             'income_visa_processing_today',
@@ -262,7 +520,59 @@ class ErpAccountsController extends Controller
             'income_air_tickets_month',
             'income_consultancy_month',
             'income_others_month',
-            'income_total_month'
+            'income_total_month',
+
+            'expense_rent_today',
+            'expense_salary_today',
+            'expense_food_entertainment_today',
+            'expense_furniture_stationary_today',
+            'expense_repair_maintenance_today',
+            'expense_telephone_today',
+            'expense_utilities_today',
+            'expense_depreciation_today',
+            'expense_commission_discounts_today',
+            'expense_marketing_advertising_today',
+            'expense_training_fees_today',
+            'expense_legal_fees_today',
+            'expense_convences_today',
+            'expense_office_tour_today',
+            'expense_others_today',
+            'expense_total_today',
+
+            'expense_rent_week',
+            'expense_salary_week',
+            'expense_food_entertainment_week',
+            'expense_furniture_stationary_week',
+            'expense_repair_maintenance_week',
+            'expense_telephone_week',
+            'expense_utilities_week',
+            'expense_depreciation_week',
+            'expense_commission_discounts_week',
+            'expense_marketing_advertising_week',
+            'expense_training_fees_week',
+            'expense_legal_fees_week',
+            'expense_convences_week',
+            'expense_office_tour_week',
+            'expense_others_week',
+            'expense_total_week',
+
+            'expense_rent_month',
+            'expense_salary_month',
+            'expense_food_entertainment_month',
+            'expense_furniture_stationary_month',
+            'expense_repair_maintenance_month',
+            'expense_telephone_month',
+            'expense_utilities_month',
+            'expense_depreciation_month',
+            'expense_commission_discounts_month',
+            'expense_marketing_advertising_month',
+            'expense_training_fees_month',
+            'expense_legal_fees_month',
+            'expense_convences_month',
+            'expense_office_tour_month',
+            'expense_others_month',
+            'expense_total_month'
+
       ));
 
     }

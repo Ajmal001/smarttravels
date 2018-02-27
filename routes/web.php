@@ -451,3 +451,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@adminLogin');
+
+// Admin Auth Routes
+Route::get('/adminhome', 'AdminLogin\LoginController@adminHome');
+Route::get('/adminlogin', 'AdminLogin\LoginController@showLoginForm');
+Route::post('/adminlogin', 'AdminLogin\LoginController@login');
+Route::get('/adminregister', 'AdminLogin\LoginController@register');
+Route::post('/adminregister', 'AdminLogin\LoginController@register');
+
+//Employee Auth
+Route::get('/employeehome', 'EmployeeProfileController@employeeHome');
+Route::get('/employeelogin', 'Employee\LoginController@showLoginForm');
+Route::post('/employeelogin', 'Employee\LoginController@login');
+Route::get('/employeeregister', 'Employee\LoginController@register');
+Route::post('/employeeregister', 'Employee\LoginController@register');
+Route::post('/employeelogout', 'Employee\LoginController@logout');

@@ -143,105 +143,113 @@
                                   <tr class="info">
                                    <th>Total expense</th>
                                    <th>Total expense Today</th>
-                                   <th>Total expense This Month</th>
                                    <th>Total expense This Week</th>
+                                   <th>Total expense This Month</th>
                                   </tr>
                                  </thead>
 
                                  <tbody>
                                   <tr>
                                    <td>Rent</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_rent_today}}</td>
+                                   <td>{{$expense_rent_week}}</td>
+                                   <td>{{$expense_rent_month}}</td>
                                   </tr>
 
                                   <tr>
                                    <td>Salary</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_salary_today}}</td>
+                                   <td>{{$expense_salary_week}}</td>
+                                   <td>{{$expense_salary_month}}</td>
                                   </tr>
+
+                                  <tr>
+                                   <td>Food & Entertainment</td>
+                                   <td>{{$expense_food_entertainment_today}}</td>
+                                   <td>{{$expense_food_entertainment_week}}</td>
+                                   <td>{{$expense_food_entertainment_month}}</td>
+                                  </tr>
+
                                   <tr>
                                    <td>Furniture & Stationary</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_furniture_stationary_today}}</td>
+                                   <td>{{$expense_furniture_stationary_week}}</td>
+                                   <td>{{$expense_furniture_stationary_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Repair & Maintenance</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_repair_maintenance_today}}</td>
+                                   <td>{{$expense_repair_maintenance_week}}</td>
+                                   <td>{{$expense_repair_maintenance_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Telephone</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_telephone_today}}</td>
+                                   <td>{{$expense_telephone_week}}</td>
+                                   <td>{{$expense_telephone_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Utilities</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_utilities_today}}</td>
+                                   <td>{{$expense_utilities_week}}</td>
+                                   <td>{{$expense_utilities_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Depreciation</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_depreciation_today}}</td>
+                                   <td>{{$expense_depreciation_week}}</td>
+                                   <td>{{$expense_depreciation_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Commission & Discounts</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_commission_discounts_today}}</td>
+                                   <td>{{$expense_commission_discounts_week}}</td>
+                                   <td>{{$expense_commission_discounts_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Marketing & Advertising</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_marketing_advertising_today}}</td>
+                                   <td>{{$expense_marketing_advertising_week}}</td>
+                                   <td>{{$expense_marketing_advertising_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Training Fees</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_training_fees_today}}</td>
+                                   <td>{{$expense_training_fees_week}}</td>
+                                   <td>{{$expense_training_fees_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Legal Fees</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_legal_fees_today}}</td>
+                                   <td>{{$expense_legal_fees_week}}</td>
+                                   <td>{{$expense_legal_fees_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Convences</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_convences_today}}</td>
+                                   <td>{{$expense_convences_week}}</td>
+                                   <td>{{$expense_convences_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Office Tour</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_office_tour_today}}</td>
+                                   <td>{{$expense_office_tour_week}}</td>
+                                   <td>{{$expense_office_tour_month}}</td>
                                   </tr>
                                   <tr>
                                    <td>Others</td>
-                                   <td></td>
-                                   <td></td>
-                                   <td></td>
+                                   <td>{{$expense_others_today}}</td>
+                                   <td>{{$expense_others_week}}</td>
+                                   <td>{{$expense_others_month}}</td>
                                   </tr>
 
                                  </tbody>
                                  <tfoot>
                                   <tr>
-                                   <th>Total $ 12,94.00</th>
-                                   <th>Total $ 784.00</th>
-                                   <th>Total $ 954.00</th>
-                                   <th>Total $ 741.00</th>
+                                   <th>Total </th>
+                                   <th>{{$expense_total_today}}</th>
+                                   <th>{{$expense_total_week}}</th>
+                                   <th>{{$expense_total_month}}</th>
                                   </tr>
                                 </tfoot></table>
                              </div>

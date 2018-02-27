@@ -17,9 +17,24 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+        /* if (Auth::guard($guard)->check()) {
             return redirect('/admindashboard');
+        }*/
+
+        switch ($guard) {
+          case 'employee':
+              if (Auth::guard($guard)->check()) {
+                  return redirect('/employeehome');
+              }
+            break;
+
+          default:
+              if (Auth::guard($guard)->check()) {
+                  return redirect('/admindashboard');
+              }
+            break;
         }
+
 
         return $next($request);
     }
