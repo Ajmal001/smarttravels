@@ -23,61 +23,22 @@
 			<!--CENTER SECTION-->
 			<div class="db-2">
 				<div class="db-2-com db-2-main">
-					<h4>My Profile</h4>
-					<div class="db-2-main-com db-2-main-com-table">
-						<table class="responsive-table">
-							<tbody>
-								<tr>
-									<td>User Name</td>
-									<td>:</td>
-									<td>{{$employee->name}}</td>
-								</tr>
-								<!--<tr>
-									<td>Password</td>
-									<td>:</td>
-									<td>mypasswordtour</td>
-								</tr>-->
-								<tr>
-									<td>Eamil</td>
-									<td>:</td>
-									<td>{{$employee->email}}</td>
-								</tr>
-								<tr>
-									<td>Phone</td>
-									<td>:</td>
-									<td>{{$employee->profile->employee_phone}}</td>
-								</tr>
-								<!--<tr>
-									<td>Date of birth</td>
-									<td>:</td>
-									<td>03 Jun 1990</td>
-								</tr>-->
-								<tr>
-									<td>Address</td>
-									<td>:</td>
-									<td>{{$employee->profile->employee_address}}</td>
-								</tr>
-								<tr>
-									<td>National ID</td>
-									<td>:</td>
-									<td>{{$employee->profile->employee_nid}}</td>
-								</tr>
-								<tr>
-									<td>Designation</td>
-									<td>:</td>
-									<td>{{$employee->profile->employee_designation}}</td>
-								</tr>
-								<tr>
-									<td>Status</td>
-									<td>:</td>
-									<td><span class="db-done">Active</span></td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="db-mak-pay-bot">
-							<p>{{$employee->profile->employee_details}}</p> 
-							<a href="{{url('employeeprofileedit')}}" class="waves-effect waves-light btn-large">Edit my profile</a> 
-						</div>
+					<h4>My Tasks </h4>
+					<div class="db-2-main-com db2-form-pay db2-form-com">
+                        <ul>
+                        @foreach($tasks as $task)
+                            <li style="border: 1px solid #dcdcdc; padding-left: 12px;">
+                                <h5>{{$task->task_title}}</h5>
+                                <p>{{$task->task_date}}</p>
+                                <p>{!!$task->task_details!!}</p>
+                                @if($task->task_status)
+                                <span class="label-success label label-default" style="font-size:9pt">status</span>
+                                @else
+                                <span class="label-danger label label-default" style="font-size:9pt">status</span>
+                                @endif
+                            </li>
+                        @endforeach
+                        </ul>
 					</div>
 				</div>
 			</div>

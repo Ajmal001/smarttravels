@@ -80,10 +80,10 @@
                                  <td>{{$task->task_assigned_to}}</td>
                                  <td>{{$task->task_status}}</td>
                                  <td>
-                                    <a class="btn btn-add btn-sm" id="viewtaskbutton" href="#" data-tid="{{$task->task_id}}"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-warning btn-sm" id="edittaskbutton" href="#" data-tid="{{$task->task_id}}"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-add btn-sm pull-left m-r-5" id="viewtaskbutton" href="#" data-tid="{{$task->task_id}}"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-warning btn-sm pull-left m-r-5" id="edittaskbutton" href="#" data-tid="{{$task->task_id}}"><i class="fa fa-pencil"></i></a>
 
-                                    {!! Form::open(['method'=>'post','url' => 'adminerptaskdelete/{{task->task_id}}','class'=>'col-sm-6 pull-right delete-btn','enctype'=>'multipart/form-data']) !!}
+                                    {!! Form::open(['method'=>'post','url' => 'adminerptaskdelete/{{task->task_id}}','class'=>'pull-left','enctype'=>'multipart/form-data']) !!}
                                     {!! csrf_field() !!}
                                      <input type="hidden" name="task_id" value="{{$task->task_id}}" >
                                      <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>

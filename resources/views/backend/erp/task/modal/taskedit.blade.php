@@ -29,10 +29,10 @@
 
               <div class="form-group">
               <label>Assinged To</label>
-               <select class="js-example-basic-multiple-" id="task_assigned_to" name="task_assigned_to" style="width:200px;" required>
+               <select class="js-example-basic-multiple" id="task_assigned_to" name="task_assigned_to" style="width:200px;" required>
                  <option disabled selected>Select Employee</option>
-                 @foreach($customers as $customer)
-                 <option value="{{$customer->customer_id}}">{{$customer->customer_name}}</option>
+                 @foreach($employees as $employee)
+                 <option value="{{$employee->id}}">{{$employee->name}}</option>
                  @endforeach
                </select>
               </div>

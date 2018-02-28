@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\ErpTask;
-use App\ErpCustomers;
+use App\EmployeeLogin;
 
 use Session;
 use DB;
@@ -14,8 +14,9 @@ class ErpTaskController extends Controller
 {
     public function showTask(){
       $tasks =  ErpTask::all();
-      $customers = ErpCustomers::all();
-      return view('backend.erp.task.task', compact('tasks','customers'));
+      $employees = EmployeeLogin::all();
+      return view('backend.erp.task.task', compact('tasks','employees'));
+      //return $employees;
     }
 
     public function addTask(Request $request){

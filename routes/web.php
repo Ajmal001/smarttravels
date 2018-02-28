@@ -466,3 +466,8 @@ Route::post('/employeelogin', 'Employee\LoginController@login');
 Route::get('/employeeregister', 'Employee\LoginController@register');
 Route::post('/employeeregister', 'Employee\LoginController@register');
 Route::post('/employeelogout', 'Employee\LoginController@logout');
+
+Route::get('/employeeprofileedit','EmployeeProfileController@employeeProfileEdit');
+Route::post('/employeeprofileupdate','EmployeeProfileController@employeeProfileUpdate');
+Route::get('/employeetasks','EmployeeProfileController@employeeTasks');
+Route::get('/employeeattendences','EmployeeProfileController@employeeAttendences');
