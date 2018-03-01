@@ -35,12 +35,12 @@ class EmployeeLogin extends Authenticatable
     {
         return $this->hasOne(ErpEmployee::class,'employee_id');
     }
-    
+
     public function tasks()
     {
         return $this->hasMany(ErpTask::class,'task_assigned_to');
     }
-    
+
     public function attendences()
     {
         return $this->hasMany(ErpEmployeeAttendence::class,'employee_id');

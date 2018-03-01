@@ -28,24 +28,30 @@
 						</div>
 					</div>
 
-				<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-						<div class="row">
-							<div class="input-field col s12">
-								<input id="password" type="password" class="validate" name="password" required>
-								<label>Password</label>
-								@if ($errors->has('password'))
-										<span class="help-block">
-												<strong>{{ $errors->first('password') }}</strong>
-										</span>
-								@endif
+					<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="password" type="password" class="validate" name="password" required>
+									<label>Password</label>
+									@if ($errors->has('password'))
+											<span class="help-block">
+													<strong>{{ $errors->first('password') }}</strong>
+											</span>
+									@endif
+								</div>
 							</div>
-						</div>
-				</div>
+					</div>
+
+					@if ($errors->has('status'))
+							<span class="help-block">
+									<strong>You are not active yet</strong>
+							</span>
+					@endif
 
 				<div class="row">
 					<div class="input-field col s12">
 						<input type="submit" value="submit" class="waves-effect waves-light btn-large full-btn"> </div>
-				</div>	
+				</div>
 
 
 				</form>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Employee;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,12 @@ class LoginController extends Controller
         $this->middleware('guest:employee')->except('logout');
     }
 
-
+    // Check Status before login
+    protected function credentials(\Illuminate\Http\Request $request)
+    {
+        //return $request->only($this->username(), 'password');
+        return ['email' => $request->email, 'password' => $request->password, 'status' => 1];
+    }
 
     public function showLoginForm()
     {
@@ -67,7 +73,8 @@ class LoginController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect()->guest(route( 'frontend.employee.login' ));
+
+        return redirect('employeelogin');
     }
 
 

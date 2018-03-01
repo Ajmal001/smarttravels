@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
         }*/
 
         switch ($guard) {
-          case 'employee':
+          case 'employee':              
               if (Auth::guard($guard)->check()) {
                   return redirect('/employeehome');
               }
@@ -34,8 +34,9 @@ class RedirectIfAuthenticated
               }
             break;
         }
-
-
         return $next($request);
+
+
+
     }
 }

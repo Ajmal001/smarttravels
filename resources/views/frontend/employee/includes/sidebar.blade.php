@@ -15,4 +15,16 @@
         <li>
             <a href="db-event-booking.html"><img src="images/icon/dbl4.png" alt="" /> Settings </a>
         </li>
+        <li>
+            <a href="{{ url('employeelogout') }}"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                Logout
+            </a>
+
+            <form id="logout-form" action="{{ url('employeelogout') }}" method="POST">
+                {{ csrf_field() }}
+            </form>
+        </li>
+
     </ul>

@@ -75,68 +75,18 @@
 							</tbody>
 						</table>
 						<div class="db-mak-pay-bot">
-							<p>{{$employee->profile->employee_details}}</p> 
-							<a href="{{url('employeeprofileedit')}}" class="waves-effect waves-light btn-large">Edit my profile</a> 
+							<p>{{$employee->profile->employee_details}}</p>
+							<a href="{{url('employeeprofileedit')}}" class="waves-effect waves-light btn-large">Edit my profile</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!--RIGHT SECTION-->
 			<div class="db-3">
-				<h4> <span style="margin-left:45px; font-size:18px;font-weight: 700;">Announcement</span> </h4>
-				<ul>
-					<li>
-						<a href="#!"> <img src="images/icon/dbr1.jpg" alt="" />
-							<h5>50% Discount Offer</h5>
-							<p>All the Lorem Ipsum generators on the</p>
-						</a>
-					</li>
-					<li>
-						<a href="#!"> <img src="images/icon/dbr2.jpg" alt="" />
-							<h5>paris travel package</h5>
-							<p>All the Lorem Ipsum generators on the</p>
-						</a>
-					</li>
-					<li>
-						<a href="#!"> <img src="images/icon/dbr3.jpg" alt="" />
-							<h5>Group Trip - Available</h5>
-							<p>All the Lorem Ipsum generators on the</p>
-						</a>
-					</li>
-					<li>
-						<a href="#!"> <img src="images/icon/dbr4.jpg" alt="" />
-							<h5>world best travel agency</h5>
-							<p>All the Lorem Ipsum generators on the</p>
-						</a>
-					</li>
-					<li>
-						<a href="#!"> <img src="images/icon/dbr5.jpg" alt="" />
-							<h5>special travel coupons</h5>
-							<p>All the Lorem Ipsum generators on the</p>
-						</a>
-					</li>
-					<li>
-						<a href="#!"> <img src="images/icon/dbr6.jpg" alt="" />
-							<h5>70% Offer 2018</h5>
-							<p>All the Lorem Ipsum generators on the</p>
-						</a>
-					</li>
-					<li>
-						<a href="#!"> <img src="images/icon/dbr7.jpg" alt="" />
-							<h5>Popular Cities</h5>
-							<p>All the Lorem Ipsum generators on the</p>
-						</a>
-					</li>
-					<li>
-						<a href="#!"> <img src="images/icon/dbr8.jpg" alt="" />
-							<h5>variations of passages</h5>
-							<p>All the Lorem Ipsum generators on the</p>
-						</a>
-					</li>
-				</ul>
+				@include('frontend.employee.includes.announcements')
 			</div>
 		</div>
 	</section>
 	<!--END DASHBOARD-->
 
-    @endsection
+@endsection
