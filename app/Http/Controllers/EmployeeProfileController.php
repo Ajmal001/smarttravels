@@ -8,6 +8,8 @@ use App\TourCountry;
 use App\TourLocation;
 use App\Options;
 
+use App\ErpEmployeeAnnouncement;
+
 use Auth;
 use File;
 
@@ -43,10 +45,11 @@ class EmployeeProfileController extends Controller
         $countryList = TourCountry::get();
         $locationList = TourLocation::get();
         $current_option = Options::get()->first();
+        $announcements = ErpEmployeeAnnouncement::get();
 
         $employee = Auth::user();
 
-        return view('frontend.employee.home',compact('countryList','locationList','current_option','employee'));
+        return view('frontend.employee.home',compact('announcements','employee','countryList','locationList','current_option'));
     }
     
     public function employeeProfileEdit()
@@ -54,9 +57,10 @@ class EmployeeProfileController extends Controller
         $countryList    = TourCountry::get();
         $locationList   = TourLocation::get();
         $current_option = Options::get()->first();
+        $announcements  = ErpEmployeeAnnouncement::get();
         $employee = Auth::user();
 
-        return view('frontend.employee.editprofile',compact('countryList','locationList','current_option','employee'));
+        return view('frontend.employee.editprofile',compact('announcements','employee','countryList','locationList','current_option'));
 
     }
 
@@ -77,6 +81,7 @@ class EmployeeProfileController extends Controller
             $filename = 'employee_dafault.png';
         }
         
+        // Employee name,password need to update later...
 
         $employee->profile->update([
             'employee_phone'        => $request->employee_phone,
@@ -96,14 +101,12 @@ class EmployeeProfileController extends Controller
         $countryList    = TourCountry::get();
         $locationList   = TourLocation::get();
         $current_option = Options::get()->first();
+        $announcements  = ErpEmployeeAnnouncement::get();
 
         $employee = Auth::user();
         $tasks    = $employee->tasks;
 
-        return view('frontend.employee.tasklist',compact('tasks','employee','countryList','locationList','current_option'));
-
-
-        // return $tasks;
+        return view('frontend.employee.tasklist',compact('announcements','tasks','employee','countryList','locationList','current_option'));
     }
     
     public function employeeAttendences()
@@ -111,14 +114,12 @@ class EmployeeProfileController extends Controller
         $countryList    = TourCountry::get();
         $locationList   = TourLocation::get();
         $current_option = Options::get()->first();
+        $announcements  = ErpEmployeeAnnouncement::get();
 
         $employee    = Auth::user();
         $attendences = $employee->attendences;
 
-        return view('frontend.employee.attendence',compact('attendences','employee','countryList','locationList','current_option'));
-
-
-        //return $attendences;
+        return view('frontend.employee.attendence',compact('announcements','attendences','employee','countryList','locationList','current_option'));
     }
 
 }

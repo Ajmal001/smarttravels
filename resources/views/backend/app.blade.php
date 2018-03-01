@@ -486,6 +486,7 @@
                         <li><a href="{{url('/adminerpemployee')}}">Employee List</a></li>
                         <li><a href="{{url('/adminerpemployeeattendence')}}">Employee Attendence</a></li>
                         <li><a href="{{url('/adminerpagent')}}">Agents</a></li>
+                        <li><a href="{{url('/adminerpemployeeannouncement')}}">Announcements</a></li>
                      </ul>
                   </li>
 
