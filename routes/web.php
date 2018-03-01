@@ -425,6 +425,16 @@ Route::put('/adminerpagentupdate/{id}', 'ErpAgentController@updateAgent');
 Route::delete('/adminerpagentdelete/{id}', 'ErpAgentController@deleteAgent');
 
 
+// Employee Announcement
+Route::get('/adminerpemployeeannouncement', 'ErpEmployeeAnnouncementController@showEmployeeAnnouncement');
+Route::post('/adminerpemployeeannouncementadd', 'ErpEmployeeAnnouncementController@createEmployeeAnnouncement');
+Route::get('/adminerpemployeeannouncementview/{id}', 'ErpEmployeeAnnouncementController@viewEmployeeAnnouncement');
+Route::get('/adminerpemployeeannouncementedit/{id}', 'ErpEmployeeAnnouncementController@editEmployeeAnnouncement');
+Route::put('/adminerpemployeeannouncementupdate/{id}', 'ErpEmployeeAnnouncementController@updateEmployeeAnnouncement');
+Route::delete('/adminerpemployeeannouncementdelete/{id}', 'ErpEmployeeAnnouncementController@deleteEmployeeAnnouncement');
+
+
+
 // Income
 
 
