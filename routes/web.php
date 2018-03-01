@@ -425,6 +425,15 @@ Route::put('/adminerpagentupdate/{id}', 'ErpAgentController@updateAgent');
 Route::delete('/adminerpagentdelete/{id}', 'ErpAgentController@deleteAgent');
 
 
+// Employee Announcement
+Route::get('/adminerpemployeeannouncement', 'ErpEmployeeAnnouncementController@showEmployeeAnnouncement');
+Route::post('/adminerpemployeeannouncementadd', 'ErpEmployeeAnnouncementController@createEmployeeAnnouncement');
+Route::get('/adminerpemployeeannouncementview/{id}', 'ErpEmployeeAnnouncementController@viewEmployeeAnnouncement');
+Route::get('/adminerpemployeeannouncementedit/{id}', 'ErpEmployeeAnnouncementController@editEmployeeAnnouncement');
+Route::put('/adminerpemployeeannouncementupdate/{id}', 'ErpEmployeeAnnouncementController@updateEmployeeAnnouncement');
+Route::delete('/adminerpemployeeannouncementdelete/{id}', 'ErpEmployeeAnnouncementController@deleteEmployeeAnnouncement');
+
+
 // Income
 
 
@@ -466,6 +475,7 @@ Route::post('/employeelogin', 'Employee\LoginController@login');
 Route::get('/employeeregister', 'Employee\LoginController@register');
 Route::post('/employeeregister', 'Employee\LoginController@register');
 Route::post('/employeelogout', 'Employee\LoginController@logout');
+Route::get('/employeelogout', 'Employee\LoginController@logout');
 
 Route::get('/employeeprofileedit','EmployeeProfileController@employeeProfileEdit');
 Route::post('/employeeprofileupdate','EmployeeProfileController@employeeProfileUpdate');
