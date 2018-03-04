@@ -488,7 +488,7 @@ class ErpAccountsController extends Controller
               ->where('expense_date', '>=', $this_month)
               ->sum('expense_amount');
 
-      $expense_total_month = DB::table('erp_expenses')              
+      $expense_total_month = DB::table('erp_expenses')
               ->where('expense_date', '>=', $this_month)
               ->sum('expense_amount');
 

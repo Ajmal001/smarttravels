@@ -28,22 +28,12 @@
 
                <div class="form-group">
                   <label>Time IN</label>
-                  <input type="text" name="in_time" id="in_time" class="form-control">
+                  <input type="time" name="in_time" id="in_time" class="form-control">
                </div>
 
                <div class="form-group">
                   <label>Time Out</label>
-                  <input type="text" name="out_time" id="out_time" class="form-control">
-               </div>
-
-               <div class="form-group">
-                  <label>IP In</label>
-                  <input type="text" name="in_ip" id="in_ip" class="form-control">
-               </div>
-
-               <div class="form-group">
-                 <label>IP Out</label>
-                 <input type="text" name="out_ip" id="out_ip" class="form-control">
+                  <input type="time" name="out_time" id="out_time" class="form-control">
                </div>
 
                <div class="form-group">

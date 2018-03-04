@@ -68,8 +68,6 @@
                                    <th>Date</th>
                                    <th>IN Time</th>
                                    <th>OUT Time</th>
-                                   <th>IN IP</th>
-                                   <th>OUT IP</th>
                                    <th>Note</th>
                                    <th width="160px">Action</th>
                                 </tr>
@@ -81,15 +79,13 @@
                                   <td>{{$attendence->date}}</td>
                                   <td>{{$attendence->in_time}}</td>
                                   <td>{{$attendence->out_time}}</td>
-                                  <td>{{$attendence->in_ip}}</td>
-                                  <td>{{$attendence->out_ip}}</td>
                                   <td>{{$attendence->note}}</td>
                                   <td>
                                     <a href="#" id="editEmployeeAttendence" class="btn btn-sm btn-add" data-id="{{$attendence->attendence_id}}"><i class="fa fa-pencil"></i></a>
                                     {!! Form::open(['method'=>'post','url' => 'adminerpemployeeattendencedelete/{{$attendence->attendence_id}}','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
                                     {!! csrf_field() !!}
                                     {!! method_field('DELETE') !!}
-                                     <input type="hidden" name="employee_id" value="{{$attendence->employee_id}}" >
+                                     <input type="hidden" name="attendence_id" value="{{$attendence->attendence_id}}" >
                                      <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
                                     {!! Form::close() !!}
                                   </td>
@@ -134,8 +130,6 @@
           $('#employeeattendenceedit #attendenceDate #minMaxExample2').val(data.attendencedata.date);
           $('#employeeattendenceedit #in_time').val(data.attendencedata.in_time);
           $('#employeeattendenceedit #out_time').val(data.attendencedata.out_time);
-          $('#employeeattendenceedit #in_ip').val(data.attendencedata.in_ip);
-          $('#employeeattendenceedit #out_ip').val(data.attendencedata.out_ip);
           $('#employeeattendenceedit #note').val(data.attendencedata.note);
 
           // console.log(data.attendencedata);

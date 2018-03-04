@@ -12,6 +12,8 @@ use App\ErpEmployeeAnnouncement;
 
 use Auth;
 use File;
+use Carbon\Carbon;
+use DB;
 
 class EmployeeProfileController extends Controller
 {
@@ -48,10 +50,21 @@ class EmployeeProfileController extends Controller
         $announcements = ErpEmployeeAnnouncement::get();
 
         $employee = Auth::user();
+        $employee_id    = Auth::user()->id;
 
-        return view('frontend.employee.home',compact('announcements','employee','countryList','locationList','current_option'));
+        $attendences_this_month = DB::table('erp_employee_attendences')
+                                  ->whereMonth('date',date('n'))
+                                  ->where('employee_id','=',$employee_id)
+                                  ->count();
+
+        $taskpending = DB::table('erp_tasks')
+                      ->where('task_assigned_to', $employee_id)
+                      ->where('task_status', 0)
+                      ->count();
+
+        return view('frontend.employee.home',compact('attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option'));
     }
-    
+
     public function employeeProfileEdit()
     {
         $countryList    = TourCountry::get();
@@ -60,7 +73,20 @@ class EmployeeProfileController extends Controller
         $announcements  = ErpEmployeeAnnouncement::get();
         $employee = Auth::user();
 
-        return view('frontend.employee.editprofile',compact('announcements','employee','countryList','locationList','current_option'));
+        $employee = Auth::user();
+        $employee_id    = Auth::user()->id;
+
+        $attendences_this_month = DB::table('erp_employee_attendences')
+                                  ->whereMonth('date',date('n'))
+                                  ->where('employee_id','=',$employee_id)
+                                  ->count();
+
+        $taskpending = DB::table('erp_tasks')
+                      ->where('task_assigned_to', $employee_id)
+                      ->where('task_status', 0)
+                      ->count();
+
+        return view('frontend.employee.editprofile',compact('attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option'));
 
     }
 
@@ -80,7 +106,7 @@ class EmployeeProfileController extends Controller
         else{
             $filename = 'employee_dafault.png';
         }
-        
+
         // Employee name,password need to update later...
 
         $employee->profile->update([
@@ -104,11 +130,25 @@ class EmployeeProfileController extends Controller
         $announcements  = ErpEmployeeAnnouncement::get();
 
         $employee = Auth::user();
-        $tasks    = $employee->tasks;
+        $employee_id    = Auth::user()->id;
 
-        return view('frontend.employee.tasklist',compact('announcements','tasks','employee','countryList','locationList','current_option'));
+        $attendences_this_month = DB::table('erp_employee_attendences')
+                                  ->whereMonth('date',date('n'))
+                                  ->where('employee_id','=',$employee_id)
+                                  ->count();
+
+        $taskpending = DB::table('erp_tasks')
+                      ->where('task_assigned_to', $employee_id)
+                      ->where('task_status', 0)
+                      ->count();
+
+        $today = Carbon::now();
+        $employee = Auth::user();
+        $tasks = $employee->tasks()->paginate(5);
+
+        return view('frontend.employee.tasklist',compact('attendences_this_month','taskpending','announcements','tasks','employee','countryList','locationList','current_option','today'));
     }
-    
+
     public function employeeAttendences()
     {
         $countryList    = TourCountry::get();
@@ -116,10 +156,48 @@ class EmployeeProfileController extends Controller
         $current_option = Options::get()->first();
         $announcements  = ErpEmployeeAnnouncement::get();
 
-        $employee    = Auth::user();
-        $attendences = $employee->attendences;
+        $employee = Auth::user();
+        $employee_id    = Auth::user()->id;
 
-        return view('frontend.employee.attendence',compact('announcements','attendences','employee','countryList','locationList','current_option'));
+        $attendences_this_month = DB::table('erp_employee_attendences')
+                                  ->whereMonth('date',date('n'))
+                                  ->where('employee_id','=',$employee_id)
+                                  ->count();
+
+        $taskpending = DB::table('erp_tasks')
+                      ->where('task_assigned_to', $employee_id)
+                      ->where('task_status', 0)
+                      ->count();
+
+        $employee    = Auth::user();
+        $attendences = DB::table('erp_employee_attendences')
+                      ->where('employee_id','=',$employee_id)
+                      ->get();
+
+        return view('frontend.employee.attendence',compact('attendences_this_month','taskpending','announcements','attendences','employee','countryList','locationList','current_option'));
+    }
+
+    public function employeeExpense(){
+        $countryList    = TourCountry::get();
+        $locationList   = TourLocation::get();
+        $current_option = Options::get()->first();
+        $announcements  = ErpEmployeeAnnouncement::get();
+
+        $employee = Auth::user();
+        $employee_id    = Auth::user()->id;
+
+        $attendences_this_month = DB::table('erp_employee_attendences')
+                                  ->whereMonth('date',date('n'))
+                                  ->where('employee_id','=',$employee_id)
+                                  ->count();
+
+        $taskpending = DB::table('erp_tasks')
+                      ->where('task_assigned_to', $employee_id)
+                      ->where('task_status', 0)
+                      ->count();
+
+        $employee    = Auth::user();
+        return view('frontend.employee.expense',compact('attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option'));
     }
 
 }

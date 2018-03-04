@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class EmployeeLogin extends Authenticatable
 {
 
-    protected $table = "employee_login";
+    protected $table = "erp_employee_login";
     protected $primaryKey = 'id';
 
     use Notifiable;
@@ -38,7 +38,7 @@ class EmployeeLogin extends Authenticatable
 
     public function tasks()
     {
-        return $this->hasMany(ErpTask::class,'task_assigned_to');
+        return $this->hasMany(ErpTask::class,'task_assigned_to')->orderBy('task_id', 'desc');
     }
 
     public function attendences()

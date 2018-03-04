@@ -1,6 +1,6 @@
 @extends('frontend.app')
 
-@section('title', 'Employee Login')
+@section('title', 'Employee Profile')
 
 @section('body')
 
@@ -8,14 +8,7 @@
 		<div class="db">
 			<!--LEFT SECTION-->
 			<div class="db-l">
-				<div class="db-l-1">
-					<ul>
-						<li><img src="{{ URL::to('/') }}/public/backendimages/{{$employee->profile->employee_image}}" alt="" />
-						</li>
-						<li><span>80%</span> profile compl</li>
-						<li><span>18</span> Notifications</li>
-					</ul>
-				</div>
+				  @include('frontend.employee.includes.profile')
 				<div class="db-l-2">
 					@include('frontend.employee.includes.sidebar')
 				</div>
@@ -74,10 +67,7 @@
 								</tr>
 							</tbody>
 						</table>
-						<div class="db-mak-pay-bot">
-							<p>{{$employee->profile->employee_details}}</p>
-							<a href="{{url('employeeprofileedit')}}" class="waves-effect waves-light btn-large">Edit my profile</a>
-						</div>
+
 					</div>
 				</div>
 			</div>

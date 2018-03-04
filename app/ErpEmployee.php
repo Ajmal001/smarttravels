@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ErpEmployee extends Model
 {
-  protected $primaryKey = 'employee_id';
+  protected $table = "erp_employees_info";
+  protected $primaryKey = 'id';
   protected $guarded = [];
 
   public function employee()

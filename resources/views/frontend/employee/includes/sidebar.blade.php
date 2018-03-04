@@ -10,12 +10,12 @@
             <a href="{{url('employeeattendences')}}"><img src="images/icon/dbl2.png" alt=""/> Attendence </a>
         </li>
         <li>
-            <a href="db-hotel-booking.html"><img src="images/icon/dbl3.png" alt="" /> Add Expense </a>
+            <a href="{{url('employeeexpense')}}"><img src="images/icon/dbl3.png" alt="" /> Add Expense </a>
         </li>
         <li>
-            <a href="db-event-booking.html"><img src="images/icon/dbl4.png" alt="" /> Settings </a>
+            <a href="{{url('employeeprofileedit')}}"><img src="images/icon/dbl4.png" alt="" /> Settings </a>
         </li>
-        <li>
+        <li style="margin-left:12px">
             <a href="{{ url('employeelogout') }}"
                 onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">

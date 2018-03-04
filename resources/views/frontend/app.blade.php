@@ -82,7 +82,7 @@
                                         <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient E-Tickets</a>
                                         <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> Custom Tour Plan</a>
                                     </div>
-								</div>	--><a class='dropdown-button waves-effect waves-light profile-btn' href="{{url('/usertouroperatorcost')}}" data-activates='myacc'><i class="fa fa-user" aria-hidden="true"></i> Create A Tour Plan</a>
+								</div>	--><a class='dropdown-button waves-effect waves-light profile-btn' href="{{url('/accountlogin')}}" data-activates='myacc'><i class="fa fa-user" aria-hidden="true"></i> Login </a>
 								<!-- Dropdown Structure -->
 							</li>
 						</ul>
@@ -106,7 +106,7 @@
 						<li><a href="{{url('/airticketbooking')}}">Air Ticket</a></li>
 						<li><a href="{{url('/visa')}}">Visa Apply</a></li>
 
-						<li id="main-menu-v2-book"><a href="{{url('/tourpackages')}}">Exclusive Packages</a></li>
+						<li id="main-menu-v2-book"><a href="{{url('/tourpackages')}}"> Create A Tour Plan</a></li>
 					</ul>
 				<div>
 			<div>

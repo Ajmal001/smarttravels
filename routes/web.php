@@ -402,19 +402,15 @@ Route::get('/adminerpemployeeattendenceedit/{id}', 'ErpEmployeeAttendenceControl
 Route::put('/adminerpemployeeattendenceupdate/{id}', 'ErpEmployeeAttendenceController@updateEmployeeAttendence');
 Route::delete('/adminerpemployeeattendencedelete/{id}', 'ErpEmployeeAttendenceController@deleteEmployeeAttendence');
 
-// Accounts
 
+// Accounts
 Route::get('/adminerpexpenses', 'ErpAccountsController@showExpenses');
 Route::post('/adminerpexpensesadd', 'ErpAccountsController@addExpenses');
 Route::get('/adminerpexpensesedit/{expense_id}', 'ErpAccountsController@editExpenses');
 Route::put('/adminerpexpensesupdate/{expense_id}', 'ErpAccountsController@updateExpenses');
 Route::delete('/adminerpexpensesdelete/{expense_id}', 'ErpAccountsController@deleteExpenses');
-
 Route::get('/adminerpincome', 'ErpAccountsController@showIncome')->middleware('auth');
-
 Route::get('/adminerpinexreport', 'ErpAccountsController@inExReport')->middleware('auth');
-
-
 
 // Agent
 Route::get('/adminerpagent', 'ErpAgentController@showAgent');
@@ -468,6 +464,11 @@ Route::post('/adminlogin', 'AdminLogin\LoginController@login');
 Route::get('/adminregister', 'AdminLogin\LoginController@register');
 Route::post('/adminregister', 'AdminLogin\LoginController@register');
 
+//================================= Frondend Account Login ============================//
+
+// Login page
+Route::get('/accountlogin', 'FrontEndController@accountLogin');
+
 //Employee Auth
 Route::get('/employeehome', 'EmployeeProfileController@employeeHome');
 Route::get('/employeelogin', 'Employee\LoginController@showLoginForm');
@@ -477,7 +478,13 @@ Route::post('/employeeregister', 'Employee\LoginController@register');
 Route::post('/employeelogout', 'Employee\LoginController@logout');
 Route::get('/employeelogout', 'Employee\LoginController@logout');
 
+// Front End Employee Profile
 Route::get('/employeeprofileedit','EmployeeProfileController@employeeProfileEdit');
 Route::post('/employeeprofileupdate','EmployeeProfileController@employeeProfileUpdate');
+
+// Front End Employee Task
 Route::get('/employeetasks','EmployeeProfileController@employeeTasks');
 Route::get('/employeeattendences','EmployeeProfileController@employeeAttendences');
+
+// Front End Employee Expense
+Route::get('/employeeexpense','EmployeeProfileController@employeeExpense');

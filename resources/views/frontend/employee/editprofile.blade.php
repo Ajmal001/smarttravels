@@ -1,6 +1,6 @@
 @extends('frontend.app')
 
-@section('title', 'Employee Login')
+@section('title', 'Employee Edit Profile')
 
 @section('body')
 
@@ -8,14 +8,7 @@
 		<div class="db">
 			<!--LEFT SECTION-->
 			<div class="db-l">
-				<div class="db-l-1">
-					<ul>
-						<li><img src="{{ URL::to('/') }}/public/backendimages/{{$employee->profile->employee_image}}" alt="" />
-						</li>
-						<li><span>80%</span> profile compl</li>
-						<li><span>18</span> Notifications</li>
-					</ul>
-				</div>
+				  @include('frontend.employee.includes.profile')
 				<div class="db-l-2">
 					@include('frontend.employee.includes.sidebar')
 				</div>
@@ -86,13 +79,13 @@
 										<input type="file" name="employee_image">
 									</div>
 									<div class="file-path-wrapper">
-										<input class="file-path validate" type="text"> 
+										<input class="file-path validate" type="text">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s12">
-									<input type="submit" value="SUBMIT" class="waves-effect waves-light full-btn"> 
+									<input type="submit" value="SUBMIT" class="waves-effect waves-light full-btn">
 								</div>
 							</div>
 						</form>
