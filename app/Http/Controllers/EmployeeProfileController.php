@@ -9,6 +9,7 @@ use App\TourLocation;
 use App\Options;
 
 use App\ErpEmployeeAnnouncement;
+use App\ErpExpenses;
 
 use Auth;
 use File;
@@ -196,8 +197,50 @@ class EmployeeProfileController extends Controller
                       ->where('task_status', 0)
                       ->count();
 
-        $employee    = Auth::user();
-        return view('frontend.employee.expense',compact('attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option'));
+        $employee = Auth::user();
+        $expenses = DB::table('erp_expenses')
+                      ->whereMonth('expense_date',date('n'))
+                      ->where('expense_added_by','=',$employee_id)
+                      ->latest()
+                      ->get();
+
+        return view('frontend.employee.expense',compact('expenses','attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option'));
     }
+
+    public function employeeExpenseAdd()
+    {
+      $countryList    = TourCountry::get();
+      $locationList   = TourLocation::get();
+      $current_option = Options::get()->first();
+      $announcements  = ErpEmployeeAnnouncement::get();
+      $employee       = Auth::user();
+
+      $employee_id            = Auth::user()->id;
+      $attendences_this_month = DB::table('erp_employee_attendences')
+                                ->whereMonth('date',date('n'))
+                                ->where('employee_id','=',$employee_id)
+                                ->count();
+
+      $taskpending = DB::table('erp_tasks')
+                    ->where('task_assigned_to', $employee_id)
+                    ->where('task_status', 0)
+                    ->count();
+
+      return view('frontend.employee.addexpense',compact('employee','attendences_this_month','taskpending','announcements','countryList','locationList','current_option'));
+    }
+
+    public function employeeExpenseCreate(Request $request)
+    {
+      $employee_id = Auth::user()->id;
+      $employeeexpense = new ErpExpenses();
+      $employeeexpense->expense_type      = $request->expense_type;
+      $employeeexpense->expense_title     = $request->expense_title;
+      $employeeexpense->expense_amount    = $request->expense_amount;
+      $employeeexpense->expense_added_by  = $employee_id;
+      $employeeexpense->expense_date      = $request->expense_date;
+      $employeeexpense->save();
+      return redirect('/employeeexpense');
+    }
+
 
 }

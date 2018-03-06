@@ -11,7 +11,7 @@
            <div class="row">
              <div class="panel-body">
 
-               {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+               {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-12','enctype'=>'multipart/form-data']) !!}
                {!! csrf_field() !!}
                {!! method_field('PUT') !!}
 
@@ -28,13 +28,14 @@
               </div>
 
               <div class="form-group">
-              <label>Assinged To</label>
-               <select class="js-example-basic-multiple" id="task_assigned_to" name="task_assigned_to" style="width:200px;" required>
-                 <option disabled selected>Select Employee</option>
-                 @foreach($employees as $employee)
-                 <option value="{{$employee->id}}">{{$employee->name}}</option>
-                 @endforeach
-               </select>
+                <label>Assinged To</label>
+                <div class="form-group">
+                 <select class="js-example-basic-multiple" id="task_assigned_to" name="task_assigned_to" style="width:200px;" required>
+                   @foreach($employees as $employee)
+                   <option value="{{$employee->id}}">{{$employee->name}}</option>
+                   @endforeach
+                 </select>
+                </div>
               </div>
 
               <div class="form-group" id="task_details">

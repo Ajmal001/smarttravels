@@ -474,7 +474,7 @@ Route::get('/employeehome', 'EmployeeProfileController@employeeHome');
 Route::get('/employeelogin', 'Employee\LoginController@showLoginForm');
 Route::post('/employeelogin', 'Employee\LoginController@login');
 Route::get('/employeeregister', 'Employee\LoginController@register');
-Route::post('/employeeregister', 'Employee\LoginController@register');
+Route::post('/employeeregister', 'Employee\RegisterController@register');
 Route::post('/employeelogout', 'Employee\LoginController@logout');
 Route::get('/employeelogout', 'Employee\LoginController@logout');
 
@@ -488,3 +488,5 @@ Route::get('/employeeattendences','EmployeeProfileController@employeeAttendences
 
 // Front End Employee Expense
 Route::get('/employeeexpense','EmployeeProfileController@employeeExpense');
+Route::get('/employeeexpenseadd','EmployeeProfileController@employeeExpenseAdd');
+Route::post('/employeeexpensecreate','EmployeeProfileController@employeeExpenseCreate');

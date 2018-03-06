@@ -77,8 +77,22 @@
                               <tr>
                                  <td>{{$task->task_title}}</td>
                                  <td>{{$task->task_date}}</td>
-                                 <td>{{$task->task_assigned_to}}</td>
-                                 <td>{{$task->task_status}}</td>
+                                 <td>
+                                   @if($task->task_assigned_to)
+                                    @foreach($employees as $employee)
+                                      @if($employee->id == $task->task_assigned_to)
+                                      {{$employee->name}}
+                                      @endif
+                                    @endforeach
+                                   @endif
+                                 </td>
+                                 <td>
+                                   @if($task->task_status == 1)
+                                   <span class="label-success label label-default" style="font-size:8pt">Done</span>
+                                   @else
+                                   <span class="label-info label label-default" style="font-size:8pt">Pending</span>
+                                   @endif
+                                 </td>
                                  <td>
                                     <a class="btn btn-add btn-sm pull-left m-r-5" id="viewtaskbutton" href="#" data-tid="{{$task->task_id}}"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-warning btn-sm pull-left m-r-5" id="edittaskbutton" href="#" data-tid="{{$task->task_id}}"><i class="fa fa-pencil"></i></a>
@@ -123,8 +137,8 @@
       $.get('adminerpedittask/'+cid, function(data){
         $('#task_title').val(data.taskdata.task_title);
         $('#task_date #minMaxExample2').val(data.taskdata.task_date);
-        $('#task_assigned_to').find("option[value='" + data.taskdata.task_assigned_to + "']").attr('selected', true);
-        $('#task_details #summernote').val(data.taskdata.task_details);
+        $('#task_assigned_to').val(data.taskdata.task_assigned_to);
+        $('#task_details #summernote').summernote('code',data.taskdata.task_details);
       });
     });
 

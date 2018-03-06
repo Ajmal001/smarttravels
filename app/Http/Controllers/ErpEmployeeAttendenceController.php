@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ErpEmployeeAttendence;
+use App\ErpEmployee;
 
 class ErpEmployeeAttendenceController extends Controller
 {
     public function showEmployeeAttendence()
     {
-      $allattendence = ErpEmployeeAttendence::all();
-
-      return view( 'backend.erp.attendence.attendence', compact('allattendence') );
+      $allattendence = ErpEmployeeAttendence::with('employee')->get();
+      $allemployee = ErpEmployee::all();
+      return view( 'backend.erp.attendence.attendence', compact('allattendence','allemployee') );
     }
 
     public function createEmployeeAttendence(Request $request)

@@ -69,20 +69,20 @@
                                    <th>IN Time</th>
                                    <th>OUT Time</th>
                                    <th>Note</th>
-                                   <th width="160px">Action</th>
+                                   <th>Action</th>
                                 </tr>
                              </thead>
                              <tbody>
                                @foreach($allattendence as $attendence)
                               <tr>
-                                  <td>{{$attendence->employee_id}}</td>
+                                  <td>{{$attendence->employee->employee_name}}</td>
                                   <td>{{$attendence->date}}</td>
                                   <td>{{$attendence->in_time}}</td>
                                   <td>{{$attendence->out_time}}</td>
                                   <td>{{$attendence->note}}</td>
                                   <td>
-                                    <a href="#" id="editEmployeeAttendence" class="btn btn-sm btn-add" data-id="{{$attendence->attendence_id}}"><i class="fa fa-pencil"></i></a>
-                                    {!! Form::open(['method'=>'post','url' => 'adminerpemployeeattendencedelete/{{$attendence->attendence_id}}','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+                                    <a href="#" id="editEmployeeAttendence" class="btn btn-sm btn-add pull-left m-r-5" data-id="{{$attendence->attendence_id}}"><i class="fa fa-pencil"></i></a>
+                                    {!! Form::open(['method'=>'post','url' => 'adminerpemployeeattendencedelete/{{$attendence->attendence_id}}','class'=>'pull-left','enctype'=>'multipart/form-data']) !!}
                                     {!! csrf_field() !!}
                                     {!! method_field('DELETE') !!}
                                      <input type="hidden" name="attendence_id" value="{{$attendence->attendence_id}}" >

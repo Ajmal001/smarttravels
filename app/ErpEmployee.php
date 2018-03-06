@@ -14,4 +14,9 @@ class ErpEmployee extends Model
   {
       return $this->belongsTo(EmployeeLogin::class);
   }
+
+  public function attendence()
+  {
+    return $this->hasMany(ErpEmployeeAttendence::class,'employee_id');
+  }
 }
