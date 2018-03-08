@@ -46,7 +46,7 @@ class ErpTaskController extends Controller
     		$update->task_title = $request->input('task_title');
     		$update->task_date = $request->input('task_date');
     		$update->task_assigned_to = $request->input('task_assigned_to');
-    		$update->task_status = 0;
+    		$update->task_status = $request->input('task_status');
     		$update->task_details = $request->input('task_details');
 
     		$update->save();

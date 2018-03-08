@@ -40,7 +40,7 @@ class ErpCustomerController extends Controller
   		$insert->customer_city = $request->input('customer_city');
   		$insert->customer_country = $request->input('customer_country');
   		$insert->customer_zip = $request->input('customer_zip');
-  		$insert->customer_rating = $request->input('customer_rating');
+  		// $insert->customer_rating = $request->input('customer_rating');
   		$insert->customer_source = $request->input('customer_source');
 
   		//Image
@@ -73,7 +73,21 @@ class ErpCustomerController extends Controller
     {
       $customer = ErpCustomers::find($id);
 
-      return response()->json(['customerdata' => $customer]);
+      $total_rating = DB::table('erp_sales')
+                  ->where('sales_customer_id', $id)
+                  ->sum('sales_customer_rating');
+
+      $numuber_or_rows = DB::table('erp_sales')
+                ->where('sales_customer_id', $id)
+                ->count();
+
+      if($total_rating != 0){
+        $avg_rating = $total_rating / $numuber_or_rows;
+        $avg_rating = number_format($avg_rating, 2, '.', '');
+      }
+
+      return response()->json(['customerdata' => $customer , 'avg_rating'=> $avg_rating]);
+
     }
 
 
@@ -92,7 +106,7 @@ class ErpCustomerController extends Controller
       $edit->customer_city = $request->input('customer_city');
       $edit->customer_country = $request->input('customer_country');
       $edit->customer_zip = $request->input('customer_zip');
-      $edit->customer_rating = $request->input('customer_rating');
+      // $edit->customer_rating = $request->input('customer_rating');
       $edit->customer_source = $request->input('customer_source');
 
       //Image
@@ -119,5 +133,7 @@ class ErpCustomerController extends Controller
       Session::flash('flash_message_delete', 'Customer Deleted !');
   		return redirect('/adminerpcustomer');
   	}
+
+
 
 }

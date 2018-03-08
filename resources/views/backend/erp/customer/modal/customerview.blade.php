@@ -77,7 +77,7 @@
                 </tr>
                 <tr>
                   <td><strong>Customer Rating</strong></td>
-                  <td id="customer_rating"></td>
+                  <td><div id="customer_rating"></div></td>
                 </tr>
                 <tr>
                   <td><strong>Customer Source</strong></td>

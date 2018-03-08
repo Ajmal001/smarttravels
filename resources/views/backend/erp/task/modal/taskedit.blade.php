@@ -38,6 +38,15 @@
                 </div>
               </div>
 
+              <div class="form-group">
+                 <label>Task Status</label>
+                 <select class="form-control" name="task_status">
+                   <option selected disabled>-Select Status-</option>
+                   <option value="0">Pending</option>
+                   <option value="1">Done</option>
+                 </select>
+              </div>
+
               <div class="form-group" id="task_details">
                  <label>Task details</label>
                  <textarea class="form-control" id="summernote" name="task_details" rows="3"></textarea>

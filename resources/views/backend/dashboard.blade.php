@@ -25,7 +25,7 @@
                         <div class="statistic-box">
                            <i class="fa fa-user-plus fa-3x"></i>
                            <div class="counter-number pull-right">
-                              <span class="count-number">11</span> 
+                              <span class="count-number">11</span>
                               <span class="slight"><i class="fa fa-play fa-rotate-270"> </i>
                               </span>
                            </div>
@@ -38,7 +38,7 @@
                         <div class="statistic-box">
                            <i class="fa fa-user-secret fa-3x"></i>
                            <div class="counter-number pull-right">
-                              <span class="count-number">4</span> 
+                              <span class="count-number">4</span>
                               <span class="slight"><i class="fa fa-play fa-rotate-270"> </i>
                               </span>
                            </div>
@@ -51,7 +51,7 @@
                         <div class="statistic-box">
                            <i class="fa fa-money fa-3x"></i>
                            <div class="counter-number pull-right">
-                              <i class="ti ti-money"></i><span class="count-number">965</span> 
+                              <i class="ti ti-money"></i><span class="count-number">965</span>
                               <span class="slight"><i class="fa fa-play fa-rotate-270"> </i>
                               </span>
                            </div>
@@ -64,7 +64,7 @@
                         <div class="statistic-box">
                            <i class="fa fa-files-o fa-3x"></i>
                            <div class="counter-number pull-right">
-                              <span class="count-number">11</span> 
+                              <span class="count-number">11</span>
                               <span class="slight"><i class="fa fa-play fa-rotate-270"> </i>
                               </span>
                            </div>
@@ -139,40 +139,40 @@
                         <div class="panel-body">
                            <div class="runnigwork">
                               <span class="label-danger label label-default pull-right">Failed</span>
-                              <i class="fa fa-dot-circle-o"></i>        
-                              <a href="#">Database configuration</a><br>                          
+                              <i class="fa fa-dot-circle-o"></i>
+                              <a href="#">Database configuration</a><br>
                               <div class="progress runningprogress">
                                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="25%"></div>
                               </div>
                            </div>
                            <div class="runnigwork">
                               <span class="label-warning label label-default pull-right">progressing</span>
-                              <i class="fa fa-dot-circle-o"></i>        
-                              <a href="#">Design tool</a><br>                          
+                              <i class="fa fa-dot-circle-o"></i>
+                              <a href="#">Design tool</a><br>
                               <div class="progress runningprogress">
                                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="15%"></div>
                               </div>
                            </div>
                            <div class="runnigwork">
                               <span class="label-success label label-default pull-right">progressing</span>
-                              <i class="fa fa-dot-circle-o"></i>        
-                              <a href="#">Internet configuration</a><br>                          
+                              <i class="fa fa-dot-circle-o"></i>
+                              <a href="#">Internet configuration</a><br>
                               <div class="progress runningprogress">
                                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="45%"></div>
                               </div>
                            </div>
                            <div class="runnigwork">
                               <span class="label-info label label-default pull-right">progressing</span>
-                              <i class="fa fa-dot-circle-o"></i>        
-                              <a href="#">Banner completation</a><br>                          
+                              <i class="fa fa-dot-circle-o"></i>
+                              <a href="#">Banner completation</a><br>
                               <div class="progress runningprogress">
                                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="75%"></div>
                               </div>
                            </div>
                            <div class="runnigwork">
                               <span class="label-success label label-default pull-right">Success</span>
-                              <i class="fa fa-dot-circle-o"></i>        
-                              <a href="#">IT Solution</a><br>                          
+                              <i class="fa fa-dot-circle-o"></i>
+                              <a href="#">IT Solution</a><br>
                               <div class="progress runningprogress">
                                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="50%"></div>
                               </div>
@@ -190,46 +190,29 @@
                            </div>
                         </div>
                         <div class="panel-body">
+                          @foreach($tasks as $task)
                            <div class="Pendingwork">
-                              <span class="label-warning label label-default pull-right">progressing</span>
+                             @if($task->task_status == 1)
+                             <span class="label-success label label-default pull-right">done</span>
+                             @else
+                             <span class="label-warning label label-default pull-right">pending</span>
+                             @endif
                               <i class="fa fa-ban"></i>
-                              <a href="#">Database tools</a>                          
+                              <a href="#">{{$task->task_title}}</a>
                               <div class="upworkdate">
-                                 <p>Jul 25, 2017 for Alimul Alrazy</p>
+                                <p>
+                                 {{ \Carbon\Carbon::parse($task->created_at)->format('d M, Y')}} for
+                                 @if($task->task_assigned_to)
+                                  @foreach($employees as $employee)
+                                    @if($employee->id == $task->task_assigned_to)
+                                    {{$employee->name}}
+                                    @endif
+                                  @endforeach
+                                 @endif
+                               </p>
                               </div>
                            </div>
-                           <div class="Pendingwork">
-                              <span class="label-success label label-default pull-right">success</span>
-                              <i class="fa fa-ban"></i>
-                              <a href="#">Cabels</a>                          
-                              <div class="upworkdate">
-                                 <p>Jul 25, 2017 for Alimul</p>
-                              </div>
-                           </div>
-                           <div class="Pendingwork">
-                              <span class="label-danger label label-default pull-right">Failed</span>
-                              <i class="fa fa-ban"></i>
-                              <a href="#">Technologycal tools</a>                          
-                              <div class="upworkdate">
-                                 <p>Feb 25, 2017 for Alrazy</p>
-                              </div>
-                           </div>
-                           <div class="Pendingwork">
-                              <span class="label-warning label label-default pull-right">progressing</span>
-                              <i class="fa fa-ban"></i>
-                              <a href="#">Transaction</a>                          
-                              <div class="upworkdate">
-                                 <p>apr 25, 2017 for Mahfuz</p>
-                              </div>
-                           </div>
-                           <div class="Pendingwork">
-                              <span class="label-success label label-default pull-right">success</span>
-                              <i class="fa fa-ban"></i>
-                              <a href="#">Training tools</a>                          
-                              <div class="upworkdate">
-                                 <p>jun 25, 2017 for Alrazy</p>
-                              </div>
-                           </div>
+                           @endforeach
                         </div>
                      </div>
                   </div>
@@ -385,7 +368,7 @@
                            </div>
                         </div>
                         <div class="panel-body">
-                           <canvas id="barChart" height="150"></canvas>
+                           <canvas id="barChartIncomeExpense" height="150"></canvas>
                         </div>
                      </div>
                   </div>
@@ -441,5 +424,49 @@
             <!-- /.content -->
          </div>
          <!-- /.content-wrapper -->
-		 
-  @endsection    
+
+  @endsection
+
+@section('script')
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.get( "adminmonthlyexpanse", function( data ) {
+        //bar chart
+        var ctxie = document.getElementById("barChartIncomeExpense");
+        var myChart = new Chart(ctxie, {
+          type: 'bar',
+          data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "august", "september","october", "Nobemver", "December"],
+            datasets: [
+            {
+              label: "Monthly Income",
+              data: data.incomes,
+              borderColor: "rgba(0, 150, 136, 0.8)",
+              width: "1",
+              borderWidth: "0",
+              backgroundColor: "rgba(0, 150, 136, 0.8)"
+            },
+            {
+              label: "Monthly Expense",
+              data: data.expenses,
+              borderColor: "rgba(51, 51, 51, 0.55)",
+              width: "1",
+              borderWidth: "0",
+              backgroundColor: "rgba(51, 51, 51, 0.55)"
+            }
+            ]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+            }
+          }
+        });
+      });
+    });
+  </script>
+  @endsection

@@ -3,6 +3,13 @@
 @section('title', 'Login')
 
 @section('body')
+
+	<style>
+		.input-field.col.s12 .btn-large:hover {
+		    background: #c3c3c3;
+		}
+	</style>
+
 	<!--DASHBOARD-->
 	<section>
 		<div class="tr-register">

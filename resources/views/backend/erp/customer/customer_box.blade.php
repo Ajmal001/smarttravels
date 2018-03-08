@@ -207,10 +207,13 @@
           $('#customer-view-table #customer_city').html(data.customerdata.customer_city);
           $('#customer-view-table #customer_country').html(data.customerdata.customer_country);
           $('#customer-view-table #customer_zip').html(data.customerdata.customer_zip);
-          $('#customer-view-table #customer_rating').html(data.customerdata.customer_rating);
+          var $viewcustomerrating = $("#customer-view-table #customer_rating").rateYo();
+          $viewcustomerrating.rateYo("rating", data.avg_rating);
+          $viewcustomerrating.rateYo("option", "readOnly", true);
+          $viewcustomerrating.rateYo("option", "starWidth", "30px");
           $('#customer-view-table #customer_image_preview').attr("src", 'public/backendimages/'+data.customerdata.customer_image);
           $('#customer-view-table #customer_source').html(data.customerdata.customer_source);
-          console.log(data.customerdata.customer_name);
+          // console.log(data);
         });
       });
     </script>

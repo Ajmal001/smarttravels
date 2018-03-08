@@ -71,10 +71,6 @@
               <input type="text" name="customer_zip" class="form-control" id="customer_zip">
             </div>
             <div class="form-group">
-              <label>Customer Rating</label>
-              <input type="text" name="customer_rating" class="form-control" id="customer_rating">
-            </div>
-            <div class="form-group">
               <label>Customer Source</label>
               <select class="form-control" name="customer_source" id="customer_source">
                 <option value="" disabled selected>Select Source</option>

@@ -317,6 +317,11 @@ Route::get('/adminwebsiteoptionscopyright', 'AdminController@copyrightOptions')-
 
 Route::post('/adminwebsiteoptionscopyrightsave', 'AdminController@copyrightOptionsSave')->middleware('auth');
 
+// Admin Monthly Expense
+
+Route::get('/adminmonthlyexpanse', 'AdminController@adminMonthlyExpanse')->middleware('auth');
+Route::get('/adminweeklyexpanse', 'AdminController@adminWeeklyExpanse')->middleware('auth');
+
 // Operator
 
 

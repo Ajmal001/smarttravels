@@ -81,7 +81,6 @@
                                        <td>{{$customer->customer_email}}</td>
                                        <td>{{$customer->customer_phone}}</td>
                                        <td>{{$customer->customer_country}}</td>
-                                       <td>{{$customer->customer_rating}}</td>
                                        <td>
                                           <a id="customerView" class="btn btn-add btn-sm" href="#" data-id="{{$customer->customer_id}}"> <i class="fa fa-eye"></i></a>
                                           <a id="customerEdit" class="btn btn-warning btn-sm" href="#" data-id="{{$customer->customer_id}}"> <i class="fa fa-pencil"></i></a>
@@ -109,7 +108,7 @@
 
 
 		</div>
-    
+
   @endsection
 
   @section('script')
@@ -133,7 +132,7 @@
           $('#customer_city').val(data.customerdata.customer_city);
           $('#customer_country').val(data.customerdata.customer_country);
           $('#customer_zip').val(data.customerdata.customer_zip);
-          $('#customer_rating').val(data.customerdata.customer_rating);
+          // $('#customer_rating').val(data.customerdata.customer_rating);
           $('#customer_image_preview').attr("src", 'public/backendimages/'+data.customerdata.customer_image);
           $('#customer_source').val(data.customerdata.customer_source);
         });
@@ -157,7 +156,7 @@
           $('#customer-view-table #customer_city').html(data.customerdata.customer_city);
           $('#customer-view-table #customer_country').html(data.customerdata.customer_country);
           $('#customer-view-table #customer_zip').html(data.customerdata.customer_zip);
-          $('#customer-view-table #customer_rating').html(data.customerdata.customer_rating);
+          // $('#customer-view-table #customer_rating').html(data.customerdata.customer_rating);
           $('#customer-view-table #customer_image_preview').attr("src", 'public/backendimages/'+data.customerdata.customer_image);
           $('#customer-view-table #customer_source').html(data.customerdata.customer_source);
           console.log(data.customerdata.customer_name);

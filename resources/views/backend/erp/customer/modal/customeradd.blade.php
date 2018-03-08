@@ -69,10 +69,6 @@
               <input type="text" name="customer_zip" class="form-control" placeholder="Enter Your City Zip Code">
             </div>
             <div class="form-group">
-              <label>Customer Rating</label>
-              <input type="text" name="customer_rating" class="form-control" placeholder="Enter Your Rating">
-            </div>
-            <div class="form-group">
               <label>Customer Source</label>
               <select class="form-control" name="customer_source">
                 <option value="" disabled selected>Select Source</option>
