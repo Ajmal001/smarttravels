@@ -14,6 +14,8 @@ use App\TourLocation;
 use App\ErpTask;
 use App\EmployeeLogin;
 
+use Carbon\Carbon;
+
 class AdminController extends Controller
 {
 
@@ -219,35 +221,82 @@ class AdminController extends Controller
 		return redirect()->back();
 	}
 
-  // Month Expense
+  // Month Expense and Income
   public function adminMonthlyExpanse(){
 
     $expenses = array();
-    $incomes = array();
+    $incomes  = array();
     for ($i=1; $i <= 12; $i++) {
       $expenses[] = DB::table("erp_expenses")->whereMonth('expense_date', '=', $i)->sum('expense_amount');
-      $incomes[] = DB::table("erp_sales")->whereMonth('sales_date', '=', $i)->sum('sales_price');
+      $incomes[]  = DB::table("erp_sales")->whereMonth('sales_date', '=', $i)->sum('sales_price');
     }
 
     return response()->json([
-      'expenses' => $expenses,
-      'incomes' => $incomes
+      'expenses'  => $expenses,
+      'incomes'   => $incomes
     ]);
 
   }
+
+  // Weekly Expense and Income
   public function adminWeeklyExpanse(){
 
-    // $one_week_ago = \Carbon\Carbon::now()->subWeeks(1);
-    $fromDate = \Carbon\Carbon::now()->subDay()->startOfWeek()->toDateString(); // or ->format(..)
-    $tillDate = \Carbon\Carbon::now()->subDay()->toDateString();
-    // $expenses = DB::table("erp_expenses")->where('expense_date', )->sum('expense_amount');
-    // $incomes = DB::table("erp_sales")->where('sales_date', )->sum('sales_price');
+    $start = Carbon::now()->subWeeks(1);
+    $end   = Carbon::now()->subDays(1);
+    $days  = $start->diff($end)->days;
+
+    $expenses = array();
+    $incomes  = array();
+    $daysname = array();
+    $daysweek = array();
+
+    for ($i = 0; $i <= $days; $i++) {
+        $date       = '';
+        $date       = $start->addDays(1);
+        $daysname[] = $date->format('D');
+        $daysweek[] = $date->format('Y-m-j');
+    }
+
+    foreach ($daysweek as $day) {
+      $expenses[] = DB::table("erp_expenses")->whereDate('expense_date', '=', $day)->sum('expense_amount');
+      $incomes[]  = DB::table("erp_sales")->whereDate('sales_date', '=', $day)->sum('sales_price');
+    }
 
     return response()->json([
-      // 'expenses' => $expenses,
-      // 'incomes' => $incomes
+      'expenses'  => $expenses,
+      'incomes'   => $incomes,
+      'sevendays' => $daysname
     ]);
 
   }
+
+  // Monthly Sales
+  public function adminMonthlySales(){
+
+    $start = Carbon::now()->startOfMonth();
+    $end   = Carbon::now();
+    $days  = $start->diff($end)->days;
+
+    $incomes  = array();
+    $dayssell = array();
+
+    for ($i = 0; $i <= $days; $i++) {
+        $date       = $start;
+        $dayssell[] = $date->format('Y-m-j');
+        $date       = $start->addDays(1);
+    }
+
+    foreach ($dayssell as $day) {
+      $incomes[]  = DB::table("erp_sales")->whereDate('sales_date', '=', $day)->sum('sales_price');
+    }
+
+    return response()->json([
+      'incomes'     => $incomes,
+      'daysofmonth' => $dayssell
+    ]);
+
+  }
+
+
 
 }

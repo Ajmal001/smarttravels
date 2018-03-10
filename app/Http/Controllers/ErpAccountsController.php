@@ -74,7 +74,7 @@ class ErpAccountsController extends Controller
     public function inExReport(){
 
       $today = Carbon::now()->today();
-      $one_week_ago = \Carbon::now()->subWeeks(1);
+      $one_week_ago = Carbon::now()->subWeeks(1);
       $this_month = Carbon::now()->subMonth();
 
       /*===================== INCOME ==========================*/

@@ -381,7 +381,23 @@
                            </div>
                         </div>
                         <div class="panel-body">
-                           <canvas id="singelBarChart" height="323"></canvas>
+                           <canvas id="weeklyIncomeExpense" height="323"></canvas>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- /.row -->
+               <div class="row">
+                  <!-- bar chart Monthly Sells -->
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div class="panel panel-bd lobidisable">
+                        <div class="panel-heading">
+                           <div class="panel-title">
+                              <h4>Monthly Sells</h4>
+                           </div>
+                        </div>
+                        <div class="panel-body">
+                           <canvas id="monthlySells" height="100"></canvas>
                         </div>
                      </div>
                   </div>
@@ -430,6 +446,7 @@
 @section('script')
   <script type="text/javascript">
     $(document).ready(function() {
+
       $.get( "adminmonthlyexpanse", function( data ) {
         //bar chart
         var ctxie = document.getElementById("barChartIncomeExpense");
@@ -438,22 +455,22 @@
           data: {
             labels: ["January", "February", "March", "April", "May", "June", "July", "august", "september","october", "Nobemver", "December"],
             datasets: [
-            {
-              label: "Monthly Income",
-              data: data.incomes,
-              borderColor: "rgba(0, 150, 136, 0.8)",
-              width: "1",
-              borderWidth: "0",
-              backgroundColor: "rgba(0, 150, 136, 0.8)"
-            },
-            {
-              label: "Monthly Expense",
-              data: data.expenses,
-              borderColor: "rgba(51, 51, 51, 0.55)",
-              width: "1",
-              borderWidth: "0",
-              backgroundColor: "rgba(51, 51, 51, 0.55)"
-            }
+              {
+                label: "Monthly Income",
+                data: data.incomes,
+                borderColor: "rgba(0, 150, 136, 0.8)",
+                width: "1",
+                borderWidth: "0",
+                backgroundColor: "rgba(0, 150, 136, 0.8)"
+              },
+              {
+                label: "Monthly Expense",
+                data: data.expenses,
+                borderColor: "rgba(51, 51, 51, 0.55)",
+                width: "1",
+                borderWidth: "0",
+                backgroundColor: "rgba(51, 51, 51, 0.55)"
+              }
             ]
           },
           options: {
@@ -467,6 +484,78 @@
           }
         });
       });
+
+
+      $.get( "adminweeklyexpanse", function( data ) {
+        //bar chart
+        var ctxmie = document.getElementById("weeklyIncomeExpense");
+        var myChart = new Chart(ctxmie, {
+          type: 'bar',
+          data: {
+            labels: data.sevendays,
+            datasets: [
+              {
+                label: "Weekly Income",
+                data: data.incomes,
+                borderColor: "rgba(0, 150, 136, 0.8)",
+                width: "1",
+                borderWidth: "0",
+                backgroundColor: "rgba(0, 150, 136, 0.8)"
+              },
+              {
+                label: "Weekly Expense",
+                data: data.expenses,
+                borderColor: "rgba(51, 51, 51, 0.55)",
+                width: "1",
+                borderWidth: "0",
+                backgroundColor: "rgba(51, 51, 51, 0.55)"
+              }
+            ]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+            }
+          }
+        });
+      });
+
+      // Monthly Sell
+      $.get( "adminmonthlysales", function( data ) {
+        //bar chart
+        var ctxms = document.getElementById("monthlySells");
+        var myChart = new Chart(ctxms, {
+          type: 'bar',
+          data: {
+            labels: data.daysofmonth,
+            datasets: [
+              {
+                label: "Monthly Sells",
+                data: data.incomes,
+                borderColor: "rgba(0, 150, 136, 0.8)",
+                width: "1",
+                borderWidth: "0",
+                backgroundColor: "rgba(0, 150, 136, 0.8)"
+              }
+            ]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+            }
+          }
+        });
+      });
+
+
     });
   </script>
   @endsection
