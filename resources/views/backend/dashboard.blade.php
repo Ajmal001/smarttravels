@@ -73,6 +73,73 @@
                      </div>
                   </div>
                </div>
+
+               <!-- Start -->
+               <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                     <div class="panel panel-bd lobidisable">
+                        <div class="panel-heading">
+                           <div class="panel-title">
+                              <h4>Recent Sells</h4>
+                           </div>
+                        </div>
+                        <div class="panel-body">
+                          @foreach($sales as $sale)
+                           <div class="work-touchpoint">
+                              <div class="work-touchpoint-date">
+                                 <span class="day">{{date('d', strtotime($sale->sales_date))}}</span>
+                                 <span class="month">{{date('M', strtotime($sale->sales_date))}}</span>
+                              </div>
+                           </div>
+                           <div class="detailswork">
+                              <span class="label-info label label-default pull-right">${{$sale->sales_price}}</span>
+                              <a href="#" title="headings">{{$sale->sales_item_name}}</a> <br>
+                              <p>by {{$sale->sales_by_type}} on {{$sale->payment_type}}</p>
+                           </div>
+                          @endforeach
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                     <div class="panel panel-bd lobidisable">
+                        <div class="panel-heading">
+                           <div class="panel-title">
+                              <h4>Recent Tasks</h4>
+                           </div>
+                        </div>
+                        <div class="panel-body">
+                          @foreach($tasks as $task)
+                           <div class="work-touchpoint">
+                              <div class="work-touchpoint-date">
+                                 <span class="day">{{date('d', strtotime($task->task_date))}}</span>
+                                 <span class="month">{{date('M', strtotime($task->task_date))}}</span>
+                              </div>
+                           </div>
+                           <div class="detailswork">
+                              @if($task->task_status == 1)
+                              <span class="label-success label label-default pull-right">success</span>
+                              @else
+                              <span class="label-warning label label-default pull-right">pending</span>
+                              @endif
+                              <a href="#" title="headings">{{$task->task_title}}</a> <br>
+                              <p>
+                               {{ date('d M, Y', strtotime($task->task_date)) }} for
+                               @if($task->task_assigned_to)
+                                @foreach($employees as $employee)
+                                  @if($employee->id == $task->task_assigned_to)
+                                  {{$employee->name}}
+                                  @endif
+                                @endforeach
+                               @endif
+                             </p>
+                           </div>
+                          @endforeach
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- End  -->
+
                <div class="row">
                   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                      <div class="panel panel-bd lobidisable">
@@ -201,7 +268,7 @@
                               <a href="#">{{$task->task_title}}</a>
                               <div class="upworkdate">
                                 <p>
-                                 {{ \Carbon\Carbon::parse($task->created_at)->format('d M, Y')}} for
+                                 {{ date('d M, Y', strtotime($task->task_date)) }} for
                                  @if($task->task_assigned_to)
                                   @foreach($employees as $employee)
                                     @if($employee->id == $task->task_assigned_to)

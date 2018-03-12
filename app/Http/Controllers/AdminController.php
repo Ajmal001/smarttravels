@@ -13,6 +13,7 @@ use App\TourCountry;
 use App\TourLocation;
 use App\ErpTask;
 use App\EmployeeLogin;
+use App\ErpSales;
 
 use Carbon\Carbon;
 
@@ -20,9 +21,11 @@ class AdminController extends Controller
 {
 
   public function adminDashboard(){
-    $tasks = ErpTask::latest()->paginate(5);
-    $employees = EmployeeLogin::all();
-		return view('backend.dashboard',compact('tasks','employees'));
+    $tasks      = ErpTask::latest()->paginate(5);
+    $employees  = EmployeeLogin::all();
+    $sales      = ErpSales::latest()->paginate(5);
+    $tasks      = ErpTask::latest()->paginate(5);
+		return view('backend.dashboard',compact('tasks','employees','sales','tasks'));
 	}
 
 	public function adminWebsitePages(){
