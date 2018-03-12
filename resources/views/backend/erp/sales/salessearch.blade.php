@@ -33,7 +33,7 @@
                  <div class="panel panel-bd lobidrag">
                     <div class="panel-heading">
                        <div class="btn-group" id="buttonexport">
-                          <a href="#">
+                          <a href="{{url('adminerpsales')}}">
                              <h4>Sales List</h4>
 
           									@if ($errors->any())
@@ -64,6 +64,9 @@
                       </div>
                        <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
                        <div class="table-responsive">
+
+                          @if($searchsales)
+
                           <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
                              <thead>
                                 <tr class="info">
@@ -78,7 +81,7 @@
                                 </tr>
                              </thead>
                              <tbody>
-                               @foreach($allsales as $sales)
+                               @foreach($searchsales as $sales)
                               <tr>
                                  <td>{{$sales->sales_item_name}}</td>
                                  <td>{{$sales->sales_sku}}</td>
@@ -101,6 +104,11 @@
                               @endforeach
                              </tbody>
                           </table>
+                          @else
+                          <div class="col-xs-12" style="min-height:200px">
+                            <h3 class="text-center" style="margin-top:80px">No Details found. Try to search again !</h3>
+                          </div>
+                          @endif
                        </div>
                     </div>
                  </div>

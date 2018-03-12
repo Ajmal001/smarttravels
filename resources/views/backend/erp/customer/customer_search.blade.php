@@ -91,7 +91,7 @@
                      <div class="panel panel-bd lobidrag">
                         <div class="panel-heading">
                            <div class="btn-group" id="buttonexport">
-                              <a href="#">
+                              <a href="{{url('adminerpcustomer')}}">
                                  <h4>Customer List</h4>
 
                 									@if ($errors->any())
@@ -120,7 +120,8 @@
                            </div>
                            <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
                            <div class="row">
-                             @foreach($allcustomer as $customer)
+                             @if($customers)
+                             @foreach($customers as $customer)
                              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                                  <div class="cardbox_user_main">
                                      <div class="cardbox_user">
@@ -143,7 +144,11 @@
                                  </div>
                              </div>
                              @endforeach
-
+                             @else
+                             <div class="col-xs-12" style="min-height:200px">
+                               <h3 class="text-center" style="margin-top:80px">No Details found. Try to search again !</h3>
+                             </div>
+                             @endif
                            </div>
 
 

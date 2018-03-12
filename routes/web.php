@@ -374,6 +374,7 @@ Route::get('/adminerpcustomershow/{id}', 'ErpCustomerController@detailsCustomer'
 Route::put('/adminerpcustomerupdate/{id}', 'ErpCustomerController@updateCustomer')->middleware('auth');
 //Route::delete('/adminerpcustomerdelete/{id}', 'ErpCustomerController@deleteCustomer')->middleware('auth');
 Route::post('/adminerpcustomerdelete/{customer_id}', 'ErpCustomerController@deleteCustomer')->middleware('auth');
+Route::post('/adminerpcustomersearch', 'ErpCustomerController@searchCustomer')->middleware('auth');
 
 // Sales
 Route::get('/adminerpsales', 'ErpSalesController@showSales')->middleware('auth');
@@ -383,7 +384,15 @@ Route::get('/adminerpsalesedit/{sales_id}', 'ErpSalesController@editSales')->mid
 Route::put('/adminerpsalesupdate/{sales_id}', 'ErpSalesController@updateSales')->middleware('auth');
 Route::post('/adminerpsalesdelete/{sales_id}', 'ErpSalesController@deleteSales')->middleware('auth');
 
+Route::post('/adminerpsalesyearsearch', 'ErpSalesController@searchSalesYear')->middleware('auth');
+Route::post('/adminerpsalesmonthsearch', 'ErpSalesController@searchSalesMonth')->middleware('auth');
+Route::post('/adminerpsalesdaysearch', 'ErpSalesController@searchSalesDay')->middleware('auth');
+
 Route::get('/adminerpsellertype-json', 'ErpSalesController@sellerTypeName')->middleware('auth');
+Route::get('/adminerpsalesyear-json', 'ErpSalesController@salesYearSearch')->middleware('auth');
+Route::get('/adminerpsalesmonth-json', 'ErpSalesController@salesMonthSearch')->middleware('auth');
+Route::get('/adminerpsalesday-json', 'ErpSalesController@salesDaySearch')->middleware('auth');
+
 
 // Task
 Route::get('/adminerptask', 'ErpTaskController@showTask')->middleware('auth');

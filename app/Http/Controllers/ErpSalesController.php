@@ -147,4 +147,85 @@ class ErpSalesController extends Controller
       }
     }
 
+    // SEARCH YEAR
+    public function salesYearSearch()
+    {
+      $salesdates = ErpSales::pluck('sales_date');
+      $salesdate = [];
+      foreach ($salesdates as $dates) {
+        $salesdate[] = date('Y', strtotime($dates));
+      }
+      $salesdates = array_unique($salesdate, SORT_NUMERIC );
+      return response()->json(['salesyears'=>$salesdates]);
+    }
+
+    public function searchSalesYear(Request $request)
+    {
+        $customers = ErpCustomers::all();
+
+        $year = $request->sales_search_year;
+        $searchsales = ErpSales::whereYear( 'sales_date', 'LIKE', '%' . $year . '%' )->get();
+        if( count($searchsales) > 0 ){
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+        }else{
+          $searchsales = '';
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+        }
+
+    }
+
+    // SEARCH MONTH
+    public function salesMonthSearch()
+    {
+      $salesdates = ErpSales::pluck('sales_date');
+      $salesdate = [];
+      foreach ($salesdates as $dates) {
+        $salesdate[] = date('Y-m', strtotime($dates));
+      }
+      $salesdates = array_unique($salesdate, SORT_REGULAR );
+      return response()->json(['salesmonths'=>$salesdates]);
+    }
+
+    public function searchSalesMonth(Request $request)
+    {
+        $customers = ErpCustomers::all();
+
+        $month = $request->sales_search_month;
+        $searchsales = ErpSales::where( 'sales_date', 'LIKE', '%' . $month . '%' )->get();
+        if( count($searchsales) > 0 ){
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+        }else{
+          $searchsales = '';
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+        }
+
+    }
+
+    // SEARCH DAY
+    public function salesDaySearch()
+    {
+      $salesdates = ErpSales::pluck('sales_date');
+      $salesdate = [];
+      foreach ($salesdates as $dates) {
+        $salesdate[] = date('Y-m-d', strtotime($dates));
+      }
+      $salesdates = array_unique($salesdate, SORT_REGULAR );
+      return response()->json(['salesdays'=>$salesdates]);
+    }
+
+    public function searchSalesDay(Request $request)
+    {
+        $customers = ErpCustomers::all();
+
+        $day = $request->sales_search_day;
+        $searchsales = ErpSales::whereDate( 'sales_date', 'LIKE', '%' . $day . '%' )->get();
+        if( count($searchsales) > 0 ){
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+        }else{
+          $searchsales = '';
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+        }
+
+    }
+
 }

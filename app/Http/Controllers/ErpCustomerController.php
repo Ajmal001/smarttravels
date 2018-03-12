@@ -134,6 +134,20 @@ class ErpCustomerController extends Controller
   		return redirect('/adminerpcustomer');
   	}
 
+    public function searchCustomer(Request $request)
+    {
+        $item = $request->customer_item;
+        $type = $request->customer_type;
+
+        $customers = ErpCustomers::where( $type, 'LIKE', '%' . $item . '%' )->get();
+        if( count($customers) > 0 ){
+          return view('backend.erp.customer.customer_search', compact('customers'));
+        }else{
+          $customers = '';
+          return view('backend.erp.customer.customer_search', compact('customers'));
+        }
+
+    }
 
 
 }
