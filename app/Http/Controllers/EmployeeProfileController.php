@@ -48,7 +48,7 @@ class EmployeeProfileController extends Controller
         $countryList = TourCountry::get();
         $locationList = TourLocation::get();
         $current_option = Options::get()->first();
-        $announcements = ErpEmployeeAnnouncement::get();
+        $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $employee = Auth::user();
         $employee_id    = Auth::user()->id;
@@ -71,7 +71,7 @@ class EmployeeProfileController extends Controller
         $countryList    = TourCountry::get();
         $locationList   = TourLocation::get();
         $current_option = Options::get()->first();
-        $announcements  = ErpEmployeeAnnouncement::get();
+        $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
         $employee = Auth::user();
 
         $employee = Auth::user();
@@ -128,7 +128,7 @@ class EmployeeProfileController extends Controller
         $countryList    = TourCountry::get();
         $locationList   = TourLocation::get();
         $current_option = Options::get()->first();
-        $announcements  = ErpEmployeeAnnouncement::get();
+        $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $employee = Auth::user();
         $employee_id    = Auth::user()->id;
@@ -145,7 +145,7 @@ class EmployeeProfileController extends Controller
 
         $today = Carbon::now();
         $employee = Auth::user();
-        $tasks = $employee->tasks()->paginate(5);
+        $tasks = $employee->tasks()->latest()->paginate(2);
 
         return view('frontend.employee.tasklist',compact('attendences_this_month','taskpending','announcements','tasks','employee','countryList','locationList','current_option','today'));
     }
@@ -155,10 +155,10 @@ class EmployeeProfileController extends Controller
         $countryList    = TourCountry::get();
         $locationList   = TourLocation::get();
         $current_option = Options::get()->first();
-        $announcements  = ErpEmployeeAnnouncement::get();
+        $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $employee = Auth::user();
-        $employee_id    = Auth::user()->id;
+        $employee_id = Auth::user()->id;
 
         $attendences_this_month = DB::table('erp_employee_attendences')
                                   ->whereMonth('date',date('n'))
@@ -182,7 +182,7 @@ class EmployeeProfileController extends Controller
         $countryList    = TourCountry::get();
         $locationList   = TourLocation::get();
         $current_option = Options::get()->first();
-        $announcements  = ErpEmployeeAnnouncement::get();
+        $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $employee = Auth::user();
         $employee_id    = Auth::user()->id;
@@ -202,7 +202,7 @@ class EmployeeProfileController extends Controller
                       ->whereMonth('expense_date',date('n'))
                       ->where('expense_added_by','=',$employee_id)
                       ->latest()
-                      ->get();
+                      ->paginate(10);
 
         return view('frontend.employee.expense',compact('expenses','attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option'));
     }
@@ -212,7 +212,7 @@ class EmployeeProfileController extends Controller
       $countryList    = TourCountry::get();
       $locationList   = TourLocation::get();
       $current_option = Options::get()->first();
-      $announcements  = ErpEmployeeAnnouncement::get();
+      $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
       $employee       = Auth::user();
 
       $employee_id            = Auth::user()->id;

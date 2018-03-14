@@ -21,11 +21,10 @@ class AdminController extends Controller
 {
 
   public function adminDashboard(){
-    $tasks      = ErpTask::latest()->paginate(5);
+    $tasks      = ErpTask::latest()->take(5)->get();
     $employees  = EmployeeLogin::all();
-    $sales      = ErpSales::latest()->paginate(5);
-    $tasks      = ErpTask::latest()->paginate(5);
-		return view('backend.dashboard',compact('tasks','employees','sales','tasks'));
+    $sales      = ErpSales::latest()->take(5)->get();
+		return view('backend.dashboard',compact('tasks','employees','sales'));
 	}
 
 	public function adminWebsitePages(){
@@ -171,7 +170,7 @@ class AdminController extends Controller
 	}
 
 	public function adminCountry(){
-		$countries = TourCountry::get();
+		$countries = TourCountry::latest()->paginate(10);
 
 		return view('backend.website.country_location.country',compact('countries'));
 	}
@@ -198,7 +197,7 @@ class AdminController extends Controller
 	}
 
 	public function adminLocation(){
-		$locations = TourLocation::get();
+		$locations = TourLocation::latest()->paginate(10);
 		$countryList = TourCountry::get();
 
 		return view('backend.website.country_location.location',compact('locations','countryList'));

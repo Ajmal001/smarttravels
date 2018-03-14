@@ -52,7 +52,7 @@ class FrontEndController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
-		$tourPackages = TourPackages::get();
+		$tourPackages = TourPackages::latest()->paginate(5);
 		return view('frontend.packages',compact('tourPackages','countryList','locationList','current_option'));
 	}
 
@@ -84,7 +84,7 @@ class FrontEndController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
-		$hotels = Hotels::get();
+		$hotels = Hotels::latest()->paginate(10);
 		return view('frontend.hotels',compact('hotels','countryList','locationList','current_option'));
 	}
 
@@ -145,7 +145,7 @@ class FrontEndController extends Controller
 	}
 
 	public function sight(){
-		$sightList = Sights::get();
+		$sightList = Sights::latest()->paginate(10);
 		$countryList = TourCountry::get();
 		$current_option = Options::get()->first();
 		$locationList = TourLocation::get();
@@ -238,7 +238,7 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 
-		$attractionsList = Attractions::get();
+		$attractionsList = Attractions::latest()->paginate(10);
 		return view('frontend.attraction_tickets',compact('countryList','locationList','attractionsList','current_option'));
 	}
 

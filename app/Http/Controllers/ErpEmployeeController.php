@@ -12,7 +12,7 @@ class ErpEmployeeController extends Controller
 {
   public function showEmployee()
   {
-    $allemployee = ErpEmployee::all();
+    $allemployee = ErpEmployee::latest()->paginate(10);
 
     return view( 'backend.erp.employee.employee', compact('allemployee') );
   }

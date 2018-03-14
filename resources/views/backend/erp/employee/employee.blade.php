@@ -83,7 +83,7 @@
                                   <td>{{$employee->employee_phone}}</td>
                                   <td>{{$employee->employee_address}}</td>
                                   <td>{{$employee->employee_nid}}</td>
-                                  <td>{{$employee->employee_designation}}</td>                                
+                                  <td>{{$employee->employee_designation}}</td>
                                   <td>
                                     <a href="#" id="viewEmployee" class="btn btn-sm btn-info" data-id="{{$employee->employee_id}}"><i class="fa fa-eye"></i></a>
                                     <a href="#" id="editEmployee" class="btn btn-sm btn-warning" data-id="{{$employee->employee_id}}"><i class="fa fa-pencil"></i></a>
@@ -98,6 +98,7 @@
                               @endforeach
                              </tbody>
                           </table>
+                          {{ $allemployee->links() }}
                        </div>
                     </div>
                  </div>

@@ -27,7 +27,7 @@ class AttractionsController extends Controller
 	   public function showAttractions(){
 		   $countryList = TourCountry::get();
 		   $locationList = TourLocation::get();
-		   $attractionList = Attractions::get();
+		   $attractionList = Attractions::latest()->paginate(10);
 		   return view('backend.website.website_attractions',compact('countryList','locationList','attractionList'));
 	   }
 

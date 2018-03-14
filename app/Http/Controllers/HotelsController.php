@@ -22,7 +22,7 @@ use DB;
 class HotelsController extends Controller
 {
     public function showHotels(){
-		$hotelList = Hotels::get();
+		$hotelList = Hotels::latest()->paginate(10);
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$hotelFeatureList = HotelFeatures::get();

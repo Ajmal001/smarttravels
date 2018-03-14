@@ -11,56 +11,56 @@ use DB;
 class BookingController extends Controller
 {
     public function bookingTour(){
-		
-		$tourBooking = DB::table('booking')	
+
+		$tourBooking = DB::table('booking')
 						->where('service_type', '=', 'tour')
-						->get();
-		
+						->latest()->paginate(10);
+
 		return view('backend.website.website_booking_tour',compact('tourBooking'));
 	}
-	
+
 	public function bookingHotel(){
-		
-		$hotelBooking = DB::table('booking')	
+
+		$hotelBooking = DB::table('booking')
 						->where('service_type', '=', 'hotel')
-						->get();
-		
+						->latest()->paginate(10);
+
 		return view('backend.website.website_booking_hotel',compact('hotelBooking'));
 	}
-	
+
 	public function bookingSight(){
-		
-		$sightBooking = DB::table('booking')	
+
+		$sightBooking = DB::table('booking')
 						->where('service_type', '=', 'sight')
-						->get();
-		
+						->latest()->paginate(10);
+
 		return view('backend.website.website_booking_sight',compact('sightBooking'));
 	}
-	
+
 	public function bookingAttraction(){
-		
-		$attractionBooking = DB::table('booking')	
+
+		$attractionBooking = DB::table('booking')
 						->where('service_type', '=', 'sight')
-						->get();
-		
+						->latest()->paginate(10);
+
 		return view('backend.website.website_booking_attraction',compact('attractionBooking'));
 	}
-	
+
 	public function bookingAirTicket(){
-		
-		$airTicketBooking = DB::table('booking')	
+
+		$airTicketBooking = DB::table('booking')
 						->where('service_type', '=', 'air_ticket')
-						->get();
-		
+						->latest()->paginate(10);
+
 		return view('backend.website.website_booking_air_ticket',compact('airTicketBooking'));
 	}
-	
+
 	public function deleteBooking($booking_id){
 		DB::table('booking')->where('booking_id',$booking_id)->delete();
-        Session::flash('flash_message_delete', 'Booking Deleted !');		
+        Session::flash('flash_message_delete', 'Booking Deleted !');
 		return redirect()->back();
 	}
-	
-	
-	
+
+
+
 }

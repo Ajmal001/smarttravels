@@ -374,7 +374,7 @@ Route::get('/adminerpcustomershow/{id}', 'ErpCustomerController@detailsCustomer'
 Route::put('/adminerpcustomerupdate/{id}', 'ErpCustomerController@updateCustomer')->middleware('auth');
 //Route::delete('/adminerpcustomerdelete/{id}', 'ErpCustomerController@deleteCustomer')->middleware('auth');
 Route::post('/adminerpcustomerdelete/{customer_id}', 'ErpCustomerController@deleteCustomer')->middleware('auth');
-Route::post('/adminerpcustomersearch', 'ErpCustomerController@searchCustomer')->middleware('auth');
+Route::get('/adminerpcustomersearch', 'ErpCustomerController@searchCustomer')->middleware('auth');
 
 // Sales
 Route::get('/adminerpsales', 'ErpSalesController@showSales')->middleware('auth');

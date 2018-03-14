@@ -71,7 +71,7 @@
                                 </tr>
                              </thead>
                              <tbody>
-		
+
                               @foreach($announcements as $announcement)
                               <tr>
                                  <td>{{$announcement->announcement_title}}</td>
@@ -94,6 +94,7 @@
 
                              </tbody>
                           </table>
+                          {{ $announcements->links() }}
                        </div>
                     </div>
                  </div>

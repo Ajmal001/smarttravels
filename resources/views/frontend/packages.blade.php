@@ -3,8 +3,8 @@
 @section('title', 'Packages')
 
 @section('body')
-	
-   
+
+
     <section>
         <div class="rows inner_banner inner_banner_5">
             <div class="container">
@@ -27,7 +27,7 @@
                     </div>
                     <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide. Book travel packages and enjoy your holidays with distinctive experience</p>
                 </div>
-				
+
                 @foreach($tourPackages as $tp)
 				<!--===== PLACES ======-->
                 <div class="rows p2_2">
@@ -66,7 +66,9 @@
                 </div>
                 <!--===== PLACES END ======-->
                 @endforeach
-                
+								<div class="frontend-pagination">
+									{{$tourPackages->links()}}
+								</div>
             </div>
         </div>
     </section>

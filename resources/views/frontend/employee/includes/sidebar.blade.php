@@ -10,7 +10,7 @@
             <a href="{{url('employeeattendences')}}"><img src="assets/frontend/images/icon/dbl2.png" alt=""/> Attendence </a>
         </li>
         <li>
-            <a href="{{url('employeeexpense')}}"><img src="assets/frontend/images/icon/dbl3.png" alt="" /> Add Expense </a>
+            <a href="{{url('employeeexpense')}}"><img src="assets/frontend/images/icon/dbl3.png" alt="" /> Expense </a>
         </li>
         <li>
             <a href="{{url('employeeprofileedit')}}"><img src="assets/frontend/images/icon/dbl4.png" alt="" /> Settings </a>

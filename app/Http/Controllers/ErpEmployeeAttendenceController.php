@@ -10,7 +10,7 @@ class ErpEmployeeAttendenceController extends Controller
 {
     public function showEmployeeAttendence()
     {
-      $allattendence = ErpEmployeeAttendence::with('employee')->get();
+      $allattendence = ErpEmployeeAttendence::with('employee')->latest()->paginate(10);
       $allemployee = ErpEmployee::all();
       return view( 'backend.erp.attendence.attendence', compact('allattendence','allemployee') );
     }

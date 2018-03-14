@@ -96,6 +96,7 @@
 									@endforeach
                                  </tbody>
                               </table>
+                              {{$hotelList->links()}}
                            </div>
                         </div>
                      </div>
@@ -141,7 +142,7 @@
                                <div class="form-group">
                                  <label>Locations</label>
                                  <select class="js-example-basic-multiple" name="hotel_location[]" id="addHotelLocationByMultipleCountry" style="width:95%;"  multiple="multiple" required>
-									
+
 								 </select>
                               </div>
 
@@ -374,7 +375,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>              
+                    </div>
                 </div>
             </div>
             <!-- VIEW MODAL END -->
@@ -465,11 +466,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>              
+                    </div>
                 </div>
             </div>
             <!-- EDIT MODAL END -->
-            
+
 
 		</div> <!-- /.content-wrapper -->
 
@@ -527,7 +528,7 @@
                 $.each(country_not_in, function(index, value){
                     $('#edithotelmodal #hotel_country').append('<option>'+value+'</option>');
                 });
-                
+
                 var location_str = data.edithotel.hotel_location;
                 var hotel_location = location_str.split(',');
                 $('#edithotelmodal #hotel_location').empty();
@@ -569,9 +570,9 @@
 
                 $('#edithotelmodal #hotel_image').attr('src','public/backendimages/'+data.edithotel.hotel_image);
                 $('#edithotelmodal #hotel_image').attr("style","display:block;margin-top:10px;");
-                
+
                 $('#summernote-edithotel').summernote('code', data.edithotel.hotel_details);
-                
+
                 //console.log(data.edithotel);
             });
         });

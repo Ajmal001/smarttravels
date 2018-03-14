@@ -10,7 +10,7 @@ class ErpAgentController extends Controller
 {
     public function showAgent()
     {
-      $agents = ErpAgent::all();
+      $agents = ErpAgent::latest()->paginate(10);
 
       return view('backend.erp.agent.agent', compact('agents'));
     }

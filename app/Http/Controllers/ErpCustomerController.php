@@ -15,7 +15,7 @@ class ErpCustomerController extends Controller
 {
 
     function showCustomerBox(){
-      $allcustomer = ErpCustomers::all();
+      $allcustomer = ErpCustomers::latest()->paginate(10);
       return view('backend.erp.customer.customer_box', compact('allcustomer'));
     }
 

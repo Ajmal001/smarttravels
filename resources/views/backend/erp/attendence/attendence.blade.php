@@ -93,6 +93,7 @@
                               @endforeach
                              </tbody>
                           </table>
+                          {{ $allattendence->links() }}
                        </div>
                     </div>
                  </div>

@@ -143,9 +143,9 @@
                                  </div>
                              </div>
                              @endforeach
-
                            </div>
-
+                           
+                           {{ $allcustomer->links() }}
 
                         </div>
                      </div>

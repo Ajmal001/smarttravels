@@ -101,6 +101,7 @@
                               @endforeach
                              </tbody>
                           </table>
+                          {{ $allsales->links() }}
                        </div>
                     </div>
                  </div>

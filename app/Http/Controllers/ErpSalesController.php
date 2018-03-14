@@ -16,7 +16,7 @@ class ErpSalesController extends Controller
 {
     public function showSales(){
 
-      $allsales = ErpSales::with('customer')->get();
+      $allsales = ErpSales::with('customer')->latest()->paginate(10);
       $customers = ErpCustomers::all();
       return view('backend.erp.sales.sales', compact('allsales','customers'));
     }

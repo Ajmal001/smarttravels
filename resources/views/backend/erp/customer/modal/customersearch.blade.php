@@ -10,7 +10,7 @@
         <div class="row">
           <div class="panel-body">
 
-            {!! Form::open(['method'=>'post','url' => 'adminerpcustomersearch','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+            {!! Form::open(['method'=>'get','url' => 'adminerpcustomersearch','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
             {!! csrf_field() !!}
             <div class="form-group">
               <label>Search Item</label>

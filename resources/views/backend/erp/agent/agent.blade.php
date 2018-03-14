@@ -95,6 +95,7 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{ $agents->links() }}
                            </div>
                         </div>
                      </div>

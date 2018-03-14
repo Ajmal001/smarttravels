@@ -13,14 +13,14 @@
 				<div class="row">
 					<div class="col-md-6">
 					<div class="">
-					
+
 					    {!! Form::open(['url' => 'toursearch','class'=>'v2-search-form']) !!}
 							<div class="row">
 								<div class="input-field col s12">
 									<input type="text" name="s_country" id="select-city" class="autocomplete" required>
 									<label for="select-city">Select Country</label>
-									
-									
+
+
 								</div>
 								<div class="input-field col s12">
 									<select name="s_package">
@@ -42,9 +42,9 @@
 								</div>
 								<div class="input-field col s6">
 									<input type="text" id="to" name="s_departure_date" required>
-									<label for="to">Departure Date</label>		
+									<label for="to">Departure Date</label>
 								</div>
-							</div>											
+							</div>
 
 							<div class="row">
 								<div class="input-field col s6">
@@ -68,15 +68,15 @@
 										<option value="100000">100000</option>
 										<option value="500000">500000</option>
 									</select>
-								</div>								
-							</div>							
+								</div>
+							</div>
 							<div class="row">
 								<div class="input-field col s12">
 									<input type="submit" value="search" class="waves-effect waves-light tourz-sear-btn v2-ser-btn">
 								</div>
 							</div>
 						{!! Form::close() !!}
-					</div>						
+					</div>
 					</div>
 					<div class="col-md-6">
 					<div class="v2-ho-se-ri">
@@ -95,17 +95,17 @@
 								</li>
 								<li>
 									<a href="{{url('/hotels')}}" class="waves-effect waves-light btn-large tourz-pop-ser-btn"><img src="{{URL::asset('assets/frontend/images/icon/1.png')}}" alt=""> Hotel</a>
-								</li>								
+								</li>
 							</ul>
 						</div>
-					</div>						
-					</div>					
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
-	
+
+
 	<!--====== HOME PLACES ==========-->
 	<section>
 		<div class="rows pad-bot-redu tb-space">
@@ -120,8 +120,8 @@
 					</div>
 					<p>World's leading tour and travels Booking website,Over 30,000 packages worldwide.</p>
 				</div>
-				<div>					
-					
+				<div>
+
 					@foreach($tour_packages as $tp)
 					<!-- TOUR PLACE 1 -->
 					<a href="tourdetails/{{$tp->package_id}}">
@@ -139,22 +139,22 @@
 							<div class="col-md-3 col-sm-4 pack_icon">
 								<ul>
 									<a href="tourdetails/{{$tp->package_id}}" style="color:green;"> Details</a>
-									
+
 								</ul>
 							</div>
 						</div>
 					</div>
-					</a>					
-					@endforeach	 
+					</a>
+					@endforeach
 					
-					
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
-	
+
+
 	<section>
 		<div class="rows tb-space pad-top-o pad-bot-redu">
 			<div class="container">
@@ -168,9 +168,9 @@
 					</div>
 					<p>World's leading Hotel Booking website,Over 30,000 Hotel rooms worldwide. Book Hotel rooms and enjoy your holidays with distinctive experience</p>
 				</div>
-				
+
 				<div class="to-ho-hotel">
-					
+
 					<!-- HOTEL GRID Start-->
 					@foreach($hotels as $hotel)
 					<a href="hoteldetails/{{$hotel->hotel_id}}">
@@ -184,14 +184,14 @@
 								<div class="to-ho-hotel-con-3">
 									<ul>
 										<li>Location: {{$hotel->hotel_location}}
-											<div class="dir-rat-star ho-hot-rat-star"> Rating: 
-												<?php 
-													$rating = $hotel->hotel_rating; 
+											<div class="dir-rat-star ho-hot-rat-star"> Rating:
+												<?php
+													$rating = $hotel->hotel_rating;
 													for ($x = 1; $x <= $rating; $x++) {
 													?>
 													<i class="fa fa-star" aria-hidden="true"></i>
-												<?php	
-												} 
+												<?php
+												}
 												?>
 											</div>
 										</li>
@@ -204,12 +204,12 @@
 					</a>
 					@endforeach
 					<!-- HOTEL GRID End -->
-					
+
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<section>
 		<div class="rows pla pad-bot-redu tb-space">
 			<div class="pla1 p-home container">
@@ -223,7 +223,7 @@
 					</div>
 					<p>World's leading tour and travels Booking website,Over 30,000 packages worldwide. Book travel packages and enjoy your holidays with distinctive experience</p>
 				</div>
-				
+
 				<div class="popu-places-home">
 					@foreach($sights as $sight)
 					<div class="col-md-6 col-sm-6 col-xs-12 place">
@@ -234,12 +234,11 @@
 					</div>
 					@endforeach
 				</div>
-				
+
 			</div>
 		</div>
-	</section>	
-	
-	
+	</section>
+
+
 
 @endsection
-

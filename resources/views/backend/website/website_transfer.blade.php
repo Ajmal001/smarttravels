@@ -36,8 +36,8 @@
 										@foreach ($errors->all() as $error)
 											<span style="color:red">{{ $error }}</span>
 										@endforeach
-									@endif	
-																		
+									@endif
+
 									@if(Session::has('flash_message_insert'))
 									    <span style="color:green">{{ Session::get('flash_message_insert') }}</span>
 									@elseif(Session::has('flash_message_update'))
@@ -50,10 +50,7 @@
                         </div>
                         <div class="panel-body">
                         <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
-                           
-                              
-                           </div>
-                           <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
+
                            <div class="table-responsive">
                               <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
                                  <thead>
@@ -83,17 +80,22 @@
                                        <td>
 										    <a class="btn btn-add btn-sm" href="adminwebsitepicdetails/{{$pic->transfer_id}}"><i class="fa fa-eye"></i></a>
 										    <a class="btn btn-danger btn-sm" href="adminwebsitedeletetourpackages/"><i class="fa fa-trash-o"></i></a>
-                                           	
+
 									   </td>
                                     </tr>
                                     @endforeach
                                  </tbody>
                               </table>
+                              
+                              {{$picList->links()}}
                            </div>
+
+                          </div>
+                          <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
                         </div>
                      </div>
                   </div>
-				  
+
 				  <div class="row">
                   <div class="col-sm-12">
                      <div class="panel panel-bd lobidrag">
@@ -106,8 +108,8 @@
 										@foreach ($errors->all() as $error)
 											<span style="color:red">{{ $error }}</span>
 										@endforeach
-									@endif	
-																		
+									@endif
+
 									@if(Session::has('flash_message_insert'))
 									    <span style="color:green">{{ Session::get('flash_message_insert') }}</span>
 									@elseif(Session::has('flash_message_update'))
@@ -120,10 +122,7 @@
                         </div>
                         <div class="panel-body">
                         <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
-                           
-                              
-                           </div>
-                           <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
+
                            <div class="table-responsive">
                               <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
                                  <thead>
@@ -153,23 +152,26 @@
                                        <td>
 										    <a class="btn btn-add btn-sm" href="adminwebsitedropdetails/{{$drop->transfer_id}}"><i class="fa fa-eye"></i></a>
 										    <a class="btn btn-danger btn-sm" href="adminwebsitedeletetourpackages/"><i class="fa fa-trash-o"></i></a>
-                                           	
+
 									   </td>
                                     </tr>
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{$dropList->links()}}
                            </div>
+                         </div>
+                         <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
                         </div>
                      </div>
                   </div>
-				  
-				  
-                  
-					
-					
-				    
-			   
+
+
+
+
+
+
+
 			    <!--  Add New Tour Package -->
                 <div class="modal fade" id="package" tabindex="-1" role="dialog" aria-hidden="true">
                   <div class="modal-dialog">
@@ -178,12 +180,12 @@
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                            <h3><i class="fa fa-plane m-r-5"></i> Add New Hotel </h3>
                         </div>
-                        
+
 						<div class="modal-body">
                            <div class="row">
                                <div class="panel-body">
-							   
-							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinserttourpackages','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}   
+
+							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinserttourpackages','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
                                {!! csrf_field() !!}
                               <div class="form-group">
                                  <label>Tour Package Name</label>
@@ -202,7 +204,7 @@
 									<option>Full Package</option>
 								  </select>
 								 </div>
-							  </div>							  
+							  </div>
 							  <div class="form-group">
 								 <label>General Package Type</label>
 								 <div class="form-group">
@@ -221,61 +223,61 @@
 							  <div class="form-group">
                                  <label>Country</label>
 								 <select class="js-example-basic-multiple" name="country[]" style="width:200px;"  multiple="multiple">
-																		  
+
 								 </select>
                               </div>
                               <div class="form-group">
                                  <label>Locations</label>
                                  <select class="js-example-basic-multiple" name="location[]" style="width:200px;"  multiple="multiple">
-															  
+
 								 </select>
-                              </div>                              
+                              </div>
                               <div class="form-group">
                                  <label>Price</label>
                                  <input type="text" name="price" class="form-control" placeholder="Enter Price" required>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Duration</label>
                                  <input type="text" name="duration" class="form-control" placeholder="Enter Duration" required>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Tour Exclude</label>
 								 <select class="js-example-basic-multiple" name="tour_exclude[]" style="width:200px;"  multiple="multiple">
-																		  
+
 								 </select>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Tour Include</label>
 								 <select class="js-example-basic-multiple" name="tour_include[]" style="width:200px;"  multiple="multiple">
-																		  
+
 								 </select>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Arrival Date</label>
                                  <div class="input-group date form_date" >
                                     <input id='minMaxExample' type="text" name="arrival_date" style="z-index: 1050 !important;" class="form-control years"><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>
                                  </div>
                               </div>
-							  
+
 							  <div class="form-group">
                                  <label>Departure Date</label>
                                  <div class="input-group date form_date" >
                                     <input id='minMaxExample2' type="text" name="departure_date" style="z-index: 1050 !important;" class="form-control years"><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>
                                  </div>
-                              </div>							  
-							  
+                              </div>
+
                               <div class="form-group">
                                  <label>Tour Image</label>
-                                 <input type="file" name="tour_image">                                 
+                                 <input type="file" name="tour_image">
                               </div>
                               <div class="form-group">
                                  <label>Tour details</label>
                                <textarea class="form-control" id="summernote" name="tour_details" rows="3"></textarea>
-							   
+
                               </div>
                               <div class="form-group">
 							  <input type="submit" value="Save" class="btn btn-success" >
@@ -286,13 +288,13 @@
                   </div>
                   <!-- /.modal-dialog -->
                </div>
-			 </div> 			 
-            </div> 			
-			
-			
-			 
-			
-		</div> 
-		
-		 
-  @endsection    
+			 </div>
+            </div>
+
+
+
+
+		</div>
+
+
+  @endsection

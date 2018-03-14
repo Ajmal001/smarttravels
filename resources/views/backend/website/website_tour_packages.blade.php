@@ -97,6 +97,7 @@
                                  @endforeach
                                  </tbody>
                               </table>
+                              {{ $tour_packages->links() }}
                            </div>
                         </div>
                      </div>
@@ -422,9 +423,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>              
+                    </div>
                 </div>
-            </div> 
+            </div>
             <!--  VIEW MODAL END -->
 
             <!-- EDIT MODAL START -->
@@ -483,14 +484,14 @@
                                     <div class="form-group">
                                         <label>Country</label>
                                         <select class="js-example-basic-multiple" name="country[]" id="country" style="width:95%;"  multiple="multiple" required>
-                                            
+
                                         </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Locations</label>
                                         <select class="js-example-basic-multiple" name="location[]" id="location" style="width:95%;"  multiple="multiple" required>
-                                        
+
                                         </select>
                                     </div>
 
@@ -507,14 +508,14 @@
                                     <div class="form-group">
                                         <label>Tour Exclude</label>
                                         <select class="js-example-basic-multiple" id="tour_exclude" name="tour_exclude[]" style="width:95%;"  multiple="multiple">
-                                            
+
                                         </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Tour Include</label>
                                         <select class="js-example-basic-multiple" name="tour_include[]" id="tour_include" style="width:95%;"  multiple="multiple">
-                                            
+
                                         </select>
                                     </div>
 
@@ -548,13 +549,13 @@
                                     </div>
 
                                     {!! Form::close() !!}
-                                    
+
                                 </div>
                             </div>
                         </div>
-                    </div>              
+                    </div>
                 </div>
-            </div> 
+            </div>
             <!--  EDIT MODAL END -->
 
 
@@ -566,7 +567,7 @@
   @section('script')
 
     <script>
-        
+
         // MULTIPLE DROPDOWN SELECT
         $("#addTourLocationByChangingCountry").on('change', function(){
             var countryNameArr = $(this).val();
@@ -625,7 +626,7 @@
                 $('#edittourpackagesmodal #general_package').val(data.editpackage.general_package);
                 $('#edittourpackagesmodal #price').val(data.editpackage.price);
                 $('#edittourpackagesmodal #duration').val(data.editpackage.duration);
-                
+
                 var country_str = data.editpackage.country;
                 var country = country_str.split(',');
                 $('#edittourpackagesmodal #country').empty();
@@ -636,7 +637,7 @@
                 $.each(country_not_in, function(index, value){
                     $('#edittourpackagesmodal #country').append('<option>'+value+'</option>');
                 });
-                
+
                 var location_str = data.editpackage.location;
                 var location = location_str.split(',');
                 $('#edittourpackagesmodal #location').empty();
@@ -669,7 +670,7 @@
                 $.each(tourexclude_not_in, function(index, value){
                     $('#edittourpackagesmodal #tour_exclude').append('<option>'+value+'</option>');
                 });
-                
+
                 var tour_include_str = data.editpackage.tour_include;
                 var tour_include = tour_include_str.split(',');
                 $('#edittourpackagesmodal #tour_include').empty();
@@ -685,9 +686,9 @@
                 $('#edittourpackagesmodal #minMaxExample4').val(data.editpackage.departure_date);
                 $('#edittourpackagesmodal #tour_image').attr('src','public/backendimages/'+data.editpackage.tour_image);
                 $('#edittourpackagesmodal #tour_image').attr("style","display:block;margin-top:10px;");
-                
+
                 $('#summernote-editpackage').summernote('code', data.editpackage.tour_details);
-                
+
                 //console.log(data.locationlist);
             });
         });

@@ -144,6 +144,7 @@
                                  </div>
                              </div>
                              @endforeach
+
                              @else
                              <div class="col-xs-12" style="min-height:200px">
                                <h3 class="text-center" style="margin-top:80px">No Details found. Try to search again !</h3>

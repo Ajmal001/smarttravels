@@ -77,6 +77,7 @@
                               @endforeach
                              </tbody>
                           </table>
+                          {{ $allincome->links() }}
                        </div>
                     </div>
                  </div>

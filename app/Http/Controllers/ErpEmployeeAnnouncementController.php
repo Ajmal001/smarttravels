@@ -11,10 +11,10 @@ use DB;
 class ErpEmployeeAnnouncementController extends Controller
 {
     public function showEmployeeAnnouncement(){
-        $announcements =  ErpEmployeeAnnouncement::all();
+        $announcements =  ErpEmployeeAnnouncement::latest()->paginate(10);
         return view('backend.erp.announcements.announcement', compact('announcements'));
     }
-  
+
     public function createEmployeeAnnouncement(Request $request){
 
         $insert = new ErpEmployeeAnnouncement();
@@ -58,7 +58,7 @@ class ErpEmployeeAnnouncementController extends Controller
 
         $announcement_id = $request->input('announcement_id');
         ErpEmployeeAnnouncement::find($announcement_id)->delete();
-        
+
         Session::flash('flash_message_delete', 'Announcement Deleted !');
         return redirect('/adminerpemployeeannouncement');
     }

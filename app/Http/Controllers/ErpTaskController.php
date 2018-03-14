@@ -13,7 +13,7 @@ use DB;
 class ErpTaskController extends Controller
 {
     public function showTask(){
-      $tasks =  ErpTask::all();
+      $tasks =  ErpTask::latest()->paginate(10);
       $employees = EmployeeLogin::all();
       return view('backend.erp.task.task', compact('tasks','employees'));
       //return $employees;

@@ -16,7 +16,7 @@ use DB;
 class ErpAccountsController extends Controller
 {
     public function showExpenses(){
-      $expenses = ErpExpenses::all();
+      $expenses = ErpExpenses::latest()->paginate(10);
        return view('backend.erp.accounts.expenses.expenses',compact('expenses'));
     }
 
@@ -65,7 +65,7 @@ class ErpAccountsController extends Controller
 
     // Income
     public function showIncome(){
-      $allincome = ErpSales::all();
+      $allincome = ErpSales::latest()->paginate(10);
       $customers = ErpCustomers::all();
       return view('backend.erp.accounts.income.income', compact('allincome','customers'));
     }

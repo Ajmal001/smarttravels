@@ -36,8 +36,8 @@
 										@foreach ($errors->all() as $error)
 											<span style="color:red">{{ $error }}</span>
 										@endforeach
-									@endif	
-																		
+									@endif
+
 									@if(Session::has('flash_message_insert'))
 									    <span style="color:green">{{ Session::get('flash_message_insert') }}</span>
 									@elseif(Session::has('flash_message_update'))
@@ -50,9 +50,9 @@
                         </div>
                         <div class="panel-body">
                         <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
-                           
-                              
-                           
+
+
+
                            <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
                            <div class="table-responsive">
                               <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
@@ -68,7 +68,7 @@
                                        <th>Passport No</th>
                                        <th>Date</th>
                                        <th>User Image</th>
-                                       <th>Password Image</th>                                                
+                                       <th>Password Image</th>
                                        <th>Delete</th>
                                     </tr>
                                  </thead>
@@ -84,10 +84,10 @@
                                        <td>{{$visa->profession}}</td>
                                        <td>{{$visa->passport_no}}</td>
                                        <td>{{$visa->arrival_date}}</td>
-                                       
+
                                        <td><a href="{{ URL::to('/') }}/public/backendimages/{{$visa->image_user}}" download>Download</a></td>
                                        <td><a href="{{ URL::to('/') }}/public/backendimages/{{$visa->image_passport}}" download>Download</a></td>
-                                       
+
                                        <td>
 										    <a class="btn btn-danger btn-sm" href="adminwebsitevisabookingdelete/{{$visa->id}}"><i class="fa fa-trash-o"></i></a>
                                        </td>
@@ -95,21 +95,22 @@
                                     @endforeach
                                  </tbody>
                               </table>
+                              {{$visaBooingList->links()}}
                            </div>
                         </div>
                      </div>
                   </div>
-               </div>               
-					
-					
-				    
-			   
-			   
-			
-			
-			 
-			
-		</div> 
-		
-		 
-  @endsection    
+               </div>
+
+
+
+
+
+
+
+
+
+		</div>
+
+
+  @endsection

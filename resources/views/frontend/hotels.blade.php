@@ -10,7 +10,7 @@
 				<div class="hot-page2-alp-tit">
 					<h1>Hotel & Restaurants in Dhaka </h1>
 					<ul>
-						<li><a href="{{url('/')}}>Home</a> </li>
+						<li><a href="{{url('/')}}">Home</a> </li>
 						<li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
 						<li><a href="#" class="bread-acti">Hotels & Restaurants</a> </li>
 					</ul>
@@ -24,19 +24,19 @@
 						<!--PART 1 : LEFT LISTINGS-->
 						<div class="hot-page2-alp-con-left-1">
 							<h3>Search Hotels</h3> </div>
-						
-							@include('frontend.hotels.hotel_location_search_form')						
-						
+
+							@include('frontend.hotels.hotel_location_search_form')
+
 							@include('frontend.hotels.hotel_price_search_form')
-							
+
 							@include('frontend.hotels.hotel_star_search_form')
-							
-						</div>	
+
+						</div>
 					<!--RIGHT LISTINGS-->
 					<div class="col-md-9 hot-page2-alp-con-right">
-						<div class="hot-page2-alp-con-right-1">	
-							
-							
+						<div class="hot-page2-alp-con-right-1">
+
+
 								@foreach($hotels as $hotel)
 								<!--LISTINGS START-->
 								<div class="hot-page2-alp-r-list">
@@ -63,8 +63,10 @@
 									</div>
 								</div>
 								<!--END LISTINGS-->
-								@endforeach	
-														
+								@endforeach
+								<div class="frontend-pagination">
+									{{$hotels->links()}}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -74,5 +76,5 @@
 		</div>
 	</section>
 
-	
+
 	@endsection
