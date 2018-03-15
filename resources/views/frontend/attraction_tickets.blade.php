@@ -5,7 +5,11 @@
 @section('body')
 	<!--====== BANNER ==========-->
 	<section>
-		<div class="rows inner_banner inner_banner_1">
+			@if($optionsimage)
+				<div class="rows inner_banner" style="background-image:url(public/backendimages/{{$optionsimage}})">
+			@else
+				<div class="rows inner_banner">
+			@endif
 			<div class="container">
 				<h2><span>Now Book -</span> Attraction Tickets</h2>
 				<ul>

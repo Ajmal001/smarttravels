@@ -14,6 +14,7 @@ use App\TourLocation;
 use App\ErpTask;
 use App\EmployeeLogin;
 use App\ErpSales;
+use App\OptionsImage;
 
 use Carbon\Carbon;
 
@@ -300,5 +301,74 @@ class AdminController extends Controller
   }
 
 
+  // Page Banner Options
+
+  public function pageBanner()
+  {
+    $pagebanners = OptionsImage::where('image_id',1)->get();
+
+    if( $pagebanners->isEmpty() ){
+      $insert = new OptionsImage();
+      $insert->save();
+    }
+
+    return view('backend.website.options.pagebanner', compact('pagebanners'));
+
+  }
+
+  public function pageBannerUpdate(Request $request)
+  {
+    $update = OptionsImage::find(1);
+
+    if($request->hasFile('image_home')){
+      $image = $request->file('image_home');
+      $filename = 'home'.time().'.'.$image->getClientOriginalExtension();
+
+      $request->image_home->move(public_path('backendimages'), $filename);
+
+      $update->image_home = $filename;
+
+    }
+
+    if($request->hasFile('image_package')){
+      $image = $request->file('image_package');
+      $filename = 'package'.time().'.'.$image->getClientOriginalExtension();
+
+      $request->image_package->move(public_path('backendimages'), $filename);
+
+      $update->image_package = $filename;
+    }
+
+    if($request->hasFile('image_hotel')){
+      $image = $request->file('image_hotel');
+      $filename = 'hotel'.time().'.'.$image->getClientOriginalExtension();
+
+      $request->image_hotel->move(public_path('backendimages'), $filename);
+
+      $update->image_hotel = $filename;
+    }
+
+    if($request->hasFile('image_sight')){
+      $image = $request->file('image_sight');
+      $filename = 'sight'.time().'.'.$image->getClientOriginalExtension();
+
+      $request->image_sight->move(public_path('backendimages'), $filename);
+
+      $update->image_sight = $filename;
+    }
+
+    if($request->hasFile('image_attraction')){
+      $image = $request->file('image_attraction');
+      $filename = 'attraction'.time().'.'.$image->getClientOriginalExtension();
+
+      $request->image_attraction->move(public_path('backendimages'), $filename);
+
+      $update->image_attraction = $filename;
+    }
+
+    $update->save();
+
+    return redirect('adminwebsiteoptionspagebanner');
+  }
 
 }

@@ -4,7 +4,11 @@
 
 @section('body')
 	<!--====== HOTELS LIST ==========-->
-	<section class="hot-page2-alp hot-page2-pa-sp-top">
+	@if($optionsimage)
+		<section class="hot-page2-pa-sp-top" style="background-image:url(public/backendimages/{{$optionsimage}});background-attachment:fixed;background-size:cover;">
+	@else
+		<section class="hot-page2-alp hot-page2-pa-sp-top">
+	@endif
 		<div class="container">
 			<div class="row inner_banner inner_banner_3 bg-none">
 				<div class="hot-page2-alp-tit">

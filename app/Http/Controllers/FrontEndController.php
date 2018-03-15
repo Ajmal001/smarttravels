@@ -17,6 +17,7 @@ use App\Options;
 use App\Visa;
 use App\VisaApplication;
 use App\ErpEmployeeAnnouncement;
+use App\OptionsImage;
 use Auth;
 
 use Illuminate\Support\MessageBag;
@@ -36,8 +37,9 @@ class FrontEndController extends Controller
 		$hotels = Hotels::get();
 		$sights = Sights::get();
 		$current_option = Options::get()->first();
-
-		return view('frontend.home',compact('tour_packages','hotels','countryList','locationList','sights','current_option','current_option'));
+		$optionsimage = OptionsImage::first();
+		$optionsimage = $optionsimage['image_home'];
+		return view('frontend.home',compact('tour_packages','hotels','countryList','locationList','sights','current_option','current_option','optionsimage'));
 	}
 
 	public function tourDetails($package_id){
@@ -53,7 +55,9 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$tourPackages = TourPackages::latest()->paginate(5);
-		return view('frontend.packages',compact('tourPackages','countryList','locationList','current_option'));
+		$optionsimage = OptionsImage::first();
+		$optionsimage = $optionsimage['image_package'];
+		return view('frontend.packages',compact('tourPackages','countryList','locationList','current_option','optionsimage'));
 	}
 
 	public function tourSearch(Request $request){
@@ -85,7 +89,9 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$hotels = Hotels::latest()->paginate(10);
-		return view('frontend.hotels',compact('hotels','countryList','locationList','current_option'));
+		$optionsimage = OptionsImage::first();
+		$optionsimage = $optionsimage['image_hotel'];
+		return view('frontend.hotels',compact('hotels','countryList','locationList','current_option','optionsimage'));
 	}
 
 	public function hotelSearchLocation(Request $request){
@@ -149,7 +155,9 @@ class FrontEndController extends Controller
 		$countryList = TourCountry::get();
 		$current_option = Options::get()->first();
 		$locationList = TourLocation::get();
-		return view('frontend.sight_seeing',compact('countryList','locationList','sightList','current_option'));
+		$optionsimage = OptionsImage::first();
+		$optionsimage = $optionsimage['image_sight'];
+		return view('frontend.sight_seeing',compact('countryList','locationList','sightList','current_option','optionsimage'));
 	}
 
 	public function sightDetails($sight_id){
@@ -237,9 +245,10 @@ class FrontEndController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
-
 		$attractionsList = Attractions::latest()->paginate(10);
-		return view('frontend.attraction_tickets',compact('countryList','locationList','attractionsList','current_option'));
+		$optionsimage = OptionsImage::first();
+		$optionsimage = $optionsimage['image_attraction'];
+		return view('frontend.attraction_tickets',compact('countryList','locationList','attractionsList','current_option','optionsimage'));
 	}
 
 	public function attractionDetails($id){

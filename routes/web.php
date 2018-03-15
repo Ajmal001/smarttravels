@@ -318,13 +318,16 @@ Route::get('/adminwebsiteoptionscopyright', 'AdminController@copyrightOptions')-
 Route::post('/adminwebsiteoptionscopyrightsave', 'AdminController@copyrightOptionsSave')->middleware('auth');
 
 // Admin Monthly Expense
-
 Route::get('/adminmonthlyexpanse', 'AdminController@adminMonthlyExpanse')->middleware('auth');
 Route::get('/adminweeklyexpanse', 'AdminController@adminWeeklyExpanse')->middleware('auth');
 Route::get('/adminmonthlysales', 'AdminController@adminMonthlySales')->middleware('auth');
 
-// Operator
+// Page Banner Options
+Route::get('/adminwebsiteoptionspagebanner', 'AdminController@pageBanner')->middleware('auth');
+Route::post('/adminwebsiteoptionspagebanner', 'AdminController@pageBannerUpdate')->middleware('auth');
 
+
+// Operator
 
 Route::get('/adminwebsiteoperatorlocation', 'OperatorController@OperatorLocation')->middleware('auth');
 

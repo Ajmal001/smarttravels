@@ -8,7 +8,11 @@
 	<!-- SECTION: HEADER -->
 	<!--HEADER SECTION-->
 	<section>
-		<div class="v2-hom-search">
+		@if($optionsimage)
+			<div class="v2-hom-search" style="background-image:url(public/backendimages/{{$optionsimage}})">
+		@else
+			<div class="v2-hom-search">
+		@endif
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
@@ -146,7 +150,7 @@
 					</div>
 					</a>
 					@endforeach
-					
+
 
 					</div>
 				</div>

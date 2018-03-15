@@ -26,7 +26,7 @@ class SightController extends Controller
     public function showSigth(){
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
-		$sightList = Sights::latest()->paginate(1);
+		$sightList = Sights::latest()->paginate(10);
 		return view('backend.website.website_sights',compact('countryList','locationList','sightList'));
 	}
 
