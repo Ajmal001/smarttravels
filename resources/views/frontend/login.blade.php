@@ -26,7 +26,7 @@
          <h3>OR</h3>
         <div class="row">
           <div class="input-field col s12">
-            <a href="" type="submit" class="waves-effect waves-light btn-large full-btn" style="font-size:40px">Customer</a> </div>
+            <a href="{{url('/customerlogin')}}" type="submit" class="waves-effect waves-light btn-large full-btn" style="font-size:40px">Customer</a> </div>
         </div>
 
 

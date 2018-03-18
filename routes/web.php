@@ -508,3 +508,15 @@ Route::get('/employeeattendences','EmployeeProfileController@employeeAttendences
 Route::get('/employeeexpense','EmployeeProfileController@employeeExpense');
 Route::get('/employeeexpenseadd','EmployeeProfileController@employeeExpenseAdd');
 Route::post('/employeeexpensecreate','EmployeeProfileController@employeeExpenseCreate');
+
+
+/*----------------------Customer----------------------*/
+
+// Customer Auth
+Route::get('/customerhome', 'CustomerProfileController@customerHome');
+Route::get('/customerlogin', 'Customer\LoginController@showLoginForm');
+Route::post('/customerlogin', 'Customer\LoginController@login');
+Route::get('/customerregister', 'Customer\LoginController@register');
+Route::post('/customerregister', 'Customer\RegisterController@register');
+Route::post('/customerlogout', 'Customer\LoginController@logout');
+Route::get('/customerlogout', 'Customer\LoginController@logout');
