@@ -40,7 +40,7 @@
 
                   <div class="panel-body">
 
-      						   {!! Form::open(['method'=>'post','url' => 'adminwebsiteoptionspagebanner','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+      						   {!! Form::open(['method'=>'post','url' => 'adminwebsiteoptionspagebanner','class'=>'col-sm-9','enctype'=>'multipart/form-data']) !!}
                      {!! csrf_field() !!}
 
       							  <div class="row">
@@ -70,14 +70,45 @@
                           </div>
                         </div>
                         @if(isset($pagebanners) && $pagebanners)
-                        @if($pagebanners[0]->image_package)
-        							  <div class="col-sm-6">
-          							  <div class="banner-image">
-                              <img src="{{URL::to('/') }}/public/backendimages/{{$pagebanners[0]->image_package}}" alt="" class="img-responsive">
+                          @if($pagebanners[0]->image_package)
+          							  <div class="col-sm-6">
+            							  <div class="banner-image">
+                                <img src="{{URL::to('/') }}/public/backendimages/{{$pagebanners[0]->image_package}}" alt="" class="img-responsive">
+                            </div>
+                          </div>
+                          @endif
+
+                          @if($pagebanners[0]->package_heading)
+                            @php
+                            $packageheading = $pagebanners[0]->package_heading;
+                            @endphp
+                          @else
+                            @php
+                            $packageheading = '';
+                            @endphp
+                          @endif
+
+                          @if($pagebanners[0]->package_description)
+                            @php
+                            $packagedescription = $pagebanners[0]->package_description;
+                            @endphp
+                          @else
+                            @php
+                            $packagedescription = '';
+                            @endphp
+                          @endif
+
+                        @endif
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                             <label>Package Page Heading</label>
+                             <input type="text" name="package_heading" class="form-control" value="{{$packageheading}}">
+                          </div>
+                          <div class="form-group">
+                             <label>Package Page Description</label>
+                             <textarea name="package_description" class="form-control">{{$packagedescription}}</textarea>
                           </div>
                         </div>
-                        @endif
-                        @endif
                       </div>
                       <hr>
 
@@ -89,14 +120,45 @@
                           </div>
                         </div>
                         @if(isset($pagebanners) && $pagebanners)
-                        @if($pagebanners[0]->image_hotel)
-        							  <div class="col-sm-6">
-          							  <div class="banner-image">
-                              <img src="{{URL::to('/') }}/public/backendimages/{{$pagebanners[0]->image_hotel}}" alt="" class="img-responsive">
+                          @if($pagebanners[0]->image_hotel)
+          							  <div class="col-sm-6">
+            							  <div class="banner-image">
+                                <img src="{{URL::to('/') }}/public/backendimages/{{$pagebanners[0]->image_hotel}}" alt="" class="img-responsive">
+                            </div>
+                          </div>
+                          @endif
+
+                          @if($pagebanners[0]->hotel_heading)
+                            @php
+                            $hotelheading = $pagebanners[0]->hotel_heading;
+                            @endphp
+                          @else
+                            @php
+                            $hotelheading = '';
+                            @endphp
+                          @endif
+
+                          @if($pagebanners[0]->hotel_description)
+                            @php
+                            $hoteldescription = $pagebanners[0]->hotel_description;
+                            @endphp
+                          @else
+                            @php
+                            $hoteldescription = '';
+                            @endphp
+                          @endif
+
+                        @endif
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                             <label>Hotel Page Heading</label>
+                             <input type="text" name="hotel_heading" class="form-control" value="{{$hotelheading}}">
+                          </div>
+                          <div class="form-group">
+                             <label>Package Page Description</label>
+                             <textarea name="hotel_description" class="form-control">{{$hoteldescription}}</textarea>
                           </div>
                         </div>
-                        @endif
-                        @endif
                       </div>
                       <hr>
 
@@ -108,14 +170,45 @@
                           </div>
                         </div>
                         @if(isset($pagebanners) && $pagebanners)
-                        @if($pagebanners[0]->image_sight)
-        							  <div class="col-sm-6">
-          							  <div class="banner-image">
-                              <img src="{{URL::to('/') }}/public/backendimages/{{$pagebanners[0]->image_sight}}" alt="" class="img-responsive">
+                          @if($pagebanners[0]->image_sight)
+          							  <div class="col-sm-6">
+            							  <div class="banner-image">
+                                <img src="{{URL::to('/') }}/public/backendimages/{{$pagebanners[0]->image_sight}}" alt="" class="img-responsive">
+                            </div>
+                          </div>
+                          @endif
+
+                          @if($pagebanners[0]->sight_heading)
+                            @php
+                            $sightheading = $pagebanners[0]->sight_heading;
+                            @endphp
+                          @else
+                            @php
+                            $sightheading = '';
+                            @endphp
+                          @endif
+
+                          @if($pagebanners[0]->sight_description)
+                            @php
+                            $sightdescription = $pagebanners[0]->sight_description;
+                            @endphp
+                          @else
+                            @php
+                            $sightdescription = '';
+                            @endphp
+                          @endif
+
+                        @endif
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                             <label>Sight Page Heading</label>
+                             <input type="text" name="sight_heading" class="form-control" value="{{$sightheading}}">
+                          </div>
+                          <div class="form-group">
+                             <label>Sight Page Description</label>
+                             <textarea name="sight_description" class="form-control">{{$sightdescription}}</textarea>
                           </div>
                         </div>
-                        @endif
-                        @endif
                       </div>
                       <hr>
 
@@ -127,14 +220,45 @@
                           </div>
                         </div>
                         @if(isset($pagebanners) && $pagebanners)
-                        @if($pagebanners[0]->image_attraction)
-        							  <div class="col-sm-6">
-          							  <div class="banner-image">
-                              <img src="{{URL::to('/') }}/public/backendimages/{{$pagebanners[0]->image_attraction}}" alt="" class="img-responsive">
+                          @if($pagebanners[0]->image_attraction)
+          							  <div class="col-sm-6">
+            							  <div class="banner-image">
+                                <img src="{{URL::to('/') }}/public/backendimages/{{$pagebanners[0]->image_attraction}}" alt="" class="img-responsive">
+                            </div>
+                          </div>
+                          @endif
+
+                          @if($pagebanners[0]->attraction_heading)
+                            @php
+                            $attractionheading = $pagebanners[0]->attraction_heading;
+                            @endphp
+                          @else
+                            @php
+                            $attractionheading = '';
+                            @endphp
+                          @endif
+
+                          @if($pagebanners[0]->attraction_description)
+                            @php
+                            $attractiondescription = $pagebanners[0]->attraction_description;
+                            @endphp
+                          @else
+                            @php
+                            $attractiondescription = '';
+                            @endphp
+                          @endif
+
+                        @endif
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                             <label>Attraction Page Heading</label>
+                             <input type="text" name="attraction_heading" class="form-control" value="{{$attractionheading}}">
+                          </div>
+                          <div class="form-group">
+                             <label>Attraction Page Description</label>
+                             <textarea name="attraction_description" class="form-control">{{$attractiondescription}}</textarea>
                           </div>
                         </div>
-                        @endif
-                        @endif
                       </div>
                       <hr>
 

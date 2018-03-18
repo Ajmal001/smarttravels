@@ -5,13 +5,17 @@
 @section('body')
 	<!--====== BANNER ==========-->
 	<section>
-			@if($optionsimage)
-				<div class="rows inner_banner" style="background-image:url(public/backendimages/{{$optionsimage}})">
+			@if($optionsimage['image_sight'])
+				<div class="rows inner_banner" style="background-image:url(public/backendimages/{{$optionsimage['image_sight']}})">
 			@else
 				<div class="rows inner_banner">
 			@endif
 			<div class="container">
-				<h2><span>Now Book -</span> Your Top Sight Seeing Places</h2>
+				@if($optionsimage['sight_heading'])
+					<h2>{{$optionsimage['sight_heading']}}</h2>
+				@else
+					<h2><span>Now Book -</span> Your Top Sight Seeing Places</h2>
+				@endif
 				<ul>
 					<li><a href="#inner-page-title">Home</a>
 					</li>
@@ -19,7 +23,11 @@
 					<li><a href="#inner-page-title" class="bread-acti">Sight Seeing</a>
 					</li>
 				</ul>
-				<p>Book travel packages and enjoy your holidays with distinctive experience</p>
+				@if($optionsimage['sight_description'])
+					<p>{{$optionsimage['sight_description']}}</p>
+				@else
+					<p>Book travel packages and enjoy your holidays with distinctive experience</p>
+				@endif
 			</div>
 		</div>
 	</section>

@@ -338,6 +338,9 @@ class AdminController extends Controller
 
       $update->image_package = $filename;
     }
+    $update->package_heading = $request->package_heading;
+    $update->package_description = $request->package_description;
+
 
     if($request->hasFile('image_hotel')){
       $image = $request->file('image_hotel');
@@ -347,6 +350,9 @@ class AdminController extends Controller
 
       $update->image_hotel = $filename;
     }
+    $update->hotel_heading = $request->hotel_heading;
+    $update->hotel_description = $request->hotel_description;
+
 
     if($request->hasFile('image_sight')){
       $image = $request->file('image_sight');
@@ -356,6 +362,9 @@ class AdminController extends Controller
 
       $update->image_sight = $filename;
     }
+    $update->sight_heading = $request->sight_heading;
+    $update->sight_description = $request->sight_description;
+
 
     if($request->hasFile('image_attraction')){
       $image = $request->file('image_attraction');
@@ -365,6 +374,9 @@ class AdminController extends Controller
 
       $update->image_attraction = $filename;
     }
+    $update->attraction_heading = $request->attraction_heading;
+    $update->attraction_description = $request->attraction_description;
+
 
     $update->save();
 

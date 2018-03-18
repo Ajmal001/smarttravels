@@ -44,22 +44,28 @@
 								<tr>
 									<td>Address</td>
 									<td>:</td>
-									<td></td>
+									<td>{{$customer->profile->customer_address}}</td>
 								</tr>
 								<tr>
 									<td>National ID</td>
 									<td>:</td>
-									<td></td>
+									<td>{{$customer->profile->customer_nid}}</td>
 								</tr>
 								<tr>
 									<td>Designation</td>
 									<td>:</td>
-									<td></td>
+									<td>{{$customer->profile->customer_profession}}</td>
 								</tr>
 								<tr>
 									<td>Status</td>
 									<td>:</td>
-									<td><span class="db-done">Active</span></td>
+									<td>
+										@if($customer->status)
+										<span class="db-done">Active</span>
+										@else
+										<span class="db-done">Inctive</span>
+										@endif
+									</td>
 								</tr>
 							</tbody>
 						</table>

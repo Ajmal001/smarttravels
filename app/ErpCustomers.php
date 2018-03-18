@@ -14,5 +14,10 @@ class ErpCustomers extends Model
       return $this->hasMany('App\ErpSales','customer_id');
     }
 
+    public function customer()
+    {
+        return $this->belongsTo(CustomerLogin::class);
+    }
+
 
 }

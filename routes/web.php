@@ -520,3 +520,7 @@ Route::get('/customerregister', 'Customer\LoginController@register');
 Route::post('/customerregister', 'Customer\RegisterController@register');
 Route::post('/customerlogout', 'Customer\LoginController@logout');
 Route::get('/customerlogout', 'Customer\LoginController@logout');
+
+// Front End Customer Profile
+Route::get('/customerprofileedit','CustomerProfileController@customerProfileEdit');
+Route::post('/customerprofileupdate','CustomerProfileController@customerProfileUpdate');

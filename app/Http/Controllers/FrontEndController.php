@@ -56,7 +56,6 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$tourPackages = TourPackages::latest()->paginate(5);
 		$optionsimage = OptionsImage::first();
-		$optionsimage = $optionsimage['image_package'];
 		return view('frontend.packages',compact('tourPackages','countryList','locationList','current_option','optionsimage'));
 	}
 
@@ -90,7 +89,6 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$hotels = Hotels::latest()->paginate(10);
 		$optionsimage = OptionsImage::first();
-		$optionsimage = $optionsimage['image_hotel'];
 		return view('frontend.hotels',compact('hotels','countryList','locationList','current_option','optionsimage'));
 	}
 
@@ -156,7 +154,6 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$locationList = TourLocation::get();
 		$optionsimage = OptionsImage::first();
-		$optionsimage = $optionsimage['image_sight'];
 		return view('frontend.sight_seeing',compact('countryList','locationList','sightList','current_option','optionsimage'));
 	}
 
@@ -247,7 +244,6 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$attractionsList = Attractions::latest()->paginate(10);
 		$optionsimage = OptionsImage::first();
-		$optionsimage = $optionsimage['image_attraction'];
 		return view('frontend.attraction_tickets',compact('countryList','locationList','attractionsList','current_option','optionsimage'));
 	}
 

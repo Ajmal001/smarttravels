@@ -6,14 +6,27 @@
 
 
     <section>
-        @if($optionsimage)
-          <div class="rows inner_banner" style="background-image:url(public/backendimages/{{$optionsimage}})">
+        @if($optionsimage['image_package'])
+          <div class="rows inner_banner" style="background-image:url(public/backendimages/{{$optionsimage['image_package']}})">
         @else
           <div class="rows inner_banner">
         @endif
             <div class="container">
-                <h2><span>Tour Package -</span> Top Family Packages In The World</h2><ul><li><a href="#inner-page-title">Home</a></li><li><i class="fa fa-angle-right" aria-hidden="true"></i> </li><li><a href="#inner-page-title" class="bread-acti">Family Package</a></li></ul>
+                @if($optionsimage['package_heading'])
+                <h2>{{$optionsimage['package_heading']}}</h2>
+                @else
+                <h2><span>Tour Package -</span> Top Family Packages In The World</h2>
+                @endif
+                <ul>
+                  <li><a href="#inner-page-title">Home</a></li>
+                  <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
+                  <li><a href="#inner-page-title" class="bread-acti">Family Package</a></li>
+                </ul>
+                @if($optionsimage['package_description'])
+                <p>{{$optionsimage['package_description']}}</p>
+                @else
                 <p>Book travel packages and enjoy your holidays with distinctive experience</p>
+                @endif
             </div>
         </div>
     </section>

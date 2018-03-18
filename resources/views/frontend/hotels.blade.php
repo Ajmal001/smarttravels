@@ -4,21 +4,29 @@
 
 @section('body')
 	<!--====== HOTELS LIST ==========-->
-	@if($optionsimage)
-		<section class="hot-page2-pa-sp-top" style="background-image:url(public/backendimages/{{$optionsimage}});background-attachment:fixed;background-size:cover;">
+	@if($optionsimage['image_hotel'])
+		<section class="hot-page2-pa-sp-top" style="background-image:url(public/backendimages/{{$optionsimage['image_hotel']}});background-attachment:fixed;background-size:cover;">
 	@else
 		<section class="hot-page2-alp hot-page2-pa-sp-top">
 	@endif
 		<div class="container">
 			<div class="row inner_banner inner_banner_3 bg-none">
 				<div class="hot-page2-alp-tit">
-					<h1>Hotel & Restaurants in Dhaka </h1>
+					@if($optionsimage['hotel_heading'])
+						<h1>{{$optionsimage['hotel_heading']}}</h1>
+					@else
+						<h1>Hotel & Restaurants in Dhaka </h1>
+					@endif
 					<ul>
 						<li><a href="{{url('/')}}">Home</a> </li>
 						<li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
 						<li><a href="#" class="bread-acti">Hotels & Restaurants</a> </li>
 					</ul>
-					<p>World's leading Hotel Booking website,Over 30,000 Hotel rooms worldwide. </p>
+					@if($optionsimage['hotel_description'])
+						<p>{{$optionsimage['hotel_description']}}</p>
+					@else
+						<p>World's leading Hotel Booking website,Over 30,000 Hotel rooms worldwide. </p>
+					@endif
 				</div>
 			</div>
 			<div class="row">
