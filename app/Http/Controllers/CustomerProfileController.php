@@ -8,9 +8,8 @@ use App\TourCountry;
 use App\TourLocation;
 use App\Options;
 
-use App\ErpEmployeeAnnouncement;
-use App\ErpExpenses;
 use App\CustomerLogin;
+use App\ErpSales;
 
 use Auth;
 use File;
@@ -49,7 +48,6 @@ class CustomerProfileController extends Controller
         $countryList = TourCountry::get();
         $locationList = TourLocation::get();
         $current_option = Options::get()->first();
-        $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $customer = Auth::user();
         $customer_id = Auth::user()->id;
@@ -57,12 +55,12 @@ class CustomerProfileController extends Controller
         return view('frontend.customer.home',compact('customer','countryList','locationList','current_option'));
     }
 
+
     public function customerProfileEdit()
     {
         $countryList = TourCountry::get();
         $locationList = TourLocation::get();
         $current_option = Options::get()->first();
-        $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $customer = Auth::user();
         $customer_id = Auth::user()->id;
@@ -88,10 +86,12 @@ class CustomerProfileController extends Controller
             $filename = 'customer_dafault.png';
         }
 
+        // Customer Name
         $customer->update([
           'name'  => $request->name
         ]);
 
+        // Customer Profile
         $customer->profile->update([
             'customer_nid'          => $request->customer_nid,
             'customer_phone'        => $request->customer_phone,
@@ -107,12 +107,22 @@ class CustomerProfileController extends Controller
             'customer_image'        => $filename
         ]);
 
-
-
         return redirect('/customerhome');
 
-        // return redirect('/customerhome');
+    }
 
+    // Package which customer have Brought
+    public function customerServices()
+    {
+        $countryList = TourCountry::get();
+        $locationList = TourLocation::get();
+        $current_option = Options::get()->first();
+
+        $customer = Auth::user();
+        $customer_id = Auth::user()->id;
+        $cutomerbrought = ErpSales::where('sales_customer_id',$customer_id)->latest()->paginate(10);
+
+        return view('frontend.customer.brought',compact('customer','cutomerbrought','countryList','locationList','current_option'));
     }
 
 }

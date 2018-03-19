@@ -524,3 +524,4 @@ Route::get('/customerlogout', 'Customer\LoginController@logout');
 // Front End Customer Profile
 Route::get('/customerprofileedit','CustomerProfileController@customerProfileEdit');
 Route::post('/customerprofileupdate','CustomerProfileController@customerProfileUpdate');
+Route::get('/customerservices','CustomerProfileController@customerServices');

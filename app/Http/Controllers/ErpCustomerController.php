@@ -84,6 +84,8 @@ class ErpCustomerController extends Controller
       if($total_rating != 0){
         $avg_rating = $total_rating / $numuber_or_rows;
         $avg_rating = number_format($avg_rating, 2, '.', '');
+      }else{
+        $avg_rating = 0;
       }
 
       return response()->json(['customerdata' => $customer , 'avg_rating'=> $avg_rating]);

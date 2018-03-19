@@ -1,6 +1,6 @@
 @extends('frontend.app')
 
-@section('title', 'Employee Attendence')
+@section('title', 'Customer Brought')
 
 @section('body')
 
@@ -9,48 +9,51 @@
 			<!--LEFT SECTION-->
 			<div class="db-l">
 
-				 @include('frontend.employee.includes.profile')
+				 @include('frontend.customer.includes.profile')
 
 				<div class="db-l-2">
-					@include('frontend.employee.includes.sidebar')
+					@include('frontend.customer.includes.sidebar')
 				</div>
 			</div>
 
 			<!--CENTER SECTION-->
 			<div class="db-2">
 				<div class="db-2-com db-2-main">
-					<h4>My Attendence</h4>
+					<h4>Sales</h4>
 					<div class="db-2-main-com db-2-main-com-table">
 						<table class="responsive-table">
 							<thead>
 								<tr>
+									<th>Item Name</th>
+									<th>SKU</th>
+									<th>Price</th>
+									<th>Payment</th>
 									<th>Date</th>
-									<th>In Time</th>
-									<th>Out Time</th>
-									<th>Note</th>
 									<th>Status</th>
 								</tr>
 							</thead>
 
 							<tbody>
-								@foreach($attendences as $attendence)
+								@foreach($cutomerbrought as $sale)
 								<tr>
-									<td>{{$attendence->date}}</td>
-									<td>{{$attendence->in_time}}</td>
-									<td>{{$attendence->out_time}}</td>
-									<td>{{$attendence->note}}</td>
+									<td>{{$sale->sales_item_name}}</td>
+									<td>{{$sale->sales_sku}}</td>
+									<td>{{$sale->sales_price}}</td>
+									<td>{{$sale->payment_type}}</td>
+									<td>{{$sale->sales_date}}</td>
 									<td><span class="db-not-done">OK</span></td>
 								</tr>
 								@endforeach
 							</tbody>
 						</table>
+						{{$cutomerbrought->links()}}
 					</div>
 				</div>
 			</div>
 
 			<!--RIGHT SECTION-->
 			<div class="db-3">
-				@include('frontend.employee.includes.announcements')
+				@include('frontend.customer.includes.announcements')
 			</div>
 		</div>
 	</section>
