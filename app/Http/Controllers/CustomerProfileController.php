@@ -10,6 +10,7 @@ use App\Options;
 
 use App\CustomerLogin;
 use App\ErpSales;
+use App\ErpCustomerSupport;
 
 use Auth;
 use File;
@@ -50,7 +51,6 @@ class CustomerProfileController extends Controller
         $current_option = Options::get()->first();
 
         $customer = Auth::user();
-        $customer_id = Auth::user()->id;
 
         return view('frontend.customer.home',compact('customer','countryList','locationList','current_option'));
     }
@@ -63,7 +63,6 @@ class CustomerProfileController extends Controller
         $current_option = Options::get()->first();
 
         $customer = Auth::user();
-        $customer_id = Auth::user()->id;
 
         return view('frontend.customer.editprofile',compact('customer','countryList','locationList','current_option'));
     }
@@ -112,7 +111,7 @@ class CustomerProfileController extends Controller
     }
 
     // Package which customer have Brought
-    public function customerServices()
+    public function customerPackages()
     {
         $countryList = TourCountry::get();
         $locationList = TourLocation::get();
@@ -120,9 +119,46 @@ class CustomerProfileController extends Controller
 
         $customer = Auth::user();
         $customer_id = Auth::user()->id;
-        $cutomerbrought = ErpSales::where('sales_customer_id',$customer_id)->latest()->paginate(10);
+        $cutomerpackages = ErpSales::where('sales_customer_id',$customer_id)->latest()->paginate(10);
 
-        return view('frontend.customer.brought',compact('customer','cutomerbrought','countryList','locationList','current_option'));
+        return view('frontend.customer.packages',compact('customer','cutomerpackages','countryList','locationList','current_option'));
+    }
+
+    public function customerSuports()
+    {
+        $countryList = TourCountry::get();
+        $locationList = TourLocation::get();
+        $current_option = Options::get()->first();
+        $customer = Auth::user();
+
+        $customersupports = ErpCustomerSupport::latest()->paginate(10);
+
+        return view('frontend.customer.supports',compact('customersupports','customer','countryList','locationList','current_option'));
+    }
+
+    public function customerSuportsAdd()
+    {
+        $countryList = TourCountry::get();
+        $locationList = TourLocation::get();
+        $current_option = Options::get()->first();
+
+        $customer = Auth::user();
+
+        return view('frontend.customer.supportscreate',compact('customer','countryList','locationList','current_option'));
+    }
+
+    public function customerSuportsCreate(Request $request)
+    {
+        $customer_id = Auth::user()->id;
+
+        $create = new ErpCustomerSupport();
+        $create->customer_id     = $customer_id;
+        $create->message_by      = $request->message_by;
+        $create->message_details = $request->message_details;
+        $create->message_status  = $request->message_status;
+        $create->save();
+
+        return redirect('/customersupports');
     }
 
 }

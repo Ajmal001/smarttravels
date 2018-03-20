@@ -1,6 +1,6 @@
 @extends('frontend.app')
 
-@section('title', 'Customer Brought')
+@section('title', 'Customer Packages')
 
 @section('body')
 
@@ -19,7 +19,7 @@
 			<!--CENTER SECTION-->
 			<div class="db-2">
 				<div class="db-2-com db-2-main">
-					<h4>Sales</h4>
+					<h4>My Packages</h4>
 					<div class="db-2-main-com db-2-main-com-table">
 						<table class="responsive-table">
 							<thead>
@@ -29,24 +29,28 @@
 									<th>Price</th>
 									<th>Payment</th>
 									<th>Date</th>
-									<th>Status</th>
 								</tr>
 							</thead>
 
 							<tbody>
-								@foreach($cutomerbrought as $sale)
+								@foreach($cutomerpackages as $sale)
 								<tr>
 									<td>{{$sale->sales_item_name}}</td>
 									<td>{{$sale->sales_sku}}</td>
 									<td>{{$sale->sales_price}}</td>
-									<td>{{$sale->payment_type}}</td>
+									<td>
+										@if($sale->payment_type == 'cash')
+										<span class="db-done">{{$sale->payment_type}}</span>
+										@else
+										<span class="db-not-done">{{$sale->payment_type}}</span>
+										@endif
+									</td>
 									<td>{{$sale->sales_date}}</td>
-									<td><span class="db-not-done">OK</span></td>
 								</tr>
 								@endforeach
 							</tbody>
 						</table>
-						{{$cutomerbrought->links()}}
+						{{$cutomerpackages->links()}}
 					</div>
 				</div>
 			</div>
@@ -59,4 +63,4 @@
 	</section>
 	<!--END DASHBOARD-->
 
-    @endsection
+@endsection

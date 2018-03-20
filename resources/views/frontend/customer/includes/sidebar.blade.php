@@ -4,7 +4,11 @@
             <a href="{{url('customerhome')}}"><img src="assets/frontend/images/icon/dbl1.png" alt="" /> Profile </a>
         </li>
         <li>
-            <a href="{{url('customerservices')}}"><img src="assets/frontend/images/icon/dbl3.png" alt="" /> Services </a>
+            <a href="{{url('customerpackages')}}"><img src="assets/frontend/images/icon/dbl2.png" alt="" /> Packages </a>
+        </li>
+        </li>
+        <li>
+            <a href="{{url('customersupports')}}"><img src="assets/frontend/images/icon/dbl6.png" alt="" /> Supports </a>
         </li>
         <li>
             <a href="{{url('customerprofileedit')}}"><img src="assets/frontend/images/icon/dbl4.png" alt="" /> Settings </a>
