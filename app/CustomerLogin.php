@@ -19,6 +19,11 @@ class CustomerLogin extends Authenticatable
 
     public function profile()
     {
-        return $this->hasOne(ErpCustomers::class,'customer_id');
+        return $this->hasOne(ErpCustomers::class, 'customer_id');
+    }
+
+    public function messages()
+    {
+      return $this->hasMany(ErpCustomerSupport::class, 'customer_id');
     }
 }

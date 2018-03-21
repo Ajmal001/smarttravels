@@ -528,3 +528,9 @@ Route::get('/customerpackages','CustomerProfileController@customerPackages');
 Route::get('/customersupports','CustomerProfileController@customerSuports');
 Route::get('/customersupportscreate','CustomerProfileController@customerSuportsAdd');
 Route::post('/customersupportscreate','CustomerProfileController@customerSuportsCreate');
+
+
+/*----------------------Customer Supports----------------------*/
+Route::get('/customermessages', 'ErpSupportsController@customerMessages');
+Route::post('/customermessagesreplay', 'ErpSupportsController@customerMessagesReplay');
+Route::get('/customermessages/{customer_id}', 'ErpSupportsController@singleCustomerMessages');
