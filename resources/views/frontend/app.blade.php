@@ -12,6 +12,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:400,500,700" rel="stylesheet">
 	<!-- FONT-AWESOME ICON CSS -->
 	<link rel="stylesheet" href="{{URL::asset('assets/frontend/css/font-awesome.min.css')}}">
+	<!--== SUMMERNOTE CSS FILES ==-->
+	<link href="{{URL::asset('assets/backend/assets/plugins/summernote/summernote.css')}}" rel="stylesheet" type="text/css"/>
 	<!--== ALL CSS FILES ==-->
 	<link rel="stylesheet" href="{{URL::asset('assets/frontend/css/style.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/frontend/css/materialize.css')}}">
@@ -199,7 +201,15 @@
 	<script src="{{URL::asset('assets/frontend/js/materialize.min.js')}}"></script>
 	<script src="{{URL::asset('assets/frontend/js/custom.js')}}"></script>
 	<script src="{{URL::asset('assets/backend/assets/plugins/select2/select2.min.js')}}" type="text/javascript"></script>
+	<script src="{{URL::asset('assets/backend/assets/plugins/summernote/summernote.js')}}" type="text/javascript"></script>
 	<script>
+
+		$(document).ready(function() {
+			$('#summernote').summernote({
+				height: 300,
+			});
+		});
+
 	$(document).ready(function() {
 
 		// Location Selector

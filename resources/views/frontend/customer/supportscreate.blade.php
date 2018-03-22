@@ -21,28 +21,13 @@
 						<form class="col s12" action="{{url('customersupportscreate')}}" method="POST" enctype="multipart/form-data">
 							{{csrf_field()}}
 
+							<input type="hidden" name="message_by" value="customer">
+							<input type="hidden" name="message_status" value="question">
+
 							<div class="row">
-								<div class="input-field col s12">
-									<select name="message_by">
-										<option value="" disabled selected>Select Message By</option>
-										<option value="customer">Customer</option>
-										<option value="admin">Admin</option>
-									</select>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<input type="text" name="message_details" class="validate">
+								<div class="input-group col s12">
 									<label>Message Details</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12">
-									<select name="message_status">
-										<option value="" disabled selected>Select Status</option>
-										<option value="1">Active</option>
-										<option value="2">Inactive</option>
-									</select>
+									<textarea id="summernote" name="message_details" class="form-control" rows="8" cols="80"></textarea>
 								</div>
 							</div>
 

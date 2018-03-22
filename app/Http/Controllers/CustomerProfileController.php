@@ -130,8 +130,9 @@ class CustomerProfileController extends Controller
         $locationList = TourLocation::get();
         $current_option = Options::get()->first();
         $customer = Auth::user();
+        $customer_id = Auth::user()->id;
 
-        $customersupports = ErpCustomerSupport::latest()->paginate(10);
+        $customersupports = ErpCustomerSupport::where('customer_id',$customer_id)->latest()->paginate(10);
 
         return view('frontend.customer.supports',compact('customersupports','customer','countryList','locationList','current_option'));
     }

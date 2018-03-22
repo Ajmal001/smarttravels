@@ -11,12 +11,13 @@
              <div class="row">
                 <div class="col-md-12">
 
-                  <input type="text" name="messageid" id="messageid">
-                  <input type="text" name="customer_id" id="customer_id">
+                  <input type="hidden" name="message_by" value="admin">
+                  <input type="hidden" name="customer_id" value="{{$customer->customer_id}}">
+                  <input type="hidden" name="message_status" value="reply">
 
                   <div class="form-group">
                     <label class="control-label">Message</label>
-                    <textarea name="message_details" class="form-control" rows="8"></textarea>
+                    <textarea id="summernote" name="message_details" class="form-control" rows="8"></textarea>
                   </div>
 
                 </div>
@@ -24,7 +25,7 @@
           </div>
           <div class="modal-footer">
              <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
-             <button type="submit" class="btn btn-add btn-sm">Update</button>
+             <button type="submit" class="btn btn-add btn-sm">Send</button>
           </div>
         </form>
      </div>

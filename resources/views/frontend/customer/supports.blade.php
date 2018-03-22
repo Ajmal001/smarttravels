@@ -23,7 +23,7 @@
 					<div class="db-2-main-com db-2-main-com-table">
 						<div class="row">
 							<div class="input-field col s3">
-								<a href="{{url('customersupportscreate')}}" class="waves-effect waves-light full-btn">Add</a>
+								<a href="{{url('customersupportscreate')}}" class="waves-effect waves-light full-btn">Send Message</a>
 							</div>
 						</div>
 						<table class="responsive-table">
@@ -37,17 +37,17 @@
 
 							<tbody>
 								@foreach($customersupports as $support)
-								<tr>
-									<td>{{$support->message_by}}</td>
-									<td>{{$support->message_details}}</td>
-									<td>
-										@if($support->message_status == 1)
-											<span class="db-done">{{$support->message_status}}</span>
-										@else
-											<span class="db-not-done">{{$support->message_status}}</span>
-										@endif
-									</td>
-								</tr>
+									<tr>
+										<td>{{$support->message_by}}</td>
+										<td>{!!$support->message_details!!}</td>
+										<td>
+											@if($support->message_status == 'reply')
+												<span class="db-done">{{$support->message_status}}</span>
+											@else
+												<span class="db-not-done">{{$support->message_status}}</span>
+											@endif
+										</td>
+									</tr>
 								@endforeach
 							</tbody>
 						</table>

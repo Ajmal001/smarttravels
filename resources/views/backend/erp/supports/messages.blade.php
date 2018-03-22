@@ -4,16 +4,6 @@
 
 @section('body')
 
-<style>
-  .select2-container--default .select2-results__option[aria-selected="true"] {
-    background-color: #009688;
-  	color:white;
-  }
-  .delete-btn{
-    padding-left: 4px;
-  }
-</style>
-
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -79,7 +69,7 @@
                       <div class="col-xs-12 col-sm-12 col-md-9 p-0 inbox-mail">
                          <div class="mailbox-content">
                            @foreach($messages as $message)
-                            <a href="mailDetails.html" class="inbox_item unread">
+                            <a href="{{url('customermessages',[$message->customer_id])}}" class="inbox_item unread">
                                <div class="inbox-avatar">
                                  @if($message->customerdetails)
                                   <img src="public/backendimages/{{$message->customerdetails->customer_image}}" class="border-green hidden-xs hidden-sm" alt="">
@@ -90,15 +80,25 @@
                                      <div class="avatar-name">{{$message->customer->name}} (3)</div>
                                      <div>
                                        <small>
-                                         <span class="bg-green badge avatar-text">SOME LABEL</span>
-                                          <span><strong>Early access: </strong>
+                                         @foreach($messagedetails as $msgdate)
+                                           @if($msgdate->customer_id == $message->customer_id)
+                                           <span class="bg-green badge avatar-text">{{$msgdate->created_at->format('M j, Y : H:i')}}</span>
+                                           @endif
+                                         @endforeach
+                                         @foreach($messagedetails as $details)
+                                            @if($details->customer_id == $message->customer_id)
+
+                                              @if (strlen(strip_tags($details->message_details)) > 80)
+                                              <span><strong>Early access: {{ str_limit(strip_tags($details->message_details), 80) }}</strong>
+                                              @else
+                                              <span><strong>Early access: {{ $details->message_details }}</strong>
+                                              @endif
+
+                                            @endif
+                                          @endforeach
                                          </span>
                                        </small>
                                      </div>
-                                  </div>
-                                  <div class="inbox-date hidden-sm hidden-xs hidden-md">
-                                     <div class="date">Jan 17th</div>
-                                     <div><small>#1</small></div>
                                   </div>
                                </div>
                             </a>
@@ -116,10 +116,6 @@
 
   @section('script')
     <script type="text/javascript">
-
-      $(document).on('click','#messagereplaybtn',function(e){
-        e.preventDefault();
-      });
 
     </script>
   @endsection

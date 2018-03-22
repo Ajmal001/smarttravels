@@ -526,6 +526,7 @@
                      </span>
                      </a>
                      <ul class="treeview-menu">
+                        <li><a href="{{url('/customermessages')}}">All Messages</a></li>
                         <li><a href="ticanswer.html">Answered</a></li>
                         <li><a href="ticopen.html">Open</a></li>
                         <li><a href="iprocess.html">Inprocess</a></li>
