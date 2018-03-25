@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-use App\EmployeeLogin;
-use App\ErpEmployee;
+use App\CustomerLogin;
+use App\ErpCustomers;
 
 class RegisterController extends Controller
 {
@@ -39,7 +39,11 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+<<<<<<< HEAD
         $this->middleware('guest:employee');
+=======
+        $this->middleware('guest:customer');
+>>>>>>> 4669e8530e61c1f20661aadfb78c97e3551cfaa5
     }
 
     /**
@@ -74,12 +78,17 @@ class RegisterController extends Controller
 
     public function register(\Illuminate\Http\Request $request)
     {
+<<<<<<< HEAD
       $employeeid = EmployeeLogin::create([
+=======
+      $customerid = CustomerLogin::create([
+>>>>>>> 4669e8530e61c1f20661aadfb78c97e3551cfaa5
         'name'      => $request->name,
         'email'     => $request->email,
         'password'  => bcrypt($request->password)
       ])->id;
 
+<<<<<<< HEAD
       ErpEmployee::create([
         'employee_id'           => $employeeid,
         'employee_name'         => $request->name,
@@ -90,5 +99,17 @@ class RegisterController extends Controller
       ]);
 
       return redirect('/employeehome');
+=======
+      ErpCustomers::create([
+        'customer_id'           => $customerid,
+        'customer_name'         => $request->name,
+        'customer_email'        => $request->email,
+        'customer_phone'        => $request->customer_phone,
+        'customer_profession'   => $request->customer_profession,
+        'customer_image'        => 'customer_dafault.png',
+      ]);
+
+      return redirect('/customerlogin');
+>>>>>>> 4669e8530e61c1f20661aadfb78c97e3551cfaa5
     }
 }

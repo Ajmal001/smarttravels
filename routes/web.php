@@ -524,3 +524,15 @@ Route::get('/customerlogout', 'Customer\LoginController@logout');
 // Front End Customer Profile
 Route::get('/customerprofileedit','CustomerProfileController@customerProfileEdit');
 Route::post('/customerprofileupdate','CustomerProfileController@customerProfileUpdate');
+Route::get('/customerpayments','CustomerProfileController@customerPayment');
+Route::get('/customersupports','CustomerProfileController@customerSuports');
+Route::get('/customersupportscreate','CustomerProfileController@customerSuportsAdd');
+Route::post('/customersupportscreate','CustomerProfileController@customerSuportsCreate');
+
+Route::get('/customeraccountsettings', 'CustomerProfileController@customerAccount');
+Route::post('/customeraccountsettings', 'CustomerProfileController@customerAccountUpdate');
+
+/*----------------------Customer Supports----------------------*/
+Route::get('/customermessages', 'ErpSupportsController@customerMessages');
+Route::post('/customermessagesreplay', 'ErpSupportsController@customerMessagesReplay');
+Route::get('/customermessages/{customer_id}', 'ErpSupportsController@singleCustomerMessages');

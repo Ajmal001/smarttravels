@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ErpCustomers extends Model
 {
-
     protected $primaryKey = 'customer_id';
+    protected $guarded = [];
+
+    protected $fillable = ['customer_name', 'customer_nid', 'customer_phone', 'customer_address', 'customer_company', 'customer_country'];
 
     public function sales()
     {
@@ -16,7 +18,7 @@ class ErpCustomers extends Model
 
     public function customer()
     {
-        return $this->belongsTo(CustomerLogin::class);
+        return $this->belongsTo(ErpCustomers::class);
     }
 
 
