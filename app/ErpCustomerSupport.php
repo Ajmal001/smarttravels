@@ -11,7 +11,7 @@ class ErpCustomerSupport extends Model
 
     public function customer()
     {
-      return $this->belongsTo(CustomerLogin::class);
+      return $this->belongsTo(ErpCustomers::class,'customer_id');
     }
 
     public function customerdetails()

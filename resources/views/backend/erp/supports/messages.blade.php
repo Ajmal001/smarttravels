@@ -20,35 +20,6 @@
        <div class="row">
           <div class="col-sm-12">
              <div class="mailbox">
-                <div class="mailbox-header">
-                   <div class="row">
-                      <div class="col-xs-4">
-                         <div class="inbox-avatar">
-                            <i class="fa fa-user-circle fa-lg"></i>
-                            <div class="inbox-avatar-text hidden-xs hidden-sm">
-                               <div class="avatar-name">Alrazy</div>
-                               <div><small>Messages</small></div>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="col-xs-8">
-                         <div class="inbox-toolbar btn-toolbar">
-                            <div class="btn-group">
-                               <a href="compose.html" class="btn btn-add"><span class="fa fa-pencil-square-o"></span></a>
-                            </div>
-                            <div class="btn-group">
-                               <a href="#" class="btn btn-default"><span class="fa fa-reply"></span></a>
-                               <a href="#" class="hidden-xs hidden-sm btn btn-default"><span class="fa fa-reply-all"></span></a>
-                               <a href="#" class="btn btn-default"><span class="fa fa-share"></span></a>
-                            </div>
-                            <div class="hidden-xs hidden-sm btn-group">
-                               <button type="button" class="text-center btn btn-danger"><span class="fa fa-exclamation"></span></button>
-                               <button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
                 <div class="mailbox-body">
                    <div class="row m-0">
                       <div class="col-sm-3 p-0 inbox-nav hidden-xs hidden-sm">
@@ -69,29 +40,30 @@
                       <div class="col-xs-12 col-sm-12 col-md-9 p-0 inbox-mail">
                          <div class="mailbox-content">
                            @foreach($messages as $message)
+
                             <a href="{{url('customermessages',[$message->customer_id])}}" class="inbox_item unread">
-                               <div class="inbox-avatar">
+                              <div class="inbox-avatar">
                                  @if($message->customerdetails)
                                   <img src="public/backendimages/{{$message->customerdetails->customer_image}}" class="border-green hidden-xs hidden-sm" alt="">
                                  @else
                                   <img src="public/backendimages/customer_dafault.png" class="border-green hidden-xs hidden-sm" alt="">
                                  @endif
                                   <div class="inbox-avatar-text">
-                                     <div class="avatar-name">{{$message->customer->name}} (3)</div>
+                                     <div class="avatar-name">{{$message->customer->customer_name}} </div>
                                      <div>
                                        <small>
                                          @foreach($messagedetails as $msgdate)
                                            @if($msgdate->customer_id == $message->customer_id)
-                                           <span class="bg-green badge avatar-text">{{$msgdate->created_at->format('M j, Y : H:i')}}</span>
+                                           <span class="bg-green badge avatar-text">{{$msgdate->created_at->format('M j, Y')}}</span>
                                            @endif
                                          @endforeach
                                          @foreach($messagedetails as $details)
                                             @if($details->customer_id == $message->customer_id)
 
                                               @if (strlen(strip_tags($details->message_details)) > 80)
-                                              <span><strong>Early access: {{ str_limit(strip_tags($details->message_details), 80) }}</strong>
+                                              <span><strong>{!! str_limit(strip_tags($details->message_details), 80) !!} </strong>
                                               @else
-                                              <span><strong>Early access: {{ $details->message_details }}</strong>
+                                              <span><strong> {!! $details->message_details !!}</strong>
                                               @endif
 
                                             @endif

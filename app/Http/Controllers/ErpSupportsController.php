@@ -20,7 +20,7 @@ class ErpSupportsController extends Controller
         $messagedetails[] = ErpCustomerSupport::where('customer_id',$value->customer_id)
                                               ->where('message_by', 'customer')
                                               ->latest()
-                                              ->first(['customer_id','message_details','created_at']);
+                                              ->first(['customer_id','message_status','message_details','created_at']);
       }
       // return $messagedetails;
       return view('backend.erp.supports.messages',compact('messages','messagedetails'));
@@ -29,8 +29,15 @@ class ErpSupportsController extends Controller
 
     public function singleCustomerMessages($customer_id)
     {
-      $customermessages = ErpCustomerSupport::with(['customer'])->where('customer_id',$customer_id)->latest()->get();
-      $customer = ErpCustomerSupport::with(['customer','customerdetails'])->latest()->where('customer_id',$customer_id)->first();
+      $customermessages = ErpCustomerSupport::with(['customer'])
+                  ->where('customer_id',$customer_id)
+                  ->orderBy('id', 'ASC')
+                  ->get();
+      $customer = ErpCustomerSupport::with(['customer','customerdetails'])
+                  ->latest()
+                  ->where('customer_id',$customer_id)
+                  ->first();
+
       // return $customermessages;
       return view('backend.erp.supports.customermessages',compact('customermessages','customer'));
     }

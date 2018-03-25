@@ -43,7 +43,7 @@
 			</div>
 			<!--RIGHT SECTION-->
 			<div class="db-3">
-				@include('frontend.customer.includes.announcements')
+				@include('frontend.customer.includes.exclusive_packages')
 			</div>
 		</div>
 	</section>

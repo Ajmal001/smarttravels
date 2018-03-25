@@ -204,10 +204,28 @@
 	<script src="{{URL::asset('assets/backend/assets/plugins/summernote/summernote.js')}}" type="text/javascript"></script>
 	<script>
 
+
 		$(document).ready(function() {
 			$('#summernote').summernote({
-				height: 300,
+				height: 200,
 			});
+		});
+
+		$(document).ready(function() {
+
+			$('#summernote2').summernote({
+					placeholder: 'write here...',
+					height: 200,
+				  toolbar: [
+				    // [groupName, [list of button]]
+				    ['style', ['bold', 'italic', 'underline', 'clear']],
+				    ['font', ['strikethrough', 'superscript', 'subscript']],
+				    ['fontsize', ['fontsize']],
+				    ['color', ['color']],
+				    ['para', ['ul', 'ol', 'paragraph']],
+				    ['height', ['height']]
+				  ]
+				});
 		});
 
 	$(document).ready(function() {
@@ -293,7 +311,7 @@
 
 	});
 	</script>
-
+	@yield('script')
 </body>
 
 </html>

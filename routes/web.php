@@ -524,7 +524,7 @@ Route::get('/customerlogout', 'Customer\LoginController@logout');
 // Front End Customer Profile
 Route::get('/customerprofileedit','CustomerProfileController@customerProfileEdit');
 Route::post('/customerprofileupdate','CustomerProfileController@customerProfileUpdate');
-Route::get('/customerpackages','CustomerProfileController@customerPackages');
+Route::get('/customerpayments','CustomerProfileController@customerPayment');
 Route::get('/customersupports','CustomerProfileController@customerSuports');
 Route::get('/customersupportscreate','CustomerProfileController@customerSuportsAdd');
 Route::post('/customersupportscreate','CustomerProfileController@customerSuportsCreate');

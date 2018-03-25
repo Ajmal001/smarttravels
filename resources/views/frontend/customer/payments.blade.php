@@ -1,6 +1,6 @@
 @extends('frontend.app')
 
-@section('title', 'Customer Packages')
+@section('title', 'Customer Payments')
 
 @section('body')
 
@@ -8,9 +8,7 @@
 		<div class="db">
 			<!--LEFT SECTION-->
 			<div class="db-l">
-
 				 @include('frontend.customer.includes.profile')
-
 				<div class="db-l-2">
 					@include('frontend.customer.includes.sidebar')
 				</div>
@@ -19,13 +17,16 @@
 			<!--CENTER SECTION-->
 			<div class="db-2">
 				<div class="db-2-com db-2-main">
-					<h4>My Packages</h4>
+					<h4>My Payments</h4>
+
+
 					<div class="db-2-main-com db-2-main-com-table">
+						<b>Total Cash Payment = {{$totalCash}}</b><br>
+						<b>Total Due Remaining = {{$totalDue}}</b>
 						<table class="responsive-table">
 							<thead>
 								<tr>
-									<th>Item Name</th>
-									<th>SKU</th>
+									<th>Item</th>
 									<th>Price</th>
 									<th>Payment</th>
 									<th>Date</th>
@@ -33,10 +34,9 @@
 							</thead>
 
 							<tbody>
-								@foreach($cutomerpackages as $sale)
+								@foreach($cutomerPayment as $sale)
 								<tr>
 									<td>{{$sale->sales_item_name}}</td>
-									<td>{{$sale->sales_sku}}</td>
 									<td>{{$sale->sales_price}}</td>
 									<td>
 										@if($sale->payment_type == 'cash')
@@ -50,14 +50,14 @@
 								@endforeach
 							</tbody>
 						</table>
-						{{$cutomerpackages->links()}}
+						{{$cutomerPayment->links()}}
 					</div>
 				</div>
 			</div>
 
 			<!--RIGHT SECTION-->
 			<div class="db-3">
-				@include('frontend.customer.includes.announcements')
+				@include('frontend.customer.includes.exclusive_packages')
 			</div>
 		</div>
 	</section>
