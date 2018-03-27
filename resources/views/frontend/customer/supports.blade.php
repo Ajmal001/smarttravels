@@ -22,25 +22,8 @@
 				<div class="db-2-com db-2-main">
 					<h4>Customer Support </h4>
 					<div class="db-2-main-com db2-form-pay db2-form-com" id="customer_chat_box">
-							<ul>
-									@foreach($customersupports as $support)
-									<li style="border: 1px solid #dcdcdc; padding-left: 12px;">
-											@if($support->message_by == 'admin')
-											<h5 class="label-danger label label-default">Customer Support</h5>
-											@else
-											<h5 class="label-success label label-default">Me </h5>
-											@endif
+							<ul id='admin-message-ajax'>
 
-											<p>
-												{{ $support->created_at->format('d M Y') }} -
-												<?php
-												$date = $support->created_at;
-	                       echo date('h:i A', strtotime($date));
-												?>
-											</p>
-											<p>{!!$support->message_details!!}</p>
-									</li>
-									@endforeach
 							</ul>
 					</div>
 				</div>
@@ -81,6 +64,20 @@
 
 @section('script')
 	<script type="text/javascript">
+
+		// Ajax Load
+		function messageLoad() {
+			$.get("{{url('customersupports-json')}}", function(data){
+				$('#admin-message-ajax').empty().html(data);
+				console.log('2');
+			});
+		}
+		window.onload = function() {
+			messageLoad();
+					console.log('1');
+		}
+		setInterval(messageLoad, 5000);
+
 		$(function () {
 					 $("html, body").animate({
 	scrollTop: $('html, body').get(0).scrollHeight-1000}, 1000);});

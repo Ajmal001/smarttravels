@@ -39,11 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-<<<<<<< HEAD
-        $this->middleware('guest:employee');
-=======
         $this->middleware('guest:customer');
->>>>>>> 4669e8530e61c1f20661aadfb78c97e3551cfaa5
     }
 
     /**
@@ -78,28 +74,12 @@ class RegisterController extends Controller
 
     public function register(\Illuminate\Http\Request $request)
     {
-<<<<<<< HEAD
-      $employeeid = EmployeeLogin::create([
-=======
       $customerid = CustomerLogin::create([
->>>>>>> 4669e8530e61c1f20661aadfb78c97e3551cfaa5
         'name'      => $request->name,
         'email'     => $request->email,
         'password'  => bcrypt($request->password)
       ])->id;
 
-<<<<<<< HEAD
-      ErpEmployee::create([
-        'employee_id'           => $employeeid,
-        'employee_name'         => $request->name,
-        'employee_email'        => $request->email,
-        'employee_phone'        => $request->employee_phone,
-        'employee_designation'  => $request->employee_designation,
-        'employee_image'        => 'employee_dafault.png',
-      ]);
-
-      return redirect('/employeehome');
-=======
       ErpCustomers::create([
         'customer_id'           => $customerid,
         'customer_name'         => $request->name,
@@ -110,6 +90,5 @@ class RegisterController extends Controller
       ]);
 
       return redirect('/customerlogin');
->>>>>>> 4669e8530e61c1f20661aadfb78c97e3551cfaa5
     }
 }

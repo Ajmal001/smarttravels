@@ -64,51 +64,17 @@
                                <div><span class="btn btn-add" id="messagereplaybtn"><small>Replay</small></span></div>
                             </div>
                          </div>
-                         @foreach($customermessages as $messages)
-                           @if($messages->message_by == 'customer')
-                           <div class="inbox-mail-details p-lr-10">
-                             <div class="m-t-20 border-all p-20">
-                               <div>
-                                 <span class="badge badge-warn" style="font-size:15px">
-                                   {{$messages->customer->customer_name}}
-                                 </span>
-                                 <span class="bg-custom badge" style="font-size:15px">
-                                   <small>{{ $messages->created_at->format('d M Y') }} -
-             												<?php
-             												$date = $messages->created_at;
-             	                       echo date('h:i A', strtotime($date));
-             												?></small>
-                                 </span>
-                               </div>
-                               {!!$messages->message_details!!}
-                            </div>
-                           </div>
-                           @else
-                           <div class="inbox-mail-details p-lr-10 text-right">
-                             <div class="m-t-20 border-all bg-lightgray p-20">
-                               <div>
-                                 <span class="badge badge-dang" style="font-size:15px">
-                                   <small>Admin</small>
-                                 </span>
-                                 <span class="bg-custom badge" style="font-size:15px">
-                                   <small>	{{ $messages->created_at->format('d M Y') }} -
-             												<?php
-             												$date = $messages->created_at;
-             	                       echo date('h:i A', strtotime($date));
-             												?></small>
-                                 </span>
-                               </div>
-                               {!! $messages->message_details !!}
-                            </div>
-                           </div>
-                           @endif
-                         @endforeach
+
+                         <!-- Ajax Message Load -->
+                         <div id="messages-ajax"></div>
+                         <!-- End Ajax Message Load  -->
+
                          <div class="inbox-mail-details">
                             <div class="p-20">
                                <a><p class="btn btn-success" id="messagereplaybtn"> Click here to Reply</p></a>
                             </div>
                          </div>
-                      </div>
+                      </div> <!-- /.inbox-mail -->
                    </div>
                 </div>
              </div>
@@ -121,10 +87,25 @@
 
   @section('script')
     <script type="text/javascript">
+
       $(document).on('click','#messagereplaybtn',function(e){
         e.preventDefault();
         $('#messagereplay').modal('show');
       });
+
+      // Ajax Load
+      function messageLoad() {
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        $.get("{{url('customermessages-json')}}/"+id, function(data){
+          $('#messages-ajax').empty().html(data);
+        });
+      }
+      $(document).one('ready',function(){
+          messageLoad();
+      });
+      setInterval(messageLoad, 5000);
+
     </script>
 
     <script type="text/javascript">

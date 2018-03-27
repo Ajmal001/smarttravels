@@ -46,9 +46,9 @@
                            @foreach($messages as $message)
 
                              @foreach($messagedetails as $msgstatus)
-                               @if($msgstatus->message_status == "unseen")
+                               @if($msgstatus->message_status == "unseen" && $msgstatus->customer_id == $message->customer_id)
                                  <a href="{{url('customermessages',[$message->customer_id])}}" class="inbox_item unread">
-                               @else
+                               @elseif($msgstatus->message_status == "seen" && $msgstatus->customer_id == $message->customer_id)
                                  <a href="{{url('customermessages',[$message->customer_id])}}" class="inbox_item">
                                @endif
                              @endforeach
@@ -68,13 +68,14 @@
                                            <span class="bg-green badge avatar-text">{{$msgdate->created_at->format('M j, Y')}}</span>
                                            @endif
                                          @endforeach
+                                         <span>
                                          @foreach($messagedetails as $details)
                                             @if($details->customer_id == $message->customer_id)
 
                                               @if (strlen(strip_tags($details->message_details)) > 80)
-                                              <span><strong>{!! str_limit(strip_tags($details->message_details), 80) !!} </strong>
+                                              <strong>{!! str_limit(strip_tags($details->message_details), 80) !!} </strong>
                                               @else
-                                              <span><strong> {!! $details->message_details !!}</strong>
+                                              <strong> {!! $details->message_details !!}</strong>
                                               @endif
 
                                             @endif
@@ -84,7 +85,7 @@
                                      </div>
                                   </div>
                                </div>
-                            </a>
+                             </a>
                             @endforeach
                          </div>
                       </div>

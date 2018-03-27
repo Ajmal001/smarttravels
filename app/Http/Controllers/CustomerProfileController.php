@@ -146,11 +146,18 @@ class CustomerProfileController extends Controller
         $customer_id = Auth::user()->customer_id;
         $exclusive_packages = TourPackages::orderBy('package_id', 'desc')->take(10)->get();
 
+        return view('frontend.customer.supports',compact('exclusive_packages','customer','countryList','locationList','current_option'));
+    }
+
+    public function customerSuportsJson()
+    {
+        $customer_id = Auth::user()->customer_id;
+        
         $customersupports = ErpCustomerSupport::where('customer_id',$customer_id)
                                               ->orderBy('id', 'ASC')
                                               ->get();
-        // return dd($customersupports);
-        return view('frontend.customer.supports',compact('exclusive_packages','customersupports','customer','countryList','locationList','current_option'));
+
+        return view('frontend.customer.adminmessageajax',compact('customersupports'));
     }
 
     public function customerSuportsAdd()
@@ -201,7 +208,7 @@ class CustomerProfileController extends Controller
 
         $password = ErpCustomers::where('customer_id',$customer_id)->update(['password'=>bcrypt($newpassword)]);
         $password = DB::table('erp_customer_login')->where('id',$customer_id)->update(['password'=>bcrypt($newpassword)]);
-        
+
         Session::flash('flash_message_update', 'Password Updated Successfully.');
         return back();
 

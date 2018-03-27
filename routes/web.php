@@ -526,6 +526,7 @@ Route::get('/customerprofileedit','CustomerProfileController@customerProfileEdit
 Route::post('/customerprofileupdate','CustomerProfileController@customerProfileUpdate');
 Route::get('/customerpayments','CustomerProfileController@customerPayment');
 Route::get('/customersupports','CustomerProfileController@customerSuports');
+Route::get('/customersupports-json','CustomerProfileController@customerSuportsJson');
 Route::get('/customersupportscreate','CustomerProfileController@customerSuportsAdd');
 Route::post('/customersupportscreate','CustomerProfileController@customerSuportsCreate');
 
@@ -536,3 +537,4 @@ Route::post('/customeraccountsettings', 'CustomerProfileController@customerAccou
 Route::get('/customermessages', 'ErpSupportsController@customerMessages');
 Route::post('/customermessagesreplay', 'ErpSupportsController@customerMessagesReplay');
 Route::get('/customermessages/{customer_id}', 'ErpSupportsController@singleCustomerMessages');
+Route::get('/customermessages-json/{customer_id}', 'ErpSupportsController@singleCustomerMessagesJson');

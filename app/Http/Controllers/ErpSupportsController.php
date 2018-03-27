@@ -29,10 +29,6 @@ class ErpSupportsController extends Controller
 
     public function singleCustomerMessages($customer_id)
     {
-      $customermessages = ErpCustomerSupport::with(['customer'])
-                  ->where('customer_id',$customer_id)
-                  ->orderBy('id', 'ASC')
-                  ->get();
       $customer = ErpCustomerSupport::with(['customer','customerdetails'])
                   ->latest()
                   ->where('customer_id',$customer_id)
@@ -52,7 +48,18 @@ class ErpSupportsController extends Controller
       }
 
       // return $unseen;
-      return view('backend.erp.supports.customermessages',compact('customermessages','customer'));
+      return view('backend.erp.supports.customermessages',compact('customer'));
+    }
+
+
+    public function singleCustomerMessagesJson($customer_id)
+    {
+      $customermessagesjson = ErpCustomerSupport::with(['customer'])
+                  ->where('customer_id',$customer_id)
+                  ->orderBy('id', 'ASC')
+                  ->get();
+
+      return view('backend.erp.supports.modal.messagesajax',compact('customermessagesjson'));
     }
 
     public function customerMessagesReplay(Request $request)
