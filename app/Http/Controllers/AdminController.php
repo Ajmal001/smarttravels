@@ -15,6 +15,7 @@ use App\ErpTask;
 use App\EmployeeLogin;
 use App\ErpSales;
 use App\OptionsImage;
+use App\OptionsCurrency;
 
 use Carbon\Carbon;
 
@@ -381,6 +382,26 @@ class AdminController extends Controller
     $update->save();
 
     return redirect('adminwebsiteoptionspagebanner');
+  }
+
+
+  // Currency
+  public function optionsCurrency()
+  {
+    $optionscurrency = OptionsCurrency::get();
+    return view('backend.website.options.currency', compact('optionscurrency'));
+  }
+
+  public function optionsCurrencyAdd(Request $request)
+  {
+    OptionsCurrency::create($request->all());
+    return redirect('/adminwebsiteoptionscurrency');
+  }
+
+  public function optionsCurrencyDelete(Request $request){
+    $id = $request->id;
+    OptionsCurrency::find($id)->delete();
+    return redirect('/adminwebsiteoptionscurrency');
   }
 
 }

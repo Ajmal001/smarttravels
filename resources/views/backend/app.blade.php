@@ -436,6 +436,7 @@
                         <li><a href="{{url('/adminwebsiteoptionscopyright')}}">Copyright</a></li>
                         <li><a href="{{url('/adminwebsiteoptionssocial')}}">Social</a></li>
                         <li><a href="{{url('/adminwebsiteoptionspagebanner')}}">Page Banner</a></li>
+                        <li><a href="{{url('/adminwebsiteoptionscurrency')}}">Currency</a></li>
                      </ul>
                   </li>
                   <li class="treeview">

@@ -18,6 +18,7 @@ use App\Visa;
 use App\VisaApplication;
 use App\ErpEmployeeAnnouncement;
 use App\OptionsImage;
+use App\OptionsCurrency;
 use Auth;
 
 use Illuminate\Support\MessageBag;
@@ -39,6 +40,7 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$optionsimage = OptionsImage::first();
 		$optionsimage = $optionsimage['image_home'];
+		$optionscurrency = OptionsCurrency::get();
 		return view('frontend.home',compact('tour_packages','hotels','countryList','locationList','sights','current_option','current_option','optionsimage'));
 	}
 
