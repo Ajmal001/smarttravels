@@ -69,12 +69,10 @@
 		function messageLoad() {
 			$.get("{{url('customersupports-json')}}", function(data){
 				$('#admin-message-ajax').empty().html(data);
-				console.log('2');
 			});
 		}
 		window.onload = function() {
 			messageLoad();
-					console.log('1');
 		}
 		setInterval(messageLoad, 5000);
 
