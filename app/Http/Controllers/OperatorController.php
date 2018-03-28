@@ -14,6 +14,7 @@ use App\Models\Operator\Location;
 
 use App\TourCountry;
 use App\TourLocation;
+use App\OptionsCurrency;
 
 use Illuminate\Support\MessageBag;
 
@@ -28,8 +29,9 @@ class OperatorController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$operatorLocation = Location::latest()->paginate(10);
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
-		return view('backend.website.operator.operator_location',compact('countryList','locationList','operatorLocation'));
+		return view('backend.website.operator.operator_location',compact('countryList','locationList','operatorLocation','optionscurrency'));
 	}
 
 	public function OperatorLocationSave(Request $request){
@@ -58,8 +60,9 @@ class OperatorController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$operatorHotel = Hotel::latest()->paginate(10);
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
-		return view('backend.website.operator.operator_hotel',compact('countryList','locationList','operatorHotel'));
+		return view('backend.website.operator.operator_hotel',compact('countryList','locationList','operatorHotel','optionscurrency'));
 	}
 
 	public function OperatorHotelSave(Request $request){
@@ -88,8 +91,9 @@ class OperatorController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$operatorPicDrop = PicDrop::latest()->paginate(10);
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
-		return view('backend.website.operator.operator_pic_drop',compact('countryList','locationList','operatorPicDrop'));
+		return view('backend.website.operator.operator_pic_drop',compact('countryList','locationList','operatorPicDrop','optionscurrency'));
 	}
 
 	public function OperatorPicDropSave(Request $request){
@@ -118,8 +122,9 @@ class OperatorController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$operatorFood = Food::latest()->paginate(10);
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
-		return view('backend.website.operator.operator_food',compact('countryList','locationList','operatorFood'));
+		return view('backend.website.operator.operator_food',compact('countryList','locationList','operatorFood','optionscurrency'));
 	}
 
 	public function OperatorFoodSave(Request $request){
@@ -148,8 +153,9 @@ class OperatorController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$operatorAirTicket = AirTicket::latest()->paginate(10);
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
-		return view('backend.website.operator.operator_air_ticket',compact('countryList','locationList','operatorAirTicket'));
+		return view('backend.website.operator.operator_air_ticket',compact('countryList','locationList','operatorAirTicket','optionscurrency'));
 	}
 
 	public function OperatorAirTicketSave(Request $request){
@@ -179,8 +185,9 @@ class OperatorController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$operatorSight = Sight::latest()->paginate(10);
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
-		return view('backend.website.operator.operator_sight',compact('countryList','locationList','operatorSight'));
+		return view('backend.website.operator.operator_sight',compact('countryList','locationList','operatorSight','optionscurrency'));
 	}
 
 	public function OperatorSightSave(Request $request){

@@ -326,9 +326,10 @@ Route::get('/adminmonthlysales', 'AdminController@adminMonthlySales')->middlewar
 Route::get('/adminwebsiteoptionspagebanner', 'AdminController@pageBanner')->middleware('auth');
 Route::post('/adminwebsiteoptionspagebanner', 'AdminController@pageBannerUpdate')->middleware('auth');
 
-// Page Banner Options
+// Currency Options
 Route::get('/adminwebsiteoptionscurrency', 'AdminController@optionsCurrency')->middleware('auth');
 Route::post('/adminwebsiteoptionscurrencyadd', 'AdminController@optionsCurrencyAdd')->middleware('auth');
+Route::post('/adminwebsiteoptionscurrencyupdate', 'AdminController@optionsCurrencyUpdate')->middleware('auth');
 Route::post('/adminwebsiteoptionscurrencydelete', 'AdminController@optionsCurrencyDelete')->middleware('auth');
 
 

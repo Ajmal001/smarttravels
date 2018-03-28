@@ -138,7 +138,17 @@
 						<div class="b_pack rows">
 							<!-- TOUR TITLE -->
 							<div class="col-md-9 col-sm-8">
-								<h4><a href="tourdetails/{{$tp->package_id}}">{{$tp->package_name}}- <span style="color:red">{{$tp->price}}TK</span></a></h4> </div>
+								<h4>
+									<a href="tourdetails/{{$tp->package_id}}">{{$tp->package_name}}-
+										<span style="color:red">
+											{{$tp->price}}
+											@if($optionscurrency)
+												{{$optionscurrency->currency}}
+											@endif
+										</span>
+									</a>
+								</h4>
+							</div>
 							<!-- TOUR ICONS -->
 							<div class="col-md-3 col-sm-4 pack_icon">
 								<ul>
@@ -199,7 +209,14 @@
 												?>
 											</div>
 										</li>
-										<li><span class="ho-hot-pri">{{$hotel->hotel_price}}Tk</span> </li>
+										<li>
+											<span class="ho-hot-pri">
+												{{$hotel->hotel_price}}
+												@if($optionscurrency)
+													{{$optionscurrency->currency}}
+												@endif
+											</span>
+										</li>
 									</ul>
 								</div>
 							</div>

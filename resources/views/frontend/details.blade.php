@@ -33,7 +33,12 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$packageDetails
 				<div class="banner_book_1">
 					<ul>
 						<li class="dl1">Location : {{$packageDetails->location}}</li>
-						<li class="dl2">Price : {{$packageDetails->price}}Tk</li>
+						<li class="dl2">
+							Price : {{$packageDetails->price}}
+							@if($optionscurrency)
+								{{$optionscurrency->currency}}
+							@endif
+						</li>
 						<li class="dl3">Duration : {{$packageDetails->duration}}</li>
 						<li class="dl4"><a href="{{ URL::to('/tourbooking/')}}/{{$packageDetails->package_id }}">Book Now</a> </li>
 					</ul>
@@ -54,13 +59,13 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$packageDetails
 						<h3>Description</h3>
 						<p>{!!$packageDetails->tour_details!!}</p>
 					</div>
-					
+
 					<!--====== TOUR LOCATION ==========-->
 					<div class="tour_head1 tout-map map-container">
 						<h3>Location</h3>
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6290415.157581651!2d-93.99661009218904!3d39.661150926343694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880b2d386f6e2619%3A0x7f15825064115956!2sIllinois%2C+USA!5e0!3m2!1sen!2sin!4v1467884030780" allowfullscreen></iframe>
 					</div>
-					
+
 					<!--====== TOUR Excluded==========-->
 					<div class="tour_head1 hot-ameni">
 						<h3>Tour Exclude</h3>
@@ -68,9 +73,9 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$packageDetails
 							<?php $tour_exclude = explode(',',$packageDetails->tour_exclude); ?>
 							@foreach($tour_exclude as $te)
 							<li><i class="fa fa-check" aria-hidden="true"></i> {{$te}} </li>
-							@endforeach 
+							@endforeach
 						</ul>
-					</div>	
+					</div>
 
 					<!--====== TOUR Included  ==========-->
 					<div class="tour_head1 hot-ameni">
@@ -78,13 +83,13 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$packageDetails
 						<ul>
 							<?php $tour_included = explode(',',$packageDetails->tour_include); ?>
 							@foreach($tour_included as $ti)
-							<td class="event-res">{{$ti}}</td>	
-							@endforeach 
+							<td class="event-res">{{$ti}}</td>
+							@endforeach
 						</ul>
-					</div>										
-					
-					
-				</div>	
+					</div>
+
+
+				</div>
 				<div class="col-md-3 tour_r">
 					<!--====== SPECIAL OFFERS ==========-->
 					<div class="tour_right tour_offer">
@@ -139,5 +144,5 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$packageDetails
 			</div>
 		</div>
 	</section>
-	
+
   @endsection

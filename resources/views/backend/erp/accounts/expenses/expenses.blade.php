@@ -73,11 +73,16 @@
                                  <td>{{$expense->expense_title}}</td>
                                  <td>{{$expense->expense_type}}</td>
                                  <td>{{$expense->expense_date}}</td>
-                                 <td>{{$expense->expense_amount}}</td>
+                                 <td>
+                                   {{$expense->expense_amount}}
+                                   @if($optionscurrency)
+                     								{{$optionscurrency->currency}}
+                     							@endif
+                                 </td>
 
                                  <td>
-                                    <a id="expenseeditbutton" class="btn btn-warning btn-sm pull-right" href="/" data-eid="{{$expense->expense_id}}"><i class="fa fa-pencil"></i></a>
-                                    {!! Form::open(['method'=>'post','url' => 'adminerpexpensesdelete/{{$expense->expense_id}}','class'=>'col-sm-6 pull-right delete-btn','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}
+                                    <a id="expenseeditbutton" class="btn btn-warning btn-sm pull-left m-r-5" href="/" data-eid="{{$expense->expense_id}}"><i class="fa fa-pencil"></i></a>
+                                    {!! Form::open(['method'=>'post','url' => 'adminerpexpensesdelete/{{$expense->expense_id}}','class'=>'pull-left','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}
                                     {!! csrf_field() !!}
                                     {!! method_field('DELETE') !!}
                                      <input type="hidden" name="expense_id" value="{{$expense->expense_id}}" >

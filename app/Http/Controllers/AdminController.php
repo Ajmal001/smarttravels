@@ -398,6 +398,15 @@ class AdminController extends Controller
     return redirect('/adminwebsiteoptionscurrency');
   }
 
+  public function optionsCurrencyUpdate(Request $request)
+  {
+    $id = $request->currency_id;
+    $update = OptionsCurrency::find($id)->update(['selected'=>1]);
+    $update = OptionsCurrency::whereNotIn('id',[$id])->update(['selected'=>0]);
+
+    return redirect('/adminwebsiteoptionscurrency');
+  }
+
   public function optionsCurrencyDelete(Request $request){
     $id = $request->id;
     OptionsCurrency::find($id)->delete();

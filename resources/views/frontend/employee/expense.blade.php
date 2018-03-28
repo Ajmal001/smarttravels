@@ -39,7 +39,12 @@
 								@foreach($expenses as $expense)
 								<tr>
 									<td>{{$expense->expense_title}}</td>
-									<td>{{$expense->expense_amount}}</td>
+									<td>
+										{{$expense->expense_amount}}
+										@if($optionscurrency)
+											{{$optionscurrency->currency}}
+										@endif
+									</td>
 									<td>{{$expense->expense_date}}</td>
 								</tr>
 								@endforeach

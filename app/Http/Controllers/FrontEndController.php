@@ -40,8 +40,8 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$optionsimage = OptionsImage::first();
 		$optionsimage = $optionsimage['image_home'];
-		$optionscurrency = OptionsCurrency::get();
-		return view('frontend.home',compact('tour_packages','hotels','countryList','locationList','sights','current_option','current_option','optionsimage'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('frontend.home',compact('tour_packages','hotels','countryList','locationList','sights','current_option','current_option','optionsimage','optionscurrency'));
 	}
 
 	public function tourDetails($package_id){
@@ -49,7 +49,8 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$packageDetails = TourPackages::find($package_id);
-		return view('frontend.details',compact('packageDetails','countryList','locationList','current_option'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('frontend.details',compact('packageDetails','countryList','locationList','current_option','optionscurrency'));
 	}
 
 	public function tourPackages(){
@@ -58,7 +59,8 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$tourPackages = TourPackages::latest()->paginate(5);
 		$optionsimage = OptionsImage::first();
-		return view('frontend.packages',compact('tourPackages','countryList','locationList','current_option','optionsimage'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('frontend.packages',compact('tourPackages','countryList','locationList','current_option','optionsimage','optionscurrency'));
 	}
 
 	public function tourSearch(Request $request){
@@ -91,7 +93,8 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$hotels = Hotels::latest()->paginate(10);
 		$optionsimage = OptionsImage::first();
-		return view('frontend.hotels',compact('hotels','countryList','locationList','current_option','optionsimage'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('frontend.hotels',compact('hotels','countryList','locationList','current_option','optionsimage','optionscurrency'));
 	}
 
 	public function hotelSearchLocation(Request $request){
@@ -147,7 +150,8 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$hotelDetails = Hotels::find($hotel_id);
-		return view('frontend.hotel_details',compact('hotelDetails','countryList','locationList','current_option'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('frontend.hotel_details',compact('hotelDetails','countryList','locationList','current_option','optionscurrency'));
 	}
 
 	public function sight(){
@@ -164,7 +168,8 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$sightDetails = Sights::find($sight_id);
-		return view('frontend.sight_details',compact('sightDetails','countryList','locationList','current_option'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('frontend.sight_details',compact('sightDetails','countryList','locationList','current_option','optionscurrency'));
 	}
 
 	public function contact(){
@@ -250,12 +255,12 @@ class FrontEndController extends Controller
 	}
 
 	public function attractionDetails($id){
-	    $countryList = TourCountry::get();
+	  $countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
-
 		$attractionDetails = Attractions::find($id);
-		return view('frontend.attraction_details',compact('countryList','locationList','attractionDetails','current_option'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('frontend.attraction_details',compact('countryList','locationList','attractionDetails','current_option','optionscurrency'));
 	}
 
 	public function tourBooking($package_id){

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\TransferInfo;
 use App\TransferPic;
 use App\TransferDrop;
-
+use App\OptionsCurrency;
 
 use Illuminate\Support\MessageBag;
 
@@ -19,7 +19,8 @@ class TransferController extends Controller
     public function showTransfer(){
 		$picList = TransferPic::latest()->paginate(10, ['*'], 'piclist');
 		$dropList = TransferDrop::latest()->paginate(10, ['*'], 'droplist');
-		return view('backend.website.website_transfer',compact('picList','dropList'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('backend.website.website_transfer',compact('picList','dropList','optionscurrency'));
 	}
 
 	public function picDetails($transfer_id){

@@ -33,7 +33,12 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$hotelDetails->
 				<div class="banner_book_1">
 					<ul>
 						<li class="dl1">Location : {{$hotelDetails->hotel_location}}</li>
-						<li class="dl2">Price : {{$hotelDetails->hotel_price}}Tk</li>
+						<li class="dl2">
+							Price : {{$hotelDetails->hotel_price}}
+							@if($optionscurrency)
+								{{$optionscurrency->currency}}
+							@endif
+						</li>
 						<li class="dl3">SKU : {{$hotelDetails->hotel_sku}}</li>
 						<li class="dl4"><a href="{{ URL::to('/hotelbooking/')}}/{{$hotelDetails->hotel_id }}">Book Now</a> </li>
 					</ul>
@@ -48,26 +53,26 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$hotelDetails->
 				<div class="col-md-9">
 					<!--====== TOUR TITLE ==========-->
 					<div class="tour_head">
-						<h2>{{$hotelDetails->hotel_name}} 
-						
+						<h2>{{$hotelDetails->hotel_name}}
+
 						<span class="tour_star">
-							<?php 
-							$rating = $hotelDetails->hotel_rating; 
+							<?php
+							$rating = $hotelDetails->hotel_rating;
 							for ($x = 1; $x <= $rating; $x++) {
 							?>
 							<i class="fa fa-star" aria-hidden="true"></i>
-							<?php	
-							} 
-							?>							
+							<?php
+							}
+							?>
 						</span>
 						<span class="tour_rat">{{$hotelDetails->hotel_rating}}</span></h2> </div>
 					<!--====== TOUR DESCRIPTION ==========-->
 					<div class="tour_head1 hotel-com-color">
 						<h3>About </h3>
 						<p>{!!$hotelDetails->hotel_details!!}</p>
-					</div>					
-					
-					
+					</div>
+
+
 					<!--====== Features ==========-->
 					<div class="tour_head1 hot-ameni">
 						<h3>Hotel Features</h3>
@@ -75,10 +80,10 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$hotelDetails->
 							<?php $hotel_features = explode(',',$hotelDetails->hotel_features); ?>
 							@foreach($hotel_features as $hf)
 							<li><i class="fa fa-check" aria-hidden="true"></i> {{$hf}} </li>
-							@endforeach 
+							@endforeach
 						</ul>
 					</div>
-				</div>	
+				</div>
 				<div class="col-md-3 tour_r">
 					<!--====== SPECIAL OFFERS ==========-->
 					<div class="tour_right tour_offer">
@@ -88,7 +93,7 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$hotelDetails->
 								<span class="n-td-1">$800</span>
 								</span>
 							</h4> <a href="booking1.html" class="link-btn">Book Now</a> </div>
-					
+
 					<!--====== PACKAGE SHARE ==========-->
 					<div class="tour_right head_right tour_social tour-ri-com">
 						<h3>Share This Package</h3>
@@ -124,6 +129,6 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$hotelDetails->
 			</div>
 		</div>
 	</section>
-	
-		
-@endsection	
+
+
+@endsection

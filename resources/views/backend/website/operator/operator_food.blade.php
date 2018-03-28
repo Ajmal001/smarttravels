@@ -32,29 +32,28 @@
                               <a href="#">
                                  <h4>Food Price List</h4>
 
-									@if ($errors->any())
-										@foreach ($errors->all() as $error)
-											<span style="color:red">{{ $error }}</span>
-										@endforeach
-									@endif
+                									@if ($errors->any())
+                										@foreach ($errors->all() as $error)
+                											<span style="color:red">{{ $error }}</span>
+                										@endforeach
+                									@endif
 
-									@if(Session::has('flash_message_insert'))
-									    <span style="color:green">{{ Session::get('flash_message_insert') }}</span>
-									@elseif(Session::has('flash_message_update'))
-										<span style="color:green">{{ Session::get('flash_message_update') }}</span>
-									@elseif(Session::has('flash_message_delete'))
-										<span style="color:red">{{ Session::get('flash_message_delete') }}</span>
-									@endif
+                									@if(Session::has('flash_message_insert'))
+                									    <span style="color:green">{{ Session::get('flash_message_insert') }}</span>
+                									@elseif(Session::has('flash_message_update'))
+                										<span style="color:green">{{ Session::get('flash_message_update') }}</span>
+                									@elseif(Session::has('flash_message_delete'))
+                										<span style="color:red">{{ Session::get('flash_message_delete') }}</span>
+                									@endif
                               </a>
                            </div>
                         </div>
                         <div class="panel-body">
                         <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                            <div class="btn-group">
-                                <div class="buttonexport" id="buttonlist">
-								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#package" > <i class="fa fa-plus"></i> Add New Food Price </a>
-						   </div>
-
+                              <div class="buttonexport" id="buttonlist">
+								                  <a class="btn btn-add" href="#" data-toggle="modal" data-target="#package" > <i class="fa fa-plus"></i> Add New Food Price </a>
+						                  </div>
                            </div>
                            <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
                            <div class="table-responsive">
@@ -68,16 +67,21 @@
                                     </tr>
                                  </thead>
                                  <tbody>
-								    @foreach($operatorFood as $hl)
+								                  @foreach($operatorFood as $hl)
                                     <tr>
                                        <td>{{$hl->country}}</td>
                                        <td>{{$hl->type}}</td>
-                                       <td>{{$hl->price}}</td>
                                        <td>
-										  <a class="btn btn-danger btn-sm" href="adminwebsiteoperatorfooddelete/{{$hl->id}}"><i class="fa fa-trash-o"></i></a>
+                                         {{$hl->price}}
+                                         @if($optionscurrency)
+                           								{{$optionscurrency->currency}}
+                           							 @endif
+                                       </td>
+                                       <td>
+										                      <a class="btn btn-danger btn-sm" href="adminwebsiteoperatorfooddelete/{{$hl->id}}"><i class="fa fa-trash-o"></i></a>
                                        </td>
                                     </tr>
-									@endforeach
+									                 @endforeach
                                  </tbody>
                               </table>
                               {{$operatorFood->links()}}

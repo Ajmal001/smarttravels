@@ -75,60 +75,60 @@
                                  <tbody>
                                   <tr>
                                    <td>Visa Processing</td>
-                                   <td>{{$income_visa_processing_today}}</td>
-                                   <td>{{$income_visa_processing_week}}</td>
-                                   <td>{{$income_visa_processing_month}}</td>
+                                   <td>{{$income_visa_processing_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_visa_processing_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_visa_processing_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Tour Packages</td>
-                                   <td>{{$income_tour_packages_today}}</td>
-                                   <td>{{$income_tour_packages_week}}</td>
-                                   <td>{{$income_tour_packages_month}}</td>
+                                   <td>{{$income_tour_packages_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_tour_packages_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_tour_packages_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Hotels</td>
-                                   <td>{{$income_hotels_today}}</td>
-                                   <td>{{$income_hotels_week}}</td>
-                                   <td>{{$income_hotels_month}}</td>
+                                   <td>{{$income_hotels_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_hotels_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_hotels_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Sight Seeing</td>
-                                   <td>{{$income_sight_seeing_today}}</td>
-                                   <td>{{$income_sight_seeing_week}}</td>
-                                   <td>{{$income_sight_seeing_month}}</td>
+                                   <td>{{$income_sight_seeing_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_sight_seeing_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_sight_seeing_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Air Tickets</td>
-                                   <td>{{$income_air_tickets_today}}</td>
-                                   <td>{{$income_air_tickets_week}}</td>
-                                   <td>{{$income_air_tickets_month}}</td>
+                                   <td>{{$income_air_tickets_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_air_tickets_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_air_tickets_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Consultancy</td>
-                                   <td>{{$income_consultancy_today}}</td>
-                                   <td>{{$income_consultancy_week}}</td>
-                                   <td>{{$income_consultancy_month}}</td>
+                                   <td>{{$income_consultancy_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_consultancy_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_consultancy_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Others</td>
-                                   <td>{{$income_others_today}}</td>
-                                   <td>{{$income_others_week}}</td>
-                                   <td>{{$income_others_month}}</td>
+                                   <td>{{$income_others_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_others_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$income_others_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                  </tbody>
                                  <tfoot>
                                   <tr>
                                    <th>Total </th>
-                                   <th>{{$income_total_today}}</th>
-                                   <th>{{$income_total_week}} </th>
-                                   <th>{{$income_total_month}}</th>
+                                   <th>{{$income_total_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                   <th>{{$income_total_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                   <th>{{$income_total_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
                                   </tr>
                                  </tfoot>
                                 </table>
@@ -151,105 +151,105 @@
                                  <tbody>
                                   <tr>
                                    <td>Rent</td>
-                                   <td>{{$expense_rent_today}}</td>
-                                   <td>{{$expense_rent_week}}</td>
-                                   <td>{{$expense_rent_month}}</td>
+                                   <td>{{$expense_rent_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_rent_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_rent_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Salary</td>
-                                   <td>{{$expense_salary_today}}</td>
-                                   <td>{{$expense_salary_week}}</td>
-                                   <td>{{$expense_salary_month}}</td>
+                                   <td>{{$expense_salary_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_salary_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_salary_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Food & Entertainment</td>
-                                   <td>{{$expense_food_entertainment_today}}</td>
-                                   <td>{{$expense_food_entertainment_week}}</td>
-                                   <td>{{$expense_food_entertainment_month}}</td>
+                                   <td>{{$expense_food_entertainment_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_food_entertainment_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_food_entertainment_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                   <tr>
                                    <td>Furniture & Stationary</td>
-                                   <td>{{$expense_furniture_stationary_today}}</td>
-                                   <td>{{$expense_furniture_stationary_week}}</td>
-                                   <td>{{$expense_furniture_stationary_month}}</td>
+                                   <td>{{$expense_furniture_stationary_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_furniture_stationary_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_furniture_stationary_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Repair & Maintenance</td>
-                                   <td>{{$expense_repair_maintenance_today}}</td>
-                                   <td>{{$expense_repair_maintenance_week}}</td>
-                                   <td>{{$expense_repair_maintenance_month}}</td>
+                                   <td>{{$expense_repair_maintenance_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_repair_maintenance_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_repair_maintenance_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Telephone</td>
-                                   <td>{{$expense_telephone_today}}</td>
-                                   <td>{{$expense_telephone_week}}</td>
-                                   <td>{{$expense_telephone_month}}</td>
+                                   <td>{{$expense_telephone_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_telephone_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_telephone_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Utilities</td>
-                                   <td>{{$expense_utilities_today}}</td>
-                                   <td>{{$expense_utilities_week}}</td>
-                                   <td>{{$expense_utilities_month}}</td>
+                                   <td>{{$expense_utilities_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_utilities_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_utilities_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Depreciation</td>
-                                   <td>{{$expense_depreciation_today}}</td>
-                                   <td>{{$expense_depreciation_week}}</td>
-                                   <td>{{$expense_depreciation_month}}</td>
+                                   <td>{{$expense_depreciation_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_depreciation_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_depreciation_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Commission & Discounts</td>
-                                   <td>{{$expense_commission_discounts_today}}</td>
-                                   <td>{{$expense_commission_discounts_week}}</td>
-                                   <td>{{$expense_commission_discounts_month}}</td>
+                                   <td>{{$expense_commission_discounts_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_commission_discounts_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_commission_discounts_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Marketing & Advertising</td>
-                                   <td>{{$expense_marketing_advertising_today}}</td>
-                                   <td>{{$expense_marketing_advertising_week}}</td>
-                                   <td>{{$expense_marketing_advertising_month}}</td>
+                                   <td>{{$expense_marketing_advertising_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_marketing_advertising_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_marketing_advertising_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Training Fees</td>
-                                   <td>{{$expense_training_fees_today}}</td>
-                                   <td>{{$expense_training_fees_week}}</td>
-                                   <td>{{$expense_training_fees_month}}</td>
+                                   <td>{{$expense_training_fees_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_training_fees_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_training_fees_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Legal Fees</td>
-                                   <td>{{$expense_legal_fees_today}}</td>
-                                   <td>{{$expense_legal_fees_week}}</td>
-                                   <td>{{$expense_legal_fees_month}}</td>
+                                   <td>{{$expense_legal_fees_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_legal_fees_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_legal_fees_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Convences</td>
-                                   <td>{{$expense_convences_today}}</td>
-                                   <td>{{$expense_convences_week}}</td>
-                                   <td>{{$expense_convences_month}}</td>
+                                   <td>{{$expense_convences_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_convences_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_convences_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Office Tour</td>
-                                   <td>{{$expense_office_tour_today}}</td>
-                                   <td>{{$expense_office_tour_week}}</td>
-                                   <td>{{$expense_office_tour_month}}</td>
+                                   <td>{{$expense_office_tour_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_office_tour_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_office_tour_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
                                    <td>Others</td>
-                                   <td>{{$expense_others_today}}</td>
-                                   <td>{{$expense_others_week}}</td>
-                                   <td>{{$expense_others_month}}</td>
+                                   <td>{{$expense_others_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_others_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   <td>{{$expense_others_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
 
                                  </tbody>
                                  <tfoot>
                                   <tr>
                                    <th>Total </th>
-                                   <th>{{$expense_total_today}}</th>
-                                   <th>{{$expense_total_week}}</th>
-                                   <th>{{$expense_total_month}}</th>
+                                   <th>{{$expense_total_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                   <th>{{$expense_total_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                   <th>{{$expense_total_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
                                   </tr>
                                 </tfoot></table>
                              </div>

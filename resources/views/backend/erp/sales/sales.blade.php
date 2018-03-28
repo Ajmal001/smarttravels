@@ -82,9 +82,18 @@
                               <tr>
                                  <td>{{$sales->sales_item_name}}</td>
                                  <td>{{$sales->sales_sku}}</td>
-                                 <td>{{$sales->sales_price}}</td>
+                                 <td>
+                                   {{$sales->sales_price}}
+                                   @if($optionscurrency)
+                     								{{$optionscurrency->currency}}
+                     							 @endif
+                                 </td>
                                  <td>{{$sales->sales_date}}</td>
-                                 <td>{{$sales->customer->customer_name}}</td>
+                                 <td>
+                                   @if($sales->customer)
+                                   {{$sales->customer->customer_name}}
+                                   @endif
+                                 </td>
                                  <td>{{$sales->sales_by_type}}</td>
 
                                  <td>{{$sales->sales_customer_rating}}</td>

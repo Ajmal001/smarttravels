@@ -69,9 +69,18 @@
 									</div>
 									<div class="col-md-3">
 										<div class="hot-page2-alp-ri-p3">
-											<div class="hot-page2-alp-r-hot-page-rat">25%Off</div> <span class="hot-list-p3-1">Price Per Night</span> <span class="hot-list-p3-2">{{$hotel->hotel_price}}Tk</span><span class="hot-list-p3-4">
+											<div class="hot-page2-alp-r-hot-page-rat">25%Off</div>
+											<span class="hot-list-p3-1">Price Per Night</span>
+											<span class="hot-list-p3-2">
+												{{$hotel->hotel_price}}
+												@if($optionscurrency)
+													{{$optionscurrency->currency}}
+												@endif
+											</span>
+											<span class="hot-list-p3-4">
 												<a href="hotelbooking/{{$hotel->hotel_id}}" class="hot-page2-alp-quot-btn">Book Now</a>
-											</span> </div>
+											</span>
+										</div>
 									</div>
 								</div>
 								<!--END LISTINGS-->

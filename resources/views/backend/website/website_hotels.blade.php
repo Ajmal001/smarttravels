@@ -81,7 +81,12 @@
                                        <td>{{$hl->hotel_sku}}</td>
                                        <td>{{$hl->hotel_country}}</td>
                                        <td>{{$hl->hotel_rating}}</td>
-                                       <td>{{$hl->hotel_price}}</td>
+                                       <td>
+                                         {{$hl->hotel_price}}
+                                         @if($optionscurrency)
+                           								{{$optionscurrency->currency}}
+                           							 @endif
+                                       </td>
                                        <td>
 										    <a id="viewhotelmodalbtn" class="btn btn-add btn-sm" href="#" data-id="{{$hl->hotel_id}}"><i class="fa fa-eye"></i></a>
 										    <a id="edithotelmodalbtn" class="btn btn-warning btn-sm" href="#" data-id="{{$hl->hotel_id}}"><i class="fa fa-pencil"></i></a>

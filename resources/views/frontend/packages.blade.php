@@ -64,7 +64,12 @@
                             </ul>
                         </div>
                         <div class="featur">
-                            <h4>{{$tp->price}} Tk</h4>
+                            <h4>
+                              {{$tp->price}}
+                              @if($optionscurrency)
+                								{{$optionscurrency->currency}}
+                							@endif
+                            </h4>
                             <ul>
                                 <li>Locations: {{$tp->location}}</li>
                                 <li>Include:  {{$tp->tour_include}}</li>

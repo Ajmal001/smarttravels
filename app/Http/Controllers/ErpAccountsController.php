@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\ErpExpenses;
 use App\ErpSales;
 use App\ErpCustomers;
+use App\OptionsCurrency;
 
 use Session;
 use Carbon\Carbon;
@@ -17,7 +18,8 @@ class ErpAccountsController extends Controller
 {
     public function showExpenses(){
       $expenses = ErpExpenses::latest()->paginate(10);
-       return view('backend.erp.accounts.expenses.expenses',compact('expenses'));
+  		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+      return view('backend.erp.accounts.expenses.expenses',compact('expenses','optionscurrency'));
     }
 
     public function addExpenses(Request $request){
@@ -67,7 +69,8 @@ class ErpAccountsController extends Controller
     public function showIncome(){
       $allincome = ErpSales::latest()->paginate(10);
       $customers = ErpCustomers::all();
-      return view('backend.erp.accounts.income.income', compact('allincome','customers'));
+  		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+      return view('backend.erp.accounts.income.income', compact('allincome','customers','optionscurrency'));
     }
 
     // Report
@@ -493,8 +496,11 @@ class ErpAccountsController extends Controller
               ->sum('expense_amount');
 
 
+    $optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+
       return view('backend.erp.accounts.report.inexreport', compact(
 
+            'optionscurrency',
             'income_visa_processing_today',
             'income_tour_packages_today',
             'income_hotels_today',

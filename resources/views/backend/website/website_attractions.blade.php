@@ -80,7 +80,12 @@
                                        <td>{{$attr->sku}}</td>
                                        <td>{{$attr->country}}</td>
                                        <td>{{$attr->location}}</td>
-                                       <td>{{$attr->price}}</td>
+                                       <td>
+                                         {{$attr->price}}
+                                         @if($optionscurrency)
+                           								{{$optionscurrency->currency}}
+                           							@endif
+                                       </td>
                                        <td>
 
 										    <a class="btn btn-add btn-sm" href="adminwebsiteattractionsedit/{{$attr->id}}"><i class="fa fa-pencil"></i></a>

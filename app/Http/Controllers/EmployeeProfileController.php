@@ -10,6 +10,7 @@ use App\Options;
 
 use App\ErpEmployeeAnnouncement;
 use App\ErpExpenses;
+use App\OptionsCurrency;
 
 use Auth;
 use File;
@@ -204,7 +205,9 @@ class EmployeeProfileController extends Controller
                       ->latest()
                       ->paginate(10);
 
-        return view('frontend.employee.expense',compact('expenses','attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option'));
+        $optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+
+        return view('frontend.employee.expense',compact('expenses','attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option','optionscurrency'));
     }
 
     public function employeeExpenseAdd()

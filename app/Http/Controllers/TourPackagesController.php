@@ -13,6 +13,7 @@ use App\TourCountry;
 use App\TourLocation;
 use App\TourExIn;
 use App\Booking;
+use App\OptionsCurrency;
 
 use Illuminate\Support\MessageBag;
 
@@ -27,7 +28,8 @@ class TourPackagesController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$exInList = TourExIn::get();
-		return view('backend.website.website_tour_packages',compact('tour_packages','countryList','locationList','exInList'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('backend.website.website_tour_packages',compact('tour_packages','optionscurrency','countryList','locationList','exInList'));
 	}
 
 	public function insertTourPackage(TourPackageRequest $request){

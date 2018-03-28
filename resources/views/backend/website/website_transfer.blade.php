@@ -76,7 +76,12 @@
                                        <td>{{$pic->pic_city}}</td>
                                        <td>{{$pic->pic_hotel}}</td>
                                        <td>{{$pic->pic_person}}</td>
-                                       <td>{{$pic->pic_price}}</td>
+                                       <td>
+                                         {{$pic->pic_price}}
+                                         @if($optionscurrency)
+                           								{{$optionscurrency->currency}}
+                           							 @endif
+                                       </td>
                                        <td>
 										    <a class="btn btn-add btn-sm" href="adminwebsitepicdetails/{{$pic->transfer_id}}"><i class="fa fa-eye"></i></a>
 										    <a class="btn btn-danger btn-sm" href="adminwebsitedeletetourpackages/"><i class="fa fa-trash-o"></i></a>
@@ -86,7 +91,7 @@
                                     @endforeach
                                  </tbody>
                               </table>
-                              
+
                               {{$picList->links()}}
                            </div>
 
@@ -148,7 +153,12 @@
                                        <td>{{$drop->drop_city}}</td>
                                        <td>{{$drop->drop_hotel}}</td>
                                        <td>{{$drop->drop_person}}</td>
-                                       <td>{{$drop->drop_price}}</td>
+                                       <td>
+                                         {{$drop->drop_price}}
+                                         @if($optionscurrency)
+                           								{{$optionscurrency->currency}}
+                           							 @endif
+                                    </td>
                                        <td>
 										    <a class="btn btn-add btn-sm" href="adminwebsitedropdetails/{{$drop->transfer_id}}"><i class="fa fa-eye"></i></a>
 										    <a class="btn btn-danger btn-sm" href="adminwebsitedeletetourpackages/"><i class="fa fa-trash-o"></i></a>

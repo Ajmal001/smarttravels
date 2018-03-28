@@ -12,6 +12,7 @@ use App\Hotels;
 use App\TourCountry;
 use App\TourLocation;
 use App\HotelFeatures;
+use App\OptionsCurrency;
 
 use Illuminate\Support\MessageBag;
 
@@ -26,7 +27,8 @@ class HotelsController extends Controller
 		$countryList = TourCountry::get();
 		$locationList = TourLocation::get();
 		$hotelFeatureList = HotelFeatures::get();
-		return view('backend.website.website_hotels',compact('countryList','locationList','hotelFeatureList','hotelList'));
+		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+		return view('backend.website.website_hotels',compact('countryList','optionscurrency','locationList','hotelFeatureList','hotelList'));
 	}
 
 	public function insertHotel(HotelRequest $request){

@@ -74,7 +74,12 @@
                                        <td>{{$hl->country}}</td>
                                        <td>{{$hl->location}}</td>
                                        <td>{{$hl->rating}}</td>
-                                       <td>{{$hl->price}}</td>
+                                       <td>
+                                         {{$hl->price}}
+                                         @if($optionscurrency)
+                           								{{$optionscurrency->currency}}
+                           							@endif
+                                       </td>
                                        <td>
 										  <a class="btn btn-danger btn-sm" href="adminwebsiteoperatorhoteldelete/{{$hl->id}}"><i class="fa fa-trash-o"></i></a>
                                        </td>

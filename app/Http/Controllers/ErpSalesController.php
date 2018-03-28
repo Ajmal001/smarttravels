@@ -8,6 +8,7 @@ use App\ErpSales;
 use App\ErpCustomers;
 use App\ErpEmployee;
 use App\ErpAgent;
+use App\OptionsCurrency;
 
 use Session;
 use DB;
@@ -18,7 +19,8 @@ class ErpSalesController extends Controller
 
       $allsales = ErpSales::with('customer')->latest()->paginate(10);
       $customers = ErpCustomers::all();
-      return view('backend.erp.sales.sales', compact('allsales','customers'));
+  		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+      return view('backend.erp.sales.sales', compact('allsales','customers','optionscurrency'));
     }
 
     public function addSales(Request $request){
@@ -162,14 +164,15 @@ class ErpSalesController extends Controller
     public function searchSalesYear(Request $request)
     {
         $customers = ErpCustomers::all();
+    		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
         $year = $request->sales_search_year;
         $searchsales = ErpSales::whereYear( 'sales_date', 'LIKE', '%' . $year . '%' )->get();
         if( count($searchsales) > 0 ){
-          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers','optionscurrency'));
         }else{
           $searchsales = '';
-          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers','optionscurrency'));
         }
 
     }
@@ -189,14 +192,15 @@ class ErpSalesController extends Controller
     public function searchSalesMonth(Request $request)
     {
         $customers = ErpCustomers::all();
+    		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
         $month = $request->sales_search_month;
         $searchsales = ErpSales::where( 'sales_date', 'LIKE', '%' . $month . '%' )->get();
         if( count($searchsales) > 0 ){
-          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers','optionscurrency'));
         }else{
           $searchsales = '';
-          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers','optionscurrency'));
         }
 
     }
@@ -216,14 +220,15 @@ class ErpSalesController extends Controller
     public function searchSalesDay(Request $request)
     {
         $customers = ErpCustomers::all();
+    		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
         $day = $request->sales_search_day;
         $searchsales = ErpSales::whereDate( 'sales_date', 'LIKE', '%' . $day . '%' )->get();
         if( count($searchsales) > 0 ){
-          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers','optionscurrency'));
         }else{
           $searchsales = '';
-          return view('backend.erp.sales.salessearch', compact('searchsales','customers'));
+          return view('backend.erp.sales.salessearch', compact('searchsales','customers','optionscurrency'));
         }
 
     }

@@ -72,7 +72,12 @@
                                  <td>{{$income->sales_item_name}}</td>
                                  <td>{{$income->sales_item_type}}</td>
                                  <td>{{$income->sales_date}}</td>
-                                 <td>{{$income->sales_price}}</td>
+                                 <td>
+                                   {{$income->sales_price}}
+                                   @if($optionscurrency)
+                     								{{$optionscurrency->currency}}
+                     							@endif
+                                 </td>
                               </tr>
                               @endforeach
                              </tbody>

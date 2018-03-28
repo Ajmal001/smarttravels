@@ -21,8 +21,8 @@
 
 
 					<div class="db-2-main-com db-2-main-com-table">
-						<b>Total Cash Payment = {{$totalCash}}</b><br>
-						<b>Total Due Remaining = {{$totalDue}}</b>
+						<b>Total Cash Payment = {{$totalCash}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </b><br>
+						<b>Total Due Remaining = {{$totalDue}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </b>
 						<table class="responsive-table">
 							<thead>
 								<tr>
@@ -37,7 +37,7 @@
 								@foreach($cutomerPayment as $sale)
 								<tr>
 									<td>{{$sale->sales_item_name}}</td>
-									<td>{{$sale->sales_price}}</td>
+									<td>{{$sale->sales_price}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
 									<td>
 										@if($sale->payment_type == 'cash')
 										<span class="db-done">{{$sale->payment_type}}</span>

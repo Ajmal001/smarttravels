@@ -40,8 +40,9 @@
 
                   <div class="panel-body">
 
-                    <div class="">
-                    {!! Form::open(['method'=>'post','url' => 'adminwebsiteinserthotellocation','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+                    <div class="row">
+                    <div class="col-sm-12" style="border-bottom: 1px solid #ddd; margin-bottom: 15px;">
+                    {!! Form::open(['method'=>'post','url' => 'adminwebsiteoptionscurrencyupdate','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
                     {!! csrf_field() !!}
                        <div class="form-group">
                           <label>Select Currency</label>
@@ -58,6 +59,7 @@
                    {!! Form::close() !!}
                    </div>
 
+                   <div class="col-sm-12">
                     <div class="btn-group">
                      <div class="buttonexport" id="buttonlist">
                        <a class="btn btn-add" href="#" data-toggle="modal" data-target="#addcurrency" > <i class="fa fa-plus"></i> Add New Currency </a>
@@ -71,6 +73,7 @@
                                 <th>ID</th>
                                 <th>Country</th>
                                 <th>Currency</th>
+                                <th>Active</th>
                                 <th>Action</th>
                              </tr>
                           </thead>
@@ -81,7 +84,17 @@
                               <td>{{$currency->id}}</td>
                               <td>{{$currency->country}}</td>
                               <td>{{$currency->currency}}</td>
-
+                              <td>
+                                @if($currency->selected == 1)
+                                  <button type="button" class="btn btn-sm btn-success" style="pointer-events: none; cursor: default;">Selected</button>
+                                @else
+                                  {!! Form::open(['method'=>'post','url' => '/adminwebsiteoptionscurrencyupdate']) !!}
+                                  {!! csrf_field() !!}
+                                  <input type="hidden" name="currency_id" value="{{$currency->id}}" >
+                                  <button type="submit" class="btn btn-warning btn-sm">Select</button>
+                                  {!! Form::close() !!}
+                                @endif
+                              </td>
                               <td>
                                  {!! Form::open(['method'=>'post','url' => '/adminwebsiteoptionscurrencydelete','class'=>'pull-left','enctype'=>'multipart/form-data']) !!}
                                  {!! csrf_field() !!}
@@ -97,6 +110,8 @@
                        {{-- $optionscurrency->links() --}}
                     </div>
 
+      						</div>
+      						</div>
       						</div>
 
                   </div>

@@ -33,7 +33,12 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$sightDetails->
 				<div class="banner_book_1">
 					<ul>
 						<li class="dl1">Location : {{$sightDetails->location}}</li>
-						<li class="dl2">Price : {{$sightDetails->price}}Tk</li>
+						<li class="dl2">
+							Price : {{$sightDetails->price}}
+							@if($optionscurrency)
+								{{$optionscurrency->currency}}
+							@endif
+						</li>
 						<li class="dl3">Duration : {{$sightDetails->sku}}</li>
 						<li class="dl4"><a href="{{ URL::to('/sightbooking/')}}/{{$sightDetails->sight_id }}">Book Now</a> </li>
 					</ul>
@@ -52,11 +57,11 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$sightDetails->
 					<!--====== TOUR DESCRIPTION ==========-->
 					<div class="tour_head1">
 						<h3>Description</h3>
-						<p>{!!{!!$sightDetails->details!!}</p>
-					</div>						
-					
-					
-				</div>	
+						<p>{!!$sightDetails->details!!}</p>
+					</div>
+
+
+				</div>
 				<div class="col-md-3 tour_r">
 					<!--====== SPECIAL OFFERS ==========-->
 					<div class="tour_right tour_offer">
@@ -111,5 +116,5 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$sightDetails->
 			</div>
 		</div>
 	</section>
-	
+
   @endsection

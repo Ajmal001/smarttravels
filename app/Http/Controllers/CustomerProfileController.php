@@ -13,6 +13,7 @@ use App\CustomerLogin;
 use App\ErpCustomers;
 use App\ErpSales;
 use App\ErpCustomerSupport;
+use App\OptionsCurrency;
 
 use Auth;
 use File;
@@ -118,6 +119,7 @@ class CustomerProfileController extends Controller
         $locationList = TourLocation::get();
         $current_option = Options::get()->first();
         $exclusive_packages = TourPackages::orderBy('package_id', 'desc')->take(10)->get();
+    		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
 
         $customer = Auth::user();
         $customer_id = Auth::user()->customer_id;
@@ -134,7 +136,7 @@ class CustomerProfileController extends Controller
                             ->where('payment_type','due')
                             ->sum('sales_price');
 
-        return view('frontend.customer.payments',compact('totalDue','totalCash','exclusive_packages','customer','cutomerPayment','countryList','locationList','current_option'));
+        return view('frontend.customer.payments',compact('totalDue','totalCash','exclusive_packages','customer','cutomerPayment','countryList','locationList','current_option','optionscurrency'));
     }
 
     public function customerSuports()
@@ -152,7 +154,7 @@ class CustomerProfileController extends Controller
     public function customerSuportsJson()
     {
         $customer_id = Auth::user()->customer_id;
-        
+
         $customersupports = ErpCustomerSupport::where('customer_id',$customer_id)
                                               ->orderBy('id', 'ASC')
                                               ->get();

@@ -81,7 +81,12 @@
                                        <td>{{$tp->general_package}}</td>
                                        <td>{{$tp->country}}</td>
                                        <td>{{$tp->location}}</td>
-                                       <td>{{$tp->price}}</td>
+                                       <td>
+                                         {{$tp->price}}
+                                         @if($optionscurrency)
+                           								{{$optionscurrency->currency}}
+                           							 @endif
+                                       </td>
                                        <td>{{$tp->duration}} Days</td>
                                        <td>
 										    <a id="viewtourpackagesbtn" class="btn btn-add btn-sm" href="#" data-id="{{$tp->package_id}}"><i class="fa fa-eye"></i></a>

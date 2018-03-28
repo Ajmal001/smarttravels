@@ -33,7 +33,12 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$attractionDeta
 				<div class="banner_book_1">
 					<ul>
 						<li class="dl1">Location : {{$attractionDetails->location}}</li>
-						<li class="dl2">Price : {{$attractionDetails->price}}Tk</li>
+						<li class="dl2">
+							Price : {{$attractionDetails->price}}
+							@if($optionscurrency)
+								{{$optionscurrency->currency}}
+							@endif
+						</li>
 						<li class="dl3">SKU : {{$attractionDetails->sku}}</li>
 						<li class="dl4"><a href="{{ URL::to('/attractionbooking/')}}/{{$attractionDetails->id }}">Book Now</a> </li>
 					</ul>
@@ -53,10 +58,10 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$attractionDeta
 					<div class="tour_head1">
 						<h3>Description</h3>
 						<p>{!!$attractionDetails->details!!}</p>
-					</div>						
-					
-					
-				</div>	
+					</div>
+
+
+				</div>
 				<div class="col-md-3 tour_r">
 					<!--====== SPECIAL OFFERS ==========-->
 					<div class="tour_right tour_offer">
@@ -111,5 +116,5 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$attractionDeta
 			</div>
 		</div>
 	</section>
-	
+
   @endsection
