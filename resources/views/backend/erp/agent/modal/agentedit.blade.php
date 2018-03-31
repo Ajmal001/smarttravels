@@ -16,12 +16,12 @@
 
             <div class="form-group">
               <label>Agent Name</label>
-              <input type="text" name="agent_name" class="form-control" id="agent_name" required>
+              <input type="text" name="name" class="form-control" id="agent_name" required>
             </div>
 
             <div class="form-group">
               <label>Agent Email</label>
-              <input type="email" name="agent_email" class="form-control" id="agent_email" required>
+              <input type="email" name="email" class="form-control" id="agent_email" required>
             </div>
 
             <div class="form-group">

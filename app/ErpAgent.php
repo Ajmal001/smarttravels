@@ -2,11 +2,24 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class ErpAgent extends Model
+class ErpAgent extends Authenticatable
 {
-    protected $primaryKey = 'agent_id';
 
-    protected $guarded = [];
+    protected $table = "erp_agents";
+    protected $primaryKey = 'id';
+
+    use Notifiable;
+
+    protected $fillable = [
+        'name', 'email', 'password', 'agent_phone', 'agent_area', 'agent_image'
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+
 }

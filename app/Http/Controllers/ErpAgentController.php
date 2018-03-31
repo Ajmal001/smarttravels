@@ -19,8 +19,9 @@ class ErpAgentController extends Controller
 
       $insert = new ErpAgent();
 
-      $insert->agent_name = $request->agent_name;
-      $insert->agent_email = $request->agent_email;
+      $insert->name = $request->name;
+      $insert->email = $request->email;
+      $insert->password = bcrypt($request->password);
       $insert->agent_phone = $request->agent_phone;
       $insert->agent_area = $request->agent_area;
 
@@ -59,8 +60,8 @@ class ErpAgentController extends Controller
 
       $update = ErpAgent::find($id);
 
-      $update->agent_name = $request->agent_name;
-      $update->agent_email = $request->agent_email;
+      $update->name = $request->name;
+      $update->email = $request->email;
       $update->agent_phone = $request->agent_phone;
       $update->agent_area = $request->agent_area;
 

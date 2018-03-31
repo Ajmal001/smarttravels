@@ -52,6 +52,10 @@ return [
             'driver' => 'session',
             'provider' => 'customers',
         ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agents',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -91,6 +95,10 @@ return [
         'employees' => [
             'driver' => 'eloquent',
             'model' => App\EmployeeLogin::class,
+        ],
+        'agents' => [
+            'driver' => 'eloquent',
+            'model' => App\ErpAgent::class,
         ],
 
         // 'users' => [
@@ -132,6 +140,11 @@ return [
         ],
         'employees' => [
             'provider' => 'employees',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'agents' => [
+            'provider' => 'agents',
             'table' => 'password_resets',
             'expire' => 60,
         ],

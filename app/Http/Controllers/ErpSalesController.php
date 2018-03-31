@@ -70,7 +70,7 @@ class ErpSalesController extends Controller
 
       if ($seller_type['sales_by_type'] == 'Agent') {
 
-        $agent = ErpAgent::get(['agent_id','agent_name']);
+        $agent = ErpAgent::get(['id','name']);
 
         return response()->json(
           [
@@ -140,7 +140,7 @@ class ErpSalesController extends Controller
 
       }elseif ($type == 'Agent') {
 
-        $agent = ErpAgent::get(['agent_id','agent_name']);
+        $agent = ErpAgent::get(['id','name']);
         return response()->json([
           'sellertype' => 'agent',
           'sellername' => $agent

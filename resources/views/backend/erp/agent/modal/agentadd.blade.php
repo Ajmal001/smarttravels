@@ -15,12 +15,17 @@
 
             <div class="form-group">
               <label>Agent Name</label>
-              <input type="text" name="agent_name" class="form-control" placeholder="Enter Agent Name" required>
+              <input type="text" name="name" class="form-control" placeholder="Enter Agent Name" required>
             </div>
 
             <div class="form-group">
               <label>Agent Email</label>
-              <input type="email" name="agent_email" class="form-control" placeholder="Enter Agent Email" required>
+              <input type="email" name="email" class="form-control" placeholder="Enter Agent Email" required>
+            </div>
+
+            <div class="form-group">
+              <label>Agent Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Enter Agent Password" required>
             </div>
 
             <div class="form-group">

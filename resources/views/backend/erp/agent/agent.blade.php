@@ -76,17 +76,17 @@
                                    @foreach($agents as $agent)
                                     <tr>
                                        <td><img src="{{ URL::to('/') }}/public/backendimages/{{$agent->agent_image}}" class="img-circle" alt="User Image" width="50" height="50"> </td>
-                                       <td>{{$agent->agent_name}}</td>
-                                       <td>{{$agent->agent_email}}</td>
+                                       <td>{{$agent->name}}</td>
+                                       <td>{{$agent->email}}</td>
                                        <td>{{$agent->agent_phone}}</td>
                                        <td>{{$agent->agent_area}}</td>
                                        <td>
-                                          <a id="viewAgent" class="btn btn-add btn-sm" href="#" data-id="{{$agent->agent_id}}"> <i class="fa fa-eye"></i></a>
-                                          <a id="editAgent" class="btn btn-warning btn-sm" href="#" data-id="{{$agent->agent_id}}"> <i class="fa fa-pencil"></i></a>
-                                          {!! Form::open(['method'=>'post','url' => 'adminerpagentdelete/{{$agent->agent_id}}','class'=>'col-sm-6 pull-right delete-btn','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}
+                                          <a id="viewAgent" class="btn btn-add btn-sm pull-left m-r-5" href="#" data-id="{{$agent->id}}"> <i class="fa fa-eye"></i></a>
+                                          <a id="editAgent" class="btn btn-warning btn-sm pull-left m-r-5" href="#" data-id="{{$agent->id}}"> <i class="fa fa-pencil"></i></a>
+                                          {!! Form::open(['method'=>'post','url' => 'adminerpagentdelete/{{$agent->id}}','class'=>'pull-left','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}
                                           {!! csrf_field() !!}
                                           {!! method_field('DELETE') !!}
-                                           <input type="hidden" name="agent_id" value="{{$agent->agent_id}}" >
+                                           <input type="hidden" name="agent_id" value="{{$agent->id}}" >
                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                                           {!! Form::close() !!}
 
@@ -127,8 +127,8 @@
 
       $.get('adminerpagentedit/'+id, function(data){
 
-        $('#agentedit #agent_name').val(data.agentdata.agent_name);
-        $('#agentedit #agent_email').val(data.agentdata.agent_email);
+        $('#agentedit #agent_name').val(data.agentdata.name);
+        $('#agentedit #agent_email').val(data.agentdata.email);
         $('#agentedit #agent_phone').val(data.agentdata.agent_phone);
         $('#agentedit #agent_area').val(data.agentdata.agent_area);
         $('#agentedit #agent_image').attr('src','public/backendimages/'+data.agentdata.agent_image);
@@ -145,8 +145,8 @@
 
       $.get('adminerpagentview/'+id, function(data){
 
-        $('#agentview #agent_name').html(data.agentdata.agent_name);
-        $('#agentview #agent_email').html(data.agentdata.agent_email);
+        $('#agentview #agent_name').html(data.agentdata.name);
+        $('#agentview #agent_email').html(data.agentdata.email);
         $('#agentview #agent_phone').html(data.agentdata.agent_phone);
         $('#agentview #agent_area').html(data.agentdata.agent_area);
         $('#agentview #agent_image').attr('src','public/backendimages/'+data.agentdata.agent_image);

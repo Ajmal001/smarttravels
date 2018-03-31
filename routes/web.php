@@ -544,3 +544,21 @@ Route::get('/customermessages', 'ErpSupportsController@customerMessages');
 Route::post('/customermessagesreplay', 'ErpSupportsController@customerMessagesReplay');
 Route::get('/customermessages/{customer_id}', 'ErpSupportsController@singleCustomerMessages');
 Route::get('/customermessages-json/{customer_id}', 'ErpSupportsController@singleCustomerMessagesJson');
+
+
+/*---------------------- Agent ----------------------*/
+
+// Agent Login
+Route::get('/agenthome', 'AgentProfileController@agentHome');
+Route::get('/agentlogin', 'Agent\LoginController@showLoginForm');
+Route::post('/agentlogin', 'Agent\LoginController@login');
+Route::get('/agentregister', 'Agent\LoginController@register');
+Route::post('/agentregister', 'Agent\RegisterController@register');
+Route::post('/agentlogout', 'Agent\LoginController@logout');
+Route::get('/agentlogout', 'Agent\LoginController@logout');
+
+// Front End Agent Profile
+Route::get('/agentprofileedit','AgentProfileController@agentProfileEdit');
+Route::post('/agentprofileupdate','AgentProfileController@agentProfileUpdate');
+Route::get('/agentaccountsettings','AgentProfileController@agentAccount');
+Route::post('/agentaccountsettings','AgentProfileController@agentAccountUpdate');

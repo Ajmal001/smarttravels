@@ -224,7 +224,7 @@
               $('#salesedit #sales_by_id').empty();
               $.each(data.sellername, function(index, value){
 
-                $('#salesedit #sales_by_id').append('<option value="'+value.agent_id+'">'+value.agent_name+'</option>');
+                $('#salesedit #sales_by_id').append('<option value="'+value.id+'">'+value.name+'</option>');
               });
             }
           });
@@ -251,7 +251,7 @@
           $('#salesview #sales_customer_id').html(data.salesdetails.customer.customer_name);
           $('#salesview #sales_by_type').html(data.salesdetails.sales_by_type);
           if (data.salesdetails.selleragent) {
-            $('#salesview #sales_by_id').html(data.salesdetails.selleragent.agent_name);
+            $('#salesview #sales_by_id').html(data.salesdetails.selleragent.name);
           }else if (data.salesdetails.selleremployee) {
             $('#salesview #sales_by_id').html(data.salesdetails.selleremployee.employee_name);
           }
@@ -288,7 +288,7 @@
               $('#sellerTypeNameDropDown').append('<option disabled selected>Select Agent Name</option>');
 
               $.each(data.sellername, function(index, value){
-                $('#sellerTypeNameDropDown').append('<option value="'+value.agent_id+'">'+value.agent_name+'</option>');
+                $('#sellerTypeNameDropDown').append('<option value="'+value.id+'">'+value.name+'</option>');
               });
 
             }
@@ -317,7 +317,7 @@
               $('#salesedit #sales_by_id').append('<option disabled selected>Select Agent Name</option>');
 
               $.each(data.sellername, function(index, value){
-                $('#salesedit #sales_by_id').append('<option value="'+value.agent_id+'">'+value.agent_name+'</option>');
+                $('#salesedit #sales_by_id').append('<option value="'+value.id+'">'+value.name+'</option>');
               });
 
             }
