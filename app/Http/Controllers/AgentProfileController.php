@@ -9,6 +9,9 @@ use App\Options;
 
 use App\ErpEmployeeAnnouncement;
 use App\ErpAgent;
+use App\ErpCustomers;
+use App\OptionsCurrency;
+use App\ErpSales;
 
 use Auth;
 use File;
@@ -132,6 +135,52 @@ class AgentProfileController extends Controller
     public function agentSale(){
 
       
+    }
+
+
+    public function agentSales()
+    {
+      $countryList = TourCountry::get();
+      $locationList = TourLocation::get();
+      $current_option = Options::get()->first();
+      $agent = Auth::user();
+      $agentid = Auth::user()->id;
+      $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
+      $optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+      $sales = ErpSales::with('customer')->where('sales_by_id',$agentid)->where('sales_by_type','Agent')->latest()->paginate(10);
+
+      return view('frontend.agent.agentsaleslist',compact('sales','agent','announcements','optionscurrency','countryList','locationList','current_option'));
+    }
+
+    public function agentSalesEdit()
+    {
+        $countryList = TourCountry::get();
+        $locationList = TourLocation::get();
+        $current_option = Options::get()->first();
+        $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
+        $customers = ErpCustomers::all();
+        $agent = Auth::user();
+
+        return view('frontend.agent.agentsales',compact('customers','agent','announcements','countryList','locationList','current_option'));
+    }
+
+    public function agentSalesAdd(Request $request)
+    {
+        $insert = new ErpSales();
+        $insert->sales_item_type = $request->sales_item_type;
+        $insert->sales_item_name = $request->sales_item_name;
+        $insert->sales_sku = $request->sales_sku;
+        $insert->sales_customer_id = $request->sales_customer_id;
+        $insert->sales_by_type = $request->sales_by_type;
+        $insert->sales_by_id = $request->sales_by_id;
+        $insert->payment_type = $request->payment_type;
+        $insert->payment_method = $request->payment_method;
+        $insert->payment_info = $request->payment_info;
+        $insert->sales_price = $request->sales_price;
+        $insert->sales_date = $request->sales_date;
+        $insert->sales_customer_rating = $request->sales_customer_rating;
+        $insert->save();
+        return redirect('/agentsales');
     }
 
 

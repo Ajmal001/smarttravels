@@ -562,3 +562,7 @@ Route::get('/agentprofileedit','AgentProfileController@agentProfileEdit');
 Route::post('/agentprofileupdate','AgentProfileController@agentProfileUpdate');
 Route::get('/agentaccountsettings','AgentProfileController@agentAccount');
 Route::post('/agentaccountsettings','AgentProfileController@agentAccountUpdate');
+
+Route::get('/agentsales','AgentProfileController@agentSales');
+Route::get('/agentpackagesales','AgentProfileController@agentSalesEdit');
+Route::post('/agentpackagesales','AgentProfileController@agentSalesAdd');
