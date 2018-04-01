@@ -78,12 +78,8 @@
                                  <td>{{$task->task_title}}</td>
                                  <td>{{$task->task_date}}</td>
                                  <td>
-                                   @if($task->task_assigned_to)
-                                    @foreach($employees as $employee)
-                                      @if($employee->employee_id == $task->task_assigned_to)
-                                      {{$employee->employee_name}}
-                                      @endif
-                                    @endforeach
+                                   @if($task->employee)
+                                    {{$task->employee[0]->employee_name}}
                                    @endif
                                  </td>
                                  <td>
@@ -152,7 +148,7 @@
       $.get('adminerptaskview/'+cid, function(data){
         $('#taskview #task_title').html(data.taskdetails.task_title);
         $('#taskview #task_date').html(data.taskdetails.task_date);
-        $('#taskview #task_assigned_to').html(data.taskdetails.task_assigned_to);
+        $('#taskview #task_assigned_to').html(data.taskdetails.employee[0].employee_name);
         $('#taskview #task_details').html(data.taskdetails.task_details);
       });
     });

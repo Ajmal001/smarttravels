@@ -14,11 +14,11 @@ use DB;
 class ErpTaskController extends Controller
 {
     public function showTask(){
-      $tasks =  ErpTask::latest()->paginate(10);
+      $tasks =  ErpTask::with('employee')->latest()->paginate(10);
       $employees = EmployeeLogin::all();
       $today = Carbon::now();
+
       return view('backend.erp.task.task', compact('today','tasks','employees'));
-      //return $employees;
     }
 
     public function addTask(Request $request){
@@ -59,7 +59,7 @@ class ErpTaskController extends Controller
 
     public function detailsTask($task_id){
 
-        $taskDetails = ErpTask::find($task_id);
+        $taskDetails = ErpTask::with('employee')->find($task_id);
         return response()->json(['taskdetails' => $taskDetails]);
 
     }

@@ -17,8 +17,9 @@ use DB;
 class ErpAccountsController extends Controller
 {
     public function showExpenses(){
-      $expenses = ErpExpenses::latest()->paginate(10);
+      $expenses = ErpExpenses::with('employee')->latest()->paginate(10);
   		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+      // return $expenses;
       return view('backend.erp.accounts.expenses.expenses',compact('expenses','optionscurrency'));
     }
 

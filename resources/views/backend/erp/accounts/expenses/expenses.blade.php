@@ -80,7 +80,13 @@
                      								{{$optionscurrency->currency}}
                      							@endif
                                  </td>
-                                 <td>{{$expense->expense_added_by}}</td>
+                                 <td>
+                                   @if($expense->employee)
+                                     @foreach($expense->employee as $e_name)
+                                      {{$e_name->employee_name}}
+                                     @endforeach
+                                   @endif
+                                 </td>
                                  <td>
                                     <a id="expenseeditbutton" class="btn btn-warning btn-sm pull-left m-r-5" href="/" data-eid="{{$expense->expense_id}}"><i class="fa fa-pencil"></i></a>
                                     {!! Form::open(['method'=>'post','url' => 'adminerpexpensesdelete/{{$expense->expense_id}}','class'=>'pull-left','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}

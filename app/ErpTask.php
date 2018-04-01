@@ -10,6 +10,6 @@ class ErpTask extends Model
 
     public function employee()
     {
-        return $this->belongsTo(ErpEmployee::class);
+        return $this->hasMany(ErpEmployee::class,'employee_id','task_assigned_to');
     }
 }
