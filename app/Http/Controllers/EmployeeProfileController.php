@@ -52,7 +52,7 @@ class EmployeeProfileController extends Controller
         $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $employee = Auth::user();
-        $employee_id    = Auth::user()->id;
+        $employee_id    = Auth::user()->employee_id;
 
         $attendences_this_month = DB::table('erp_employee_attendences')
                                   ->whereMonth('date',date('n'))
@@ -76,7 +76,7 @@ class EmployeeProfileController extends Controller
         $employee = Auth::user();
 
         $employee = Auth::user();
-        $employee_id    = Auth::user()->id;
+        $employee_id    = Auth::user()->employee_id;
 
         $attendences_this_month = DB::table('erp_employee_attendences')
                                   ->whereMonth('date',date('n'))
@@ -132,7 +132,7 @@ class EmployeeProfileController extends Controller
         $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $employee = Auth::user();
-        $employee_id    = Auth::user()->id;
+        $employee_id    = Auth::user()->employee_id;
 
         $attendences_this_month = DB::table('erp_employee_attendences')
                                   ->whereMonth('date',date('n'))
@@ -146,7 +146,7 @@ class EmployeeProfileController extends Controller
 
         $today = Carbon::now();
         $employee = Auth::user();
-        $tasks = $employee->tasks()->latest()->paginate(2);
+        $tasks = $employee->tasks()->latest()->paginate(10);
 
         return view('frontend.employee.tasklist',compact('attendences_this_month','taskpending','announcements','tasks','employee','countryList','locationList','current_option','today'));
     }
@@ -159,7 +159,7 @@ class EmployeeProfileController extends Controller
         $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $employee = Auth::user();
-        $employee_id = Auth::user()->id;
+        $employee_id = Auth::user()->employee_id;
 
         $attendences_this_month = DB::table('erp_employee_attendences')
                                   ->whereMonth('date',date('n'))
@@ -174,6 +174,7 @@ class EmployeeProfileController extends Controller
         $employee    = Auth::user();
         $attendences = DB::table('erp_employee_attendences')
                       ->where('employee_id','=',$employee_id)
+                      ->whereMonth('date', date('n'))
                       ->get();
 
         return view('frontend.employee.attendence',compact('attendences_this_month','taskpending','announcements','attendences','employee','countryList','locationList','current_option'));
@@ -186,7 +187,7 @@ class EmployeeProfileController extends Controller
         $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
 
         $employee = Auth::user();
-        $employee_id    = Auth::user()->id;
+        $employee_id    = Auth::user()->employee_id;
 
         $attendences_this_month = DB::table('erp_employee_attendences')
                                   ->whereMonth('date',date('n'))
@@ -218,7 +219,7 @@ class EmployeeProfileController extends Controller
       $announcements  = ErpEmployeeAnnouncement::latest()->paginate(10);
       $employee       = Auth::user();
 
-      $employee_id            = Auth::user()->id;
+      $employee_id            = Auth::user()->employee_id;
       $attendences_this_month = DB::table('erp_employee_attendences')
                                 ->whereMonth('date',date('n'))
                                 ->where('employee_id','=',$employee_id)
@@ -234,7 +235,7 @@ class EmployeeProfileController extends Controller
 
     public function employeeExpenseCreate(Request $request)
     {
-      $employee_id = Auth::user()->id;
+      $employee_id = Auth::user()->employee_id;
       $employeeexpense = new ErpExpenses();
       $employeeexpense->expense_type      = $request->expense_type;
       $employeeexpense->expense_title     = $request->expense_title;

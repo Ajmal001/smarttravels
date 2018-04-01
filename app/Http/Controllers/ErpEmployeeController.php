@@ -31,7 +31,7 @@ class ErpEmployeeController extends Controller
     $insert = new ErpEmployee();
 
     $insert->employee_name = $request->employee_name;
-    $insert->employee_email = $request->employee_email;
+    $insert->email = $request->email;
     $insert->employee_phone = $request->employee_phone;
     $insert->employee_address = $request->employee_address;
     $insert->employee_nid = $request->employee_nid;
@@ -72,7 +72,7 @@ class ErpEmployeeController extends Controller
     $update = ErpEmployee::find($id);
 
     $update->employee_name = $request->employee_name;
-    $update->employee_email = $request->employee_email;
+    $update->email = $request->email;
     $update->employee_phone = $request->employee_phone;
     $update->employee_address = $request->employee_address;
     $update->employee_nid = $request->employee_nid;
@@ -100,7 +100,6 @@ class ErpEmployeeController extends Controller
 
   public function deleteEmployee(Request $request, $id)
   {
-
     $employee_id = $request->input('employee_id');
     DB::table('erp_employees')->where('employee_id',$employee_id)->delete();
     Session::flash('flash_message_delete', 'Employee Deleted !');

@@ -129,5 +129,10 @@ class AgentProfileController extends Controller
       }
     }
 
+    public function agentSale(){
+
+      
+    }
+
 
 }

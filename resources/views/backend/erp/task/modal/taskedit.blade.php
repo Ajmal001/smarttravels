@@ -32,7 +32,7 @@
                 <div class="form-group">
                  <select class="js-example-basic-multiple" id="task_assigned_to" name="task_assigned_to" style="width:200px;" required>
                    @foreach($employees as $employee)
-                   <option value="{{$employee->id}}">{{$employee->name}}</option>
+                   <option value="{{$employee->employee_id}}">{{$employee->employee_name}}</option>
                    @endforeach
                  </select>
                 </div>
@@ -40,8 +40,8 @@
 
               <div class="form-group">
                  <label>Task Status</label>
-                 <select class="form-control" name="task_status">
-                   <option selected disabled>-Select Status-</option>
+                 <select class="form-control" name="task_status" required>
+                   <option selected disabled>Select Status</option>
                    <option value="0">Pending</option>
                    <option value="1">Done</option>
                  </select>

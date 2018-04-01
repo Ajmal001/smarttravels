@@ -80,8 +80,8 @@
                                  <td>
                                    @if($task->task_assigned_to)
                                     @foreach($employees as $employee)
-                                      @if($employee->id == $task->task_assigned_to)
-                                      {{$employee->name}}
+                                      @if($employee->employee_id == $task->task_assigned_to)
+                                      {{$employee->employee_name}}
                                       @endif
                                     @endforeach
                                    @endif
@@ -89,8 +89,10 @@
                                  <td>
                                    @if($task->task_status == 1)
                                    <span class="label-success label label-default" style="font-size:8pt">Done</span>
-                                   @else
+                                   @elseif($task->task_date > $today)
                                    <span class="label-info label label-default" style="font-size:8pt">Pending</span>
+                                   @else
+                                   <span class="label-danger label label-default" style="font-size:8pt">Late</span>
                                    @endif
                                  </td>
                                  <td>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\ErpTask;
 use App\EmployeeLogin;
 
+use Carbon\Carbon;
 use Session;
 use DB;
 
@@ -15,7 +16,8 @@ class ErpTaskController extends Controller
     public function showTask(){
       $tasks =  ErpTask::latest()->paginate(10);
       $employees = EmployeeLogin::all();
-      return view('backend.erp.task.task', compact('tasks','employees'));
+      $today = Carbon::now();
+      return view('backend.erp.task.task', compact('today','tasks','employees'));
       //return $employees;
     }
 

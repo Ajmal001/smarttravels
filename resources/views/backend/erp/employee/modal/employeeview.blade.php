@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                   <td><strong>Employee Email</strong></td>
-                  <td id="employee_email"></td>
+                  <td id="email"></td>
                 </tr>
                 <tr>
                   <td><strong>Employee Phone</strong></td>
@@ -45,7 +45,7 @@
                 <tr>
                   <td><strong>Employee Designation</strong></td>
                   <td id="employee_designation"></td>
-                </tr>              
+                </tr>
 
               </tbody>
             </table>

@@ -21,9 +21,9 @@
 						<table class="responsive-table">
 							<tbody>
 								<tr>
-									<td>User Name</td>
+									<td>Employee Name</td>
 									<td>:</td>
-									<td>{{$employee->name}}</td>
+									<td>{{$employee->employee_name}}</td>
 								</tr>
 								<!--<tr>
 									<td>Password</td>

@@ -10,6 +10,6 @@ class ErpTask extends Model
 
     public function employee()
     {
-        return $this->belongsTo(EmployeeLogin::class);
+        return $this->belongsTo(ErpEmployee::class);
     }
 }

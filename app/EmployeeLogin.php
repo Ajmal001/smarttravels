@@ -8,8 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class EmployeeLogin extends Authenticatable
 {
 
-    protected $table = "erp_employee_login";
-    protected $primaryKey = 'id';
+    protected $table = "erp_employees_info";
+    protected $primaryKey = 'employee_id';
 
     use Notifiable;
 
@@ -45,4 +45,5 @@ class EmployeeLogin extends Authenticatable
     {
         return $this->hasMany(ErpEmployeeAttendence::class,'employee_id');
     }
+
 }

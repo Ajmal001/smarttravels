@@ -34,13 +34,10 @@
                           @endif
                       </li>
                   @endforeach
-
               </ul>
-
 					</div>
 					{{ $tasks->links() }}
 				</div>
-
 			</div>
 
 			<!--RIGHT SECTION-->

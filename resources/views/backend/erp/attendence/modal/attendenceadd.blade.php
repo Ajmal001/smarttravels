@@ -17,7 +17,7 @@
               <div class="form-group">
                  <label>Employee</label>
                  <select class="form-control" name="employee_id">
-                   <option selected disabled>--Select Employee--</option>
+                   <option selected disabled>Select Employee</option>
                    @foreach($allemployee as $employee)
                    <option value="{{$employee->employee_id}}">{{$employee->employee_name}}</option>
                    @endforeach

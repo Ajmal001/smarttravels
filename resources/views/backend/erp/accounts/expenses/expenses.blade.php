@@ -64,6 +64,7 @@
                                    <th>Expense Type</th>
                                    <th>Date</th>
                                    <th>Amount</th>
+                                   <th>Added By</th>
                                    <th>Action</th>
                                 </tr>
                              </thead>
@@ -79,7 +80,7 @@
                      								{{$optionscurrency->currency}}
                      							@endif
                                  </td>
-
+                                 <td>{{$expense->expense_added_by}}</td>
                                  <td>
                                     <a id="expenseeditbutton" class="btn btn-warning btn-sm pull-left m-r-5" href="/" data-eid="{{$expense->expense_id}}"><i class="fa fa-pencil"></i></a>
                                     {!! Form::open(['method'=>'post','url' => 'adminerpexpensesdelete/{{$expense->expense_id}}','class'=>'pull-left','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}

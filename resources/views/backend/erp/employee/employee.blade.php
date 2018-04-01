@@ -79,7 +79,7 @@
                               <tr>
                                   <td><img src="{{ URL::to('/') }}/public/backendimages/{{$employee->employee_image}}" class="img-circle" alt="User Image" width="50" height="50"></td>
                                   <td>{{$employee->employee_name}}</td>
-                                  <td>{{$employee->employee_email}}</td>
+                                  <td>{{$employee->email}}</td>
                                   <td>{{$employee->employee_phone}}</td>
                                   <td>{{$employee->employee_address}}</td>
                                   <td>{{$employee->employee_nid}}</td>
@@ -134,7 +134,7 @@
       $.get('adminerpemployeeedit/'+id, function(data){
 
         $('#employeeedit #employee_name').val(data.employeedata.employee_name);
-        $('#employeeedit #employee_email').val(data.employeedata.employee_email);
+        $('#employeeedit #email').val(data.employeedata.email);
         $('#employeeedit #employee_phone').val(data.employeedata.employee_phone);
         $('#employeeedit #employee_address').val(data.employeedata.employee_address);
         $('#employeeedit #employee_nid').val(data.employeedata.employee_nid);
@@ -155,7 +155,7 @@
       $.get('adminerpemployeeview/'+id, function(data){
 
         $('#employeeview #employee_name').html(data.employeedata.employee_name);
-        $('#employeeview #employee_email').html(data.employeedata.employee_email);
+        $('#employeeview #email').html(data.employeedata.email);
         $('#employeeview #employee_phone').html(data.employeedata.employee_phone);
         $('#employeeview #employee_address').html(data.employeedata.employee_address);
         $('#employeeview #employee_nid').html(data.employeedata.employee_nid);
