@@ -50,9 +50,21 @@
 										@endif
 									</td>
 									<td>{{$sale->sales_date}}</td>
-								</tr>
-								<tr>
-									
+									<td>
+										@if($sale->commision_type != null)
+											@if($sale->commision_type == 'fixed')
+												{{$sale->commision_rate}}
+												@if($optionscurrency)
+												 {{$optionscurrency->currency}}
+												@endif
+											@elseif($sale->commision_type == 'percent')
+											{{ (($sale->sales_price)*($sale->commision_rate)) / 100 }}
+											@if($optionscurrency)
+											 {{$optionscurrency->currency}}
+											@endif
+											@endif
+										@endif
+									</td>
 								</tr>
 								@endforeach
 							</tbody>

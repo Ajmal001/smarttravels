@@ -59,6 +59,14 @@
                   <td id="sales_by_type"></td>
                 </tr>
                 <tr>
+                  <td><strong>Commision Type</strong></td>
+                  <td id="commision_type"></td>
+                </tr>
+                <tr>
+                  <td><strong>Commision Rate</strong></td>
+                  <td id="commision_rate"></td>
+                </tr>
+                <tr>
                   <td><strong>Seller</strong></td>
                   <td id="sales_by_id"></td>
                 </tr>

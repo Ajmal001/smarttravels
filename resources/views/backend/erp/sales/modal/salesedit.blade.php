@@ -36,7 +36,7 @@
 
               <div class="form-group">
                  <label>SKU</label>
-                 <input type="text" name="sales_sku" class="form-control" id="sales_sku" required>
+                 <input type="text" name="sales_sku" class="form-control" id="sales_sku">
               </div>
 
               <div class="form-group">
@@ -96,6 +96,20 @@
               <div class="form-group">
                  <label>Price</label>
                  <input type="number" name="sales_price" class="form-control" id="sales_price" required>
+              </div>
+
+              <div class="form-group">
+                 <label>Commision Type</label>
+                 <select class="form-control" name="commision_type" id="commision_type">
+                   <option disabled selected>Select Type</option>
+                   <option value="fixed">Fixed</option>
+                   <option value="percent">Percent</option>
+                 </select>
+              </div>
+
+              <div class="form-group">
+                 <label>Commision Rate</label>
+                 <input type="text" name="commision_rate" class="form-control" id="commision_rate" required>
               </div>
 
               <div class="form-group">

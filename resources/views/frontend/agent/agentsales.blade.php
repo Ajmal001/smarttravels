@@ -56,6 +56,7 @@
 
 							<input type="hidden" name="sales_by_type" value="Agent">
 							<input type="hidden" name="sales_by_id" value="{{$agent->id}}">
+							<input type="hidden" name="sales_customer_rating" value="0">
 
 							<div class="row">
 								<div class="input-field col s12">
