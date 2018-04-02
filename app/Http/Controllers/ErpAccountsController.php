@@ -31,6 +31,7 @@ class ErpAccountsController extends Controller
   		$insert->expense_title = $request->input('expense_title');
   		$insert->expense_amount = $request->input('expense_amount');
   		$insert->expense_date = $request->input('expense_date');
+  		$insert->expense_added_by = "Admin";
 
   		$insert->save();
   		Session::flash('flash_message_insert', 'Expense Added Successfully !');

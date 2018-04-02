@@ -515,6 +515,9 @@ Route::get('/employeeexpense','EmployeeProfileController@employeeExpense');
 Route::get('/employeeexpenseadd','EmployeeProfileController@employeeExpenseAdd');
 Route::post('/employeeexpensecreate','EmployeeProfileController@employeeExpenseCreate');
 
+// Front End Employee Account
+Route::get('/employeeaccount','EmployeeProfileController@employeeAccount');
+Route::post('/employeeaccount','EmployeeProfileController@employeeAccountUpdate');
 
 /*----------------------Customer----------------------*/
 
@@ -566,3 +569,10 @@ Route::post('/agentaccountsettings','AgentProfileController@agentAccountUpdate')
 Route::get('/agentsales','AgentProfileController@agentSales');
 Route::get('/agentpackagesales','AgentProfileController@agentSalesEdit');
 Route::post('/agentpackagesales','AgentProfileController@agentSalesAdd');
+
+
+/*---------------------- Admin Settings ----------------------*/
+
+Route::get('/adminprofilesettings', 'AdminController@adminProfileSettings');
+Route::get('/adminpasssettings', 'AdminController@adminProfileSettingsEdit');
+Route::post('/adminpasssettings', 'AdminController@adminProfileSettingsUpdate');

@@ -74,16 +74,11 @@ class RegisterController extends Controller
 
     public function register(\Illuminate\Http\Request $request)
     {
-      $employeeid = EmployeeLogin::create([
-        'name'      => $request->name,
-        'email'     => $request->email,
-        'password'  => bcrypt($request->password)
-      ])->id;
-
       ErpEmployee::create([
-        'employee_id'           => $employeeid,
         'employee_name'         => $request->name,
-        'employee_email'        => $request->email,
+        'email'                 => $request->email,
+        'password'              => bcrypt($request->password),
+        'status'                => $request->status,
         'employee_phone'        => $request->employee_phone,
         'employee_designation'  => $request->employee_designation,
         'employee_image'        => 'employee_dafault.png',

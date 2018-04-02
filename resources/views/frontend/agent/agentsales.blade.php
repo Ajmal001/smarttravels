@@ -45,8 +45,12 @@
 
 							<div class="row">
 								<div class="input-field col s12">
-									<input type="text" name="sales_customer_id" class="validate" required>
-									<label>Customer Name</label>
+									<select name="sales_customer_id" required>
+	                  <option disabled selected>Select Customer</option>
+										@foreach($customers as $customer)
+											<option value="{{$customer->customer_id}}">{{$customer->customer_name}}</option>
+										@endforeach
+	                </select>
 								</div>
 							</div>
 

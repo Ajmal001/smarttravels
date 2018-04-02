@@ -74,16 +74,11 @@ class RegisterController extends Controller
 
     public function register(\Illuminate\Http\Request $request)
     {
-      $customerid = CustomerLogin::create([
-        'name'      => $request->name,
-        'email'     => $request->email,
-        'password'  => bcrypt($request->password)
-      ])->id;
-
+      // return $request->all();
       ErpCustomers::create([
-        'customer_id'           => $customerid,
         'customer_name'         => $request->name,
-        'customer_email'        => $request->email,
+        'email'                 => $request->email,
+        'password'              => bcrypt($request->password),
         'customer_phone'        => $request->customer_phone,
         'customer_profession'   => $request->customer_profession,
         'customer_image'        => 'customer_dafault.png',

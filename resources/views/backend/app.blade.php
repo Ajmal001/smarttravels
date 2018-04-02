@@ -327,11 +327,17 @@
                      <!-- user -->
                      <li class="dropdown dropdown-user">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="assets/dist/img/avatar5.png" class="img-circle" width="45" height="45" alt="user"></a>
+                          @if(Auth::user()->image)
+                          <img src="{{ URL::to('/') }}/public/backendimages/{{Auth::user()->image}}" class="img-circle" width="45" height="45" alt="user">
+                          @else
+                          <img src="{{ URL::to('/') }}/public/backendimages/admin_dafault.png" class="img-circle" width="45" height="45" alt="user">
+                          @endif
+
+                        </a>
                         <ul class="dropdown-menu" >
                            <li>
-                              <a href="profile.html">
-                              <i class="fa fa-user"></i> User Profile</a>
+                              <a href="{{url('adminprofilesettings')}}">
+                              <i class="fa fa-user"></i> {{Auth::user()->name}}</a>
                            </li>
                            <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
                            <li>

@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use Image;
 use Session;
 use DB;
+use Hash;
 
 class AgentProfileController extends Controller
 {
@@ -114,27 +115,23 @@ class AgentProfileController extends Controller
 
     public function agentAccountUpdate(Request $request)
     {
-      $newpassword = $request->newpassword;
-      $renewpassword = $request->renewpassword;
-
-      $agent_id = Auth::user()->id;
-
-      if($newpassword === $renewpassword){
-
-        $password = ErpAgent::where('id',$agent_id)->update(['password'=>bcrypt($newpassword)]);
-
-        Session::flash('flash_message_update', 'Password Updated Successfully.');
-        return back();
-
-      }else{
-        Session::flash('flash_error_message', 'Password done not match !');
-        return back();
+      if (!(Hash::check($request->get('currentpassword'), Auth::user()->password))) {
+        return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
       }
-    }
 
-    public function agentSale(){
+      if(strcmp($request->get('currentpassword'), $request->get('newpassword')) == 0){
+        return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+      }
 
+       $this->validate($request, [
+        'currentpassword' => 'required',
+        'newpassword' => 'required|string|min:6|confirmed',
+      ]);
 
+      $user = Auth::user();
+      $user->password = bcrypt($request->get('newpassword'));
+      $user->save();
+      return redirect()->back()->with("success","Password changed successfully !");
     }
 
 

@@ -25,11 +25,6 @@
 									<td>:</td>
 									<td>{{$employee->employee_name}}</td>
 								</tr>
-								<!--<tr>
-									<td>Password</td>
-									<td>:</td>
-									<td>mypasswordtour</td>
-								</tr>-->
 								<tr>
 									<td>Eamil</td>
 									<td>:</td>
@@ -38,35 +33,38 @@
 								<tr>
 									<td>Phone</td>
 									<td>:</td>
-									<td>{{$employee->profile->employee_phone}}</td>
+									<td>{{$employee->employee_phone}}</td>
 								</tr>
-								<!--<tr>
-									<td>Date of birth</td>
-									<td>:</td>
-									<td>03 Jun 1990</td>
-								</tr>-->
 								<tr>
 									<td>Address</td>
 									<td>:</td>
-									<td>{{$employee->profile->employee_address}}</td>
+									<td>{{$employee->employee_address}}</td>
 								</tr>
 								<tr>
 									<td>National ID</td>
 									<td>:</td>
-									<td>{{$employee->profile->employee_nid}}</td>
+									<td>{{$employee->employee_nid}}</td>
 								</tr>
 								<tr>
 									<td>Designation</td>
 									<td>:</td>
-									<td>{{$employee->profile->employee_designation}}</td>
+									<td>{{$employee->employee_designation}}</td>
 								</tr>
 								<tr>
 									<td>Status</td>
 									<td>:</td>
-									<td><span class="db-done">Active</span></td>
+									<td>
+										@if($employee->status == 1)
+										<span class="db-done">Active</span>
+										@else
+										<span class="db-not-done">Inactive</span>
+										@endif
+									</td>
 								</tr>
 							</tbody>
 						</table>
+						<br>
+						<a href="{{url('employeeprofileedit')}}" class="btn btn-info"><b>Edit Profile</b></a>
 
 					</div>
 				</div>

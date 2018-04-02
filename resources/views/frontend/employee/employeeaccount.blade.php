@@ -8,9 +8,9 @@
 		<div class="db">
 			<!--LEFT SECTION-->
 			<div class="db-l">
-				  @include('frontend.customer.includes.profile')
+				  @include('frontend.employee.includes.profile')
 				<div class="db-l-2">
-					@include('frontend.customer.includes.sidebar')
+					@include('frontend.employee.includes.sidebar')
 				</div>
 			</div>
 			<!--CENTER SECTION-->
@@ -43,8 +43,8 @@
 						        @endforeach
 						    </div>
 						@endif
-						
-						<form class="col s12" action="{{url('customeraccountsettings')}}" method="POST" enctype="multipart/form-data">
+
+						<form class="col s12" action="{{url('employeeaccount')}}" method="POST" enctype="multipart/form-data">
 							{{csrf_field()}}
 
 							<div class="row">
@@ -85,7 +85,7 @@
 			</div>
 			<!--RIGHT SECTION-->
 			<div class="db-3">
-				@include('frontend.customer.includes.exclusive_packages')
+				@include('frontend.employee.includes.announcements')
 			</div>
 		</div>
 	</section>

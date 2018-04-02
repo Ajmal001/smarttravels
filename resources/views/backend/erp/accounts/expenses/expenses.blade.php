@@ -81,7 +81,9 @@
                      							@endif
                                  </td>
                                  <td>
-                                   @if($expense->employee)
+                                   @if($expense->expense_added_by == "Admin")
+                                   {{$expense->expense_added_by}}
+                                   @elseif($expense->employee)
                                      @foreach($expense->employee as $e_name)
                                       {{$e_name->employee_name}}
                                      @endforeach

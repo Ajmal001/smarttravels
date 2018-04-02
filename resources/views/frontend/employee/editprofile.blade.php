@@ -22,54 +22,35 @@
 							{{csrf_field()}}
 							<div class="row">
 								<div class="input-field col s12">
-									<input type="text" name="name" class="validate" value="{{$employee->name}}">
-									<label>User Name</label>
+									<input type="text" name="employee_name" class="validate" value="{{$employee->employee_name}}">
+									<label>Full Name</label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s12 m6">
-									<input type="password" name="password" class="validate">
-									<label>Enter Password</label>
-								</div>
-								<div class="input-field col s12 m6">
-									<input type="password" name="password" class="validate">
-									<label>Confirm Password</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s12 m6">
-									<input type="number" name="employee_nid" class="validate" value="{{$employee->profile->employee_nid}}">
+									<input type="number" name="employee_nid" class="validate" value="{{$employee->employee_nid}}">
 									<label>National ID</label>
 								</div>
 								<div class="input-field col s12 m6">
-									<input type="number" name="employee_phone" class="validate" value="{{$employee->profile->employee_phone}}">
+									<input type="number" name="employee_phone" class="validate" value="{{$employee->employee_phone}}">
 									<label>Phone</label>
 								</div>
 							</div>
-							<!--<div class="row">
-								<div class="input-field col s12">
-									<select>
-										<option value="" disabled selected>Select Status</option>
-										<option value="1">Active</option>
-										<option value="2">Non-Active</option>
-									</select>
-								</div>
-							</div>-->
 							<div class="row">
 								<div class="input-field col s12">
-									<input type="text" name="employee_address" class="validate" value="{{$employee->profile->employee_address}}">
+									<input type="text" name="employee_address" class="validate" value="{{$employee->employee_address}}">
 									<label>Address</label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s12">
-									<input type="text" name="employee_designation" class="validate" value="{{$employee->profile->employee_designation}}">
+									<input type="text" name="employee_designation" class="validate" value="{{$employee->employee_designation}}">
 									<label>Designation</label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s12">
-									<input type="text" name="employee_details" class="validate" value="{{$employee->profile->employee_details}}">
+									<input type="text" name="employee_details" class="validate" value="{{$employee->employee_details}}">
 									<label>Details</label>
 								</div>
 							</div>

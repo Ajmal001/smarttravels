@@ -18,6 +18,8 @@ use App\OptionsImage;
 use App\OptionsCurrency;
 
 use Carbon\Carbon;
+use Auth;
+use Hash;
 
 class AdminController extends Controller
 {
@@ -411,6 +413,41 @@ class AdminController extends Controller
     $id = $request->id;
     OptionsCurrency::find($id)->delete();
     return redirect('/adminwebsiteoptionscurrency');
+  }
+
+  // Profile Settings
+  public function adminProfileSettings()
+  {
+    $admin = Auth::user();
+    return view('backend.website.website_admin_profile',compact('admin'));
+  }
+
+  public function adminProfileSettingsEdit()
+  {
+    $admin = Auth::user();
+    return view('backend.website.website_admin_profileedit',compact('admin'));
+  }
+
+  public function adminProfileSettingsUpdate(Request $request)
+  {
+      if (!(Hash::check($request->get('currentpassword'), Auth::user()->password))) {
+        return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+      }
+
+      if(strcmp($request->get('currentpassword'), $request->get('newpassword')) == 0){
+        return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+      }
+
+       $this->validate($request, [
+        'currentpassword' => 'required',
+        'newpassword' => 'required|string|min:6|confirmed',
+      ]);
+
+      $user = Auth::user();
+      $user->password = bcrypt($request->get('newpassword'));
+      $user->save();
+      return redirect()->back()->with("success","Password changed successfully !");
+
   }
 
 }

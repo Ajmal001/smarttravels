@@ -21,6 +21,7 @@ use Carbon\Carbon;
 use Image;
 use Session;
 use DB;
+use Hash;
 
 class CustomerProfileController extends Controller
 {
@@ -201,23 +202,23 @@ class CustomerProfileController extends Controller
 
     public function customerAccountUpdate(Request $request)
     {
-      $newpassword = $request->newpassword;
-      $renewpassword = $request->renewpassword;
+        if (!(Hash::check($request->get('currentpassword'), Auth::user()->password))) {
+          return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+        }
 
-      $customer_id = Auth::user()->customer_id;
+        if(strcmp($request->get('currentpassword'), $request->get('newpassword')) == 0){
+          return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+        }
 
-      if($newpassword === $renewpassword){
+         $this->validate($request, [
+          'currentpassword' => 'required',
+          'newpassword' => 'required|string|min:6|confirmed',
+        ]);
 
-        $password = ErpCustomers::where('customer_id',$customer_id)->update(['password'=>bcrypt($newpassword)]);
-        $password = DB::table('erp_customer_login')->where('id',$customer_id)->update(['password'=>bcrypt($newpassword)]);
-
-        Session::flash('flash_message_update', 'Password Updated Successfully.');
-        return back();
-
-      }else{
-        Session::flash('flash_error_message', 'Password done not match !');
-        return back();
-      }
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('newpassword'));
+        $user->save();
+        return redirect()->back()->with("success","Password changed successfully !");
     }
 
 

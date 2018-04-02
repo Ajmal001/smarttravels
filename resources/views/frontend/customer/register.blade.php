@@ -11,7 +11,7 @@
 				<p>Enter all credentials for create your account.</p>
 				<form class="col s12" method="post" action="{{url('customerregister')}}">
 					{{csrf_field()}}
-					<input type="hidden" name="status" value="1">
+
 					<div class="row">
 						<div class="input-field col m6 s12">
 							<input type="text" name="name" class="validate">

@@ -99,7 +99,7 @@
 										@if($customer->status)
 										<span class="db-done">Active</span>
 										@else
-										<span class="db-done">Inctive</span>
+										<span class="db-not-done">Inctive</span>
 										@endif
 									</td>
 								</tr>

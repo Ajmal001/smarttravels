@@ -8,6 +8,7 @@ use App\TourCountry;
 use App\TourLocation;
 use App\Options;
 
+use App\ErpEmployee;
 use App\ErpEmployeeAnnouncement;
 use App\ErpExpenses;
 use App\OptionsCurrency;
@@ -16,6 +17,7 @@ use Auth;
 use File;
 use Carbon\Carbon;
 use DB;
+use Hash;
 
 class EmployeeProfileController extends Controller
 {
@@ -94,24 +96,20 @@ class EmployeeProfileController extends Controller
 
     public function employeeProfileUpdate(Request $request)
     {
-        $employee = Auth::user();
+        $employee_id = Auth::user()->employee_id;
+        $employee = ErpEmployee::find($employee_id);
 
         //Image
         if($request->hasFile('employee_image')){
             $image = $request->file('employee_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $request->employee_image->move(public_path('backendimages'), $filename);
-        }
-        elseif($employee->profile->employee_image){
-            $filename = $employee->profile->employee_image;
-        }
-        else{
-            $filename = 'employee_dafault.png';
+        }else{
+          $filename = 'employee_dafault.png';
         }
 
-        // Employee name,password need to update later...
-
-        $employee->profile->update([
+        $employee->update([
+            'employee_name'         => $request->employee_name,
             'employee_phone'        => $request->employee_phone,
             'employee_address'      => $request->employee_address,
             'employee_nid'          => $request->employee_nid,
@@ -244,6 +242,55 @@ class EmployeeProfileController extends Controller
       $employeeexpense->expense_date      = $request->expense_date;
       $employeeexpense->save();
       return redirect('/employeeexpense');
+    }
+
+
+    public function employeeAccount()
+    {
+
+      $countryList = TourCountry::get();
+      $locationList = TourLocation::get();
+      $current_option = Options::get()->first();
+      $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
+
+      $employee = Auth::user();
+      $employee_id    = Auth::user()->employee_id;
+
+      $attendences_this_month = DB::table('erp_employee_attendences')
+                                ->whereMonth('date',date('n'))
+                                ->where('employee_id','=',$employee_id)
+                                ->count();
+
+      $taskpending = DB::table('erp_tasks')
+                    ->where('task_assigned_to', $employee_id)
+                    ->where('task_status', 0)
+                    ->count();
+
+      return view('frontend.employee.employeeaccount',compact('attendences_this_month','taskpending','announcements','employee','countryList','locationList','current_option'));
+    }
+
+
+    public function employeeAccountUpdate(Request $request)
+    {
+
+      if (!(Hash::check($request->get('currentpassword'), Auth::user()->password))) {
+        return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
+      }
+
+      if(strcmp($request->get('currentpassword'), $request->get('newpassword')) == 0){
+        return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+      }
+
+       $this->validate($request, [
+        'currentpassword' => 'required',
+        'newpassword' => 'required|string|min:6|confirmed',
+      ]);
+
+      $user = Auth::user();
+      $user->password = bcrypt($request->get('newpassword'));
+      $user->save();
+      return redirect()->back()->with("success","Password changed successfully !");
+
     }
 
 

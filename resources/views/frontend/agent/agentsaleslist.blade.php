@@ -26,10 +26,11 @@
 						<table class="responsive-table">
 							<thead>
 								<tr>
-									<th>Sales Item</th>								
+									<th>Sales Item</th>
 									<th>Customer</th>
 									<th>Price</th>
 									<th>Date</th>
+									<th>Commision</th>
 								</tr>
 							</thead>
 
@@ -37,7 +38,11 @@
 								@foreach($sales as $sale)
 								<tr>
 									<td>{{$sale->sales_item_name}}</td>
-									<td>{{$sale->sales_customer_id}}</td>
+									<td>
+										@if($sale->customer)
+											{{$sale->customer->customer_name}}
+										@endif
+								  </td>
 									<td>
 										{{$sale->sales_price}}
 										@if($optionscurrency)
@@ -45,6 +50,9 @@
 										@endif
 									</td>
 									<td>{{$sale->sales_date}}</td>
+								</tr>
+								<tr>
+									
 								</tr>
 								@endforeach
 							</tbody>
