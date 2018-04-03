@@ -26,40 +26,40 @@
 							@foreach ($errors->all() as $error)
 								<span style="color:red">{{ $error }}</span>
 							@endforeach
-					@endif	
-														
+					@endif
+
 					@if(Session::has('flash_message_insert'))
 						<span style="color:green">{{ Session::get('flash_message_insert') }}</span>
 					@elseif(Session::has('flash_message_update'))
 						<span style="color:green">{{ Session::get('flash_message_update') }}</span>
 					@elseif(Session::has('flash_message_delete'))
 						<span style="color:red">{{ Session::get('flash_message_delete') }}</span>
-					@endif 	
-				
+					@endif
+
 				</div>
-				
+
 				<!--====== COMMON NOTICE ==========-->
-				
-				
+
+
 				<div class="col-md-12 col-sm-6 col-xs-12 form_1 wow fadeInLeft" data-wow-duration="1s">
 					<!--====== THANK YOU MESSAGE ==========-->
 					<div class="succ_mess">Thank you for contacting us we will get back to you soon.</div>
-					{!! Form::open(['url' => 'visaapply','class'=>'col s12']) !!}	
+					{!! Form::open(['url' => 'visaapply','class'=>'col s12']) !!}
 						<ul>
 							<li>
-								<input type="text" name="s_country" style="border:1px solid black;" id="select-city" class="autocomplete" placeholder="Enter Country Name" required> 
-							</li>						
-							
-							
+								<input type="text" name="s_country" style="border:1px solid black;" id="country" class="autocomplete" placeholder="Enter Country Name" required> 
+							</li>
+
+
 							<li>
-								<input type="submit" value="Submit" id="send_button"> 
+								<input type="submit" value="Submit" id="send_button">
 							</li>
 						</ul>
 					{!! Form::close() !!}
 				</div>
-				
+
 			</div>
 		</div>
 	</section>
-	
+
  @endsection

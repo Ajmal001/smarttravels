@@ -15,7 +15,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                <div class="header-icon">
-                  <i class="fa fa-home"></i>
+                  <i class="fa fa-address-card"></i>
                </div>
                <div class="header-title">
                   <h1>Visa Applications</h1>

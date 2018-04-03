@@ -15,7 +15,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                <div class="header-icon">
-                  <i class="fa fa-home"></i>
+                  <i class="fa fa-map-marker"></i>
                </div>
                <div class="header-title">
                   <h1>Locations</h1>
@@ -105,7 +105,7 @@
                      <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                           <h3><i class="fa fa-plane m-r-5"></i> Add Location </h3>
+                           <h3><i class="fa fa-map-marker m-r-5"></i> Add Location </h3>
                         </div>
 
 						<div class="modal-body">
@@ -149,7 +149,7 @@
                     <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3><i class="fa fa-plane m-r-5"></i> Edit Location </h3>
+                            <h3><i class="fa fa-map-marker m-r-5"></i> Edit Location </h3>
                         </div>
 
                         <div class="modal-body">

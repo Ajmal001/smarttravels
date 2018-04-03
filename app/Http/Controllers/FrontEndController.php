@@ -74,8 +74,7 @@ class FrontEndController extends Controller
 		$min = $request->input('s_min_price');
 		$max = $request->input('s_max_price');
 
-		$tourPackages = DB::table('tour_package')
-						->select(DB::raw("*"))
+		$tourPackages = TourPackages::select(DB::raw("*"))
 						->where('country', '=', $s_country)
 						->where('general_package', '=', $s_package)
 						->where('arrival_date','>=',$s_arrival_date)
@@ -104,9 +103,8 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$s_location = $request->input('s_location');
 
-		$hotelLocationList = DB::table('hotels')
-							->where('hotel_location', '=', $s_location)
-							->get();
+		$hotelLocationList = Hotels::where('hotel_location', '=', $s_location)->get();
+
 		return view('frontend.hotellocation',compact('countryList','locationList','hotelLocationList','s_location','current_option'));
 	}
 
@@ -116,9 +114,8 @@ class FrontEndController extends Controller
 		$current_option = Options::get()->first();
 		$s_ratings = $request->input('s_ratings');
 
-		$hotelRatingList = DB::table('hotels')
-							->where('hotel_rating', '=', $s_ratings)
-							->get();
+		$hotelRatingList = Hotels::where('hotel_rating', '=', $s_ratings)->get();
+
 		return view('frontend.hotel_ratings',compact('countryList','locationList','hotelRatingList','s_ratings','current_option'));
 	}
 
@@ -130,16 +127,12 @@ class FrontEndController extends Controller
 		$sf_price = $request->input('sf_price');
 
 		if(isset($s_price)){
-		$hotelPriceList = DB::table('hotels')
-						->whereBetween('hotel_price',[$s_price, $s_price+1000] )
-						->get();
-        }
+		$hotelPriceList = Hotels::whereBetween('hotel_price',[$s_price, $s_price+1000] )->get();
+    }
 
 		if(isset($sf_price)){
-		$hotelPriceList = DB::table('hotels')
-						->where('hotel_price', '>=', $sf_price)
-						->get();
-        }
+		$hotelPriceList = Hotels::where('hotel_price', '>=', $sf_price)->get();
+    }
 
 		return view('frontend.hotel_price',compact('countryList','locationList','hotelPriceList','s_ratings','s_price','sf_price','current_option'));
 

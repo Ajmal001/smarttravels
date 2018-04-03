@@ -91,7 +91,7 @@
                   <ul class="nav navbar-nav">
                      <!-- Orders -->
                      <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle admin-notification" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle admin-notification" data-toggle="dropdown" style="display:none">
                         <i class="pe-7s-cart"></i>
                         <span class="label label-primary">5</span>
                         </a>
@@ -145,7 +145,7 @@
                      </li>
                      <!-- Messages -->
                      <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display:none">
                         <i class="pe-7s-mail"></i>
                         <span class="label label-success">4</span>
                         </a>
@@ -215,7 +215,7 @@
                      </li>
                      <!-- Notifications -->
                      <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display:none">
                         <i class="pe-7s-bell"></i>
                         <span class="label label-warning">7</span>
                         </a>
@@ -250,7 +250,7 @@
                      </li>
                      <!-- Tasks -->
                      <li class="dropdown tasks-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display:none">
                         <i class="pe-7s-note2"></i>
                         <span class="label label-danger">6</span>
                         </a>
@@ -307,23 +307,7 @@
                            </li>
                         </ul>
                      </li>
-                     <!-- Help -->
-                     <li class="dropdown dropdown-help hidden-xs">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="pe-7s-settings"></i></a>
-                        <ul class="dropdown-menu" >
-                           <li>
-                              <a href="profile.html">
-                              <i class="fa fa-line-chart"></i> Networking</a>
-                           </li>
-                           <li><a href="#"><i class="fa fa fa-bullhorn"></i> Lan settings</a></li>
-                           <li><a href="#"><i class="fa fa-bar-chart"></i> Settings</a></li>
-                           <li><a href="login.html">
-                              <i class="fa fa-wifi"></i> wifi</a>
-                           </li>
 
-                        </ul>
-                     </li>
                      <!-- user -->
                      <li class="dropdown dropdown-user">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -365,13 +349,12 @@
                   </li>
 				  <li class="treeview">
                      <a href="#">
-                     <i class="fa fa-file-text"></i><span>Website Manager</span>
+                     <i class="fa fa-desktop"></i><span>Website Manager</span>
                      <span class="pull-right-container">
                      <i class="fa fa-angle-left pull-right"></i>
                      </span>
                      </a>
                      <ul class="treeview-menu">
-                        <li><a href="{{url('/adminwebsitepages')}}">All Pages</a></li>
                         <li><a href="{{url('/adminwebsitetourpackages')}}">Tours Packages</a></li>
                         <li><a href="{{url('/adminwebsitehotels')}}">Hotels</a></li>
                         <li><a href="{{url('/adminwebsitesights')}}">Sight Seeing</a></li>
@@ -383,7 +366,7 @@
                   </li>
 				  <li class="treeview">
                      <a href="#">
-                     <i class="fa fa-ticket"></i><span>Bookings</span>
+                     <i class="fa fa-address-card"></i><span>Bookings</span>
                      <span class="pull-right-container">
                      <i class="fa fa-angle-left pull-right"></i>
                      </span>
@@ -399,7 +382,7 @@
                   </li>
 				  <li class="treeview">
                      <a href="#">
-                     <i class="fa fa-ticket"></i><span>Country & Location</span>
+                     <i class="fa fa-globe"></i><span>Country & Location</span>
                      <span class="pull-right-container">
                      <i class="fa fa-angle-left pull-right"></i>
                      </span>
@@ -410,25 +393,11 @@
 
                      </ul>
                   </li>
+
+
 				  <li class="treeview">
                      <a href="#">
-                     <i class="fa fa-ticket"></i><span>Operator</span>
-                     <span class="pull-right-container">
-                     <i class="fa fa-angle-left pull-right"></i>
-                     </span>
-                     </a>
-                     <ul class="treeview-menu">
-						 <li><a href="{{url('/adminwebsiteoperatorlocation')}}">Location</a></li>
-                        <li><a href="{{url('/adminwebsiteoperatorhotel')}}">Hotel</a></li>
-                        <li><a href="{{url('/adminwebsiteoperatorpicdrop')}}">Pic & Drop</a></li>
-                        <li><a href="{{url('/adminwebsiteoperatorfood')}}">Food</a></li>
-                        <li><a href="{{url('/adminwebsiteoperatorairticket')}}">Air Ticket</a></li>
-                        <li><a href="{{url('/adminwebsiteoperatorsight')}}">Sight</a></li>
-                     </ul>
-                  </li>
-				  <li class="treeview">
-                     <a href="#">
-                     <i class="fa fa-ticket"></i><span>Theme Options</span>
+                     <i class="fa fa-cogs"></i><span>Theme Options</span>
                      <span class="pull-right-container">
                      <i class="fa fa-angle-left pull-right"></i>
                      </span>
@@ -473,7 +442,7 @@
 
                   <li class="treeview">
                      <a href="#">
-                     <i class="fa fa-book"></i><span>Task</span>
+                     <i class="fa fa-clipboard"></i><span>Task</span>
                      <span class="pull-right-container">
                      <i class="fa fa-angle-left pull-right"></i>
                      </span>
@@ -485,7 +454,7 @@
 
                   <li class="treeview">
                      <a href="#">
-                     <i class="fa fa-bell"></i><span>Employee</span>
+                     <i class="fa fa-user-circle"></i><span>Employee</span>
                      <span class="pull-right-container">
                      <i class="fa fa-angle-left pull-right"></i>
                      </span>
@@ -500,7 +469,7 @@
 
                   <li class="treeview">
                      <a href="#">
-                     <i class="fa fa-bell"></i><span>Accounts</span>
+                     <i class="fa fa-calculator"></i><span>Accounts</span>
                      <span class="pull-right-container">
                      <i class="fa fa-angle-left pull-right"></i>
                      </span>
@@ -514,48 +483,21 @@
 
                   <li class="treeview">
                      <a href="#">
-                     <i class="fa fa-bitbucket-square"></i><span>Stock</span>
-                     <span class="pull-right-container">
-                     <i class="fa fa-angle-left pull-right"></i>
-                     </span>
-                     </a>
-                     <ul class="treeview-menu">
-                        <li><a href="stockcat.html">Stock category</a></li>
-                        <li><a href="manstock.html">Manage Stock</a></li>
-                        <li><a href="astock.html">Assign stock</a></li>
-                     </ul>
-                  </li>
-                  <li class="treeview">
-                     <a href="#">
-                     <i class="fa fa-ticket"></i><span>Customer Support</span>
+                     <i class="fa fa-comments"></i><span>Customer Support</span>
                      <span class="pull-right-container">
                      <i class="fa fa-angle-left pull-right"></i>
                      </span>
                      </a>
                      <ul class="treeview-menu">
                         <li><a href="{{url('/customermessages')}}">All Messages</a></li>
-                        <li><a href="ticanswer.html">Answered</a></li>
-                        <li><a href="ticopen.html">Open</a></li>
-                        <li><a href="iprocess.html">Inprocess</a></li>
-                        <li><a href="close.html">CLosed</a></li>
-                        <li><a href="allticket.html">All Tickets</a></li>
                      </ul>
                   </li>
 
                   <li class="treeview">
-                     <a href="#">
+                     <a href="{{url('/adminprofilesettings')}}">
                      <i class="fa fa-gear"></i>
-                     <span>settings</span>
-                     <span class="pull-right-container">
-                     <i class="fa fa-angle-left pull-right"></i>
-                     </span>
+                     <span>Settings</span>
                      </a>
-                     <ul class="treeview-menu">
-                        <li><a href="gsetting.html">Genaral settings</a></li>
-                        <li><a href="stfsetting.html">Staff settings</a></li>
-                        <li><a href="emailsetting.html">Email settings</a></li>
-                        <li><a href="paysetting.html">Payment</a></li>
-                     </ul>
                   </li>
 
                </ul>
@@ -563,13 +505,9 @@
             <!-- /.sidebar -->
          </aside>
 
-
-
  @section('body')
 
  @show
-
-
 
  <footer class="main-footer">
             <strong>Copyright &copy; 2016-2017 <a href="#">Smart Web</a>.</strong> All rights reserved.

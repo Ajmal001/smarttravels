@@ -9,7 +9,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
          <div class="header-icon">
-            <i class="fa fa-plane"></i>
+            <i class="fa fa-dollar"></i>
          </div>
          <div class="header-title">
             <h1>Currency</h1>

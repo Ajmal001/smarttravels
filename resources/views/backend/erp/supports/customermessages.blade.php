@@ -15,7 +15,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
        <div class="header-icon">
-          <i class="fa fa-home"></i>
+          <i class="fa fa-comments"></i>
        </div>
        <div class="header-title">
           <h1>Messages</h1>
@@ -111,6 +111,6 @@
     <script type="text/javascript">
     $(function () {
            $("html, body").animate({
-scrollTop: $('html, body').get(0).scrollHeight}, 1000);});
+            scrollTop: $('html, body').get(0).scrollHeight+1000000000}, 1000);});
     </script>
   @endsection

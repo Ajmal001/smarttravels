@@ -10,7 +10,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                <div class="header-icon">
-                  <i class="fa fa-dashboard"></i>
+                  <i class="fa fa-pagelines"></i>
                </div>
                <div class="header-title">
                   <h1>Sight Booking List</h1>

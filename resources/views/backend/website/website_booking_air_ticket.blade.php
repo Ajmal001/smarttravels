@@ -10,7 +10,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                <div class="header-icon">
-                  <i class="fa fa-dashboard"></i>
+                  <i class="fa fa-plane"></i>
                </div>
                <div class="header-title">
                   <h1>Air Ticket Booking List</h1>
