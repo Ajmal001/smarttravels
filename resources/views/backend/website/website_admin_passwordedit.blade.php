@@ -41,25 +41,32 @@
        						    </div>
        						@endif
 
-       						<form class="form-horizontal col-sm-8" action="{{url('adminprofsettings')}}" method="POST" enctype="multipart/form-data">
+       						<form class="form-horizontal col-sm-8" action="{{url('adminpasssettings')}}" method="POST" enctype="multipart/form-data">
        							{{csrf_field()}}
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">Name: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name" value="{{$admin->name}}">
+                      <label class="col-sm-4 control-label">Current Password: </label>
+                      <div class="col-sm-8">
+                        <input type="password" name="currentpassword" class="form-control" placeholder="Current Password" required>
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">Email: </label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" name="email" value="{{$admin->email}}">
+                      <label class="col-sm-4 control-label">New Password: </label>
+                      <div class="col-sm-8">
+                        <input type="password" name="newpassword" class="form-control" placeholder="New Password" required>
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
+                      <label class="col-sm-4 control-label">Confirm New Password: </label>
+                      <div class="col-sm-8">
+                        <input type="password" name="newpassword_confirmation" class="form-control" placeholder="Confirm New Password" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-sm-offset-4 col-sm-8">
                         <button type="submit" class="btn btn-info">Update</button>
                       </div>
                     </div>

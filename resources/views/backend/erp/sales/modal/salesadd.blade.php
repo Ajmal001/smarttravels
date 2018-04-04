@@ -103,6 +103,20 @@
               </div>
 
               <div class="form-group">
+                 <label>Commision Type</label>
+                 <select class="form-control" name="commision_type">
+                   <option disabled selected>Select Type</option>
+                   <option value="fixed">Fixed</option>
+                   <option value="percent">Percent</option>
+                 </select>
+              </div>
+
+              <div class="form-group">
+                 <label>Commision Rate</label>
+                 <input type="text" name="commision_rate" class="form-control">
+              </div>
+
+              <div class="form-group">
                  <label>Date</label>
                  <div class="input-group date form_date" >
                     <input id='minMaxExample' type="text" name="sales_date" style="z-index: 1050 !important;" class="form-control years"><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>

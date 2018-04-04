@@ -37,6 +37,8 @@ class ErpSalesController extends Controller
   		$insert->sales_customer_id = $request->input('sales_customer_id');
   		$insert->sales_by_type = $request->input('sales_by_type');
   		$insert->sales_by_id = $request->input('sales_by_id');
+  		$insert->commision_type = $request->input('commision_type');
+  		$insert->commision_rate = $request->input('commision_rate');
   		$insert->sales_customer_rating = $request->input('sales_customer_rating');
 
   		$insert->save();
@@ -155,7 +157,7 @@ class ErpSalesController extends Controller
     // SEARCH YEAR
     public function salesYearSearch()
     {
-      $salesdates = ErpSales::pluck('sales_date');
+      $salesdates = ErpSales::latest()->pluck('sales_date');
       $salesdate = [];
       foreach ($salesdates as $dates) {
         $salesdate[] = date('Y', strtotime($dates));
@@ -183,7 +185,7 @@ class ErpSalesController extends Controller
     // SEARCH MONTH
     public function salesMonthSearch()
     {
-      $salesdates = ErpSales::pluck('sales_date');
+      $salesdates = ErpSales::latest()->pluck('sales_date');
       $salesdate = [];
       foreach ($salesdates as $dates) {
         $salesdate[] = date('Y-m', strtotime($dates));
@@ -211,7 +213,7 @@ class ErpSalesController extends Controller
     // SEARCH DAY
     public function salesDaySearch()
     {
-      $salesdates = ErpSales::pluck('sales_date');
+      $salesdates = ErpSales::latest()->pluck('sales_date');
       $salesdate = [];
       foreach ($salesdates as $dates) {
         $salesdate[] = date('Y-m-d', strtotime($dates));

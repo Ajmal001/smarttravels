@@ -21,7 +21,7 @@
             <section class="content">
                <div class="row">
 
-                 <div class="col-md-3">
+                 <div class="col-md-4">
                    <div class="cardbox_user">
                      @if($admin->image)
                      <img src="{{ URL::to('/') }}/public/backendimages/{{$admin->image}}" class="img-circle img-responsive" alt="User Image">
@@ -33,10 +33,13 @@
                      <h2 class="text-center">{{$admin->name}}</h2>
                      <h5 class="text-center">{{$admin->email}}</h5>
                    </div>
-                   <a href="{{url('adminpasssettings')}}" class="text-center btn btn-warning">Change Password</a>
+                   <div class="btn-group btn-group-justified" role="group">
+                     <a href="{{url('adminprofsettings')}}" class="btn btn-info">Change Profile</a>
+                     <a href="{{url('adminpasssettings')}}" class="btn btn-warning">Change Password</a>
+                   </div>
                  </div>
 
-                 <div class="col-md-9">
+                 <div class="col-md-8">
 
                  </div>
 

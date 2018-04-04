@@ -11,6 +11,8 @@ use App\Options;
 use App\ErpEmployee;
 use App\ErpEmployeeAnnouncement;
 use App\ErpExpenses;
+use App\ErpSales;
+use App\ErpCustomers;
 use App\OptionsCurrency;
 
 use Auth;
@@ -292,6 +294,81 @@ class EmployeeProfileController extends Controller
       return redirect()->back()->with("success","Password changed successfully !");
 
     }
+
+
+    public function employeeSales()
+    {
+      $countryList = TourCountry::get();
+      $locationList = TourLocation::get();
+      $current_option = Options::get()->first();
+      $employee = Auth::user();
+      $employee_id = Auth::user()->employee_id;
+      $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
+      $optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+
+      $attendences_this_month = DB::table('erp_employee_attendences')
+                                ->whereMonth('date',date('n'))
+                                ->where('employee_id','=',$employee_id)
+                                ->count();
+
+      $taskpending = DB::table('erp_tasks')
+                    ->where('task_assigned_to', $employee_id)
+                    ->where('task_status', 0)
+                    ->count();
+
+      $sales = ErpSales::with('customer')->where('sales_by_id',$employee_id)->where('sales_by_type','Employee')->latest()->paginate(10);
+
+      return view('frontend.employee.employeesales',compact('sales','employee','announcements','attendences_this_month','taskpending','optionscurrency','countryList','locationList','current_option'));
+    }
+
+
+        public function employeeSalesEdit()
+        {
+            $countryList = TourCountry::get();
+            $locationList = TourLocation::get();
+            $current_option = Options::get()->first();
+            $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
+            $customers = ErpCustomers::all();
+            $employee = Auth::user();
+            $employee_id = Auth::user()->employee_id;
+            $announcements = ErpEmployeeAnnouncement::latest()->paginate(10);
+            $optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+
+            $attendences_this_month = DB::table('erp_employee_attendences')
+                                      ->whereMonth('date',date('n'))
+                                      ->where('employee_id','=',$employee_id)
+                                      ->count();
+
+            $taskpending = DB::table('erp_tasks')
+                          ->where('task_assigned_to', $employee_id)
+                          ->where('task_status', 0)
+                          ->count();
+
+            $sales = ErpSales::with('customer')->where('sales_by_id',$employee_id)->where('sales_by_type','Employee')->latest()->paginate(10);
+
+            return view('frontend.employee.employeesalesedit',compact('sales','employee','customers','announcements','attendences_this_month','taskpending','optionscurrency','countryList','locationList','current_option'));
+        }
+
+        public function employeeSalesAdd(Request $request)
+        {
+            $employee_id = Auth::user()->employee_id;
+
+            $insert = new ErpSales();
+            $insert->sales_item_type = $request->sales_item_type;
+            $insert->sales_item_name = $request->sales_item_name;
+            $insert->sales_sku = $request->sales_sku;
+            $insert->sales_customer_id = $request->sales_customer_id;
+            $insert->sales_by_type = "Employee";
+            $insert->sales_by_id = $employee_id;
+            $insert->payment_type = $request->payment_type;
+            $insert->payment_method = $request->payment_method;
+            $insert->payment_info = $request->payment_info;
+            $insert->sales_price = $request->sales_price;
+            $insert->sales_date = $request->sales_date;
+            $insert->sales_customer_rating = $request->sales_customer_rating;
+            $insert->save();
+            return redirect('/employeesales');
+        }
 
 
 }

@@ -65,10 +65,10 @@
             <a href="index.html" class="logo">
                <!-- Logo -->
                <span class="logo-mini">
-               <img src="assets/dist/img/mini-logo.png" alt="">
+               <img src="../assets/dist/img/mini-logo.png" alt="">
                </span>
                <span class="logo-lg">
-               <img src="assets/dist/img/smartlogo.png" alt="">
+               <img src="../assets/dist/img/smartlogo.png" alt="">
                </span>
             </a>
             <!-- Header Navbar -->

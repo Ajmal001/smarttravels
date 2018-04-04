@@ -265,12 +265,12 @@
           $('#salesview #commision_type').html(data.salesdetails.commision_type);
           $('#salesview #commision_rate').html(data.salesdetails.commision_rate);
 
-          console.log(data.salesdetails);
-
           var $viewcustomerrating = $("#viewcustomerrating").rateYo();
           $viewcustomerrating.rateYo("rating", data.salesdetails.sales_customer_rating);
           $viewcustomerrating.rateYo("option", "readOnly", true);
           $viewcustomerrating.rateYo("option", "starWidth", "30px");
+
+          // console.log(data.salesdetails);
 
         });
       });

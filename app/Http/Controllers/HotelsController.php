@@ -70,7 +70,8 @@ class HotelsController extends Controller
 		$insert->country_name = $request->input('country_name');
 		Session::flash('flash_message_insert', 'Country Added Successfully !');
 		$insert->save();
-		return redirect('/adminwebsitehotels');
+		// return redirect('/adminwebsitehotels');
+    return back();
 	}
 
 	public function insertLocation(LocationRequest $request){
@@ -79,7 +80,8 @@ class HotelsController extends Controller
 		$insert->location_name = $request->input('location_name');
 		Session::flash('flash_message_insert', 'Location Added Successfully !');
 		$insert->save();
-		return redirect('/adminwebsitehotels');
+		// return redirect('/adminwebsitehotels');
+    return back();
 	}
 
 	public function insertFeature(HotelFeatureRequest $request){

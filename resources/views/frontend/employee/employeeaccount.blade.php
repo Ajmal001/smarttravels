@@ -1,6 +1,6 @@
 @extends('frontend.app')
 
-@section('title', 'Customer Account')
+@section('title', 'Employee Account')
 
 @section('body')
 

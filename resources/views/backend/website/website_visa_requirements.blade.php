@@ -54,7 +54,7 @@
                                 <div class="buttonexport" id="buttonlist">
 
 								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#package" > <i class="fa fa-plus"></i> Add New Requirement </a>
-								<a class="btn btn-add" href="#" data-toggle="modal" data-target="#country" > <i class="fa fa-plus"></i> Add Country </a>
+								<a class="btn btn-add" href="#" id="btncountry" > <i class="fa fa-plus"></i> Add Country </a>
 						   </div>
 
                            </div>
@@ -225,7 +225,7 @@
 
 
             <!--  Add Country -->
-                      <div class="modal fade" id="country" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal fade" id="modalcountry">
                         <div class="modal-dialog">
                            <div class="modal-content">
                               <div class="modal-header modal-header-primary">
@@ -267,6 +267,12 @@
 @section('script')
 
 <script>
+
+    // EDIT VISA REQUIRMENT
+    $(document).on('click', '#btncountry', function(e){
+        e.preventDefault();
+        $('#modalcountry').modal('show');
+    });
 
     // EDIT VISA REQUIRMENT
     $(document).on('click', '#viewvisarequirementsmodelbtn', function(e){

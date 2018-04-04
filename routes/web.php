@@ -519,6 +519,10 @@ Route::post('/employeeexpensecreate','EmployeeProfileController@employeeExpenseC
 Route::get('/employeeaccount','EmployeeProfileController@employeeAccount');
 Route::post('/employeeaccount','EmployeeProfileController@employeeAccountUpdate');
 
+Route::get('/employeesales','EmployeeProfileController@employeeSales');
+Route::get('/employeesalesedit','EmployeeProfileController@employeeSalesEdit');
+Route::post('/employeesalesadd','EmployeeProfileController@employeeSalesAdd');
+
 /*----------------------Customer----------------------*/
 
 // Customer Auth
@@ -574,5 +578,7 @@ Route::post('/agentpackagesales','AgentProfileController@agentSalesAdd');
 /*---------------------- Admin Settings ----------------------*/
 
 Route::get('/adminprofilesettings', 'AdminController@adminProfileSettings');
-Route::get('/adminpasssettings', 'AdminController@adminProfileSettingsEdit');
-Route::post('/adminpasssettings', 'AdminController@adminProfileSettingsUpdate');
+Route::get('/adminprofsettings', 'AdminController@adminProfileSettingsEdit');
+Route::post('/adminprofsettings', 'AdminController@adminProfileSettingsUpdate');
+Route::get('/adminpasssettings', 'AdminController@adminPasswordSettingsEdit');
+Route::post('/adminpasssettings', 'AdminController@adminPasswordSettingsUpdate');

@@ -55,9 +55,9 @@ class AdminController extends Controller
             ->where('expense_date', '>=', $this_month)
             ->sum('expense_amount');
 
+    $current_option = Options::get()->first();
 
-
-    return view('backend.dashboard',compact('expense_total_month','sale_total_month','totalEmployees','totalCustomers','totalVisaApply','totalSightSeeing','totalHotels','totalTourPackages','tasks','employees','sales','today','optionscurrency'));
+    return view('backend.dashboard',compact('expense_total_month','sale_total_month','totalEmployees','totalCustomers','totalVisaApply','totalSightSeeing','totalHotels','totalTourPackages','tasks','employees','sales','today','optionscurrency','current_option'));
 	}
 
 	public function adminWebsitePages(){
@@ -444,13 +444,14 @@ class AdminController extends Controller
     return redirect('/adminwebsiteoptionscurrency');
   }
 
-  // Profile Settings
+  // Profile and Password Settings
   public function adminProfileSettings()
   {
     $admin = Auth::user();
     return view('backend.website.website_admin_profile',compact('admin'));
   }
 
+  // Profile
   public function adminProfileSettingsEdit()
   {
     $admin = Auth::user();
@@ -458,6 +459,23 @@ class AdminController extends Controller
   }
 
   public function adminProfileSettingsUpdate(Request $request)
+  {
+    $admin = Auth::user();
+    $admin->update([
+      'name'  => $request->name,
+      'email' => $request->email
+    ]);
+    return back();
+  }
+
+  // Password
+  public function adminPasswordSettingsEdit()
+  {
+    $admin = Auth::user();
+    return view('backend.website.website_admin_passwordedit',compact('admin'));
+  }
+
+  public function adminPasswordSettingsUpdate(Request $request)
   {
       if (!(Hash::check($request->get('currentpassword'), Auth::user()->password))) {
         return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");

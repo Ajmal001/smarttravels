@@ -49,8 +49,9 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$packageDetails = TourPackages::find($package_id);
+		$tourLatest = TourPackages::latest()->take(5)->get();
 		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
-		return view('frontend.details',compact('packageDetails','countryList','locationList','current_option','optionscurrency'));
+		return view('frontend.details',compact('packageDetails','tourLatest','countryList','locationList','current_option','optionscurrency'));
 	}
 
 	public function tourPackages(){
@@ -143,8 +144,9 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$hotelDetails = Hotels::find($hotel_id);
+		$hotelLatest = Hotels::latest()->take(5)->get();
 		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
-		return view('frontend.hotel_details',compact('hotelDetails','countryList','locationList','current_option','optionscurrency'));
+		return view('frontend.hotel_details',compact('hotelDetails','hotelLatest','countryList','locationList','current_option','optionscurrency'));
 	}
 
 	public function sight(){
@@ -161,8 +163,9 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$sightDetails = Sights::find($sight_id);
+		$sightLatest = Sights::latest()->take(5)->get();
 		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
-		return view('frontend.sight_details',compact('sightDetails','countryList','locationList','current_option','optionscurrency'));
+		return view('frontend.sight_details',compact('sightDetails','sightLatest','countryList','locationList','current_option','optionscurrency'));
 	}
 
 	public function contact(){
@@ -252,8 +255,9 @@ class FrontEndController extends Controller
 		$locationList = TourLocation::get();
 		$current_option = Options::get()->first();
 		$attractionDetails = Attractions::find($id);
+		$attractionLatest = Attractions::latest()->take(5)->get();
 		$optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
-		return view('frontend.attraction_details',compact('countryList','locationList','attractionDetails','current_option','optionscurrency'));
+		return view('frontend.attraction_details',compact('countryList','attractionLatest','locationList','attractionDetails','current_option','optionscurrency'));
 	}
 
 	public function tourBooking($package_id){
