@@ -3,7 +3,7 @@
    <div class="modal-content">
       <div class="modal-header modal-header-primary">
          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-         <h3><i class="fa fa-plane m-r-5"></i> Announcement Details</h3>
+         <h3><i class="fa fa-volume-up m-r-5"></i> Announcement Details</h3>
       </div>
 
       <div class="modal-body">

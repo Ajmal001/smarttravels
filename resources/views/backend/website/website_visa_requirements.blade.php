@@ -15,7 +15,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                <div class="header-icon">
-                  <i class="fa fa-home"></i>
+                  <i class="fa fa-address-card"></i>
                </div>
                <div class="header-title">
                   <h1>Visa Requirements</h1>
@@ -101,7 +101,7 @@
                      <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                           <h3><i class="fa fa-plane m-r-5"></i> Add New Visa Requirement </h3>
+                           <h3><i class="fa fa-address-card m-r-5"></i> Add New Visa Requirement </h3>
                         </div>
 
 						<div class="modal-body">
@@ -145,7 +145,7 @@
                     <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3><i class="fa fa-plane m-r-5"></i> View Visa Requirement </h3>
+                            <h3><i class="fa fa-address-card m-r-5"></i> View Visa Requirement </h3>
                         </div>
 
                         <div class="modal-body">
@@ -184,7 +184,7 @@
                     <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3><i class="fa fa-plane m-r-5"></i> Edit Visa Requirement </h3>
+                            <h3><i class="fa fa-address-card m-r-5"></i> Edit Visa Requirement </h3>
                         </div>
 
                         <div class="modal-body">
@@ -224,38 +224,37 @@
             </div>
 
 
-			<!--  Add Country -->
-                <div class="modal fade" id="country" tabindex="-1" role="dialog" aria-hidden="true">
-                  <div class="modal-dialog">
-                     <div class="modal-content">
-                        <div class="modal-header modal-header-primary">
-                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                           <h3><i class="fa fa-globe m-r-5"></i> Add Country </h3>
-                        </div>
-
-						<div class="modal-body">
-                           <div class="row">
-                               <div class="panel-body">
-
-							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinserthotelcountry','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
-                               {!! csrf_field() !!}
-                              <div class="form-group">
-                                 <label>Country Name</label>
-                                 <input type="text" name="country_name" class="form-control" placeholder="Enter Country Name" required>
+            <!--  Add Country -->
+                      <div class="modal fade" id="country" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header modal-header-primary">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                 <h3><i class="fa fa-globe m-r-5"></i> Add Country </h3>
                               </div>
 
-                              <div class="form-group">
-							  <input type="submit" value="Save" class="btn btn-success" >
-							   </div>
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                  </div>
-                  <!-- /.modal-dialog -->
-               </div>
-			 </div>
-            </div>
+      						<div class="modal-body">
+                                 <div class="row">
+                                     <div class="panel-body">
 
+      							{!! Form::open(['method'=>'post','url' => 'adminwebsiteinserthotelcountry','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+                                     {!! csrf_field() !!}
+                                    <div class="form-group">
+                                       <label>Country Name</label>
+                                       <input type="text" name="country_name" class="form-control" placeholder="Enter Country Name" required>
+                                    </div>
+
+                                    <div class="form-group">
+      							  <input type="submit" value="Save" class="btn btn-success" >
+      							   </div>
+                                  {!! Form::close() !!}
+                              </div>
+                          </div>
+                        </div>
+                        <!-- /.modal-dialog -->
+                     </div>
+      			 </div>
+                  </div>
 
 
 

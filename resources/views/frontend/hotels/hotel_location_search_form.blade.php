@@ -6,12 +6,12 @@
 									<ul>
 										<li>
 											<label>Enter Your Location Name</label>
-											<input type="text" name="s_location" id="select-location" class="autocomplete" placeholder="Select Location" required> 
+											<input type="text" name="s_location" id="city" class="autocomplete" placeholder="Select Location" required> 
 										</li>
-										
+
 										<li>
-											<input type="submit" value="SEARCH"> 
-										</li>										
+											<input type="submit" value="SEARCH">
+										</li>
 									</ul>
 								{!! Form::close() !!}
 							</div>

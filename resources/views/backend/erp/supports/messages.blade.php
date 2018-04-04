@@ -12,7 +12,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
        <div class="header-icon">
-          <i class="fa fa-home"></i>
+          <i class="fa fa-comments"></i>
        </div>
        <div class="header-title">
           <h1>Messages</h1>
@@ -31,11 +31,8 @@
                             <div class="profile-usermenu">
                                <h6>Messages box</h6>
                                <ul class="nav">
-                                  <li class="active"><a href="#"><i class="fa fa-inbox"></i>Inbox <small class="label pull-right bg-green">61</small></a></li>
-                                  <li><a href="#"><i class="fa fa-envelope-o"></i>Send Mail</a></li>
-                                  <li><a href="#"><i class="fa fa-star-o"></i>Starred</a></li>
-                                  <li><a href="#"><i class="fa fa-trash-o"></i>Tresh </a></li>
-                                  <li><a href="#"><i class="fa fa-paperclip"></i>Attachments</a></li>
+                                  <li class="active"><a href="#"><i class="fa fa-inbox"></i>Inbox </a></li>
+
                                </ul>
                                <hr>
                             </div>

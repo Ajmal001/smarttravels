@@ -10,11 +10,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                <div class="header-icon">
-                  <i class="fa fa-dashboard"></i>
+                  <i class="fa fa-gear"></i>
                </div>
                <div class="header-title">
-                  <h1>Home Page</h1>
-                  <small>Powerd By - Smart Web</small>
+                  <h1>Settings</h1>
+                  <small></small>
                </div>
             </section>
             <!-- Main content -->

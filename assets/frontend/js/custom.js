@@ -103,7 +103,7 @@ $(document).ready(function() {
     //MATERIALIZE SELECT DROPDOWN
     $('select').material_select();
 
-   
+
 
     $('#select-search.autocomplete').autocomplete({
         data: {
@@ -161,7 +161,7 @@ function myFunction() {
     }
 }
 
-//DATE PICKER	
+//DATE PICKER
 $(function() {
     var dateFormat = "mm/dd/yy",
         from = $("#from")
@@ -198,10 +198,10 @@ $(function() {
 
 /* //CTRL U
 document.onkeydown = function(e) {
-        if (e.ctrlKey && 
-            (e.keyCode === 67 || 
-             e.keyCode === 86 || 
-             e.keyCode === 85 || 
+        if (e.ctrlKey &&
+            (e.keyCode === 67 ||
+             e.keyCode === 86 ||
+             e.keyCode === 85 ||
              e.keyCode === 117)) {
             return false;
         } else {
@@ -217,13 +217,13 @@ $(document).keydown(function(event){
     if(event.keyCode==123){
     return false;
    }
-else if(event.ctrlKey && event.shiftKey && event.keyCode==73){        
+else if(event.ctrlKey && event.shiftKey && event.keyCode==73){
       return false;  //Prevent from ctrl+shift+i
    }
 });
 
 //CTRL + SHIFT + I
-$(document).keyup(function(evtobj) {     
+$(document).keyup(function(evtobj) {
                 if (!(evtobj.altKey || evtobj.ctrlKey || evtobj.shiftKey)){
     if (evtobj.keyCode == 16) {return false;}
                     if (evtobj.keyCode == 17) {return false;}

@@ -19,11 +19,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
            <div class="header-icon">
-              <i class="fa fa-home"></i>
+              <i class="fa fa-volume-up"></i>
            </div>
            <div class="header-title">
-              <h1>Tasks</h1>
-              <small>List of all Tasks</small>
+              <h1>Announcements</h1>
+              <small>List of all Announcements</small>
            </div>
         </section>
         <!-- Main content -->

@@ -21,11 +21,10 @@
 					    {!! Form::open(['url' => 'toursearch','class'=>'v2-search-form']) !!}
 							<div class="row">
 								<div class="input-field col s12">
-									<input type="text" name="s_country" id="select-city" class="autocomplete" required>
+									<input type="text" name="s_country" id="country" class="autocomplete" required>
 									<label for="select-city">Select Country</label>
-
-
 								</div>
+								
 								<div class="input-field col s12">
 									<select name="s_package">
 										<option value="" disabled selected>Select your package</option>

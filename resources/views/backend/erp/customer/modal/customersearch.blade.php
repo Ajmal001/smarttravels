@@ -12,10 +12,6 @@
 
             {!! Form::open(['method'=>'get','url' => 'adminerpcustomersearch','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
             {!! csrf_field() !!}
-            <div class="form-group">
-              <label>Search Item</label>
-              <input type="text" name="customer_item" class="form-control" required>
-            </div>
 
             <div class="form-group">
               <label>Search Type</label>
@@ -25,6 +21,11 @@
                 <option value="customer_phone">Customer Mobile</option>
                 <option value="customer_passport_no">Customer Passport No</option>
               </select>
+            </div>
+
+            <div class="form-group">
+              <label>Enter Value</label>
+              <input type="text" placeholder="Enter the value here" name="customer_item" class="form-control" required>
             </div>
 
             <div class="form-group">

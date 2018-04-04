@@ -15,7 +15,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                <div class="header-icon">
-                  <i class="fa fa-home"></i>
+                  <i class="fa fa-pagelines "></i>
                </div>
                <div class="header-title">
                   <h1>Sight Seeing</h1>
@@ -78,7 +78,7 @@
                                        <td>{{$sl->country}}</td>
                                        <td>{{$sl->location}}</td>
                                        <td>
-										    <a id="viewsigntslmodalbtn" class="btn btn-add btn-sm" href="#" data-id="{{$sl->sight_id}}"><i class="fa fa-eye"></i></a>
+										    <a id="viewsigntslmodalbtn" class="btn btn-add btn-sm" href="#" data-id="{{$sl->sight_id}}"><i class="fa fa-eye "></i></a>
 										    <a id="editsigntslmodalbtn" class="btn btn-warning btn-sm" href="#" data-id="{{$sl->sight_id}}"><i class="fa fa-pencil"></i></a>
                                            	{!! Form::open(['method'=>'post','url'=>'adminwebsitedeletesights/{{$sl->sight_id}}','class'=>'pull-right delete-btn','enctype'=>'multipart/form-data']) !!}
                                             {!! csrf_field() !!}
@@ -107,7 +107,7 @@
                      <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                           <h3><i class="fa fa-plane m-r-5"></i> Add New Sight </h3>
+                           <h3><i class="fa fa-pagelines  m-r-5"></i> Add New Sight </h3>
                         </div>
 
 						<div class="modal-body">
@@ -205,7 +205,7 @@
                      <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                           <h3><i class="fa fa-plane m-r-5"></i> Add Location </h3>
+                           <h3><i class="fa fa-pagelines  m-r-5"></i> Add Location </h3>
                         </div>
 
 						<div class="modal-body">
@@ -249,7 +249,7 @@
                     <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3><i class="fa fa-plane m-r-5"></i> View Hotel </h3>
+                            <h3><i class="fa fa-pagelines  m-r-5"></i> View Sight Seeing </h3>
                         </div>
 
                         <div class="modal-body">
@@ -306,7 +306,7 @@
                     <div class="modal-content">
                         <div class="modal-header modal-header-primary">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3><i class="fa fa-plane m-r-5"></i> Edit Sights Seeing </h3>
+                            <h3><i class="fa fa-pagelines  m-r-5"></i> Edit Sights Seeing </h3>
                         </div>
 
                         <div class="modal-body">

@@ -19,8 +19,8 @@
 						@foreach ($errors->all() as $error)
 							<span style="color:red">{{ $error }}</span>
 						@endforeach
-					@endif	
-														
+					@endif
+
 					@if(Session::has('flash_message_insert'))
 						<span style="color:green">{{ Session::get('flash_message_insert') }}</span>
 					@elseif(Session::has('flash_message_update'))
@@ -28,9 +28,9 @@
 					@elseif(Session::has('flash_message_delete'))
 						<span style="color:red">{{ Session::get('flash_message_delete') }}</span>
 					@endif
-				
-					{!! Form::open(['url' => 'inserttransfer','class'=>'col s12']) !!}				
-					
+
+					{!! Form::open(['url' => 'inserttransfer','class'=>'col s12']) !!}
+
 					<input type="hidden" name="transfer_id" value="<?php echo strtotime("now"); ?>">
 					<div class="row">
 						<div class="input-field col m6 s12">
@@ -42,18 +42,18 @@
 							<label>Arrival Time</label>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="input-field col m6 s12">
-							<input type="text" name="pic_country" style="border: 1px solid #c9c9c9;" id="select-city" class="autocomplete">
-							
+							<input type="text" name="pic_country" style="border: 1px solid #c9c9c9;" id="country" class="autocomplete">
+
 							<label>Pic Country</label>
 						</div>
 						<div class="input-field col m6 s12">
-							<input type="text" name="pic_city" style="border: 1px solid #c9c9c9;" id="select-location" class="autocomplete">
-							
+							<input type="text" name="pic_city" style="border: 1px solid #c9c9c9;" id="city" class="autocomplete">
+
 							<label>Pic City</label>
-						</div>						
+						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col m6 s12">
@@ -71,13 +71,13 @@
 							<label>Pic Up Price</label>
 						</div>
 					</div>
-					
-					
-				
-				
-				
+
+
+
+
+
 				<h3>Drop Form </h3>
-					
+
 					<div class="row">
 						<div class="input-field col m6 s12">
 							<input type="text" name="depart_flight" class="validate">
@@ -88,16 +88,16 @@
 							<label>Depart Time</label>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="input-field col m6 s12">
-							<input type="text" name="drop_country" style="border: 1px solid #c9c9c9;" id="select-city" class="autocomplete">
+							<input type="text" name="drop_country" style="border: 1px solid #c9c9c9;" id="country" class="autocomplete">
 							<label>Drop Country</label>
 						</div>
 						<div class="input-field col m6 s12">
-							<input type="text" name="drop_city" style="border: 1px solid #c9c9c9;" id="select-location" class="autocomplete">
+							<input type="text" name="drop_city" style="border: 1px solid #c9c9c9;" id="city" class="autocomplete">
 							<label>Drop City</label>
-						</div>						
+						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col m6 s12">
@@ -115,9 +115,9 @@
 							<label>Drop Off Price</label>
 						</div>
 					</div>
-					
+
 					<h3>Contact Details </h3>
-					
+
 					<div class="row">
 						<div class="input-field col m6 s12">
 							<input type="text" name="full_name" class="validate" required>
@@ -128,7 +128,7 @@
 							<label>Emergency Contact</label>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="input-field col m6 s12">
 							<input type="email" name="email" class="validate" required>
@@ -139,8 +139,8 @@
 							<label>Mobile No <span style="color:red">*</span></label>
 						</div>
 					</div>
-					
-					
+
+
 					<div class="row">
 						<div class="input-field col s12">
 							<input type="submit" value="submit" class="waves-effect waves-light btn-large full-btn"> </div>
@@ -150,4 +150,4 @@
 		</div>
 	</section>
 	<!--END BOOKING-->
-  @endsection	
+  @endsection

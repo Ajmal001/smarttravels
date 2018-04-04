@@ -9,7 +9,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
          <div class="header-icon">
-            <i class="fa fa-plane"></i>
+            <i class="fa fa-upload"></i>
          </div>
          <div class="header-title">
             <h1>Upload Page Banner</h1>

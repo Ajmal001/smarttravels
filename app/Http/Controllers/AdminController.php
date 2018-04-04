@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\TourPackages;
-use App\Options;
-use Session;
-use Image;
-use DB;
-
+use App\Hotels;
+use App\Sights;
+use App\Visa;
+use App\ErpCustomers;
+use App\ErpEmployee;
+use App\ErpSales;
 use App\TourCountry;
 use App\TourLocation;
 use App\ErpTask;
 use App\EmployeeLogin;
-use App\ErpSales;
 use App\OptionsImage;
 use App\OptionsCurrency;
 
@@ -21,14 +21,43 @@ use Carbon\Carbon;
 use Auth;
 use Hash;
 
+use App\Options;
+use Session;
+use Image;
+use DB;
+
 class AdminController extends Controller
 {
 
   public function adminDashboard(){
-    $tasks      = ErpTask::latest()->take(5)->get();
+    $tasks      = ErpTask::latest()->take(10)->get();
     $employees  = EmployeeLogin::all();
-    $sales      = ErpSales::latest()->take(5)->get();
-		return view('backend.dashboard',compact('tasks','employees','sales'));
+    $sales      = ErpSales::latest()->take(10)->get();
+
+    $today = Carbon::now();
+    $this_month = Carbon::now()->subMonth();
+    $optionscurrency = OptionsCurrency::where('selected',1)->first(['currency']);
+
+    $totalTourPackages = TourPackages::get()->count();
+    $totalHotels = Hotels::get()->count();
+    $totalSightSeeing = Sights::get()->count();
+    $totalVisaApply = Visa::get()->count();
+
+    $totalCustomers = ErpCustomers::get()->count();
+    $totalEmployees = ErpEmployee::get()->count();
+
+    $sale_total_month = DB::table('erp_sales')
+            ->where('payment_type', 'cash')
+            ->where('sales_date', '>=', $this_month)
+            ->sum('sales_price');
+
+    $expense_total_month = DB::table('erp_expenses')
+            ->where('expense_date', '>=', $this_month)
+            ->sum('expense_amount');
+
+
+
+    return view('backend.dashboard',compact('expense_total_month','sale_total_month','totalEmployees','totalCustomers','totalVisaApply','totalSightSeeing','totalHotels','totalTourPackages','tasks','employees','sales','today','optionscurrency'));
 	}
 
 	public function adminWebsitePages(){

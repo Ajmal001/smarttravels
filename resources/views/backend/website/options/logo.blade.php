@@ -10,7 +10,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                <div class="header-icon">
-                  <i class="fa fa-plane"></i>
+                  <i class="fa fa-upload"></i>
                </div>
                <div class="header-title">
                   <h1>Upload Logo</h1>
@@ -28,8 +28,8 @@
 								@foreach ($errors->all() as $error)
 									<span style="color:red">{{ $error }}</span>
 								@endforeach
-							@endif	
-																
+							@endif
+
 							@if(Session::has('flash_message_insert'))
 								<span style="color:green">{{ Session::get('flash_message_insert') }}</span>
 							@elseif(Session::has('flash_message_update'))
@@ -39,31 +39,31 @@
 							@endif
                         </div>
                         <div class="panel-body">
-                           
-							
-						   {!! Form::open(['method'=>'post','url' => 'adminwebsiteoptionslogosave','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}   
+
+
+						   {!! Form::open(['method'=>'post','url' => 'adminwebsiteoptionslogosave','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
                                {!! csrf_field() !!}
-							  
+
 							  <div class="form-group">
                                  <label>Logo</label>
-                                 <input type="file" name="logo" value="{{$current_option->logo}}">                                 
+                                 <input type="file" name="logo" value="{{$current_option->logo}}">
                               </div>
-							  
+
                               <div class="form-group">
 							  <input type="submit" value="Save" class="btn btn-success" >
 							   </div>
                             {!! Form::close() !!}
-						   
-						   
-						  </div> 
+
+
+						  </div>
                         </div>
                      </div>
                   </div>
                </div>
             </section>
             <!-- /.content -->
-			
-			
-			
-		 
-  @endsection    
+
+
+
+
+  @endsection
