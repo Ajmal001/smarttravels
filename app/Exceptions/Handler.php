@@ -66,6 +66,14 @@ class Handler extends ExceptionHandler
             return redirect()->guest(action('Employee\LoginController@showLoginForm'));
             break;
 
+          case 'agent':
+            return redirect()->guest(action('Agent\LoginController@showLoginForm'));
+            break;
+
+          case 'customer':
+            return redirect()->guest(action('Customer\LoginController@showLoginForm'));
+            break;
+
           default:
             return redirect()->guest(action('AdminController@adminLogin'));
             break;

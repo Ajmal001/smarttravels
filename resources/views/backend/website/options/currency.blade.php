@@ -47,7 +47,7 @@
                        <div class="form-group">
                           <label>Select Currency</label>
                           <select class="form-control" name="currency_id">
-                              <option disabled>-Select Currency-</option>
+                              <option disabled selected>-Select Currency-</option>
                             @foreach($optionscurrency as $currency)
                               <option value="{{$currency->id}}">{{$currency->country}} ({{$currency->currency}})</option>
                             @endforeach
@@ -107,7 +107,7 @@
 
                           </tbody>
                        </table>
-                       {{-- $optionscurrency->links() --}}
+                       {{ $optionscurrency->links() }}
                     </div>
 
       						</div>

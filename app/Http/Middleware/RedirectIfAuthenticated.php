@@ -22,21 +22,34 @@ class RedirectIfAuthenticated
         }*/
 
         switch ($guard) {
-          case 'employee':              
-              if (Auth::guard($guard)->check()) {
-                  return redirect('/employeehome');
-              }
+
+          case 'employee':
+            if (Auth::guard($guard)->check()) {
+              return redirect('/employeehome');
+            }
+            break;
+
+          case 'agent':
+            if (Auth::guard($guard)->check()) {
+              return redirect('/agenthome');
+            }
+            break;
+
+          case 'customer':
+            if (Auth::guard($guard)->check()) {
+              return redirect('/customerhome');
+            }
             break;
 
           default:
-              if (Auth::guard($guard)->check()) {
-                  return redirect('/admindashboard');
-              }
+            if (Auth::guard($guard)->check()) {
+              return redirect('/admindashboard');
+            }
             break;
+
         }
+
         return $next($request);
-
-
 
     }
 }

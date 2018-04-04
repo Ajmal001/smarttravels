@@ -390,7 +390,7 @@ class AdminController extends Controller
   // Currency
   public function optionsCurrency()
   {
-    $optionscurrency = OptionsCurrency::get();
+    $optionscurrency = OptionsCurrency::paginate(10);
     return view('backend.website.options.currency', compact('optionscurrency'));
   }
 
