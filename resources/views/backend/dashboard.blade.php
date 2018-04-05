@@ -107,7 +107,9 @@
                         <div class="statistic-box">
                            <i class="fa fa-cart-plus  fa-3x"></i>
                            <div class="counter-number pull-right">
+                              @if($sale_total_month)
                               <span class="count-number">{{$sale_total_month}} {{$optionscurrency->currency}}</span>
+                              @endif
                               <span class="slight"><i class="fa fa-play fa-rotate-270"> </i>
                               </span>
                            </div>
@@ -120,7 +122,9 @@
                         <div class="statistic-box">
                            <i class="fa fa-money fa-3x"></i>
                            <div class="counter-number pull-right">
+                              @if($expense_total_month)
                               <span class="count-number">{{$expense_total_month}} {{$optionscurrency->currency}}</span>
+                              @endif
                               <span class="slight"><i class="fa fa-play fa-rotate-270"> </i>
                               </span>
                            </div>

@@ -101,7 +101,7 @@ class ErpEmployeeController extends Controller
   public function deleteEmployee(Request $request, $id)
   {
     $employee_id = $request->input('employee_id');
-    DB::table('erp_employees')->where('employee_id',$employee_id)->delete();
+    DB::table('erp_employees_info')->where('employee_id',$employee_id)->delete();
     Session::flash('flash_message_delete', 'Employee Deleted !');
     return redirect('/adminerpemployee');
   }

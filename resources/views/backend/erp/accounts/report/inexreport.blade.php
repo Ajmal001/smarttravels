@@ -60,6 +60,7 @@
                           </ul>
                           <!-- Tab panels -->
                           <div class="tab-content">
+
                            <div class="tab-pane fade in active" id="tab1">
                             <div class="panel-body">
                              <div class="table-responsive">
@@ -258,48 +259,49 @@
                            </div>
 
 
-                            <div class="tab-pane fade in active" id="tab3">
-                             <div class="panel-body">
-                              <div class="table-responsive">
-                                 <table class="table table-bordered table-striped table-hover">
-                                  <thead>
-                                   <tr class="info">
-                                    <th>Type</th>
-                                    <th>Amount</th>
-                                   </tr>
-                                  </thead>
-                                  <tbody>
-                                   <tr>
-                                    <td>Total Income </td>
-                                    <td>{{$income_total_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
-                                   </tr>
+                           <div class="tab-pane fade in" id="tab3">
+                            <div class="panel-body">
+                             <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover">
+                                 <thead>
+                                  <tr class="info">
+                                   <th>Type</th>
+                                   <th>Amount</th>
+                                  </tr>
+                                 </thead>
+                                 <tbody>
+                                  <tr>
+                                   <td>Total Income </td>
+                                   <td>{{$income_total_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                  </tr>
 
-                                  </tbody>
-                                  <tbody>
-                                   <tr>
-                                    <td>Total Expense </td>
-                                    <td>{{$expense_total_month + $expense_commission_discounts_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
-                                   </tr>
+                                 </tbody>
+                                 <tbody>
+                                  <tr>
+                                   <td>Total Expense </td>
+                                   <td>{{$expense_total_month + $expense_commission_discounts_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                  </tr>
 
-                                  </tbody>
-                                  <tfoot>
-                                   <tr>
-                                    <th>Profit </th>
-                                    <th>{{$income_total_month - ($expense_total_month + $expense_commission_discounts_month) }} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
-                                   </tr>
-                                  </tfoot>
-                                 </table>
-                              </div>
+                                 </tbody>
+                                 <tfoot>
+                                  <tr>
+                                   <th>Profit </th>
+                                   <th>{{$income_total_month - ($expense_total_month + $expense_commission_discounts_month) }} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                  </tr>
+                                 </tfoot>
+                                </table>
                              </div>
                             </div>
+                           </div>
 
 
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
 
 
 		</div>
