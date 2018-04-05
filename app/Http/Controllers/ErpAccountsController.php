@@ -281,10 +281,18 @@ class ErpAccountsController extends Controller
               ->where('expense_date', '=', date("Y-m-d"))
               ->sum('expense_amount');
 
-      $expense_commission_discounts_today = DB::table('erp_expenses')
-              ->where('expense_type', 'commission_discounts')
-              ->where('expense_date', '=', date("Y-m-d"))
-              ->sum('expense_amount');
+      // Commission Today
+      $expense_commission_fixed_today = DB::table('erp_sales')
+              ->where('commision_type', 'fixed')
+              ->where('sales_date', '=', date("Y-m-d"))
+              ->sum('commision_rate');
+
+      $expense_commission_percent_today = DB::table('erp_sales')
+              ->where('commision_type', 'percent')
+              ->where('sales_date', '=', date("Y-m-d"))
+              ->sum('commision_percent_amount');
+
+      $expense_commission_discounts_today = $expense_commission_fixed_today + $expense_commission_percent_today;
 
       $expense_marketing_advertising_today = DB::table('erp_expenses')
               ->where('expense_type', 'marketing_advertising')
@@ -369,11 +377,18 @@ class ErpAccountsController extends Controller
               ->where('expense_date', '<=', $today)
               ->sum('expense_amount');
 
-      $expense_commission_discounts_week = DB::table('erp_expenses')
-              ->where('expense_type', 'commission_discounts')
-              ->where('expense_date', '>=', $one_week_ago)
-              ->where('expense_date', '<=', $today)
-              ->sum('expense_amount');
+      // Commission Week
+      $expense_commission_fixed_week = DB::table('erp_sales')
+              ->where('commision_type', 'fixed')
+              ->where('sales_date', '>=', $one_week_ago)
+              ->sum('commision_rate');
+
+      $expense_commission_percent_week = DB::table('erp_sales')
+              ->where('commision_type', 'percent')
+              ->where('sales_date', '>=', $one_week_ago)
+              ->sum('commision_percent_amount');
+
+      $expense_commission_discounts_week = $expense_commission_fixed_week + $expense_commission_percent_week;
 
       $expense_marketing_advertising_week = DB::table('erp_expenses')
               ->where('expense_type', 'marketing_advertising')
@@ -458,10 +473,18 @@ class ErpAccountsController extends Controller
               ->where('expense_date', '>=', $this_month)
               ->sum('expense_amount');
 
-      $expense_commission_discounts_month = DB::table('erp_expenses')
-              ->where('expense_type', 'commission_discounts')
-              ->where('expense_date', '>=', $this_month)
-              ->sum('expense_amount');
+      // Commission Month
+      $expense_commission_fixed_month = DB::table('erp_sales')
+              ->where('commision_type', 'fixed')
+              ->where('sales_date', '>=', $this_month)
+              ->sum('commision_rate');
+
+      $expense_commission_percent_month = DB::table('erp_sales')
+              ->where('commision_type', 'percent')
+              ->where('sales_date', '>=', $this_month)
+              ->sum('commision_percent_amount');
+
+      $expense_commission_discounts_month = $expense_commission_fixed_month + $expense_commission_percent_month;
 
       $expense_marketing_advertising_month = DB::table('erp_expenses')
               ->where('expense_type', 'marketing_advertising')

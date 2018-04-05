@@ -114,6 +114,7 @@ class ErpSalesController extends Controller
   		$update->sales_by_id = $request->input('sales_by_id');
   		$update->commision_type = $request->input('commision_type');
   		$update->commision_rate = $request->input('commision_rate');
+  		$update->commision_percent_amount = ($request->input('sales_price')*$request->input('commision_rate'))/100;
 
   		$update->sales_customer_rating = $request->input('sales_customer_rating');
 

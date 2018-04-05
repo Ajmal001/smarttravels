@@ -10,13 +10,13 @@
       <link rel="shortcut icon" href="assets/dist/img/ico/favicon.png" type="image/x-icon">
       <!-- Start Global Mandatory Style
 
-	  =====================================================================-->
-	  <!-- Rateyo -->
+	    =====================================================================-->
+	    <!-- Rateyo -->
       <link href="{{URL::asset('assets/backend/assets/rateyo/jquery.rateyo.min.css')}}" rel="stylesheet">
-	  <!-- Select2 -->
-	  <link href="{{URL::asset('assets/backend/assets/plugins/select2/select2.css')}}" rel="stylesheet" type="text/css"/>
-	  <!-- jquery-ui css -->
-	  <link href="{{URL::asset('assets/backend/assets/plugins/jquery-ui-1.12.1/jquery-ui.min.css')}}" rel="stylesheet" type="text/css"/>
+	    <!-- Select2 -->
+	    <link href="{{URL::asset('assets/backend/assets/plugins/select2/select2.css')}}" rel="stylesheet" type="text/css"/>
+	    <!-- jquery-ui css -->
+	    <link href="{{URL::asset('assets/backend/assets/plugins/jquery-ui-1.12.1/jquery-ui.min.css')}}" rel="stylesheet" type="text/css"/>
       <!-- Bootstrap -->
       <link href="{{URL::asset('assets/backend/assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
       <!-- Bootstrap rtl -->

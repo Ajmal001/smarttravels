@@ -51,12 +51,12 @@
                     <div class="panel-body">
                     <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
 
-
                        <div class="panel-body">
                           <!-- Nav tabs -->
                           <ul class="nav nav-tabs">
                            <li class="active"><a href="#tab1" data-toggle="tab">Income details</a></li>
                            <li><a href="#tab2" data-toggle="tab">Expense details</a></li>
+                           <li><a href="#tab3" data-toggle="tab">Report of <?php echo date('F'); ?></a></li>
                           </ul>
                           <!-- Tab panels -->
                           <div class="tab-content">
@@ -135,16 +135,17 @@
                              </div>
                             </div>
                            </div>
+
                            <div class="tab-pane fade" id="tab2">
                             <div class="panel-body">
                              <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover">
                                  <thead>
                                   <tr class="info">
-                                   <th>Total expense</th>
-                                   <th>Total expense Today</th>
-                                   <th>Total expense This Week</th>
-                                   <th>Total expense This Month</th>
+                                   <th>Total Expense</th>
+                                   <th>Total Expense Today</th>
+                                   <th>Total Expense This Week</th>
+                                   <th>Total Expense This Month</th>
                                   </tr>
                                  </thead>
 
@@ -201,7 +202,7 @@
                                    <td>{{$expense_depreciation_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                   </tr>
                                   <tr>
-                                   <td>Commission & Discounts</td>
+                                   <td>Commission</td>
                                    <td>{{$expense_commission_discounts_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                    <td>{{$expense_commission_discounts_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
                                    <td>{{$expense_commission_discounts_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
@@ -247,14 +248,50 @@
                                  <tfoot>
                                   <tr>
                                    <th>Total </th>
-                                   <th>{{$expense_total_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
-                                   <th>{{$expense_total_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
-                                   <th>{{$expense_total_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                   <th>{{$expense_total_today + $expense_commission_discounts_today}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                   <th>{{$expense_total_week + $expense_commission_discounts_week}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                   <th>{{$expense_total_month + $expense_commission_discounts_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
                                   </tr>
                                 </tfoot></table>
                              </div>
                             </div>
                            </div>
+
+
+                            <div class="tab-pane fade in active" id="tab3">
+                             <div class="panel-body">
+                              <div class="table-responsive">
+                                 <table class="table table-bordered table-striped table-hover">
+                                  <thead>
+                                   <tr class="info">
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                   </tr>
+                                  </thead>
+                                  <tbody>
+                                   <tr>
+                                    <td>Total Income </td>
+                                    <td>{{$income_total_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   </tr>
+
+                                  </tbody>
+                                  <tbody>
+                                   <tr>
+                                    <td>Total Expense </td>
+                                    <td>{{$expense_total_month + $expense_commission_discounts_month}} @if($optionscurrency) {{$optionscurrency->currency}} @endif </td>
+                                   </tr>
+
+                                  </tbody>
+                                  <tfoot>
+                                   <tr>
+                                    <th>Profit </th>
+                                    <th>{{$income_total_month - ($expense_total_month + $expense_commission_discounts_month) }} @if($optionscurrency) {{$optionscurrency->currency}} @endif </th>
+                                   </tr>
+                                  </tfoot>
+                                 </table>
+                              </div>
+                             </div>
+                            </div>
 
 
                           </div>
