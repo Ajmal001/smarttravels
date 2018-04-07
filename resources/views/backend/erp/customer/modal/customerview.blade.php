@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                   <td><strong>Customer Email</strong></td>
-                  <td id="customer_email"></td>
+                  <td id="email"></td>
                 </tr>
                 <tr>
                   <td><strong>Customer Phone</strong></td>

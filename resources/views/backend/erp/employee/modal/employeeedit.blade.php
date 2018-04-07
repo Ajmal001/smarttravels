@@ -51,6 +51,11 @@
               </div>
 
               <div class="form-group">
+                 <label>Status</label>
+                 <input type="text" name="status" class="form-control" id="status" required>
+              </div>
+
+              <div class="form-group">
                  <input type="submit" value="Save" class="btn btn-success" >
               </div>
             {!! Form::close() !!}

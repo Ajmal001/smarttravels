@@ -21,7 +21,8 @@ class ErpAgentController extends Controller
 
       $insert->name = $request->name;
       $insert->email = $request->email;
-      $insert->password = bcrypt($request->password);
+      $insert->password = bcrypt($request->password);      
+      $insert->status  = 1;
       $insert->agent_phone = $request->agent_phone;
       $insert->agent_area = $request->agent_area;
 

@@ -20,7 +20,11 @@
 
               <div class="form-group">
                  <label>Email</label>
-                 <input type="text" name="employee_email" class="form-control" placeholder="Enter Your Email">
+                 <input type="text" name="email" class="form-control" placeholder="Enter Your Email">
+              </div>
+
+              <div class="form-group">
+                 <input type="hidden" name="password" class="form-control" value="$2y$10$B33YQkaFhDHY9pQs4BhUdeKCSrRaLSkLzePGkBxlbYlyMJEpTrsJy">
               </div>
 
               <div class="form-group">

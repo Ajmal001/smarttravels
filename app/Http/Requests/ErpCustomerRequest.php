@@ -26,7 +26,7 @@ class ErpCustomerRequest extends FormRequest
         return [
             //
             'customer_name' => 'required|max:255',
-            'customer_email' => 'required|email',
+            'email' => 'required|email',
             'customer_phone' => 'required|min:5',
             'customer_nid' => 'required|unique:erp_customers|max:50',
             'customer_passport_no' => 'required|unique:erp_customers|max:50'

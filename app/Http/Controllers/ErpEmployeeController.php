@@ -33,6 +33,8 @@ class ErpEmployeeController extends Controller
     $insert->employee_name = $request->employee_name;
     $insert->email = $request->email;
     $insert->employee_phone = $request->employee_phone;
+    $insert->password  = $request->password;
+    $insert->status  = 1;
     $insert->employee_address = $request->employee_address;
     $insert->employee_nid = $request->employee_nid;
     $insert->employee_designation = $request->employee_designation;

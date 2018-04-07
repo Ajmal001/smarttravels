@@ -18,7 +18,10 @@
             </div>
             <div class="form-group">
               <label>Customer Email</label>
-              <input type="email" name="customer_email" class="form-control" placeholder="Enter Customer Email" required>
+              <input type="email" name="email" class="form-control" placeholder="Enter Customer Email" required>
+            </div>
+            <div class="form-group">
+               <input type="hidden" name="password" class="form-control" value="$2y$10$B33YQkaFhDHY9pQs4BhUdeKCSrRaLSkLzePGkBxlbYlyMJEpTrsJy">
             </div>
             <div class="form-group">
               <label>Customer Phone</label>

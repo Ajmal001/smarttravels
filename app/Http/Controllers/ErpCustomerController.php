@@ -28,7 +28,9 @@ class ErpCustomerController extends Controller
   		$insert = new ErpCustomers();
 
   		$insert->customer_name = $request->input('customer_name');
-  		$insert->customer_email = $request->input('customer_email');
+  		$insert->email = $request->input('email');
+  		$insert->password = $request->input('password');
+      $insert->status  = 1;
   		$insert->customer_phone = $request->input('customer_phone');
   		$insert->customer_address = $request->input('customer_address');
   		$insert->customer_nid = $request->input('customer_nid');
@@ -96,7 +98,7 @@ class ErpCustomerController extends Controller
     public function updateCustomer(Request $request,$id){
       $edit = ErpCustomers::find($id);
       $edit->customer_name = $request->input('customer_name');
-      $edit->customer_email = $request->input('customer_email');
+      $edit->email = $request->input('email');
       $edit->customer_phone = $request->input('customer_phone');
       $edit->customer_address = $request->input('customer_address');
       $edit->customer_nid = $request->input('customer_nid');

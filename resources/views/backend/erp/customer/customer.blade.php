@@ -82,7 +82,7 @@
                                     <tr>
                                        <td><img src="{{ URL::to('/') }}/public/backendimages/{{$customer->customer_image}}" class="img-circle" alt="User Image" width="50" height="50"> </td>
                                        <td>{{$customer->customer_name}}</td>
-                                       <td>{{$customer->customer_email}}</td>
+                                       <td>{{$customer->email}}</td>
                                        <td>{{$customer->customer_phone}}</td>
                                        <td>{{$customer->customer_country}}</td>
                                        <td>
@@ -124,7 +124,7 @@
         $('#editCustomer').attr("action", 'adminerpcustomerupdate/'+cid);
         $.get('adminerpcustomeredit/'+cid, function(data){
           $('#customer_name').val(data.customerdata.customer_name);
-          $('#customer_email').val(data.customerdata.customer_email);
+          $('#email').val(data.customerdata.email);
           $('#customer_phone').val(data.customerdata.customer_phone);
           $('#customer_address').val(data.customerdata.customer_address);
           $('#customer_nid').val(data.customerdata.customer_nid);
@@ -148,7 +148,7 @@
         var cid = $(this).data('id');
         $.get('adminerpcustomershow/'+cid, function(data){
           $('#customer-view-table #customer_name').html(data.customerdata.customer_name);
-          $('#customer-view-table #customer_email').html(data.customerdata.customer_email);
+          $('#customer-view-table #email').html(data.customerdata.email);
           $('#customer-view-table #customer_phone').html(data.customerdata.customer_phone);
           $('#customer-view-table #customer_address').html(data.customerdata.customer_address);
           $('#customer-view-table #customer_nid').html(data.customerdata.customer_nid);
