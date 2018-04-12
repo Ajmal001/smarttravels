@@ -46,6 +46,10 @@
                   <td><strong>Employee Designation</strong></td>
                   <td id="employee_designation"></td>
                 </tr>
+                <tr>
+                  <td><strong>Employee Status</strong></td>
+                  <td id="employee_status"></td>
+                </tr>
 
               </tbody>
             </table>

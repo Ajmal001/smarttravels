@@ -9,10 +9,6 @@
   background-color: #009688;
 	color:white;
 }
-.delete-btn{
-  padding-left: 4px;
-  /* margin-right: 30px; */
-}
 </style>
 
      <div class="content-wrapper">
@@ -85,9 +81,9 @@
                                   <td>{{$employee->employee_nid}}</td>
                                   <td>{{$employee->employee_designation}}</td>
                                   <td>
-                                    <a href="#" id="viewEmployee" class="btn btn-sm btn-info" data-id="{{$employee->employee_id}}"><i class="fa fa-eye"></i></a>
-                                    <a href="#" id="editEmployee" class="btn btn-sm btn-warning" data-id="{{$employee->employee_id}}"><i class="fa fa-pencil"></i></a>
-                                    {!! Form::open(['method'=>'post','url' => 'adminerpemployeedelete/{{$employee->employee_id}}','class'=>'col-sm-6 pull-right delete-btn','enctype'=>'multipart/form-data']) !!}
+                                    <a href="#" id="viewEmployee" class="btn btn-sm btn-info pull-left m-r-5" data-id="{{$employee->employee_id}}"><i class="fa fa-eye"></i></a>
+                                    <a href="#" id="editEmployee" class="btn btn-sm btn-warning pull-left m-r-5" data-id="{{$employee->employee_id}}"><i class="fa fa-pencil"></i></a>
+                                    {!! Form::open(['method'=>'post','url' => 'adminerpemployeedelete/{{$employee->employee_id}}','class'=>'pull-left','enctype'=>'multipart/form-data']) !!}
                                     {!! csrf_field() !!}
                                     {!! method_field('DELETE') !!}
                                      <input type="hidden" name="employee_id" value="{{$employee->employee_id}}" >
@@ -141,8 +137,9 @@
         $('#employeeedit #employee_image').attr('src','public/backendimages/'+data.employeedata.employee_image);
         $('#employeeedit #employee_designation').val(data.employeedata.employee_designation);
         $('#employeeedit #employee_details').val(data.employeedata.employee_details);
+        $('#employeeedit #employee_status').val(data.employeedata.status);
 
-        console.log(data.employeedata);
+        // console.log(data.employeedata);
       })
     });
 
@@ -150,7 +147,7 @@
       e.preventDefault();
       $('#employeeview').modal('show');
 
-      var id = $(this).data('id');;
+      var id = $(this).data('id');
 
       $.get('adminerpemployeeview/'+id, function(data){
 
@@ -162,8 +159,13 @@
         $('#employeeview #employee_image').attr('src','public/backendimages/'+data.employeedata.employee_image);
         $('#employeeview #employee_designation').html(data.employeedata.employee_designation);
         $('#employeeview #employee_details').html(data.employeedata.employee_details);
+        if(data.employeedata.status == 1){
+          $('#employeeview #employee_status').html('<span class="label label-success">Active</span>');
+        }else{
+          $('#employeeview #employee_status').html('<span class="label label-danger">Inactive</span>');
+        }
 
-        console.log(data.employeedata);
+        // console.log(data.employeedata);
       })
     });
 

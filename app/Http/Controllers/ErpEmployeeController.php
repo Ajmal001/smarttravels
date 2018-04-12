@@ -34,7 +34,7 @@ class ErpEmployeeController extends Controller
     $insert->email = $request->email;
     $insert->employee_phone = $request->employee_phone;
     $insert->password  = $request->password;
-    $insert->status  = 1;
+    $insert->status  = $request->status;
     $insert->employee_address = $request->employee_address;
     $insert->employee_nid = $request->employee_nid;
     $insert->employee_designation = $request->employee_designation;
@@ -43,8 +43,6 @@ class ErpEmployeeController extends Controller
     if($request->hasFile('employee_image')){
       $image = $request->file('employee_image');
       $filename = time().'.'.$image->getClientOriginalExtension();
-
-      // Image::make($image)->save(public_path('/backendimages/'.$filename));
       $request->employee_image->move(public_path('backendimages'), $filename);
 
       $insert->employee_image = $filename;
@@ -79,13 +77,12 @@ class ErpEmployeeController extends Controller
     $update->employee_address = $request->employee_address;
     $update->employee_nid = $request->employee_nid;
     $update->employee_designation = $request->employee_designation;
+    $update->status = $request->status;
 
     //Image
     if($request->hasFile('employee_image')){
       $image = $request->file('employee_image');
       $filename = time().'.'.$image->getClientOriginalExtension();
-
-      // Image::make($image)->save(public_path('/backendimages/'.$filename));
       $request->employee_image->move(public_path('backendimages'), $filename);
 
       $update->employee_image = $filename;

@@ -10,7 +10,7 @@
         <div class="row">
           <div class="panel-body">
 
-            {!! Form::open(['method'=>'post','url' => 'adminerpcustomercreate','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+            {!! Form::open(['method'=>'post','url' => 'adminerpcustomercreate','class'=>'col-sm-10 col-sm-offset-1','enctype'=>'multipart/form-data']) !!}
             {!! csrf_field() !!}
             <div class="form-group">
               <label>Customer Name</label>
@@ -60,12 +60,17 @@
               <input type="text" name="customer_company" class="form-control" placeholder="Enter Your Company Name">
             </div>
             <div class="form-group">
-              <label>Customer City</label>
-              <input type="text" name="customer_city" class="form-control" placeholder="Enter Your City">
+              <label>Customer Country</label>
+              <select class="js-example-basic-multiple" name="country[]" id="addTourLocationByChangingCountry" style="width:100%;"  multiple="multiple" required>
+               @foreach($countryList as $cl)
+               <option>{{$cl->country_name}}</option>
+               @endforeach
+              </select>
             </div>
             <div class="form-group">
-              <label>Customer Country</label>
-              <input type="text" name="customer_country" class="form-control" placeholder="Enter Your Country">
+              <label>Customer City</label>
+              <select class="js-example-basic-multiple" name="location[]" id="addTourLocationByMultipleCountry" style="width:100%;"  multiple="multiple" required>
+              </select>
             </div>
             <div class="form-group">
               <label>Customer City Zip Code</label>
@@ -79,6 +84,15 @@
                 <option value="linkedin">LinkedIn</option>
                 <option value="email">Email</option>
                 <option value="website">Website</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Customer Status</label>
+              <select class="form-control" name="status">
+                <option value="" disabled selected>Select Status</option>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
               </select>
             </div>
 

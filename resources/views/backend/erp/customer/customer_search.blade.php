@@ -184,7 +184,7 @@
         $('#editCustomer').attr("action", 'adminerpcustomerupdate/'+cid);
         $.get('adminerpcustomeredit/'+cid, function(data){
           $('#customer_name').val(data.customerdata.customer_name);
-          $('#customer_email').val(data.customerdata.customer_email);
+          $('#customer_email').val(data.customerdata.email);
           $('#customer_phone').val(data.customerdata.customer_phone);
           $('#customer_address').val(data.customerdata.customer_address);
           $('#customer_nid').val(data.customerdata.customer_nid);
@@ -199,6 +199,7 @@
           $('#customer_rating').val(data.customerdata.customer_rating);
           $('#customer_image_preview').attr("src", 'public/backendimages/'+data.customerdata.customer_image);
           $('#customer_source').val(data.customerdata.customer_source);
+          $('#customer_status').val(data.customerdata.status);
         });
       });
 
@@ -226,7 +227,11 @@
           $viewcustomerrating.rateYo("option", "starWidth", "30px");
           $('#customer-view-table #customer_image_preview').attr("src", 'public/backendimages/'+data.customerdata.customer_image);
           $('#customer-view-table #customer_source').html(data.customerdata.customer_source);
-          // console.log(data);
+          if(data.customerdata.status == 1){
+            $('#customer-view-table #customer_status').html('<span class="label label-success">Active</span>');
+          }else{
+            $('#customer-view-table #customer_status').html('<span class="label label-danger">Inactive</span>');
+          }
         });
       });
     </script>

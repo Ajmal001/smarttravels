@@ -41,6 +41,10 @@
                   <td>Agent Image</td>
                   <td><img src="" id="agent_image" class="img-responsive"/></td>
                 </tr>
+                <tr>
+                  <td>Agent Status</td>
+                  <td id="agent_status"></td>
+                </tr>
 
               </tbody>
 

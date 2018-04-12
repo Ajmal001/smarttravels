@@ -10,7 +10,7 @@
            <div class="row">
              <div class="panel-body">
 
-               {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+               {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-10 col-sm-offset-1','enctype'=>'multipart/form-data']) !!}
                {!! csrf_field() !!}
                {!! method_field('PUT') !!}
 
@@ -51,8 +51,12 @@
               </div>
 
               <div class="form-group">
-                 <label>Status</label>
-                 <input type="text" name="status" class="form-control" id="status" required>
+                <label>Employee Status</label>
+                <select class="form-control" name="status" id="employee_status">
+                  <option value="" disabled selected>Select Status</option>
+                  <option value="1">Active</option>
+                  <option value="0">Inactive</option>
+                </select>
               </div>
 
               <div class="form-group">
@@ -66,51 +70,3 @@
 </div>
 </div>
 </div>
-
-<style>
-.rate-area {
-  float: right;
-  border-style: none;
-  margin-right:73px;
-}
-
-.rate-area:not(:checked) > input {
-  position: absolute;
-  top: -9999px;
-  clip: rect(0,0,0,0);
-}
-
-.rate-area:not(:checked) > label {
-  float: right;
-  width: 1em;
-  padding: 0 .1em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size: 200%;
-  line-height: 1.2;
-  color: lightgrey;
-  text-shadow: 1px 1px #bbb;
-}
-
-.rate-area:not(:checked) > label:before { content: '★ '; }
-
-.rate-area > input:checked ~ label {
-  color: gold;
-  text-shadow: 1px 1px #c60;
-  font-size: 200% !important;
-}
-
-.rate-area:not(:checked) > label:hover, .rate-area:not(:checked) > label:hover ~ label { color: gold; }
-
-.rate-area > input:checked + label:hover, .rate-area > input:checked + label:hover ~ label, .rate-area > input:checked ~ label:hover, .rate-area > input:checked ~ label:hover ~ label, .rate-area > label:hover ~ input:checked ~ label {
-  color: gold;
-  text-shadow: 1px 1px goldenrod;
-}
-
-.rate-area > label:active {
-  position: relative;
-  top: 2px;
-  left: 2px;
-}
-</style>

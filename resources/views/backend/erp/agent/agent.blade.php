@@ -9,9 +9,6 @@
     background-color: #009688;
   	color:white;
   }
-  .delete-btn{
-    padding-left: 4px;
-  }
 </style>
 
          <div class="content-wrapper">
@@ -83,7 +80,7 @@
                                        <td>
                                           <a id="viewAgent" class="btn btn-add btn-sm pull-left m-r-5" href="#" data-id="{{$agent->id}}"> <i class="fa fa-eye"></i></a>
                                           <a id="editAgent" class="btn btn-warning btn-sm pull-left m-r-5" href="#" data-id="{{$agent->id}}"> <i class="fa fa-pencil"></i></a>
-                                          {!! Form::open(['method'=>'post','url' => 'adminerpagentdelete/{{$agent->id}}','class'=>'pull-left','id'=>'deleteCustomer','enctype'=>'multipart/form-data']) !!}
+                                          {!! Form::open(['method'=>'post','url' => 'adminerpagentdelete/{{$agent->id}}','class'=>'pull-left','enctype'=>'multipart/form-data']) !!}
                                           {!! csrf_field() !!}
                                           {!! method_field('DELETE') !!}
                                            <input type="hidden" name="agent_id" value="{{$agent->id}}" >
@@ -132,6 +129,7 @@
         $('#agentedit #agent_phone').val(data.agentdata.agent_phone);
         $('#agentedit #agent_area').val(data.agentdata.agent_area);
         $('#agentedit #agent_image').attr('src','public/backendimages/'+data.agentdata.agent_image);
+        $('#agentedit #agent_status').val(data.agentdata.status);
 
         // console.log(data.agentdata);
       })
@@ -150,7 +148,11 @@
         $('#agentview #agent_phone').html(data.agentdata.agent_phone);
         $('#agentview #agent_area').html(data.agentdata.agent_area);
         $('#agentview #agent_image').attr('src','public/backendimages/'+data.agentdata.agent_image);
-
+        if(data.agentdata.status == 1){
+          $('#agentview #agent_status').html('<span class="label label-success">Active</span>');
+        }else{
+          $('#agentview #agent_status').html('<span class="label label-danger">Inactive</span>');
+        }
         // console.log(data.agentdata);
       })
     });

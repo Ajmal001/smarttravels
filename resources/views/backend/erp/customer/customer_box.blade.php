@@ -166,6 +166,22 @@
   @section('script')
     <script type="text/javascript">
 
+      // MULTIPLE DROPDOWN SELECT
+      $("#addTourLocationByChangingCountry").on('change', function(){
+          var countryNameArr = $(this).val();
+          if(countryNameArr != null){
+              var countryNameStr = countryNameArr.toString();
+              $('#addTourLocationByMultipleCountry').empty();
+              $.get('travelcountrylocationname-json?countryname='+countryNameStr, function(data){
+                  $.each(data, function(index, valuearr){
+                      $.each(valuearr, function(index, value){
+                          $('#addTourLocationByMultipleCountry').append('<option>'+value+'</option>');
+                      });
+                  });
+              });
+          }
+      });
+
       $(document).on('click','#customersearchbutton', function(e){
         e.preventDefault();
         $('#customersearch').modal('show');
@@ -178,7 +194,7 @@
         $('#editCustomer').attr("action", 'adminerpcustomerupdate/'+cid);
         $.get('adminerpcustomeredit/'+cid, function(data){
           $('#customer_name').val(data.customerdata.customer_name);
-          $('#customer_email').val(data.customerdata.customer_email);
+          $('#customer_email').val(data.customerdata.email);
           $('#customer_phone').val(data.customerdata.customer_phone);
           $('#customer_address').val(data.customerdata.customer_address);
           $('#customer_nid').val(data.customerdata.customer_nid);
@@ -193,6 +209,7 @@
           $('#customer_rating').val(data.customerdata.customer_rating);
           $('#customer_image_preview').attr("src", 'public/backendimages/'+data.customerdata.customer_image);
           $('#customer_source').val(data.customerdata.customer_source);
+          $('#customer_status').val(data.customerdata.status);
         });
       });
 
@@ -202,7 +219,7 @@
         var cid = $(this).data('id');
         $.get('adminerpcustomershow/'+cid, function(data){
           $('#customer-view-table #customer_name').html(data.customerdata.customer_name);
-          $('#customer-view-table #customer_email').html(data.customerdata.customer_email);
+          $('#customer-view-table #customer_email').html(data.customerdata.email);
           $('#customer-view-table #customer_phone').html(data.customerdata.customer_phone);
           $('#customer-view-table #customer_address').html(data.customerdata.customer_address);
           $('#customer-view-table #customer_nid').html(data.customerdata.customer_nid);
@@ -220,6 +237,11 @@
           $viewcustomerrating.rateYo("option", "starWidth", "30px");
           $('#customer-view-table #customer_image_preview').attr("src", 'public/backendimages/'+data.customerdata.customer_image);
           $('#customer-view-table #customer_source').html(data.customerdata.customer_source);
+          if(data.customerdata.status == 1){
+            $('#customer-view-table #customer_status').html('<span class="label label-success">Active</span>');
+          }else{
+            $('#customer-view-table #customer_status').html('<span class="label label-danger">Inactive</span>');
+          }
           // console.log(data);
         });
       });

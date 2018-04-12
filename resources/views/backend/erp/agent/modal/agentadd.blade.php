@@ -10,7 +10,7 @@
         <div class="row">
           <div class="panel-body">
 
-            {!! Form::open(['method'=>'post','url' => 'adminerpagentadd','class'=>'col-sm-6','enctype'=>'multipart/form-data']) !!}
+            {!! Form::open(['method'=>'post','url' => 'adminerpagentadd','class'=>'col-sm-10 col-sm-offset-1 ','enctype'=>'multipart/form-data']) !!}
             {!! csrf_field() !!}
 
             <div class="form-group">
@@ -39,8 +39,17 @@
             </div>
 
             <div class="form-group">
-              <label></label>
+              <label>Agent Image</label>
               <input type="file" name="agent_image" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label>Agent Status</label>
+              <select class="form-control" name="status">
+                <option value="" disabled selected>Select Status</option>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+              </select>
             </div>
 
             <div class="form-group">

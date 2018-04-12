@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ErpCustomerRequest;
 
 use App\ErpCustomers;
+use App\TourCountry;
 
 use Image;
 use Session;
@@ -16,7 +17,8 @@ class ErpCustomerController extends Controller
 
     function showCustomerBox(){
       $allcustomer = ErpCustomers::latest()->paginate(10);
-      return view('backend.erp.customer.customer_box', compact('allcustomer'));
+      $countryList = TourCountry::get();
+      return view('backend.erp.customer.customer_box', compact('allcustomer','countryList'));
     }
 
     function showCustomer(){
@@ -30,7 +32,7 @@ class ErpCustomerController extends Controller
   		$insert->customer_name = $request->input('customer_name');
   		$insert->email = $request->input('email');
   		$insert->password = $request->input('password');
-      $insert->status  = 1;
+      $insert->status  = $request->input('status');
   		$insert->customer_phone = $request->input('customer_phone');
   		$insert->customer_address = $request->input('customer_address');
   		$insert->customer_nid = $request->input('customer_nid');
@@ -39,10 +41,9 @@ class ErpCustomerController extends Controller
   		$insert->customer_linkedin = $request->input('customer_linkedin');
   		$insert->customer_profession = $request->input('customer_profession');
   		$insert->customer_company = $request->input('customer_company');
-  		$insert->customer_city = $request->input('customer_city');
-  		$insert->customer_country = $request->input('customer_country');
+  		$insert->customer_country = implode(',', $request->input('country'));
+  		$insert->customer_city = implode(',', $request->input('location'));
   		$insert->customer_zip = $request->input('customer_zip');
-  		// $insert->customer_rating = $request->input('customer_rating');
   		$insert->customer_source = $request->input('customer_source');
 
   		//Image
@@ -99,6 +100,7 @@ class ErpCustomerController extends Controller
       $edit = ErpCustomers::find($id);
       $edit->customer_name = $request->input('customer_name');
       $edit->email = $request->input('email');
+      $edit->status = $request->input('status');
       $edit->customer_phone = $request->input('customer_phone');
       $edit->customer_address = $request->input('customer_address');
       $edit->customer_nid = $request->input('customer_nid');
@@ -110,7 +112,6 @@ class ErpCustomerController extends Controller
       $edit->customer_city = $request->input('customer_city');
       $edit->customer_country = $request->input('customer_country');
       $edit->customer_zip = $request->input('customer_zip');
-      // $edit->customer_rating = $request->input('customer_rating');
       $edit->customer_source = $request->input('customer_source');
 
       //Image

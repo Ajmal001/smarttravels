@@ -10,7 +10,7 @@
         <div class="row">
           <div class="panel-body">
 
-            {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-6','id'=>'editCustomer','enctype'=>'multipart/form-data']) !!}
+            {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-10 col-sm-offset-1','id'=>'editCustomer','enctype'=>'multipart/form-data']) !!}
             {!! csrf_field() !!}
             {!! method_field('PUT') !!}
             <div class="form-group">
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
               <label>Customer Email</label>
-              <input type="email" name="email" class="form-control" id="email" required>
+              <input type="email" name="email" class="form-control" id="customer_email" required>
             </div>
             <div class="form-group">
               <label>Customer Phone</label>
@@ -78,6 +78,15 @@
                 <option value="linkedin">LinkedIn</option>
                 <option value="email">Email</option>
                 <option value="website">Website</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Customer Status</label>
+              <select class="form-control" name="status" id="customer_status">
+                <option value="" disabled selected>Select Status</option>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
               </select>
             </div>
 

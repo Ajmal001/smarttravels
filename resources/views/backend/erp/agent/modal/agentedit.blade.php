@@ -3,14 +3,14 @@
    <div class="modal-content">
       <div class="modal-header modal-header-primary">
          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-         <h3><i class="fa fa-user-circle m-r-5"></i> Edit Customer </h3>
+         <h3><i class="fa fa-user-circle m-r-5"></i> Edit Agents </h3>
       </div>
 
       <div class="modal-body">
         <div class="row">
           <div class="panel-body">
 
-            {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-6','id'=>'','enctype'=>'multipart/form-data']) !!}
+            {!! Form::open(['method'=>'post','url' => '','class'=>'col-sm-10 col-sm-offset-1','enctype'=>'multipart/form-data']) !!}
             {!! csrf_field() !!}
             {!! method_field('PUT') !!}
 
@@ -35,9 +35,18 @@
             </div>
 
             <div class="form-group">
-              <label></label>
+              <label>Agent Image</label>
               <input type="file" name="agent_image" class="form-control"> <br>
-              <img src="" id="agent_image" class="img-responsive"/>
+              <img src="" id="agent_image" width="150px"/>
+            </div>
+
+            <div class="form-group">
+              <label>Agent Status</label>
+              <select class="form-control" name="status" id="agent_status">
+                <option value="" disabled selected>Select Status</option>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+              </select>
             </div>
 
             <div class="form-group">

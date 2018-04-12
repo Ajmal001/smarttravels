@@ -21,8 +21,8 @@ class ErpAgentController extends Controller
 
       $insert->name = $request->name;
       $insert->email = $request->email;
-      $insert->password = bcrypt($request->password);      
-      $insert->status  = 1;
+      $insert->password = bcrypt($request->password);
+      $insert->status  = $request->status;
       $insert->agent_phone = $request->agent_phone;
       $insert->agent_area = $request->agent_area;
 
@@ -65,6 +65,7 @@ class ErpAgentController extends Controller
       $update->email = $request->email;
       $update->agent_phone = $request->agent_phone;
       $update->agent_area = $request->agent_area;
+      $update->status = $request->status;
 
       if($request->hasFile('agent_image')){
         $image = $request->file('agent_image');
