@@ -114,18 +114,6 @@ class ErpCustomerController extends Controller
       $edit->customer_zip = $request->input('customer_zip');
       $edit->customer_source = $request->input('customer_source');
 
-      //Image
-
-      if($request->hasFile('customer_image')){
-        $image = $request->file('customer_image');
-        $filename = time().'.'.$image->getClientOriginalExtension();
-        Image::make($image)->save(public_path('/backendimages/'.$filename));
-        $edit->customer_image = $filename;
-      }
-      else{
-        $filename = 'customer_dafault.png';
-        $edit->customer_image = $filename;
-      }
 
       $edit->save();
       Session::flash('flash_message_insert', 'Customer Updated Successfully !');
@@ -141,15 +129,17 @@ class ErpCustomerController extends Controller
 
     public function searchCustomer(Request $request)
     {
+        $countryList = TourCountry::get();
+
         $item = $request->customer_item;
         $type = $request->customer_type;
 
         $customers = ErpCustomers::where( $type, 'LIKE', '%' . $item . '%' )->get();
         if( count($customers) > 0 ){
-          return view('backend.erp.customer.customer_search', compact('customers'));
+          return view('backend.erp.customer.customer_search', compact('customers','countryList'));
         }else{
           $customers = '';
-          return view('backend.erp.customer.customer_search', compact('customers'));
+          return view('backend.erp.customer.customer_search', compact('customers','countryList'));
         }
 
     }

@@ -63,17 +63,7 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$attractionDeta
 
 				</div>
 				<div class="col-md-3 tour_r">
-					
-					<!--====== TRIP INFORMATION ==========-->
-					<div class="tour_right tour_incl tour-ri-com">
-						<h3>Trip Information</h3>
-						<ul>
-							<li>Location : {{$attractionDetails->location}}</li>
-							<li>Arrival Date: {{$attractionDetails->arrival_date}}</li>
-							<li>Departure Date: {{$attractionDetails->departure_date}}</li>
-							<li>{{$attractionDetails->main_package}}</li>
-						</ul>
-					</div>
+
 
 					<!--====== HELP PACKAGE ==========-->
 					<div class="tour_right head_right tour_help tour-ri-com">
@@ -84,7 +74,7 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$attractionDeta
 					</div>
 					<!--====== PUPULAR TOUR PACKAGES ==========-->
 					<div class="tour_right tour_rela tour-ri-com">
-						<h3>Popular Packages</h3>
+						<h3>Popular Attractions</h3>
 						@foreach($attractionLatest as $attraction)
 						<div class="tour_rela_1">
 							<h3>{{$attraction->name}}</h3>

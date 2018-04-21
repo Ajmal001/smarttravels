@@ -109,12 +109,10 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$packageDetails
 					<div class="tour_right tour_rela tour-ri-com">
 						<h3>Popular Packages</h3>
 						@foreach($tourLatest as $tour)
-						<div class="tour_rela_1">
+							<a href="{{URL('/')}}/tourdetails/{{$tour->package_id}}"><div class="tour_rela_1">
 							<h3>{{$tour->package_name}}</h3>
 							<img src="{{URL('/')}}/public/backendimages/{{$tour->tour_image}}" alt="{{$tour->package_name}}" />
-							<h4>{{$tour->duration}}</h4>
-							<p>{!! $tour->tour_details !!}</p>
-							<a href="{{URL('/')}}/tourdetails/{{$tour->package_id}}" class="link-btn">View this Package</a>
+							</a>
 						</div>
 						<hr style="margin:0;">
 						@endforeach

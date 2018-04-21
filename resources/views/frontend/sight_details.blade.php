@@ -63,16 +63,7 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$sightDetails->
 
 				</div>
 				<div class="col-md-3 tour_r">
-					<!--====== TRIP INFORMATION ==========-->
-					<div class="tour_right tour_incl tour-ri-com">
-						<h3>Trip Information</h3>
-						<ul>
-							<li>Location : {{$sightDetails->location}}</li>
-							<li>Arrival Date: {{$sightDetails->arrival_date}}</li>
-							<li>Departure Date: {{$sightDetails->departure_date}}</li>
-							<li>{{$sightDetails->main_package}}</li>
-						</ul>
-					</div>
+
 					<!--====== HELP PACKAGE ==========-->
 					<div class="tour_right head_right tour_help tour-ri-com">
 						<h3>Help & Support</h3>
@@ -82,14 +73,14 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$sightDetails->
 					</div>
 					<!--====== PUPULAR TOUR PACKAGES ==========-->
 					<div class="tour_right tour_rela tour-ri-com">
-						<h3>Popular Packages</h3>
+						<h3>Popular Sights</h3>
 						@foreach($sightLatest as $sight)
 						<div class="tour_rela_1">
 							<h3>{{$sight->name}}</h3>
 							<img src="{{URL('/')}}/public/backendimages/{{$sight->image}}" alt="{{$sight->name}}" />
 							<h4>{{$sight->location}}, {{$sight->country}}</h4>
 							<p>{!! $sight->details !!}</p>
-							<a href="{{URL('/')}}/sightdetails/{{$sight->sight_id}}" class="link-btn">View this Package</a>
+							<a href="{{URL('/')}}/sightdetails/{{$sight->sight_id}}" class="link-btn">View Details</a>
 						</div>
 						<hr style="margin:0;">
 						@endforeach

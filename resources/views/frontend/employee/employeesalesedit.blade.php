@@ -77,6 +77,7 @@
 								<div class="input-field col s12">
 									<select name="payment_method" >
                     <option disabled selected>Select Method</option>
+                    <option value="cash">Cash</option>
                     <option value="bank">Bank</option>
                     <option value="check">Check Payment</option>
                     <option value="paypal">Paypal</option>
@@ -87,7 +88,7 @@
 
 							<div class="row">
 								<div class="input-field col s12">
-									<input type="text" name="payment_info" class="validate" required>
+									<input type="text" name="payment_info" class="validate">
 									<label>Payment Info</label>
 								</div>
 							</div>

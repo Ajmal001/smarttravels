@@ -14,7 +14,7 @@
 						<li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
 						<li><a href="#" class="bread-acti">Hotels & Restaurants</a> </li>
 					</ul>
-					
+
 				</div>
 			</div>
 			<div class="row">
@@ -23,23 +23,23 @@
 					<div class="col-md-3 hot-page2-alp-con-left">
 						<!--PART 1 : LEFT LISTINGS-->
 						<div class="hot-page2-alp-con-left-1">
-							<h3>Search Hotels</h3> 
+							<h3>Search Hotels</h3>
 						</div>
-						
-						    @include('frontend.hotels.hotel_location_search_form')						
-						
+
+						    @include('frontend.hotels.hotel_location_search_form')
+
 							@include('frontend.hotels.hotel_price_search_form')
-							
+
 							@include('frontend.hotels.hotel_star_search_form')
-						
-					</div>		
+
+					</div>
 					<!--END LEFT LISTINGS-->
 					<!--RIGHT LISTINGS-->
 					<div class="col-md-9 hot-page2-alp-con-right">
 						<div class="hot-page2-alp-con-right-1">
 							<!--LISTINGS-->
 							<div class="row">
-															
+
 								@foreach($hotelLocationList as $hotel)
 								<!--LISTINGS START-->
 								<div class="hot-page2-alp-r-list">
@@ -60,13 +60,13 @@
 									</div>
 									<div class="col-md-3">
 										<div class="hot-page2-alp-ri-p3">
-											<div class="hot-page2-alp-r-hot-page-rat">25%Off</div> <span class="hot-list-p3-1">Price Per Night</span> <span class="hot-list-p3-2">{{$hotel->hotel_price}}Tk</span><span class="hot-list-p3-4">
+											<span class="hot-list-p3-1">Price Per Night</span> <span class="hot-list-p3-2">{{$hotel->hotel_price}}Tk</span><span class="hot-list-p3-4">
 												<a href="hotelbooking/{{$hotel->hotel_id}}" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span> </div>
 									</div>
 								</div>
 								<!--END LISTINGS-->
-								@endforeach							
+								@endforeach
 							</div>
 						</div>
 					</div>
@@ -76,5 +76,5 @@
 		</div>
 	</section>
 
-	
+
 	@endsection

@@ -78,7 +78,7 @@
                                         @endforeach
                                         </td>
                                        <td>
-										    <a id="editlocationbtn" class="btn btn-warning btn-sm pull-left m-r-5" href="#" data-id="{{$location->location_id}}"><i class="fa fa-eye"></i></a>
+										    <a id="editlocationbtn" class="btn btn-warning btn-sm pull-left m-r-5" href="#" data-id="{{$location->location_id}}"><i class="fa fa-pencil"></i></a>
                                             {!! Form::open(['method'=>'post','url'=>'locationdelete/{{$location->location_id}}','class'=>'','enctype'=>'multipart/form-data']) !!}
                                             {!! csrf_field() !!}
                                             {!! method_field('DELETE') !!}

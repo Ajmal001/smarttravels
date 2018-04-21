@@ -37,11 +37,7 @@
               <label>Customer Passport Number</label>
               <input type="text" name="customer_passport_no" class="form-control" id="customer_passport_no">
             </div>
-            <div class="form-group">
-              <label>Customer Image</label>
-              <input type="file" name="customer_image" class="form-control"> <br>
-              <img src="" alt="" id="customer_image_preview" width="100">
-            </div>
+            
             <div class="form-group">
               <label>Customer Facebook URL</label>
               <input type="text" name="customer_facebook" class="form-control" id="customer_facebook">

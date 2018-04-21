@@ -80,7 +80,7 @@
                </a>
                <!-- searchbar-->
 
-               
+
              <div class="navbar-custom-menu">
                   <ul class="nav navbar-nav">
                      <!-- Orders -->
@@ -427,9 +427,7 @@
                      </span>
                      </a>
                      <ul class="treeview-menu">
-                        <li><a href="{{url('/adminerpsales')}}">Sales List</a></li>
-
-                        <li><a href="{{url('/adminerpsales')}}">Sales of this Month </a></li>
+                        <li><a href="{{url('/adminerpsales')}}">Sales List</a></li>                      
                      </ul>
                   </li>
 

@@ -37,14 +37,14 @@
 
               <div class="form-group">
                  <label>SKU</label>
-                 <input type="text" name="sales_sku" class="form-control" placeholder="Enter Sales SKU" required>
+                 <input type="text" name="sales_sku" class="form-control" placeholder="Enter Sales SKU">
               </div>
 
               <div class="form-group">
                 <label>Customer Name</label>
                 <div class="form-group">
                 <select class="js-example-basic-multiple" name="sales_customer_id" style="width:200px;" required>
-                  <option disabled selected>Select Employee</option>
+                  <option disabled selected>Select Customer</option>
                   @foreach($customers as $customer)
                   <option value="{{$customer->customer_id}}">{{$customer->customer_name}}</option>
                   @endforeach
@@ -57,6 +57,7 @@
                <div class="form-group">
                 <select class="form-control" name="sales_by_type" id="sellerTypeDropDown">
                   <option disabled selected>Select Type</option>
+                  <option value="Employee">Employee</option>
                   <option value="Employee">Employee</option>
                   <option value="Agent">Agent</option>
                 </select>
@@ -74,7 +75,7 @@
 
               <div class="form-group">
                  <label>Payment Type</label>
-                 <select class="form-control" name="payment_type" >
+                 <select class="form-control" name="payment_type" required>
                    <option disabled selected>Select Type</option>
                    <option value="cash">Cash</option>
                    <option value="due">Due</option>
@@ -85,6 +86,7 @@
                  <label>Payment Method</label>
                  <select class="form-control" name="payment_method" >
                    <option disabled selected>Select Method</option>
+                   <option value="cash">Cash</option>
                    <option value="bank">Bank</option>
                    <option value="check">Check Payment</option>
                    <option value="paypal">Paypal</option>

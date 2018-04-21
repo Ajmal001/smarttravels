@@ -24,7 +24,7 @@
 									<input type="text" name="s_country" id="country" class="autocomplete" required>
 									<label for="select-city">Select Country</label>
 								</div>
-								
+
 								<div class="input-field col s12">
 									<select name="s_package">
 										<option value="" disabled selected>Select your package</option>
@@ -41,11 +41,11 @@
 							<div class="row">
 								<div class="input-field col s6">
 									<input type="text" id="from" name="s_arrival_date" required>
-									<label for="from">Arrival Date</label>
+									<label for="from">From</label>
 								</div>
 								<div class="input-field col s6">
 									<input type="text" id="to" name="s_departure_date" required>
-									<label for="to">Departure Date</label>
+									<label for="to">To</label>
 								</div>
 							</div>
 

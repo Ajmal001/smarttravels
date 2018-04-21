@@ -28,7 +28,6 @@
 									<th>In Time</th>
 									<th>Out Time</th>
 									<th>Note</th>
-									<th>Status</th>
 								</tr>
 							</thead>
 
@@ -38,8 +37,7 @@
 									<td>{{$attendence->date}}</td>
 									<td>{{$attendence->in_time}}</td>
 									<td>{{$attendence->out_time}}</td>
-									<td>{{$attendence->note}}</td>
-									<td><span class="db-not-done">OK</span></td>
+									<td>{{$attendence->note}}</td>									
 								</tr>
 								@endforeach
 							</tbody>

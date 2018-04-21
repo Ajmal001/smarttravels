@@ -3,13 +3,13 @@
 @section('title', 'Packages')
 
 @section('body')
-	
-   
+
+
     <section>
         <div class="rows inner_banner inner_banner_5">
             <div class="container">
                 <h2><span>Search Result For : {{$s_country}}</span> </h2>
-               
+
 				</p>
             </div>
         </div>
@@ -28,12 +28,12 @@
                     </div>
                     <p>
 					<?php if($tourPackages->isEmpty()){
-						echo "Sorry No Packge Found !!";
+						echo "Sorry No Package Found !!";
 					}
 					?>
 					</p>
                 </div>
-				
+
                 @foreach($tourPackages as $tp)
 				<!--===== PLACES ======-->
                 <div class="rows p2_2">
@@ -72,7 +72,7 @@
                 </div>
                 <!--===== PLACES END ======-->
                 @endforeach
-                
+
             </div>
         </div>
     </section>

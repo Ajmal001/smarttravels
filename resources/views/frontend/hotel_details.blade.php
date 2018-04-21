@@ -94,7 +94,7 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$hotelDetails->
 					</div>
 					<!--====== PUPULAR TOUR PACKAGES ==========-->
 					<div class="tour_right tour_rela tour-ri-com">
-						<h3>Popular Packages</h3>
+						<h3>Popular Hotels</h3>
 
 						@foreach($hotelLatest as $hotel)
 						<div class="tour_rela_1">
@@ -102,7 +102,7 @@ background-image: url("{{ URL::to('/') }}/public/backendimages/{{$hotelDetails->
 							<img src="{{URL('/')}}/public/backendimages/{{$hotel->hotel_image}}" alt="{{$hotel->hotel_name}}" />
 							<h4>{{$hotel->hotel_location}}, {{$hotel->hotel_country}}</h4>
 							<p>{!! $hotel->hotel_address !!}</p>
-							<a href="{{URL('/')}}/hoteldetails/{{$hotel->hotel_id}}" class="link-btn">View this Package</a>
+							<a href="{{URL('/')}}/hoteldetails/{{$hotel->hotel_id}}" class="link-btn">View Details</a>
 						</div>
 						<hr style="margin:0;">
 						@endforeach

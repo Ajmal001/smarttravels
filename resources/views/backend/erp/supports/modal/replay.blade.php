@@ -3,7 +3,7 @@
      <div class="modal-content">
         <div class="modal-header modal-header-primary">
            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-           <h3><i class="fa fa-comments m-r-5"></i> Replay of Message</h3>
+           <h3><i class="fa fa-comments m-r-5"></i> Reply of Message</h3>
         </div>
         <form class="" action="{{url('/customermessagesreplay')}}" method="post">
           {{csrf_field()}}
